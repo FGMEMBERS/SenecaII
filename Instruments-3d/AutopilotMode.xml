@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!--
+    $Id$
+    This is the Altimatic IIIc Autopilot 3d instrument.
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList>
+    <path>AutopilotMode.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>AutopilotMode</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>AutopilotMode.Knob</object-name>
+        <global>1</global>
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>AutopilotMode.Knob</object-name>
+        <property>/controls/autopilot/mode</property>
+        <factor>-30</factor>
+        <offset-deg>60</offset-deg>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.00592792</z-m>
+        </center>
+    </animation>
+
+</PropertyList>

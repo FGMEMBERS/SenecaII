@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+    This is the KX165 comm/nav hotspot panel.
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <params>
+        <comm-serviceable>/instrumentation/comm[0]/serviceable</comm-serviceable>
+        <nav-serviceable>/instrumentation/nav[0]/serviceable</nav-serviceable>
+        <power>/instrumentation/nav[0]/power-btn</power>
+        
+        <comm-frq-swp>/instrumentation/comm[0]/frq-swap-btn</comm-frq-swp>
+        <comm-frq-selected>/instrumentation/comm[0]/frequencies/selected-mhz</comm-frq-selected>
+        <comm-frq-standby>/instrumentation/comm[0]/frequencies/standby-mhz</comm-frq-standby>
+        <comm-volume>/instrumentation/comm[0]/volume</comm-volume>
+        <comm-test>/instrumentation/comm[0]/test-btn</comm-test>
+        
+        <nav-frq-swp>/instrumentation/nav[0]/frq-swap-btn</nav-frq-swp>
+        <nav-frq-selected>/instrumentation/nav[0]/frequencies/selected-mhz</nav-frq-selected>
+        <nav-frq-standby>/instrumentation/nav[0]/frequencies/standby-mhz</nav-frq-standby>
+        <nav-volume>/instrumentation/nav[0]/volume</nav-volume>
+        <nav-audio>/instrumentation/nav[0]/audio-btn</nav-audio>
+    </params>
+    
+    <name>kx165Panel</name>
+    <background>Aircraft/SenecaII/Instruments-3d/transparent.rgb</background>
+    <w>156</w>
+    <h>52</h>
+    <instruments>
+        <instrument>
+            <name>panel hotspots</name>
+            <x>78</x>
+            <y>26</y>
+            <w>156</w>
+            <h>52</h>
+            <w-base>156</w-base>
+            <h-base>52</h-base>
+
+            <actions>
+                
+                <action>
+                    <name>CommVolume decrease</name>
+                    <button>0</button>
+                    <x>-72</x>
+                    <y>-24</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/comm-volume"/>
+                        <step>-0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>CommVolume increase</name>
+                    <button>0</button>
+                    <x>-62</x>
+                    <y>-24</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/comm-volume"/>
+                        <step>0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>CommTest</name>
+                    <button>1</button>
+                    <x>-62</x>
+                    <y>-24</y>
+                    <w>20</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property alias="../../../../../../params/comm-test"/>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>CommFrequency decrease small</name>
+                    <button>0</button>
+                    <x>-32</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/comm-frq-standby"/>
+                        <step>-0.025</step>
+                        <min>118.0</min>
+                        <max>140.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>CommFrequency increase small</name>
+                    <button>0</button>
+                    <x>-22</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/comm-frq-standby"/>
+                        <step>0.025</step>
+                        <min>118.0</min>
+                        <max>140.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>CommFrequency decrease large</name>
+                    <button>1</button>
+                    <x>-32</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/comm-frq-standby"/>
+                        <step>-1</step>
+                        <min>118.0</min>
+                        <max>140.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>CommFrequency increase large</name>
+                    <button>1</button>
+                    <x>-22</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/comm-frq-standby"/>
+                        <step>1</step>
+                        <min>118.0</min>
+                        <max>140.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>CommToggle</name>
+                    <button>0</button>
+                    <x>-50</x>
+                    <y>-6</y>
+                    <w>10</w>
+                    <h>6</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property alias="../../../../../../params/comm-frq-swp"/>
+                        <value type="int">1</value>
+                    </binding>
+                    <binding>
+                        <command>property-swap</command>
+                        <property alias="../../../../../../params/comm-frq-standby"/>
+                        <property alias="../../../../../../params/comm-frq-selected"/>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property alias="../../../../../../../params/comm-frq-swp"/>
+                            <value type="int">0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+
+                <action>
+                    <name>NavVolume decrease</name>
+                    <button>0</button>
+                    <x>8</x>
+                    <y>-24</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/nav-volume"/>
+                        <step>-0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>NavVolume increase</name>
+                    <button>0</button>
+                    <x>18</x>
+                    <y>-24</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/nav-volume"/>
+                        <step>0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>NavIdent</name>
+                    <button>1</button>
+                    <x>8</x>
+                    <y>-24</y>
+                    <w>20</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property alias="../../../../../../params/nav-audio"/>
+                    </binding>
+                </action>
+                
+                
+                <action>
+                    <name>NavFrequency decrease small</name>
+                    <button>0</button>
+                    <x>58</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/nav-frq-standby"/>
+                        <step>-0.05</step>
+                        <min>108.0</min>
+                        <max>118.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>NavFrequency increase small</name>
+                    <button>0</button>
+                    <x>48</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/nav-frq-standby"/>
+                        <step>0.05</step>
+                        <min>108.0</min>
+                        <max>118.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>NavFrequency decrease large</name>
+                    <button>1</button>
+                    <x>58</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/nav-frq-standby"/>
+                        <step>-1</step>
+                        <min>108.0</min>
+                        <max>118.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>NavFrequency increase large</name>
+                    <button>1</button>
+                    <x>48</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/nav-frq-standby"/>
+                        <step>1</step>
+                        <min>108.0</min>
+                        <max>118.0</max>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>NavToggle</name>
+                    <button>0</button>
+                    <x>30</x>
+                    <y>-6</y>
+                    <w>10</w>
+                    <h>6</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property alias="../../../../../../params/nav-frq-swp"/>
+                        <value type="int">1</value>
+                    </binding>
+                    <binding>
+                        <command>property-swap</command>
+                        <property alias="../../../../../../params/nav-frq-selected"/>
+                        <property alias="../../../../../../params/nav-frq-standby"/>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property alias="../../../../../../../params/nav-frq-swp"/>
+                            <value type="int">0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+                
+            </actions>
+        </instrument>
+    </instruments>
+</PropertyList>

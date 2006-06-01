@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../XMLSchemas/PropertyList.xsd">
+    <sim>
+        <author>Torsten Dreyer</author>
+        <startup>
+            <splash-texture>Aircraft/SenecaII/splash.rgb</splash-texture>
+            <splash-title>Piper_PA34_200T_Seneca_II</splash-title>
+        </startup>
+        <panel>
+            <!--
+            <path>Aircraft/SenecaII/SenecaII-panel.xml</path>
+-->
+            <visibility>false</visibility>
+        </panel>
+
+        <model>
+            <path>Aircraft/SenecaII/Models/SenecaII.xml</path>
+            <hide-yoke>true</hide-yoke>
+            <instrument-lighting>
+                <emission>
+                    <red>0.5</red>
+                    <green>0.3</green>
+                    <blue>0.1</blue>
+                </emission>
+            </instrument-lighting>
+
+            <icing>
+                <iceable>
+                    <name>Wing</name>
+                    <salvage-control>/controls/deice/surface-deice-wingtail-light</salvage-control>
+                    <sensitivity>0.8</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/wing</output-property>
+                </iceable>
+                <iceable>
+                    <name>Stabilizer</name>
+                    <salvage-control>/controls/deice/surface-deice-wingtail-light</salvage-control>
+                    <sensitivity>1.0</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/stabilizer</output-property>
+                </iceable>
+                <iceable>
+                    <name>Propeller</name>
+                    <salvage-control>/controls/deice/prop-deice</salvage-control>
+                    <sensitivity>0.5</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/propeller</output-property>
+                </iceable>
+                <iceable>
+                    <name>Windshield</name>
+                    <salvage-control>/controls/deice/windshield-deice</salvage-control>
+                    <sensitivity>0.5</sensitivity>
+                    <!-- not relevant for fdm, ignore output-property -->
+                </iceable>
+                <iceable>
+                    <name>Fuselage</name>
+                    <!-- no salvage control, no deicing of the fuselage -->
+                    <sensitivity>0.3</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/fuselage</output-property>
+                </iceable>
+            </icing>
+
+        </model>
+
+        <view n="0">
+            <internal archive="y">true</internal>
+            <config>
+                <x-offset-m archive="y" type="double">-0.358</x-offset-m>
+                <y-offset-m archive="y" type="double">1.75</y-offset-m>
+                <z-offset-m archive="y" type="double">-0.3</z-offset-m>
+                <pitch-offset-deg>-15</pitch-offset-deg>
+            </config>
+        </view>
+        <menubar>
+            <default>
+                <menu n="10">
+                    <label>Seneca</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Show/hide yoke</label>
+                        <binding>
+                            <command>property-toggle</command>
+                            <property>/sim/model/hide-yoke</property>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Show/hide windshield deice</label>
+                        <binding>
+                            <command>property-toggle</command>
+                            <property>/sim/model/hide-windshield-deice</property>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close cowl-flaps</label>
+                        <binding>
+                            <command>property-toggle</command>
+                            <property>/controls/flight/speedbrake</property>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close Front door</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                SenecaII.rightDoor.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close PAX door</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                SenecaII.paxDoor.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Open/close Baggage door</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                SenecaII.baggageDoor.toggle();
+                            </script>
+                        </binding>
+                    </item>
+                    <!--
+                    <item>
+                        <label>Checklists..</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>/sim/dialogs/dialog[0]</dialog-name>
+                        </binding>
+                    </item>
+                        -->
+                </menu>
+            </default>
+        </menubar>
+        <systems>
+            <!--
+            <autopilot>
+                <path>Aircraft/c172p/Systems/KAP140.xml</path>
+            </autopilot>
+            -->
+            <electrical>
+                <path/>
+            </electrical>
+        </systems>
+
+        <sound>
+            <path>Aircraft/SenecaII/SenecaII-Sound.xml</path>
+        </sound>
+
+        <help>
+            <title>PA34-200T Seneca</title>
+        </help>
+
+        <timers>
+            <timer>
+                <type type="string">oneshot</type>
+                <name>WingTailDeiceLight</name>
+                <!--
+                <enable-property></enable-property>
+                -->
+                <start-property type="string">/controls/deice/surface-deice</start-property>
+                <output-property type="string">/controls/deice/surface-deice-wingtail-light</output-property>
+                <t0 type="double">6.0</t0>
+            </timer>
+        </timers>
+
+    </sim>
+
+    <controls>
+        <autopilot>
+            <mode type="int">2</mode>
+            <!-- start in heading-mode -->
+        </autopilot>
+        <electric>
+            <engine n="0">
+                <generator>true</generator>
+            </engine>
+            <engine n="1">
+                <generator>true</generator>
+            </engine>
+            <battery-switch>true</battery-switch>
+        </electric>
+        <engines>
+            <engine n="0">
+                <magnetos>0</magnetos>
+                <magneto n="0">0</magneto>
+                <magneto n="1">0</magneto>
+            </engine>
+            <engine n="1">
+                <magnetos>0</magnetos>
+                <magneto n="0">0</magneto>
+                <magneto n="1">0</magneto>
+            </engine>
+        </engines>
+        <flight>
+            <!-- cowl flaps open -->
+            <speedbrake type="bool">1</speedbrake>
+        </flight>
+        <gear>
+            <brake-parking>1</brake-parking>
+        </gear>
+        <fuel>
+            <tank n="0">
+                <fuel_selector>true</fuel_selector>
+                <to_engine>1</to_engine>
+            </tank>
+        </fuel>
+        <lighting>
+            <strobe>1</strobe>
+        </lighting>
+    </controls>
+    <consumables>
+        <fuel>
+            <tank n="0">
+                <level-gal_us>50</level-gal_us>
+            </tank>
+            <tank n="1">
+                <level-gal_us>50</level-gal_us>
+            </tank>
+        </fuel>
+    </consumables>
+    <limits>
+        <max-flap-extension-speed>
+            <flaps>0.3</flaps>
+            <speed>105</speed>
+        </max-flap-extension-speed>
+        <max-gear-extension-speed>129</max-gear-extension-speed>
+        <vne>190</vne>
+    </limits>
+
+    <nasal>
+        <SenecaII>
+            <file>Aircraft/SenecaII/Nasal/SenecaII.nas</file>
+            <file>Aircraft/SenecaII/Nasal/Magnetos.nas</file>
+            <file>Aircraft/SenecaII/Nasal/electric.nas</file>
+            <file>Aircraft/SenecaII/Nasal/timers.nas</file>
+            <file>Aircraft/SenecaII/Nasal/hsi.nas</file>
+            <file>Aircraft/Generic/limits.nas</file>
+        </SenecaII>
+        <kr87>
+            <file>Aircraft/SenecaII/Nasal/kr87.nas</file>
+        </kr87>
+        <dme>
+            <file>Aircraft/SenecaII/Nasal/dme.nas</file>
+        </dme>
+        <icing>
+            <file>Aircraft/SenecaII/Nasal/icing.nas</file>
+        </icing>
+    </nasal>
+    <systems>
+        <electrical>
+            <bus n="0">
+                <volts>12</volts>
+                <name>mainbus</name>
+                <element>
+                    <type>battery</type>
+                    <name>main-battery</name>
+                    <capacity-ah>35</capacity-ah>
+                </element>
+                <element>
+                    <type>generator</type>
+                    <name>left-generator</name>
+                    <max-amps>65</max-amps>
+                    <max-volts>13.81</max-volts>
+                    <min-volts>12.0</min-volts>
+                    <min-rpm>800</min-rpm>
+                    <max-rpm>2000</max-rpm>
+                    <switch-property>/controls/electric/engine[0]/generator</switch-property>
+                    <rpm-source>/engines/engine[0]/rpm</rpm-source>
+                </element>
+                <element>
+                    <type>generator</type>
+                    <name>left-generator</name>
+                    <max-amps>65</max-amps>
+                    <max-volts>13.81</max-volts>
+                    <min-volts>12.0</min-volts>
+                    <min-rpm>800</min-rpm>
+                    <max-rpm>2000</max-rpm>
+                    <switch-property>/controls/electric/engine[1]/generator</switch-property>
+                    <rpm-source>/engines/engine[1]/rpm</rpm-source>
+                </element>
+                <element>
+                    <type>load</type>
+                    <name>landing-lights</name>
+                    <load-watts>50</load-watts>
+                    <switch-property>/controls/lighting/landing-lights</switch-property>
+                </element>
+                <element>
+                    <type>load</type>
+                    <name>taxi-lights</name>
+                    <load-watts>50</load-watts>
+                    <switch-property>/controls/lighting/taxi-light</switch-property>
+                </element>
+                <element>
+                    <type>load</type>
+                    <name>nav-lights</name>
+                    <load-watts>20</load-watts>
+                    <switch-property>/controls/lighting/nav-lights</switch-property>
+                </element>
+                <element>
+                    <type>load</type>
+                    <name>prop-deice</name>
+                    <load-watts>200</load-watts>
+                    <switch-property>/controls/deice/prop-deice</switch-property>
+                    <i-property>/systems/electrical/deice/prop-deice-amps</i-property>
+                </element> s <element>
+                    <type>load</type>
+                    <name>beacon</name>
+                    <load-watts>50</load-watts>
+                    <switch-property>/controls/lighting/beacon</switch-property>
+                </element>
+            </bus>
+            <!-- old outputs stuff -->
+            <outputs>
+                <dme>1</dme>
+                <adf>1</adf>
+                <nav n="0">1.1</nav>
+                <nav n="1">1.1</nav>
+                <turn-coordinator>12</turn-coordinator>
+            </outputs>
+        </electrical>
+    </systems>
+
+    <instrumentation>
+        <adf>
+            <ident-audible archive="y">0</ident-audible>
+            <volume-norm>1.0</volume-norm>s </adf>
+        <nav n="0">
+            <ident>0</ident>
+            <volume>0.5</volume>
+        </nav>
+        <nav n="1">
+            <ident>0</ident>
+            <volume>0.5</volume>
+        </nav>
+        <marker-beacon>
+            <audio-btn>1</audio-btn>
+        </marker-beacon>
+
+        <audio-panel>
+            <dme archive="y">0</dme>
+            <hi archive="y">1</hi>
+            <lo archive="y">0</lo>
+            <com-mic n="0">1</com-mic>
+            <com-mic n="1">0</com-mic>
+            <com-mic n="2">0</com-mic>
+        </audio-panel>
+    </instrumentation>
+
+</PropertyList>

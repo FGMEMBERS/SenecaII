@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Switch Panel hotspots top row
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <name>SwitchPanel1</name>
+    <background>Aircraft/b1900d/Panel/transparent-bg.rgb</background>
+    <w>218</w>
+    <h>49</h>
+    <instruments>
+        <instrument>
+            <name>hotspots</name>
+            <x>109</x>
+            <y>25</y>
+            <w>218</w>
+            <h>50</h>
+            <w-base>218</w-base>
+            <h-base>50</h-base>
+            
+            <actions>
+                <action>
+                    <name>Magneto.L.L</name>
+                    <button>0</button>
+                    <x>-100</x>
+                    <y>-23</y>
+                    <w>20</w>
+                    <h>46</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/engines/engine[0]/magneto[0]</property>
+                        <step>1</step>
+                        <min>0</min>
+                        <max>1</max>
+                        <wrap>true</wrap>
+                    </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script>SenecaII.setmagneto(0,0)</script>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>Magneto.L.R</name>
+                    <button>0</button>
+                    <x>-70</x>
+                    <y>-23</y>
+                    <w>20</w>
+                    <h>46</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/engines/engine[0]/magneto[1]</property>
+                        <step>1</step>
+                        <min>0</min>
+                        <max>1</max>
+                        <wrap>true</wrap>
+                    </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script>SenecaII.setmagneto(0,1)</script>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>Magneto.R.L</name>
+                    <button>0</button>
+                    <x>50</x>
+                    <y>-23</y>
+                    <w>20</w>
+                    <h>46</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/engines/engine[1]/magneto[0]</property>
+                        <step>1</step>
+                        <min>0</min>
+                        <max>1</max>
+                        <wrap>true</wrap>
+                    </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script>SenecaII.setmagneto(1,0)</script>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>Magneto.R.R</name>
+                    <button>0</button>
+                    <x>80</x>
+                    <y>-23</y>
+                    <w>20</w>
+                    <h>46</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/engines/engine[1]/magneto[1]</property>
+                        <step>1</step>
+                        <min>0</min>
+                        <max>1</max>
+                        <wrap>true</wrap>
+                    </binding>
+                    <binding>
+                        <command>nasal</command>
+                        <script>SenecaII.setmagneto(1,1)</script>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>Primer.L</name>
+                    <button>0</button>
+                    <x>-40</x>
+                    <y>5</y>
+                    <w>20</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/controls/engines/engine[0]/primer</property>
+                        <value type="int">1</value>
+                        <repeatable>0</repeatable>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property>/controls/engines/engine[0]/primer</property>
+                            <value type="int">0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+                
+                <action>
+                    <name>Primer.R</name>
+                    <button>0</button>
+                    <x>20</x>
+                    <y>5</y>
+                    <w>20</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/controls/engines/engine[1]/primer</property>
+                        <value type="int">1</value>
+                        <repeatable>0</repeatable>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property>/controls/engines/engine[1]/primer</property>
+                            <value type="int">0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+                
+                <action>
+                    <name>Starter.L</name>
+                    <button>0</button>
+                    <x>-20</x>
+                    <y>-18</y>
+                    <w>20</w>
+                    <h>26</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/controls/engines/engine[0]/starter</property>
+                        <value type="int">1</value>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property>/controls/engines/engine[0]/starter</property>
+                            <value type="int">0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+                
+                <action>
+                    <name>Starter.R</name>
+                    <button>0</button>
+                    <x>0</x>
+                    <y>-18</y>
+                    <w>20</w>
+                    <h>26</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/controls/engines/engine[1]/starter</property>
+                        <value type="int">1</value>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property>/controls/engines/engine[1]/starter</property>
+                            <value type="int">0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+                
+            </actions>
+        </instrument>
+    </instruments>
+</PropertyList>

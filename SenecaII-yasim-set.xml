@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PropertyList include="SenecaII-base.xml">
+    <sim>
+        <description>PA34-200T Seneca II (yasim)</description>
+        <aircraft-version>0.2</aircraft-version>
+        <flight-model>yasim</flight-model>
+        <aero>SenecaII-yasim</aero>
+    </sim>
+</PropertyList>

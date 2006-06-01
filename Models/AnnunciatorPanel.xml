@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+    This is the Annunciator hotspot panel.
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <name>FuelSelectorPanel</name>
+    <background>Aircraft/SenecaII/Instruments-3d/transparent.rgb</background>
+    <w>114</w>
+    <h>16</h>
+    <instruments>
+        <instrument>
+            <name>panel hotspots</name>
+            <x>57</x>
+            <y>8</y>
+            <w>114</w>
+            <h>16</h>
+            <w-base>114</w-base>
+            <h-base>16</h-base>
+
+            <actions>
+                <action>
+                    <name>Left increase</name>
+                    <button>0</button>
+                    <x>-57</x>
+                    <y>-8</y>
+                    <w>16</w>
+                    <h>16</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/annunciator/test</property>
+                        <value type="int">1</value>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property>/instrumentation/annunciator/test</property>
+                            <value type="int">0</value>
+                        </binding>
+                    </mod-up>
+                    
+                </action>
+
+            </actions>
+        </instrument>
+    </instruments>
+</PropertyList>

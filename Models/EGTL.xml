@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<PropertyList>
+    <path>EGT.ac</path>
+    
+    <animation>
+        <type>noshadow</type>
+        <property>egt</property>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>egt</object-name>
+        <global>1</global>
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>Needle</object-name>
+        <property>/engines/engine[0]/egt-degf</property>
+        <interpolation>
+            <entry>
+                <ind>1200</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1770</ind>
+                <dep>-90</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>-0.0015</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.00766508</z-m>
+        </center>
+    </animation>
+</PropertyList>

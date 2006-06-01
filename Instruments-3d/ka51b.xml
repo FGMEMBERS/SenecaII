@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<!--
+    $Id$
+    This is the ka51b slaving meter 3d instrument.
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList>
+    <path>ka51b.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>ka51b</object-name>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>ka51b.Auto.lever</object-name>
+        <property>/instrumentation/heading-indicator/mode-auto</property>
+        <factor>-60</factor>
+        <offset-deg>60</offset-deg>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>ka51b.CCW.lever</object-name>
+        <property>/instrumentation/heading-indicator/rotate</property>
+        <factor>30</factor>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>ka51b.Indicator</object-name>
+        <property>/instrumentation/heading-indicator/error-indicator</property>
+        <factor>0.0021579</factor>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+</PropertyList>

@@ -1,0 +1,274 @@
+<?xml version="1.0" ?>
+<!--
+  $Id$ 
+  Garmin GMA 340 Audio Panel 3d model
+   Texture image is (c) Garmin (www.garmin.com)
+    
+   Maintainer: Torsten Dreyer ( Torsten at t3r dot de)
+    
+  $Log$
+  Revision 1.1  2006/06/01 12:58:33  mfranz
+  Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList>
+    <path>gma340.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>gma340</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.Marker.O</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/marker-beacon/outer</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.Marker.M</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/marker-beacon/middle</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.Marker.I</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/marker-beacon/inner</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.adf</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/adf[0]/ident-audible</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.dme</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/dme</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.nav2</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/nav[1]/ident</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.nav1</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/nav[0]/ident</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.mkr</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/marker-beacon/audio-btn</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.com1</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/com[0]</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.com2</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/com[1]</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.com3</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/com[2]</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.com1mic</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/com-mic[0]</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.com2mic</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/com-mic[1]</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.com3mic</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/com-mic[2]</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.hi</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/hi</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.lo</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/lo</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.com1_2</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/com1-2</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.spkr</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/spkr</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.pa</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/pa</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.crew</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/crew</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>gma340.led.pilot</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/audio-panel/pilot</factor-prop>
+            <offset-prop>/instrumentation/audio-panel/test</offset-prop>
+        </emission>
+    </animation>
+
+</PropertyList>

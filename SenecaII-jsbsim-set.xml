@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<PropertyList include="SenecaII-base.xml">
+    <sim>
+        <description>PA34-200T Seneca II (jsbsim)</description>
+        <aircraft-version>0.3</aircraft-version>
+        <status>early-production</status>
+        <flight-model>jsb</flight-model>
+        <aero>SenecaII-jsbsim</aero>
+    </sim>
+    <fdm>
+        <jsbsim>
+            <ice>
+                <wing type="double">0.0</wing>
+                <stabilizer type="double">0.0</stabilizer>
+                <propeller type="double">0.0</propeller>
+                <fuselage type="double">0.0</fuselage>
+            </ice>
+        </jsbsim>
+    </fdm>
+</PropertyList>

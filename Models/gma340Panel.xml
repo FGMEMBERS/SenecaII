@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+    This is the hotspot fake instrument for the gma340 audiopanel 3d instrument. 
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <name>KR87Panel</name>
+    <background>Aircraft/SenecaII/Instruments-3d/transparent.rgb</background>
+    <w>160</w>
+    <h>34</h>
+    <instruments>
+        <instrument>
+            <name>panel hotspots</name>
+            <x>80</x>
+            <y>17</y>
+            <w>160</w>
+            <h>34</h>
+            <w-base>160</w-base>
+            <h-base>34</h-base>
+            <actions>
+
+                <!-- MKR Button -->
+                <action>
+                    <name>MKRButton</name>
+                    <button>0</button>
+                    <x>-56</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/marker-beacon/audio-btn</property>
+                    </binding>
+                </action>
+
+                <!-- NAV1 Button -->
+                <action>
+                    <name>NAV1Button</name>
+                    <button>0</button>
+                    <x>3</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/nav[0]/ident</property>
+                    </binding>
+                </action>
+
+                <!-- NAV2 Button -->
+                <action>
+                    <name>NAV2Button</name>
+                    <button>0</button>
+                    <x>16</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/nav[1]/ident</property>
+                    </binding>
+                </action>
+
+                <!-- DME Button -->
+                <action>
+                    <name>DMEButton</name>
+                    <button>0</button>
+                    <x>29</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/dme</property>
+                    </binding>
+                </action>
+
+                <!-- ADF Button -->
+                <action>
+                    <name>ADFButton</name>
+                    <button>0</button>
+                    <x>42</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/adf[0]/ident-audible</property>
+                    </binding>
+                </action>
+
+                <!-- COM1 Button -->
+                <action>
+                    <name>COM1Button</name>
+                    <button>0</button>
+                    <x>-42</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/com[0]</property>
+                    </binding>
+                </action>
+
+                <!-- COM2 Button -->
+                <action>
+                    <name>COM2Button</name>
+                    <button>0</button>
+                    <x>-29</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/com[1]</property>
+                    </binding>
+                </action>
+
+                <!-- COM3 Button -->
+                <action>
+                    <name>COM3Button</name>
+                    <button>0</button>
+                    <x>-16</x>
+                    <y>4</y>
+                    <w>12</w>
+                    <h>10</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/com[2]</property>
+                    </binding>
+                </action>
+
+                <!-- COM1 MIC Button -->
+                <action>
+                    <name>COM1MICButton</name>
+                    <button>0</button>
+                    <x>-42</x>
+                    <y>-14</y>
+                    <w>12</w>
+                    <h>17</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[0]</property>
+                        <value>1</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[1]</property>
+                        <value>0</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[2]</property>
+                        <value>0</value>
+                    </binding>
+                </action>
+
+                <!-- COM2MIC Button -->
+                <action>
+                    <name>COM2MICButton</name>
+                    <button>0</button>
+                    <x>-29</x>
+                    <y>-14</y>
+                    <w>12</w>
+                    <h>17</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[1]</property>
+                        <value>1</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[0]</property>
+                        <value>0</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[2]</property>
+                        <value>0</value>
+                    </binding>
+                </action>
+
+                <!-- COM3 MIC Button -->
+                <action>
+                    <name>COM3MICButton</name>
+                    <button>0</button>
+                    <x>-16</x>
+                    <y>-14</y>
+                    <w>12</w>
+                    <h>17</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[2]</property>
+                        <value>1</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[1]</property>
+                        <value>0</value>
+                    </binding>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/instrumentation/audio-panel/com-mic[0]</property>
+                        <value>0</value>
+                    </binding>
+                </action>
+
+                <!--SENS Button -->
+                <action>
+                    <name>SENSButton</name>
+                    <button>0</button>
+                    <x>-57</x>
+                    <y>-14</y>
+                    <w>13</w>
+                    <h>8</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/hi</property>
+                    </binding>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/lo</property>
+                    </binding>
+                </action>
+
+                <!--COM 1/2 Button -->
+                <action>
+                    <name>COM1_2Button</name>
+                    <button>0</button>
+                    <x>3</x>
+                    <y>-14</y>
+                    <w>12</w>
+                    <h>17</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/com1-2</property>
+                    </binding>
+                </action>
+
+                <!--SPKR Button -->
+                <action>
+                    <name>SPKRButton</name>
+                    <button>0</button>
+                    <x>16</x>
+                    <y>-5</y>
+                    <w>17</w>
+                    <h>7</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/spkr</property>
+                    </binding>
+                </action>
+
+                <!--PA Button -->
+                <action>
+                    <name>PAButton</name>
+                    <button>0</button>
+                    <x>16</x>
+                    <y>-14</y>
+                    <w>17</w>
+                    <h>7</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/pa</property>
+                    </binding>
+                </action>
+
+                <!--PILOT Button -->
+                <action>
+                    <name>PILOTButton</name>
+                    <button>0</button>
+                    <x>37</x>
+                    <y>-5</y>
+                    <w>17</w>
+                    <h>7</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/pilot</property>
+                    </binding>
+                </action>
+
+                <!--CREW Button -->
+                <action>
+                    <name>CREWButton</name>
+                    <button>0</button>
+                    <x>37</x>
+                    <y>-14</y>
+                    <w>17</w>
+                    <h>7</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/crew</property>
+                    </binding>
+                </action>
+
+                <!--TEST Button -->
+                <action>
+                    <name>TESTButton</name>
+                    <button>0</button>
+                    <x>63</x>
+                    <y>5</y>
+                    <w>12</w>
+                    <h>7</h>
+                    <repeatable>0</repeatable>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/instrumentation/audio-panel/test</property>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property>/instrumentation/audio-panel/test</property>
+                            <value type="bool">0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+
+            </actions>
+
+        </instrument>
+    </instruments>
+</PropertyList>

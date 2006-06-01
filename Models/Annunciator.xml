@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<PropertyList>
+    <path>Annunciator.ac</path>
+    
+    <animation>
+        <type>noshadow</type>
+        <object-name>Annunciator</object-name>
+    </animation>
+    
+    <animation>
+        <type>translate</type>
+        <object-name>Test</object-name>
+        <property>/instrumentation/annunciator/test</property>
+        <factor>-0.0025</factor>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Fuelpump.L</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/annunciator/test</factor-prop>
+            <offset-prop>/instrumentation/annunciator/fuelpump[0]</offset-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Fuelpump.R</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/annunciator/test</factor-prop>
+            <offset-prop>/instrumentation/annunciator/fuelpump[1]</offset-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>OverboostFace.L</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/annunciator/test</factor-prop>
+            <offset-prop>/instrumentation/annunciator/overboost[0]</offset-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>OverboostFace.R</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/annunciator/test</factor-prop>
+            <offset-prop>/instrumentation/annunciator/overboost[1]</offset-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>OilFace</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/annunciator/test</factor-prop>
+            <offset-prop>/instrumentation/annunciator/oil</offset-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>GyroAirFace</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/annunciator/test</factor-prop>
+            <offset-prop>/instrumentation/annunciator/vacuum</offset-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>AltnFace</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>/instrumentation/annunciator/test</factor-prop>
+            <offset-prop>/instrumentation/annunciator/alt</offset-prop>
+        </emission>
+    </animation>
+    
+</PropertyList>

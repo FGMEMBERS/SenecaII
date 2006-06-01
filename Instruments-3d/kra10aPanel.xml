@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+    This is the kra-10a radar altimeter hotspot panel.
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <name>KRA10Panel</name>
+    <background>Aircraft/SenecaII/Instruments-3d/transparent.rgb</background>
+    <w>76</w>
+    <h>76</h>
+    <instruments>
+        <instrument>
+            <name>panel hotspots</name>
+            <x>38</x>
+            <y>38</y>
+            <w>76</w>
+            <h>76</h>
+            <w-base>76</w-base>
+            <h-base>76</h-base>
+            
+            <actions>
+                <!--  DH decrease small -->
+                <action>
+                    <name>DH decrease small</name>
+                    <button>0</button>
+                    <x>-33</x>
+                    <y>-38</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/radar-altimeter/decision-height</property>
+                        <step>-10</step>
+                        <min>0</min>
+                        <max>2500</max>
+                    </binding>
+                </action>
+                
+                <!--  DH increase small -->
+                <action>
+                    <name>DH increase small</name>
+                    <button>0</button>
+                    <x>-23</x>
+                    <y>-38</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/radar-altimeter/decision-height</property>
+                        <step>10</step>
+                        <min>0</min>
+                        <max>2500</max>
+                    </binding>
+                </action>
+                
+                <!--  DH decrease large -->
+                <action>
+                    <name>CURSOR decrease large</name>
+                    <button>1</button>
+                    <x>-33</x>
+                    <y>-38</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/radar-altimeter/decision-height</property>
+                        <step>-100</step>
+                        <min>0</min>
+                        <max>2500</max>
+                    </binding>
+                </action>
+                
+                <!--  DH increase large -->
+                <action>
+                    <name>CURSOR increase large</name>
+                    <button>1</button>
+                    <x>-23</x>
+                    <y>-38</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/radar-altimeter/decision-height</property>
+                        <step>100</step>
+                        <min>0</min>
+                        <max>2500</max>
+                    </binding>
+                </action>
+                
+            </actions>
+        </instrument>
+    </instruments>
+</PropertyList>

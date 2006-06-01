@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+    This is the HSI hotspot panel.
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <name>AutopilotModePanel</name>
+    <background>Aircraft/SenecaII/Instruments-3d/transparent.rgb</background>
+    <w>90</w>
+    <h>90</h>
+    <instruments>
+        <instrument>
+            <name>panel hotspots</name>
+            <x>45</x>
+            <y>45</y>
+            <w>90</w>
+            <h>90</h>
+            <w-base>90</w-base>
+            <h-base>90</h-base>
+
+            <actions>
+                <!--  CURSOR decrease small -->
+                <action>
+                    <name>CURSOR decrease small</name>
+                    <button>0</button>
+                    <x>-43</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/nav[0]/radials/selected-deg</property>
+                        <step>-1</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+                
+                <!--  CURSOR increase small -->
+                <action>
+                    <name>CURSOR increase small</name>
+                    <button>0</button>
+                    <x>-33</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/nav[0]/radials/selected-deg</property>
+                        <step>1</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+                
+                <!--  CURSOR decrease large -->
+                <action>
+                    <name>CURSOR decrease large</name>
+                    <button>1</button>
+                    <x>-43</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/nav[0]/radials/selected-deg</property>
+                        <step>-5</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+                
+                <!--  CURSOR increase large -->
+                <action>
+                    <name>CURSOR increase large</name>
+                    <button>1</button>
+                    <x>-33</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/instrumentation/nav[0]/radials/selected-deg</property>
+                        <step>5</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+                
+                <!--  HDG decrease small -->
+                <action>
+                    <name>HDG decrease small</name>
+                    <button>0</button>
+                    <x>23</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/settings/heading-bug-deg</property>
+                        <step>-1</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+
+                <!--  HDG increase small -->
+                <action>
+                    <name>HDG increase small</name>
+                    <button>0</button>
+                    <x>33</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/settings/heading-bug-deg</property>
+                        <step>1</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+
+                <!--  HDG decrease large -->
+                <action>
+                    <name>HDG decrease large</name>
+                    <button>1</button>
+                    <x>23</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/settings/heading-bug-deg</property>
+                        <step>-5</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+
+                <!--  HDG increase large -->
+                <action>
+                    <name>HDG increase large</name>
+                    <button>1</button>
+                    <x>33</x>
+                    <y>-34</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/autopilot/settings/heading-bug-deg</property>
+                        <step>5</step>
+                        <min>0</min>
+                        <max>360</max>
+                        <wrap>1</wrap>
+                    </binding>
+                </action>
+
+            </actions>
+        </instrument>
+    </instruments>
+</PropertyList>

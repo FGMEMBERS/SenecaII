@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+    This is the hotspot fake instrument for the DeiceControl Panel in a Piper Seneca II
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
+
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <name>DeIceControlPanel</name>
+    <background>Aircraft/SenecaII/Instruments-3d/transparent.rgb</background>
+    <w>150</w>
+    <h>65</h>
+    <instruments>
+        <instrument>
+            <name>panel hotspots</name>
+            <x>75</x>
+            <y>33</y>
+            <w>150</w>
+            <h>65</h>
+            <w-base>150</w-base>
+            <h-base>65</h-base>
+            <actions>
+                <!-- Surface Deice Switch -->
+                <action>
+                    <name>SurfaceDeiceSwitch</name>
+                    <button>0</button>
+                    <x>-71</x>
+                    <y>-20</y>
+                    <w>18</w>
+                    <h>31</h>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>/controls/deice/surface-deice</property>
+                        <value>1</value>
+                        <repeatable type="bool">false</repeatable>
+                    </binding>
+                    <mod-up>
+                        <binding>
+                            <command>property-assign</command>
+                            <property>/controls/deice/surface-deice</property>
+                            <value>0</value>
+                        </binding>
+                    </mod-up>
+                </action>
+
+                <!-- Prop Deice Switch -->
+                <action>
+                    <name>PropDeiceSwitch</name>
+                    <button>0</button>
+                    <x>-27</x>
+                    <y>-20</y>
+                    <w>18</w>
+                    <h>31</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/deice/prop-deice</property>
+                        <repeatable type="bool">false</repeatable>
+                    </binding>
+                </action>
+                
+                <!-- Windshield Deice Switch -->
+                <action>
+                    <name>WindshieldDeiceSwitch</name>
+                    <button>0</button>
+                    <x>54</x>
+                    <y>-20</y>
+                    <w>18</w>
+                    <h>31</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/deice/windshield-deice</property>
+                        <repeatable type="bool">false</repeatable>
+                    </binding>
+                </action>
+                
+                <!-- Wing Ice Light -->
+                <action>
+                    <name>WingIceLightSwitch</name>
+                    <button>0</button>
+                    <x>-49</x>
+                    <y>-6</y>
+                    <w>18</w>
+                    <h>30</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/deice/wingice-light</property>
+                        <repeatable type="bool">false</repeatable>
+                    </binding>
+                </action>
+            </actions>
+        </instrument>
+    </instruments>
+</PropertyList>
