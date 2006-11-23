@@ -35,6 +35,18 @@
     <!-- comm part -->
 
     <animation>
+        <type>material</type>
+        <object-name>CommToggle</object-name>
+        <object-name>NavToggle</object-name>
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
         <type>translate</type>
         <object-name>CommToggle</object-name>
         <property alias="../../params/comm-frq-swp"/>

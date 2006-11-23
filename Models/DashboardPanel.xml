@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+    This is the dashboard hotspot panel.
+    Maintainer: Torsten Dreyer
+    
+    $Log$
+    Revision 1.1  2006/11/23 14:27:02  mfranz
+    Torsten DREYER:
+
+    """
+    - Added instruments lights for night flights
+    - Addes flashing strobe effect in clouds at night
+    - OBS knob on vor2 clickable
+    - subscale knob on altimeter clickable
+    - changes on aircraft 3d-model
+    - Fixed bug in HSI, wrong deflection of glideslope indicator and
+      transparency issue
+    - Added Roberto Inzerillo's nice nose gear and animations, new main gear
+    """
+
+-->
+<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../XMLSchemas/panel.xsd">
+    <name>DashboardPanel</name>
+    <background>Aircraft/SenecaII/Instruments-3d/transparent.rgb</background>
+    <w>1262</w>
+    <h>408</h>
+    <instruments>
+        <instrument>
+            <name>panel hotspots</name>
+            <x>631</x>
+            <y>204</y>
+            <w>1262</w>
+            <h>408</h>
+            <w-base>1262</w-base>
+            <h-base>408</h-base>
+
+            <actions>
+
+                <action>
+                    <name>Radio Lights Increase</name>
+                    <button>0</button>
+                    <x>161</x>
+                    <y>-99</y>
+                    <w>10</w>
+                    <h>15</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/lighting/radio-norm</property>
+                        <step>0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+
+                <action>
+                    <name>Radio Lights Decrease</name>
+                    <button>0</button>
+                    <x>161</x>
+                    <y>-114</y>
+                    <w>10</w>
+                    <h>15</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/lighting/radio-norm</property>
+                        <step>-0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+
+                <action>
+                    <name>Radio Lights on</name>
+                    <button>1</button>
+                    <x>161</x>
+                    <y>-114</y>
+                    <w>10</w>
+                    <h>30</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/lighting/radio-norm</property>
+                    </binding>
+                </action>
+
+                <action>
+                    <name>Instrument Lights Increase</name>
+                    <button>0</button>
+                    <x>161</x>
+                    <y>-138</y>
+                    <w>10</w>
+                    <h>15</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/lighting/instruments-norm</property>
+                        <step>0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+
+                <action>
+                    <name>Instrument Lights Decrease</name>
+                    <button>0</button>
+                    <x>161</x>
+                    <y>-153</y>
+                    <w>10</w>
+                    <h>15</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property>/controls/lighting/instruments-norm</property>
+                        <step>-0.1</step>
+                        <min>0.0</min>
+                        <max>1.0</max>
+                        <wrap>false</wrap>
+                    </binding>
+                </action>
+
+                <action>
+                    <name>Instrument Lights on</name>
+                    <button>1</button>
+                    <x>161</x>
+                    <y>-153</y>
+                    <w>10</w>
+                    <h>30</h>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>/controls/lighting/instruments-norm</property>
+                    </binding>
+                </action>
+
+            </actions>
+        </instrument>
+    </instruments>
+</PropertyList>

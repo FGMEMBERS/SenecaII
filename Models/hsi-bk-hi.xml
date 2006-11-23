@@ -5,17 +5,32 @@
     Maintainer: Torsten Dreyer
     
     $Log$
-    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Revision 1.2  2006/11/23 14:27:03  mfranz
+    Torsten DREYER:
+
+    """
+    - Added instruments lights for night flights
+    - Addes flashing strobe effect in clouds at night
+    - OBS knob on vor2 clickable
+    - subscale knob on altimeter clickable
+    - changes on aircraft 3d-model
+    - Fixed bug in HSI, wrong deflection of glideslope indicator and
+      transparency issue
+    - Added Roberto Inzerillo's nice nose gear and animations, new main gear
+    """
+
+    Revision 1.1  2006-06-01 12:58:33  mfranz
     Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
 
 -->
 <PropertyList>
     <path>hsi-bk-hi.ac</path>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>hsi</object-name>
     </animation>
+
     <animation>
         <type>material</type>
         <object-name>hsi.Rotary</object-name>
@@ -23,9 +38,6 @@
         <object-name>hsi.HeadingBug</object-name>
         <object-name>hsi.NAVFlag</object-name>
         <object-name>hsi.HDGFlag</object-name>
-        <object-name>hsi.OuterMask</object-name>
-        <object-name>hsi.Glass</object-name>
-        <global>1</global>
         <emission>
             <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
             <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
@@ -33,7 +45,19 @@
             <factor-prop>/controls/lighting/instruments-norm</factor-prop>
         </emission>
     </animation>
-    
+
+    <animation>
+        <type>material</type>
+        <object-name>hsi.OuterMask</object-name>
+        <object-name>hsi.Glass</object-name>
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+
     <animation>
         <type>rotate</type>
         <object-name>hsi.CompassRose</object-name>
@@ -119,7 +143,7 @@
             <z-m>-0.0242478</z-m>
         </center>
     </animation>
-    
+
     <animation>
         <type>translate</type>
         <object-name>hsi.cursor.deflection</object-name>
@@ -136,7 +160,10 @@
         <type>translate</type>
         <object-name>hsi.gs</object-name>
         <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+        <!--
         <factor>0.022420</factor>
+        -->
+        <factor>0.004484</factor>
         <axis>
             <x>0</x>
             <y>0</y>
@@ -148,17 +175,15 @@
         <type>select</type>
         <object-name>hsi.gs</object-name>
         <condition>
-            <and>
-                <property>/instrumentation/nav[0]/has-gs</property>
-                <greater-than>
-                    <property>/instrumentation/nav[0]/gs-needle-deflection</property>
-                    <value type="double">-1.0</value>
-                </greater-than>
-                <less-than>
-                    <property>/instrumentation/nav[0]/gs-needle-deflection</property>
-                    <value type="double">1.0</value>
-                </less-than>
-            </and>
+            <property>/instrumentation/nav[0]/has-gs</property>
+            <greater-than>
+                <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+                <value>-3.6</value>
+            </greater-than>
+            <less-than>
+                <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+                <value>3.6</value>
+            </less-than>
         </condition>
     </animation>
 

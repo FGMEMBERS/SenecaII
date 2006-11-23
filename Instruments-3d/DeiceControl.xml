@@ -13,6 +13,21 @@
     </animation>
     
     <animation>
+        <type>material</type>
+        <object-name>DeiceControl.SurfaceSwitch</object-name>
+        <object-name>DeiceControl.PropSwitch</object-name>
+        <object-name>DeiceControl.WindshieldSwitch</object-name>
+        <object-name>DeiceControl.Ampmeter.Scale</object-name>
+        
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
         <type>rotate</type>
         <object-name>DeiceControl.SurfaceSwitch</object-name>
         <property>/controls/deice/surface-deice</property>

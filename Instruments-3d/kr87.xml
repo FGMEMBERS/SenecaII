@@ -20,6 +20,21 @@
     </animation>
 
     <animation>
+        <type>material</type>
+        <object-name>kr87.knobs.ADF</object-name>
+        <object-name>kr87.knobs.BFO</object-name>
+        <object-name>kr87.knobs.FRQ</object-name>
+        <object-name>kr87.knobs.FLT</object-name>
+        <object-name>kr87.knobs.SET</object-name>
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
         <type>select</type>
         <object-name>kr87.indicators.ANT</object-name>
         <condition>

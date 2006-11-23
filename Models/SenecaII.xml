@@ -7,6 +7,26 @@
         <x-m>0.83</x-m>
         <pitch-deg>0</pitch-deg>
     </offsets>
+
+    <panel>
+        <path>Aircraft/SenecaII/Models/DashboardPanel.xml</path>
+        <bottom-left>
+            <x-m>-1.91</x-m>
+            <y-m>-0.63106</y-m>
+            <z-m>1.20217</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>-1.91</x-m>
+            <y-m>0.63106</y-m>
+            <z-m>1.20217</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>-1.91</x-m>
+            <y-m>-0.63106</y-m>
+            <z-m>1.60978</z-m>
+        </top-left>
+    </panel>
+
     <panel>
         <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel1.xml</path>
         <bottom-left>
@@ -61,6 +81,7 @@
             <z-m>1.2551452</z-m>
         </top-left>
     </panel>
+
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel.xml</path>
         <name>SwitchPanel</name>
@@ -463,6 +484,12 @@
     </animation>
 
     <animation>
+        <type>noshadow</type>
+        <object-name>TANKASSY.L</object-name>
+        <object-name>TANKASSY.R</object-name>
+    </animation>
+
+    <animation>
         <type>select</type>
         <object-name>WindshieldDeice</object-name>
         <condition>
@@ -714,6 +741,89 @@
         </axis>
     </animation>
 
+    <!-- panel -->
+    <animation>
+        <type>noshadow</type>
+        <object-name>PanelLightsDimmer</object-name>
+        <object-name>RadioLightsDimmer</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>PanelLightsDimmer</object-name>
+        <object-name>RadioLightsDimmer</object-name>
+        <object-name>Overhead.CockpitLightSwitch</object-name>
+
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>Overhead.CockpitLight</object-name>
+
+        <emission>
+            <red>0.3</red>
+            <green>0</green>
+            <blue>0</blue>
+            <factor-prop>/controls/lighting/panel-norm</factor-prop>
+        </emission>
+    </animation>
+    <!--    
+    <animation>
+        <type>material</type>
+        <object-name>InstrumentCover</object-name>
+        <object-name>Chart1</object-name>
+        <object-name>Chart2</object-name>
+        
+        <emission>
+            <red>0.1</red>
+            <green>0</green>
+            <blue>0</blue>
+            <factor-prop>/controls/lighting/panel-norm</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>rotate</type>
+        <object-name>PanelLightsDimmer</object-name>
+        <property>/controls/lighting/instruments-norm</property>
+        <factor>-112.5</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>-1.9142</x-m>
+            <y-m>0.165896</y-m>
+            <z-m>1.26778</z-m>
+        </center>
+    </animation>
+    -->
+
+    <animation>
+        <type>rotate</type>
+        <object-name>RadioLightsDimmer</object-name>
+        <property>/controls/lighting/radio-norm</property>
+        <factor>-112.5</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>-1.9142</x-m>
+            <y-m>0.165896</y-m>
+            <z-m>1.30714</z-m>
+        </center>
+    </animation>
+
+
     <!-- flap/trim console -->
     <animation>
         <type>noshadow</type>
@@ -754,7 +864,7 @@
             <z2-m>0.945771</z2-m>
         </axis>
     </animation>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>RudderTrimIndicator</object-name>
@@ -861,13 +971,13 @@
             <z>0.0</z>
         </axis>
     </animation>
-    
+
     <!-- gear lever and indicators -->
     <animation>
         <type>noshadow</type>
         <object-name>GearLever</object-name>
     </animation>
-    
+
     <animation>
         <type>rotate</type>
         <object-name>GearLever</object-name>
@@ -884,12 +994,12 @@
             <z-m>1.24928</z-m>
         </center>
     </animation>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>GearLights</object-name>
     </animation>
-    
+
     <animation>
         <type>select</type>
         <object-name>GearLight.Nose.Cover.On</object-name>
@@ -987,6 +1097,24 @@
         </offsets>
     </model>
     <!-- altimeter -->
+    <panel>
+        <path>Aircraft/SenecaII/Instruments-3d/AltimeterPanel.xml</path>
+        <bottom-left>
+            <x-m>-1.91</x-m>
+            <y-m>-0.313245</y-m>
+            <z-m>1.47695</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>-1.91</x-m>
+            <y-m>-0.233245</y-m>
+            <z-m>1.47695</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>-1.91</x-m>
+            <y-m>-0.313245</y-m>
+            <z-m>1.55695</z-m>
+        </top-left>
+    </panel>
     <model>
         <path>Aircraft/Instruments-3d/alt/alt.xml</path>
         <name>Altimeter</name>
@@ -1084,6 +1212,24 @@
         </offsets>
     </model>
     <!-- vor nav2 -->
+    <panel>
+        <path>Aircraft/SenecaII/Instruments-3d/Vor2Panel.xml</path>
+        <bottom-left>
+            <x-m>-1.91</x-m>
+            <y-m>-0.228245</y-m>
+            <z-m>1.39194</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>-1.91</x-m>
+            <y-m>-0.148245</y-m>
+            <z-m>1.39194</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>-1.91</x-m>
+            <y-m>-0.228245</y-m>
+            <z-m>1.47194</z-m>
+        </top-left>
+    </panel>
     <model>
         <path>Aircraft/Instruments-3d/vor/vor2.xml</path>
         <name>VOR2</name>
@@ -1337,7 +1483,7 @@
             <z2-m>0.85</z2-m>
         </axis>
     </animation>
-
+    <!--
     <animation>
         <type>rotate</type>
         <object-name>GearNose</object-name>
@@ -1386,6 +1532,96 @@
             <z>1.0</z>
         </axis>
     </animation>
+-->
+    <!-- nose gear from Roberto Inzerillo -->
+    <animation>
+        <type>rotate</type>
+        <object-name>NLG</object-name>
+        <property>/gear/gear[0]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0</ind>
+                <dep>110</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind>
+                <dep>0</dep>
+            </entry>
+        </interpolation>
+        <axis>
+            <x1-m>-2.84</x1-m>
+            <y1-m>-1</y1-m>
+            <z1-m>0.85</z1-m>
+            <x2-m>-2.84</x2-m>
+            <y2-m>1</y2-m>
+            <z2-m>0.85</z2-m>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>NLG</object-name>
+        <property>/surface-positions/rudder-pos-norm</property>
+        <factor>-30</factor>
+        <axis>
+            <x1-m>-2.97</x1-m>
+            <y1-m>0</y1-m>
+            <z1-m>0</z1-m>
+            <x2-m>-2.84</x2-m>
+            <y2-m>0</y2-m>
+            <z2-m>0.85</z2-m>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>NLG_B</object-name>
+        <object-name>NLG_C</object-name>
+        <property>/gear/gear[0]/compression-norm</property>
+        <factor>0.1653</factor>
+        <axis>
+            <x>2.5</x>
+            <y>0.0</y>
+            <z>15.0</z>
+        </axis>
+    </animation>
+
+
+    <animation>
+        <type>rotate</type>
+        <object-name>NLG_D</object-name>
+        <property>/controls/gear/NLG_D_deg</property>
+        <factor>1</factor>
+        <center>
+            <x-m>-2.839</x-m>
+            <y-m>0</y-m>
+            <z-m>0.620</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>NLG_C</object-name>
+        <property>/controls/gear/NLG_C_deg</property>
+        <factor>1</factor>
+        <center>
+            <x-m>-2.874</x-m>
+            <y-m>0</y-m>
+            <z-m>0.404</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+
     <animation>
         <type>rotate</type>
         <object-name>LeftNosegearCover</object-name>
@@ -1409,6 +1645,24 @@
             <z2-m>0.80</z2-m>
         </axis>
     </animation>
+    
+    <animation>
+        <type>spin</type>
+        <object-name>NLG_Wheel</object-name>
+        <property>/fdm/jsbsim/velocities/vg-fps</property>
+        <factor>-13.8</factor>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-2.95136</x-m>
+            <y-m>0</y-m>
+            <z-m>0.180746</z-m>
+        </center>
+    </animation>
+    
     <animation>
         <type>rotate</type>
         <object-name>RightNosegearCover</object-name>
@@ -1432,6 +1686,7 @@
             <z2-m>0.80</z2-m>
         </axis>
     </animation>
+    
     <animation>
         <type>rotate</type>
         <object-name>GearLeft</object-name>
@@ -1449,23 +1704,44 @@
         <axis>
             <x1-m>-0.97</x1-m>
             <y1-m>-1.51</y1-m>
-            <z1-m>0.78</z1-m>
+            <z1-m>0.80</z1-m>
             <x2-m>-0.91</x2-m>
             <y2-m>-1.51</y2-m>
-            <z2-m>0.78</z2-m>
+            <z2-m>0.80</z2-m>
         </axis>
     </animation>
+    
     <animation>
         <type>translate</type>
-        <object-name>GearLeft</object-name>
+        <object-name>GearLeft.Axle</object-name>
+        <object-name>GearLeft.Wheel</object-name>
+        <object-name>GearLeft.Piston</object-name>
         <property>/gear/gear[1]/compression-norm</property>
-        <factor>0.209</factor>
+        <factor>0.17</factor>
         <axis>
             <x>0.0</x>
             <y>0.0</y>
             <z>1.0</z>
         </axis>
     </animation>
+    
+    <animation>
+        <type>spin</type>
+        <object-name>GearLeft.Wheel</object-name>
+        <property>/fdm/jsbsim/velocities/vg-fps</property>
+        <factor>-13.8</factor>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.827268</x-m>
+            <y-m>-1.5254</y-m>
+            <z-m>0.200688</z-m>
+        </center>
+    </animation>
+    
     <animation>
         <type>rotate</type>
         <object-name>LeftMainGearCover</object-name>
@@ -1473,7 +1749,7 @@
         <interpolation>
             <entry>
                 <ind>0</ind>
-                <dep>90</dep>
+                <dep>97</dep>
             </entry>
             <entry>
                 <ind>1.0</ind>
@@ -1489,6 +1765,7 @@
             <z2-m>0.76</z2-m>
         </axis>
     </animation>
+    
     <animation>
         <type>rotate</type>
         <object-name>GearRight</object-name>
@@ -1506,17 +1783,20 @@
         <axis>
             <x1-m>-0.97</x1-m>
             <y1-m>1.49</y1-m>
-            <z1-m>0.78</z1-m>
+            <z1-m>0.80</z1-m>
             <x2-m>-0.91</x2-m>
             <y2-m>1.49</y2-m>
-            <z2-m>0.78</z2-m>
+            <z2-m>0.80</z2-m>
         </axis>
     </animation>
+
     <animation>
         <type>translate</type>
-        <object-name>GearRight</object-name>
+        <object-name>GearRight.Axle</object-name>
+        <object-name>GearRight.Wheel</object-name>
+        <object-name>GearRight.Piston</object-name>
         <property>/gear/gear[2]/compression-norm</property>
-        <factor>0.209</factor>
+        <factor>0.17</factor>
         <axis>
             <x>0.0</x>
             <y>0.0</y>
@@ -1530,7 +1810,7 @@
         <interpolation>
             <entry>
                 <ind>0</ind>
-                <dep>-90</dep>
+                <dep>-97</dep>
             </entry>
             <entry>
                 <ind>1.0</ind>
@@ -1546,7 +1826,25 @@
             <z2-m>0.76</z2-m>
         </axis>
     </animation>
-
+    
+    <animation>
+        <type>spin</type>
+        <object-name>GearRight.Wheel</object-name>
+        <property>/fdm/jsbsim/velocities/vg-fps</property>
+        <factor>-13.8</factor>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.827268</x-m>
+            <y-m>1.5254</y-m>
+            <z-m>0.200688</z-m>
+        </center>
+    </animation>
+    
+    
     <animation>
         <type>rotate</type>
         <object-name>LeftCowlFlap</object-name>
@@ -1799,6 +2097,11 @@
     </animation>
 
     <animation>
+        <type>noshadow</type>
+        <object-name>Compass</object-name>
+    </animation>
+
+    <animation>
         <type>rotate</type>
         <object-name>Compass.Ring</object-name>
         <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
@@ -1812,6 +2115,17 @@
             <y-m>0</y-m>
             <z-m>1.67418</z-m>
         </center>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>Compass.Ring</object-name>
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
     </animation>
 
     <animation>
@@ -1891,6 +2205,17 @@
     </model>
 
     <model>
+        <path>Aircraft/SenecaII/Models/StrobeInCloudsHull.xml</path>
+        <name>StrobeInCloudsHull</name>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </offsets>
+    </model>
+
+
+    <model>
         <path>Aircraft/SenecaII/Models/BeaconLight.xml</path>
         <name>StrobeLight.R</name>
         <offsets>
@@ -1899,13 +2224,29 @@
             <z-m>3.04654</z-m>
         </offsets>
     </model>
-    
+
     <animation>
         <type>noshadow</type>
         <object-name>Charts</object-name>
         <object-name>Label.Fuel</object-name>
+        <object-name>Overhead</object-name>
     </animation>
-    
+
+    <animation>
+        <type>rotate</type>
+        <object-name>Overhead.CockpitLightSwitch</object-name>
+        <property>/controls/lighting/panel-norm</property>
+        <factor>-40.0</factor>
+        <axis>
+            <x1-m>-1.20476</x1-m>
+            <y1-m>0.01</y1-m>
+            <z1-m>1.94148</z1-m>
+            <x2-m>-1.20476</x2-m>
+            <y2-m>-0.01</y2-m>
+            <z2-m>1.94148</z2-m>
+        </axis>
+    </animation>
+
     <!-- LOD for specific objects -->
     <!--
     <animation>

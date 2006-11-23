@@ -7,7 +7,21 @@
     Maintainer: Torsten Dreyer
     
     $Log$
-    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Revision 1.2  2006/11/23 14:27:02  mfranz
+    Torsten DREYER:
+
+    """
+    - Added instruments lights for night flights
+    - Addes flashing strobe effect in clouds at night
+    - OBS knob on vor2 clickable
+    - subscale knob on altimeter clickable
+    - changes on aircraft 3d-model
+    - Fixed bug in HSI, wrong deflection of glideslope indicator and
+      transparency issue
+    - Added Roberto Inzerillo's nice nose gear and animations, new main gear
+    """
+
+    Revision 1.1  2006-06-01 12:58:33  mfranz
     Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
 
 -->
@@ -39,6 +53,17 @@
     <animation>
         <type>noshadow</type>
         <object-name>ki266</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>ModeSwitch</object-name>
+        <emission>
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
     </animation>
 
     <!-- the power switch -->

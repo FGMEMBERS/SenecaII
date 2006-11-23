@@ -394,12 +394,25 @@ setlistener( "/controls/fuel/tank[0]/to_engine",     fuelselectorlistener );
 setlistener( "/controls/fuel/tank[1]/to_engine",     fuelselectorlistener );
 
 ########################################
+# Sync the dimmer controls with the according properties
+########################################
+
+instrumentsFactorNode = props.globals.getNode( "/sim/model/material/instruments/factor" );
+dimmerlistener = func {
+  n = cmdarg();
+  instrumentsFactorNode.setValue( n.getValue() );
+}
+
+setlistener( "/controls/lighting/instruments-norm", dimmerlistener );
+
+########################################
 # create a rpm-norm property for propdisc transparency
 ########################################
 
 rpmhandler = func {
   n = arg[0];
-  t = n.getParent().getNode( "rpm-norm-inv", 1 );
+  p = n.getParent();
+  t = p.getNode( "rpm-norm-inv", 1 );
   v = 1-n.getValue() / 2575;
   t.setDoubleValue( v );
 }
@@ -422,7 +435,7 @@ rpmlistener = func {
 #############################
 # can do this with a listener
 setlistener( lRPMN, rpmlistener );
-setlistener( "/engines/engine[1]/rpm", rpmlistener );
+setlistener( rRPMN, rpmlistener );
 
 ########################################
 # fuel pumps and primer

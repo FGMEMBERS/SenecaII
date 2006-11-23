@@ -7,7 +7,21 @@
    Maintainer: Torsten Dreyer ( Torsten at t3r dot de)
     
   $Log$
-  Revision 1.1  2006/06/01 12:58:33  mfranz
+  Revision 1.2  2006/11/23 14:27:03  mfranz
+  Torsten DREYER:
+
+  """
+  - Added instruments lights for night flights
+  - Addes flashing strobe effect in clouds at night
+  - OBS knob on vor2 clickable
+  - subscale knob on altimeter clickable
+  - changes on aircraft 3d-model
+  - Fixed bug in HSI, wrong deflection of glideslope indicator and
+    transparency issue
+  - Added Roberto Inzerillo's nice nose gear and animations, new main gear
+  """
+
+  Revision 1.1  2006-06-01 12:58:33  mfranz
   Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
 
 -->
@@ -19,6 +33,23 @@
         <object-name>gma340</object-name>
     </animation>
 
+    <animation>
+        <type>material</type>
+        <object-name>gma340.Chassis</object-name>
+        
+        <emission>
+            <!--
+            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
+            -->
+            <red>0.05</red>
+            <green>0.1.</green>
+            <blue>0.05</blue>
+            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+    
     <animation>
         <type>material</type>
         <object-name>gma340.Marker.O</object-name>

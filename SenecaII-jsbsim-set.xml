@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <PropertyList include="SenecaII-base.xml">
     <sim>
+        <author>Torsten Dreyer</author>
         <description>PA34-200T Seneca II (jsbsim)</description>
-        <aircraft-version>0.3</aircraft-version>
+        <aircraft-version>0.5</aircraft-version>
         <status>early-production</status>
         <flight-model>jsb</flight-model>
         <aero>SenecaII-jsbsim</aero>

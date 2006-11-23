@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<PropertyList>
+    <path>StrobeInCloudsHull.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>StrobeInCloudsHull</object-name>
+    </animation>
+
+    <animation>
+        <type>alpha-test</type>
+        <alpha-factor>0.01</alpha-factor>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>StrobeInCloudsHull</object-name>
+        <condition>
+            <property>/sim/model/lights/strobe/state</property>
+            <equals>
+                <property>/sim/current-view/view-number</property>
+                <value>0</value>
+            </equals>
+            <less-than>
+                <property>/environment/effective_visibility-m</property>
+                <value>100</value>
+            </less-than>
+            <greater-than>
+                <property>/environment/effective_visibility-m</property>
+                <value>0</value>
+            </greater-than>
+            <greater-than>
+                <property>/sim/time/sun-angle-rad</property>
+                <value>1.57</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+</PropertyList>

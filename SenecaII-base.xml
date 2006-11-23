@@ -19,9 +19,9 @@
             <hide-yoke>true</hide-yoke>
             <instrument-lighting>
                 <emission>
-                    <red>0.5</red>
-                    <green>0.3</green>
-                    <blue>0.1</blue>
+                    <red>1.0</red>
+                    <green>0.2</green>
+                    <blue>0.0</blue>
                 </emission>
             </instrument-lighting>
 
@@ -200,6 +200,8 @@
         </flight>
         <gear>
             <brake-parking>1</brake-parking>
+            <NLG_C_deg type="float">0</NLG_C_deg>
+            <NLG_D_deg type="float">0</NLG_D_deg>
         </gear>
         <fuel>
             <tank n="0">
@@ -248,6 +250,9 @@
         <icing>
             <file>Aircraft/SenecaII/Nasal/icing.nas</file>
         </icing>
+        <NLG>
+            <file>Aircraft/SenecaII/Nasal/NLG.nas</file>
+        </NLG>
     </nasal>
     <systems>
         <electrical>
