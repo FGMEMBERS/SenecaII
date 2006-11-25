@@ -252,7 +252,7 @@ seneca_update = func {
   settimer(seneca_update, 0);
 }
 
-settimer(seneca_update, 0);
+setlistener("/sim/signals/fdm-initialized", seneca_update);
 
 paxDoor = aircraft.door.new( "/sim/model/door-positions/pax-door", 1, 0 );
 baggageDoor = aircraft.door.new( "/sim/model/door-positions/baggage-door", 2, 0 );
