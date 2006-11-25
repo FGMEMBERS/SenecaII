@@ -4,7 +4,10 @@
 # Maintainer: Torsten Dreyer (Torsten at t3r dot de)
 #
 # $Log$
-# Revision 1.1  2006/06/01 12:58:33  mfranz
+# Revision 1.2  2006/11/25 12:24:09  mfranz
+# turn underscore into hyphen (effective-visibility-m)
+#
+# Revision 1.1  2006-06-01 12:58:33  mfranz
 # Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
 #
 #
@@ -14,7 +17,7 @@
 # inputs
 # /environment/dewpoint-degc
 # /environment/temperature-degc
-# /environment/effective_visibility-m
+# /environment/effective-visibility-m
 # /velocities/airspeed-kt
 # /environment/icing/max-spread-degc       default: 0.1
 #
@@ -81,7 +84,7 @@ dewpointN     = props.globals.getNode( "/environment/dewpoint-degc" );
 temperatureN  = props.globals.getNode( "/environment/temperature-degc" );
 speedN        = props.globals.getNode( "/velocities/airspeed-kt" );
 icingRootN    = props.globals.getNode( "/environment/icing", 1 );
-visibilityN   = props.globals.getNode( "/environment/effective_visibility-m" );
+visibilityN   = props.globals.getNode( "/environment/effective-visibility-m" );
 if( visibilityN == nil ) {
   print( "*** patch for effective visibility not installed ***" );
   print( "you will experience icing in clear air, too!" );
