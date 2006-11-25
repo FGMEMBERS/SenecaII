@@ -5,7 +5,18 @@
     Maintainer: Torsten Dreyer
     
     $Log$
-    Revision 1.1  2006/06/01 12:58:33  mfranz
+    Revision 1.2  2006/11/25 09:58:31  ehofman
+    Tom Markowitz:
+
+    Kx165Panel.xml and Kx165-2Panel.xml
+
+    1. Reversed x values of 48 and 58 under " nav freq INCREASE small"  and "nav freq DECREASE small" sections.  Hot spots, which were opposite to normal, are now corrected.   Clicking on rightmost area (on the  knob itself ) now INCREASES  frequency  clicking left of that now DECREASES frequency. (Note: Hot spots are not and were not delineated with green boxes)
+
+    2. Corrected failure to maintain nav freq changes on the xxx.05, 10, 15, etc. increments by the addition of <resolution> statements  (as used in Citation radios.xml).  Previously, clicking would at times result in values such as 111.69 or 64, etc.  (Note: The problem of  occassioal  inconsistent values between the Ctl-R dialog values and the panel values (usually by 0.01 variation) has not been attacked and remains.)
+
+    3. SenecaII\Models\SenecaII.xml changed to relocate the OAT thermometer down to lower part of windshield just right of the center post.  Now the instrument panel does not have to be moved to monitor the outside temperature.  Icing was experienced between Calgary and Edmonton at -10 degrees centrigrade. Airspeed was dropping together with loss of altitude. This icing occurred  without any pilot setup.  De-icers restored the proper flight dynamics.
+
+    Revision 1.1  2006-06-01 12:58:33  mfranz
     Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
 
 -->
@@ -237,23 +248,6 @@
                 <action>
                     <name>NavFrequency decrease small</name>
                     <button>0</button>
-                    <x>58</x>
-                    <y>-22</y>
-                    <w>10</w>
-                    <h>20</h>
-                    <binding>
-                        <command>property-adjust</command>
-                        <property alias="../../../../../../params/nav-frq-standby"/>
-                        <step>-0.05</step>
-                        <min>108.0</min>
-                        <max>118.0</max>
-                        <wrap>true</wrap>
-                    </binding>
-                </action>
-                
-                <action>
-                    <name>NavFrequency increase small</name>
-                    <button>0</button>
                     <x>48</x>
                     <y>-22</y>
                     <w>10</w>
@@ -261,9 +255,28 @@
                     <binding>
                         <command>property-adjust</command>
                         <property alias="../../../../../../params/nav-frq-standby"/>
+                        <step>-0.05</step>
+                        <min>108.00</min>
+                        <max>118.00</max>
+                         <resolution>0.05</resolution>
+                        <wrap>true</wrap>
+                    </binding>
+                </action>
+                
+                <action>
+                    <name>NavFrequency increase small</name>
+                    <button>0</button>
+                    <x>58</x>
+                    <y>-22</y>
+                    <w>10</w>
+                    <h>20</h>
+                    <binding>
+                        <command>property-adjust</command>
+                        <property alias="../../../../../../params/nav-frq-standby"/>
                         <step>0.05</step>
-                        <min>108.0</min>
-                        <max>118.0</max>
+                        <min>108.00</min>
+                        <max>118.00</max>
+                        <resolution>0.05</resolution>
                         <wrap>true</wrap>
                     </binding>
                 </action>
@@ -332,3 +345,4 @@
         </instrument>
     </instruments>
 </PropertyList>
+
