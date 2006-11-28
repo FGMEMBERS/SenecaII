@@ -81277,7 +81277,7 @@ numvert 4
 0 0.965 -0.965
 numsurf 1
 SURF 0x30
-mat 12
+mat 1
 refs 4
 3 0 1
 2 1 1
@@ -81296,7 +81296,7 @@ numvert 4
 0 -0.965 -0.965
 numsurf 1
 SURF 0x30
-mat 12
+mat 1
 refs 4
 0 0 1
 1 1 1
