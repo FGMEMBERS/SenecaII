@@ -258,11 +258,11 @@ paxDoor = aircraft.door.new( "/sim/model/door-positions/pax-door", 1, 0 );
 baggageDoor = aircraft.door.new( "/sim/model/door-positions/baggage-door", 2, 0 );
 rightDoor = aircraft.door.new( "/sim/model/door-positions/right-door", 1, 0 );
 
-sbc1 = aircraft.light.new( "/sim/model/lights/sbc1", 0.5, 0.3 );
+sbc1 = aircraft.light.new( "/sim/model/lights/sbc1", [0.5, 0.3] );
 sbc1.interval = 0.1;
 sbc1.switch( 1 );
 
-sbc2 = aircraft.light.new( "/sim/model/lights/sbc2", 0.2, 0.3, "/sim/model/lights/sbc1/state" );
+sbc2 = aircraft.light.new( "/sim/model/lights/sbc2", [0.2, 0.3], "/sim/model/lights/sbc1/state" );
 sbc2.interval = 0;
 sbc2.switch( 1 );
 
@@ -285,10 +285,10 @@ setlistener( "/sim/model/lights/sbc2/state", func {
   setprop( "/sim/model/lights/strobe/enabled", b );
 });
 
-beacon = aircraft.light.new( "/sim/model/lights/beacon", 0.05, 0.05 );
+beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.05] );
 beacon.interval = 0;
 
-strobe = aircraft.light.new( "/sim/model/lights/strobe", 0.05, 0.05 );
+strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 0.05] );
 strobe.interval = 0;
 
 setprop( "/instrumentation/nav[0]/ident", 0 );
