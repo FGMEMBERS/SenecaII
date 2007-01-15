@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 
 <propeller name="Clark Y 0.08 t/c ratio, variable pitch">
-  <ixx>1.8</ixx>
-  <diameter unit="IN">76.0</diameter>
-  <numblades>2</numblades>
-  <minpitch>11</minpitch>
-  <maxpitch>          90   </maxpitch>
+  <ixx>                1.8 </ixx>
+  <diameter unit="IN"> 84.0 </diameter>
+  <numblades>          2   </numblades>
+  <minpitch>          11   </minpitch>
+  <maxpitch>          27   </maxpitch>
   <minrpm>           700   </minrpm>
-  <maxrpm>          2575  </maxrpm>
+  <maxrpm>          2700   </maxrpm>
 
   <table name="C_THRUST" type="internal">
     <tableData>
