@@ -410,26 +410,9 @@
     </model>
 
     <!-- Altimatic IIIc Autopilot -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/AltimaticIIIcPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.598296</y-m>
-            <z-m>1.247315</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.440486</y-m>
-            <z-m>1.247315</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.598296</y-m>
-            <z-m>1.321865</z-m>
-        </top-left>
-    </panel>
+
     <model>
-        <path>Aircraft/SenecaII/Instruments-3d/AltimaticIIIc.xml</path>
+        <path>Aircraft/Instruments-3d/Century-III/AltimaticIIIc.xml</path>
         <name>AltimaticIIIc</name>
         <offsets>
             <x-m>-1.9099</x-m>
@@ -439,26 +422,9 @@
     </model>
 
     <!-- Autopilot Mode -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/AutopilotModePanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.427854</y-m>
-            <z-m>1.26413</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.369854</y-m>
-            <z-m>1.26413</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.427854</y-m>
-            <z-m>1.32213</z-m>
-        </top-left>
-    </panel>
+
     <model>
-        <path>Aircraft/SenecaII/Instruments-3d/AutopilotMode.xml</path>
+        <path>Aircraft/Instruments-3d/Century-III/AutopilotMode.xml</path>
         <name>AutopilotMode</name>
         <offsets>
             <x-m>-1.9099</x-m>

@@ -1,4 +1,14 @@
 <?xml version="1.0" ?>
 <PropertyList>
     <path>ControlLight.ac</path>
+    <animation>
+      <type>material</type>
+      <object-name>GS-light</object-name>
+      <emission>
+       <red>0.0</red>
+       <green>1.0</green>
+       <blue>0.0</blue>
+       <factor-prop>autopilot/CENTURYIII/settings/gs-captured</factor-prop>
+      </emission>
+    </animation>
 </PropertyList>

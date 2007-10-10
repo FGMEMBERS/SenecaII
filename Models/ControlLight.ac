@@ -192,7 +192,7 @@ refs 3
 11 0 0
 kids 0
 OBJECT poly
-name "cylinder"
+name "GS-light"
 loc 6.20882e-11 -1.74623e-10 1.01863e-10
 crease 45.000000
 numvert 25

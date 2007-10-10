@@ -122,6 +122,13 @@
                             </script>
                         </binding>
                     </item>
+                    <item>
+                        <label>Yaw Damper (on/off) default off</label>
+                        <binding>
+                            <command>property-toggle</command>
+                            <property>/autopilot/CENTURYIII/settings/yaw-damper</property>
+                        </binding>
+                    </item>
                     <!--
                     <item>
                         <label>Checklists..</label>
@@ -135,11 +142,9 @@
             </default>
         </menubar>
         <systems>
-            <!--
             <autopilot>
-                <path>Aircraft/c172p/Systems/KAP140.xml</path>
+                <path>Aircraft/SenecaII/Systems/CENTURYIII.xml</path>
             </autopilot>
-            -->
             <electrical>
                 <path/>
             </electrical>
@@ -240,7 +245,11 @@
             <file>Aircraft/SenecaII/Nasal/timers.nas</file>
             <file>Aircraft/SenecaII/Nasal/hsi.nas</file>
             <file>Aircraft/Generic/limits.nas</file>
+            <file>Aircraft/SenecaII/Nasal/hsiBugError.nas</file>
         </SenecaII>
+        <century3>
+            <file>Aircraft/Generic/century3.nas</file>
+        </century3>           
         <kr87>
             <file>Aircraft/SenecaII/Nasal/kr87.nas</file>
         </kr87>
@@ -324,6 +333,7 @@
                 <nav n="0">1.1</nav>
                 <nav n="1">1.1</nav>
                 <turn-coordinator>12</turn-coordinator>
+                <autopilot>12</autopilot>
             </outputs>
         </electrical>
     </systems>
