@@ -25,6 +25,14 @@ Engines.new = func {
     n.setBoolValue( 0 );
   }
   obj.overboostNodes = obj.annunciatorNode.getChildren( "overboost" );
+
+  obj.jsbEngineNodes = props.globals.getNode("/fdm/jsbsim/propulsion").getChildren("engine");
+  obj.pressureNode      = props.globals.getNode( "/systems/static/pressure-inhg" );
+  obj.totalPressureNode = props.globals.getNode( "/systems/pitot/total-pressure-inhg" ).getValue();
+
+  obj.controlsNodes = props.globals.getNode( "/controls/engines" ).getChildren( "engine" );
+
+  obj.cowlFlapsPosNode = props.globals.getNode( "/surface-positions/speedbrake-pos-norm", 1 );
   return obj;
 }
 
@@ -43,6 +51,53 @@ Engines.update = func {
       me.overboostNodes[i].setBoolValue( 1 );
     } else {
       me.overboostNodes[i].setBoolValue( 0 );
+    }
+
+    # create a rpm-norm-inv property for propdisc transparency
+    me.rpm = me.engineNodes[i].getNode( "rpm" ).getValue();
+    var rpm_norm = me.rpm/2575;
+    if( rpm_norm > 1 ) {
+      rpm_norm = 1;
+    }
+    me.engineNodes[i].getNode( "rpm-norm-inv", 1 ).setDoubleValue( 1-rpm_norm );
+
+    # twiggle with manifold pressure
+    var mapAdjustNode = me.jsbEngineNodes[i].getNode( "map-adjust" );
+    if( mapAdjustNode != nil ) {
+
+      # map depends on RPM
+      var ma = rpm_norm*0.37 + 0.63;
+      mapAdjustNode.setDoubleValue( ma );
+
+      # and on ram pressure
+     if( me.pressureNode != nil and me.totalPressureNode != nil ) {
+       var d = me.pressureNode.getValue();
+       if( d != 0 ) {
+         ma *= me.totalPressureNode.getValue() / d;
+       }
+     }
+
+    }
+
+    # adjust cooling area of engine depending of position of cowl flaps
+    # range 2 - 2.5
+    if( me.cowlFlapsPosNode != nil ) {
+      var n = me.jsbEngineNodes[i].getNode("cooling-area");
+      if( n != nil ) {
+        n.setDoubleValue( me.cowlFlapsPosNode.getValue()*0.5 + 2 );
+      }
+    }
+
+    # check for prop feather
+    var featherN = me.controlsNodes[i].getChild( "propeller-feather" );
+    if( me.controlsNodes[i].getChild( "propeller-pitch" ).getValue() < 0.1 ) {
+      if( featherN.getBoolValue() == 0 and me.rpm > 800 ) {
+        featherN.setBoolValue( 1 );
+      }
+    } else { 
+      if( featherN.getBoolValue() == 1 and me.rpm > 400 ) {
+        featherN.setBoolValue( 0 );
+      }
     }
   }
   me.oilNode.setBoolValue( me.oil );
@@ -149,8 +204,6 @@ dhFlagNode.setBoolValue( 0 );
 
 ###################################################
 # set DH Flag
-# do this by polling, because setlistener on /position/altitude-agl-ft does not trigger :-(
-#
 dhflag = -1;
 radarAltimeter = func {
   d = 0;
@@ -161,11 +214,7 @@ radarAltimeter = func {
     dhflag = d;
     dhFlagNode.setBoolValue( dhflag );
   }
-  settimer( radarAltimeter, 0.5 );
 }
-
-settimer( radarAltimeter, 0.5 );
-
 ###################################################
 # Slaved Gyro
 # fast mode: 180deg/min - 3deg/sec
@@ -249,7 +298,8 @@ seneca_update = func {
   suction.update();
   engines.update();
   slavedGyro.update();
-  settimer(seneca_update, 0);
+  radarAltimeter();
+  settimer(seneca_update, 0.1 );
 }
 
 setlistener("/sim/signals/fdm-initialized", seneca_update);
@@ -258,62 +308,11 @@ paxDoor = aircraft.door.new( "/sim/model/door-positions/pax-door", 1, 0 );
 baggageDoor = aircraft.door.new( "/sim/model/door-positions/baggage-door", 2, 0 );
 rightDoor = aircraft.door.new( "/sim/model/door-positions/right-door", 1, 0 );
 
-sbc1 = aircraft.light.new( "/sim/model/lights/sbc1", [0.5, 0.3] );
-sbc1.interval = 0.1;
-sbc1.switch( 1 );
-
-sbc2 = aircraft.light.new( "/sim/model/lights/sbc2", [0.2, 0.3], "/sim/model/lights/sbc1/state" );
-sbc2.interval = 0;
-sbc2.switch( 1 );
-
-setlistener( "/sim/model/lights/sbc2/state", func {
-  bsbc1 = sbc1.stateN.getValue();
-  bsbc2 = cmdarg().getBoolValue();
-  b = 0;
-  if( bsbc1 and bsbc2 and getprop( "/controls/lighting/beacon") ) {
-    b = 1;
-  } else {
-    b = 0;
-  }
-  setprop( "/sim/model/lights/beacon/enabled", b );
-
-  if( bsbc1 and !bsbc2 and getprop( "/controls/lighting/strobe" ) ) {
-    b = 1;
-  } else {
-    b = 0;
-  }
-  setprop( "/sim/model/lights/strobe/enabled", b );
-});
-
-beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.05] );
-beacon.interval = 0;
-
-strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 0.05] );
-strobe.interval = 0;
+beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.05, 0.05, 0.45 ], "/controls/lighting/beacon" );
+strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 0.05, 0.05, 0.05, 0.05, 0.35 ], "/controls/lighting/strobe" );
 
 setprop( "/instrumentation/nav[0]/ident", 0 );
 setprop( "/instrumentation/nav[1]/ident", 0 );
-
-########################################
-# Watch the propeller pitch for feather
-########################################
-pitchlistener = func {
-  node = cmdarg();
-  featherN = node.getParent().getChild( "propeller-feather" );
-  if( node.getValue() < 0.1 ) {
-    if( featherN.getBoolValue() == 0 ) {
-      featherN.setBoolValue( 1 );
-    }
-  } else { 
-    if( featherN.getBoolValue() == 1 ) {
-      featherN.setBoolValue( 0 );
-    }
-  }
-};
-
-setlistener( "/controls/engines/engine[0]/propeller-pitch", pitchlistener );
-setlistener( "/controls/engines/engine[1]/propeller-pitch", pitchlistener );
-########################################
 
 ########################################
 # Sync the magneto switches with magneto properties
@@ -385,13 +384,13 @@ setlistener( "/controls/engines/engine[1]/magnetos", magnetolistener );
 #/controls/fuel/tank[n]/fuel_selector (boolean)
 #/controls/fuel/tank[n]/to_engine (int)
 ########################################
-fuelselectorlistener = func {
-}
+#fuelselectorlistener = func {
+#}
 
-setlistener( "/controls/fuel/tank[0]/fuel_selector", fuelselectorlistener );
-setlistener( "/controls/fuel/tank[1]/fuel_selector", fuelselectorlistener );
-setlistener( "/controls/fuel/tank[0]/to_engine",     fuelselectorlistener );
-setlistener( "/controls/fuel/tank[1]/to_engine",     fuelselectorlistener );
+#setlistener( "/controls/fuel/tank[0]/fuel_selector", fuelselectorlistener );
+#setlistener( "/controls/fuel/tank[1]/fuel_selector", fuelselectorlistener );
+#setlistener( "/controls/fuel/tank[0]/to_engine",     fuelselectorlistener );
+#setlistener( "/controls/fuel/tank[1]/to_engine",     fuelselectorlistener );
 
 ########################################
 # Sync the dimmer controls with the according properties
@@ -403,39 +402,7 @@ dimmerlistener = func {
   instrumentsFactorNode.setValue( n.getValue() );
 }
 
-setlistener( "/controls/lighting/instruments-norm", dimmerlistener );
-
-########################################
-# create a rpm-norm property for propdisc transparency
-########################################
-
-rpmhandler = func {
-  n = arg[0];
-  p = n.getParent();
-  t = p.getNode( "rpm-norm-inv", 1 );
-  v = 1-n.getValue() / 2575;
-  t.setDoubleValue( v );
-}
-
-lRPMN = props.globals.getNode( "/engines/engine[0]/rpm", 1 );
-rRPMN = props.globals.getNode( "/engines/engine[1]/rpm", 1 );
-
-#############################
-# can do this with a timer
-#rpmtimer = func {
-#  rpmhandler( lRPMN );
-#  rpmhandler( rRPMN );
-#  settimer( rpmtimer, 0.5 );
-#}
-#rpmtimer();
-
-rpmlistener = func {
-  rpmhandler( cmdarg() );
-}
-#############################
-# can do this with a listener
-setlistener( lRPMN, rpmlistener );
-setlistener( rRPMN, rpmlistener );
+setlistener( "/controls/lighting/instruments-norm", dimmerlistener, 1, 0 );
 
 ########################################
 # fuel pumps and primer
@@ -459,8 +426,8 @@ FuelPumpHandler.new = func {
     m.primerControlN.setBoolValue( 0 );
   }
 
-  setlistener( m.fuelPumpControlN, func { m.listener() } );
-  setlistener( m.primerControlN, func { m.listener() } );
+  setlistener( m.fuelPumpControlN, func { m.listener() }, 1, 0 );
+  setlistener( m.primerControlN, func { m.listener() }, 1, 0 );
 
   return m;
 };
