@@ -3,34 +3,34 @@
 
 #   set up the properties read and updated
 
-hsi = "/instrumentation/hsi";
-power = "/systems/electrical/outputs/autopilot";
-autopilotControls = "/autopilot/CENTURYIII/controls";
+var hsi = "/instrumentation/hsi";
+var power = "/systems/electrical/outputs/autopilot";
+var autopilotControls = "/autopilot/CENTURYIII/controls";
 
 # internal
 
-internalHeadingBugError = "/autopilot/internal/heading-bug-error-deg";
+var internalHeadingBugError = "/autopilot/internal/heading-bug-error-deg";
 
 # hsi
-propHsi = props.globals.getNode(hsi, 1);
+var propHsi = props.globals.getNode(hsi, 1);
 
-hsiCursorRotationDeg = propHsi.getNode("cursor-rotation-deg", 1);
-hsiHdgBugErrorDeg    = propHsi.getNode("heading-bug-error-deg",1);
+var hsiCursorRotationDeg = propHsi.getNode("cursor-rotation-deg", 1);
+var hsiHdgBugErrorDeg    = propHsi.getNode("heading-bug-error-deg",1);
 
 # Autopilot controls
-propAutopilotControls = props.globals.getNode(autopilotControls, 1);
+var propAutopilotControls = props.globals.getNode(autopilotControls, 1);
 
 #rollControl = propAutopilotControls.getNode("roll", 1);
-hdgControl = propAutopilotControls.getNode("hdg", 1);
-modeControl = propAutopilotControls.getNode("mode", 1);
+var hdgControl = propAutopilotControls.getNode("hdg", 1);
+var modeControl = propAutopilotControls.getNode("mode", 1);
 
 
-headingBugError = 0.0;
+var headingBugError = 0.0;
 
-headingBugErrorUpdate = func {
+var headingBugErrorUpdate = func {
 
-  cursorRot     = hsiCursorRotationDeg.getValue();
-  mode          = modeControl.getValue();
+  var cursorRot     = hsiCursorRotationDeg.getValue();
+  var mode          = modeControl.getValue();
   if ( hdgControl.getValue() ) {
      if ( mode == 2 ) {
         # HDG mode
