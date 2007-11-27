@@ -10,19 +10,18 @@
     <animation>
         <type>material</type>
         <object-name>Face</object-name>
-        <global>1</global>
         <emission>
-            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+            <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>controls/lighting/instruments-norm</factor-prop>
         </emission>
     </animation>
     
     <animation>
         <type>rotate</type>
         <object-name>Pointer</object-name>
-        <property>/engines/engine[1]/rpm</property>
+        <property>engines/engine[1]/rpm</property>
         <offset-deg>152.0</offset-deg>
         <factor>-.08</factor>
         <axis>

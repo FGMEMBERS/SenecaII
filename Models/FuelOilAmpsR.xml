@@ -4,7 +4,6 @@
     <animation>
         <type>material</type>
         <object-name>FuelOilAmps</object-name>
-        <global>1</global>
         <emission>
             <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
             <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
