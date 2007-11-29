@@ -7,9 +7,9 @@
 # output properties
 # /instrumentation/annunciator/oil
 ##################################################
-Engines = {};
+var Engines = {};
 Engines.new = func {
-  obj = {};
+  var obj = {};
   obj.parents = [Engines];
 
   obj.enginesNode = props.globals.getNode( "/engines" );
@@ -19,9 +19,9 @@ Engines.new = func {
   obj.oilNode = obj.annunciatorNode.getNode( "oil", 1 );
   obj.oilNode.setBoolValue( 0 );
 
-  for( i = 0; i < size(obj.engineNodes); i = i+1 ) {
-    s = "overboost[" ~ i ~ "]";
-    n = obj.annunciatorNode.getNode( s, 1 );
+  for( var i = 0; i < size(obj.engineNodes); i = i+1 ) {
+    var s = "overboost[" ~ i ~ "]";
+    var n = obj.annunciatorNode.getNode( s, 1 );
     n.setBoolValue( 0 );
   }
   obj.overboostNodes = obj.annunciatorNode.getChildren( "overboost" );
@@ -39,8 +39,8 @@ Engines.new = func {
 Engines.update = func {
   me.oil = 0;
 
-  for( i = 0; i < size(me.engineNodes); i = i+1 ) {
-    oil_pressure_psi = me.engineNodes[i].getNode("oil-pressure-psi").getValue();
+  for( var i = 0; i < size(me.engineNodes); i = i+1 ) {
+    var oil_pressure_psi = me.engineNodes[i].getNode("oil-pressure-psi").getValue();
     if( oil_pressure_psi != nil and oil_pressure_psi < 30 ) {
       me.oil = 1;
       break;
@@ -111,9 +111,9 @@ Engines.update = func {
 # output properties
 # /gear/in-transit if any position-norm not 0 and not 1
 ##################################################
-GearInTransit = {};
+var GearInTransit = {};
 GearInTransit.new = func {
-  obj = {};
+  var obj = {};
   obj.parents = [GearInTransit];
   obj.gearNode = props.globals.getNode( "/gear" );
   obj.gearNodes = obj.gearNode.getChildren( "gear" );
@@ -123,20 +123,16 @@ GearInTransit.new = func {
 }
 
 GearInTransit.update = func {
-  inTransit = 0;
+  var inTransit = 0;
 
   for( i = 0; i < size(me.gearNodes); i = i+1 ) {
-    position_norm = me.gearNodes[i].getNode("position-norm").getValue();
+    var position_norm = me.gearNodes[i].getNode("position-norm").getValue();
     if( position_norm != nil and position_norm > 0.0 and position_norm < 1.0 ) {
       inTransit = 1;
       break;
     }
   }
-  if( inTransit == 0 ) {
-    me.inTransitNode.setBoolValue( 0 );
-  } else {
-    me.inTransitNode.setBoolValue( 1 );
-  }
+  me.inTransitNode.setBoolValue( inTransit );
 }
 
 ##################################################
@@ -149,19 +145,19 @@ GearInTransit.update = func {
 # /instrumentation/vacuum/inoperative[n]  true if suction-inhg is less 3.5
 # /instrumentation/annunciator/suction    true if any suction is inoperative
 ##################################################
-Suction= {};
+var Suction= {};
 
 Suction.new = func {
-  obj = {};
+  var obj = {};
   obj.parents = [Suction];
   obj.vacuumNodes = props.globals.getNode("/systems").getChildren("vacuum");
 
   obj.instrumentationNode = props.globals.getNode( "/instrumentation/vacuum", 1 );
   obj.suctionNode = obj.instrumentationNode.getNode( "suction-inhg", 1 );
   
-  for( i = 0; i < size(obj.vacuumNodes); i = i+1 ) {
-    s = "inoperative[" ~ i ~ "]";
-    n = obj.instrumentationNode.getNode( s, 1 );
+  for( var i = 0; i < size(obj.vacuumNodes); i = i+1 ) {
+    var s = "inoperative[" ~ i ~ "]";
+    var n = obj.instrumentationNode.getNode( s, 1 );
     n.setBoolValue( 1 );
   }
   obj.inoperativeNodes = obj.instrumentationNode.getChildren( "inoperative" );
@@ -178,7 +174,7 @@ Suction.update = func {
   # find max(suction-inhg) of all vacuum systems
   # end set warning-flag if U/S
 
-  for( i = 0; i < size(me.vacuumNodes); i = i+1 ) {
+  for( var i = 0; i < size(me.vacuumNodes); i = i+1 ) {
     me.suction = me.vacuumNodes[i].getNode("suction-inhg").getValue();
     if( me.suction > me.suction_inhg ) {
       me.suction_inhg = me.suction;
@@ -195,18 +191,18 @@ Suction.update = func {
 }
 
 ##################################################
-heightNode = props.globals.getNode( "/position/altitude-agl-ft", "true" );
+var heightNode = props.globals.getNode( "/position/altitude-agl-ft", "true" );
 heightNode.setDoubleValue( 0.0 );
-dhNode = props.globals.getNode( "/instrumentation/radar-altimeter/decision-height", "true" );
+var dhNode = props.globals.getNode( "/instrumentation/radar-altimeter/decision-height", "true" );
 dhNode.setDoubleValue( 0.0 );
-dhFlagNode = props.globals.getNode( "/instrumentation/radar-altimeter/decision-height-flag", "true" );
+var dhFlagNode = props.globals.getNode( "/instrumentation/radar-altimeter/decision-height-flag", "true" );
 dhFlagNode.setBoolValue( 0 );
 
 ###################################################
 # set DH Flag
-dhflag = -1;
-radarAltimeter = func {
-  d = 0;
+var dhflag = -1;
+var radarAltimeter = func {
+  var d = 0;
   if( heightNode.getValue() <= dhNode.getValue() ) {
     d = 1;
   }
@@ -219,9 +215,9 @@ radarAltimeter = func {
 # Slaved Gyro
 # fast mode: 180deg/min - 3deg/sec
 # slow mode: 3deg/min   - 0.05deg/sec
-SlavedGyro = {};
+var SlavedGyro = {};
 SlavedGyro.new = func {
-  obj = {};
+  var obj = {};
   obj.parents = [SlavedGyro];
 
   obj.hiNode = props.globals.getNode( "/instrumentation/heading-indicator" );
@@ -247,15 +243,15 @@ SlavedGyro.new = func {
 }
 
 SlavedGyro.update = func {
-  now = me.timeNode.getValue();
+  var now = me.timeNode.getValue();
   me.dt = now - me.last;
   me.last = now;
 
   if( me.modeNode.getBoolValue() ) {
     # slaved
-    offset = me.offsetNode.getValue();
+    var offset = me.offsetNode.getValue();
  
-    rate = 0.0;
+    var rate = 0.0;
     if( offset >= 0.0 ) {
       rate = me.slowrate;
     }
@@ -277,7 +273,7 @@ SlavedGyro.update = func {
 }
 
 SlavedGyro.rotate = func {
-  rate = arg[0];
+  var rate = arg[0];
   if( rate == 0 ) {
     return;
   }
@@ -287,13 +283,13 @@ SlavedGyro.rotate = func {
 
 
 ###################################################
-gearInTransit = GearInTransit.new();
-suction = Suction.new();
-engines = Engines.new();
+var gearInTransit = GearInTransit.new();
+var suction = Suction.new();
+var engines = Engines.new();
 
-slavedGyro = SlavedGyro.new();
+var slavedGyro = SlavedGyro.new();
 
-seneca_update = func {
+var seneca_update = func {
   gearInTransit.update();
   suction.update();
   engines.update();
@@ -304,12 +300,12 @@ seneca_update = func {
 
 setlistener("/sim/signals/fdm-initialized", seneca_update);
 
-paxDoor = aircraft.door.new( "/sim/model/door-positions/pax-door", 1, 0 );
-baggageDoor = aircraft.door.new( "/sim/model/door-positions/baggage-door", 2, 0 );
-rightDoor = aircraft.door.new( "/sim/model/door-positions/right-door", 1, 0 );
+var paxDoor = aircraft.door.new( "/sim/model/door-positions/pax-door", 1, 0 );
+var baggageDoor = aircraft.door.new( "/sim/model/door-positions/baggage-door", 2, 0 );
+var rightDoor = aircraft.door.new( "/sim/model/door-positions/right-door", 1, 0 );
 
-beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.05, 0.05, 0.45 ], "/controls/lighting/beacon" );
-strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 0.05, 0.05, 0.05, 0.05, 0.35 ], "/controls/lighting/strobe" );
+var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.05, 0.05, 0.45 ], "/controls/lighting/beacon" );
+var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 0.05, 0.05, 0.05, 0.05, 0.35 ], "/controls/lighting/strobe" );
 
 setprop( "/instrumentation/nav[0]/ident", 0 );
 setprop( "/instrumentation/nav[1]/ident", 0 );
@@ -317,13 +313,13 @@ setprop( "/instrumentation/nav[1]/ident", 0 );
 ########################################
 # Sync the magneto switches with magneto properties
 ########################################
-setmagneto = func {
-  eng = arg[0];
-  mag = arg[1];
-  on = props.globals.getNode( "/controls/engines/engine[" ~ eng ~ "]/magneto[" ~ mag ~ "]" ).getValue();
-  m = props.globals.getNode( "/controls/engines/engine[" ~ eng ~ "]/magnetos" );
+var setmagneto = func {
+  var eng = arg[0];
+  var mag = arg[1];
+  var on = props.globals.getNode( "/controls/engines/engine[" ~ eng ~ "]/magneto[" ~ mag ~ "]" ).getValue();
+  var m = props.globals.getNode( "/controls/engines/engine[" ~ eng ~ "]/magnetos" );
 
-  v = m.getValue();
+  var v = m.getValue();
 
   # I wish nasal had binary operators...
   if( on ) {
@@ -353,11 +349,11 @@ setmagneto = func {
   m.setIntValue( v );
 }
 
-magnetolistener = func {
-  m = cmdarg();
-  eng = m.getParent();
-  m2 = eng.getChildren("magneto");
-  v = m.getValue();
+var magnetolistener = func {
+  var m = cmdarg();
+  var eng = m.getParent();
+  var m2 = eng.getChildren("magneto");
+  var v = m.getValue();
   if( v == 0 ) {
     m2[0].setBoolValue( 0 );
     m2[1].setBoolValue( 0 );
@@ -396,9 +392,9 @@ setlistener( "/controls/engines/engine[1]/magnetos", magnetolistener );
 # Sync the dimmer controls with the according properties
 ########################################
 
-instrumentsFactorNode = props.globals.getNode( "/sim/model/material/instruments/factor" );
-dimmerlistener = func {
-  n = cmdarg();
+var instrumentsFactorNode = props.globals.getNode( "/sim/model/material/instruments/factor" );
+var dimmerlistener = func {
+  var  n = cmdarg();
   instrumentsFactorNode.setValue( n.getValue() );
 }
 
@@ -407,9 +403,9 @@ setlistener( "/controls/lighting/instruments-norm", dimmerlistener, 1, 0 );
 ########################################
 # fuel pumps and primer
 ########################################
-FuelPumpHandler = {};
+var FuelPumpHandler = {};
 FuelPumpHandler.new = func {
-  m = {};
+  var m = {};
   m.parents = [FuelPumpHandler];
   m.engineControlRootN = props.globals.getNode( "/controls/engines/engine[" ~ arg[0] ~ "]" );
   m.annunciatorLightN = props.globals.getNode( "/instrumentation/annunciator/fuelpump[" ~ arg[0] ~ "]", 1 );
@@ -433,7 +429,7 @@ FuelPumpHandler.new = func {
 };
 
 FuelPumpHandler.listener = func {
-  v = me.fuelPumpControlN.getBoolValue();
+  var v = me.fuelPumpControlN.getBoolValue();
   if( v == 0 ) {
     v = me.primerControlN.getBoolValue();
   }

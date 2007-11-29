@@ -8,7 +8,7 @@
 # /controls/gear/NLG_D_deg
 ##################################################
 
-compression_norm = '/gear/gear[0]/compression-norm';
+var compression_norm = '/gear/gear[0]/compression-norm';
 
 var a = 0.152346;
 var b = 0.152297;
@@ -16,14 +16,14 @@ var d_zero = 0.2186;
 var distanza = 0.1653;
 
 # Converte radianti in gradi.
-rad_to_deg = func () {
+var rad_to_deg = func () {
   var deg = arg[0]*180/math.pi;
   return deg;
 }
 
 
 # Calcola il valore in radianti dell'angolo alfa conoscendo i lati a,b,d.
-alfa_radiants = func () {
+var alfa_radiants = func () {
    var a = arg[0];
    var b = arg[1];
    var d = arg[2];
@@ -31,7 +31,7 @@ alfa_radiants = func () {
 }
 
 # Calcola il valore in radianti dell'angolo teta conoscendo i lati a,b,d.
-teta_radiants = func () {
+var teta_radiants = func () {
    var a = arg[0];
    var b = arg[1];
    var d = arg[2];
@@ -45,7 +45,7 @@ var teta_zero_rad = teta_radiants(a, b, d_zero);
 var teta_zero_deg = rad_to_deg (teta_zero_rad);
 
 # calcola ed applica l'angolo di rotazione di NLG_D in funzione di compression-norm.
-braccio_D_angle_change = func () {
+var braccio_D_angle_change = func () {
   var Xpos = getprop(compression_norm) * distanza;
   var d = d_zero - Xpos;
   var alfa_rad = alfa_radiants(a, b, d);
@@ -54,7 +54,7 @@ braccio_D_angle_change = func () {
   setprop("/controls/gear/NLG_D_deg", delta_alfa_deg);
 }
 
-braccio_C_angle_change = func () {
+var braccio_C_angle_change = func () {
   var Xpos = getprop(compression_norm) * distanza;
   var d = d_zero - Xpos; 
   var teta_rad = teta_radiants(a, b, d);
@@ -63,5 +63,10 @@ braccio_C_angle_change = func () {
   setprop("/controls/gear/NLG_C_deg", delta_teta_deg);
 }
 
+
+var gear_init = func {
 var i = setlistener("/gear/gear[0]/compression-norm", braccio_D_angle_change);
 var k = setlistener("/gear/gear[0]/compression-norm", braccio_C_angle_change);
+}
+
+setlistener("/sim/signals/fdm-initialized", gear_init );

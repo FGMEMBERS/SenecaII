@@ -4,7 +4,15 @@
 # Maintainer: Torsten Dreyer (Torsten at t3r dot de)
 #
 # $Log$
-# Revision 1.2  2006/11/25 12:24:09  mfranz
+# Revision 1.3  2007/11/29 18:26:49  mfranz
+# Torsten DREYER:
+#
+# - add var to local variables
+# - relaxed timer in electrical.nas
+# - some cleanup
+# - added support for pitot icing"
+#
+# Revision 1.2  2006-11-25 12:24:09  mfranz
 # turn underscore into hyphen (effective-visibility-m)
 #
 # Revision 1.1  2006-06-01 12:58:33  mfranz
@@ -29,7 +37,7 @@
 
 #########################################################################################
 # helper function, returns a propertynode or creates it with default value
-createNodeWithDefault = func {
+var createNodeWithDefault = func {
   node = arg[0].getNode( arg[1], 1 );
   if( node.getValue() == nil ) {
     node.setValue( arg[2] );
@@ -41,17 +49,17 @@ createNodeWithDefault = func {
 # implementation of the global icemachine
 #########################################################################
 
-ICING_NONE     = 0;
-ICING_TRACE    = 1;
-ICING_LIGHT    = 2;
-ICING_MODERATE = 3;
-ICING_SEVERE   = 4;
+var ICING_NONE     = 0;
+var ICING_TRACE    = 1;
+var ICING_LIGHT    = 2;
+var ICING_MODERATE = 3;
+var ICING_SEVERE   = 4;
 
 # these are the names for the icing severities
-ICING_CATEGORY = [ "none", "trace", "light", "moderate", "severe" ];
+var ICING_CATEGORY = [ "none", "trace", "light", "moderate", "severe" ];
 
 # the ice accumulating factors. Inches per nautical air mile flown
-ICING_FACTOR = [
+var ICING_FACTOR = [
   # none: sublimating 0.3" / 80NM
   -0.3/80,
 
@@ -71,7 +79,7 @@ ICING_FACTOR = [
 # since we don't know the LWC of our clouds, just define some severities
 # depending on temperature and a random offset
 # format: upper temperatur, lower temperatur, minimum severity, maximum severity
-ICING_TEMPERATURE = [
+var ICING_TEMPERATURE = [
   [ 999,   0, ICING_NONE,     ICING_NONE ],
   [   0,  -2, ICING_NONE,     ICING_MODERATE ],
   [  -2, -12, ICING_LIGHT,    ICING_SEVERE ],
@@ -80,24 +88,19 @@ ICING_TEMPERATURE = [
   [ -30, -99, ICING_TRACE,    ICING_NONE ]
 ];
 
-dewpointN     = props.globals.getNode( "/environment/dewpoint-degc" );
-temperatureN  = props.globals.getNode( "/environment/temperature-degc" );
-speedN        = props.globals.getNode( "/velocities/airspeed-kt" );
-icingRootN    = props.globals.getNode( "/environment/icing", 1 );
-visibilityN   = props.globals.getNode( "/environment/effective-visibility-m" );
-if( visibilityN == nil ) {
-  print( "*** patch for effective visibility not installed ***" );
-  print( "you will experience icing in clear air, too!" );
-}
+var dewpointN     = props.globals.getNode( "/environment/dewpoint-degc" );
+var temperatureN  = props.globals.getNode( "/environment/temperature-degc" );
+var speedN        = props.globals.getNode( "/velocities/airspeed-kt" );
+var icingRootN    = props.globals.getNode( "/environment/icing", 1 );
+var visibilityN   = props.globals.getNode( "/environment/effective-visibility-m" );
 
+var severityN     = createNodeWithDefault( icingRootN, "icing-severity", ICING_NONE );
+var severityNameN = createNodeWithDefault( icingRootN, "icing-severity-name", ICING_CATEGORY[severityN.getValue()] );
+var icingFactorN  = createNodeWithDefault( icingRootN, "icing-factor", 0.0 );
+var maxSpreadN    = createNodeWithDefault( icingRootN, "max-spread-degc", 0.1 );
 
-severityN     = createNodeWithDefault( icingRootN, "icing-severity", ICING_NONE );
-severityNameN = createNodeWithDefault( icingRootN, "icing-severity-name", ICING_CATEGORY[severityN.getValue()] );
-icingFactorN  = createNodeWithDefault( icingRootN, "icing-factor", 0.0 );
-maxSpreadN    = createNodeWithDefault( icingRootN, "max-spread-degc", 0.1 );
-
-setSeverity = func {
-  value = arg[0];
+var setSeverity = func {
+  var value = arg[0];
   if( severityN.getValue() != value ) {
     severityN.setValue( value );
     severityNameN.setValue( ICING_CATEGORY[value] );
@@ -116,15 +119,15 @@ setSeverity = func {
 # ./ice-inches         # the amount of ice in inches OR
 # [property named by output-property] # the amount of ice in inches
 #########################################################################################
-IceSensitiveElement = {};
+var IceSensitiveElement = {};
 
 IceSensitiveElement.new = func {
-  obj = {};
+  var obj = {};
   obj.parents = [IceSensitiveElement];
   obj.node = arg[0];
 
   obj.nameN = createNodeWithDefault( obj.node, "name", "noname" );
-  n = obj.node.getNode( "salvage-control", 0 );
+  var n = obj.node.getNode( "salvage-control", 0 );
   obj.controlN = nil;
   if( n != nil ) {
     n = n.getValue();
@@ -169,11 +172,11 @@ IceSensitiveElement.update = func {
     return;
   }
 
-  deltat  = arg[0];
-  dist_nm = arg[1];
-  factor  = arg[2];
+  var deltat  = arg[0];
+  var dist_nm = arg[1];
+  var factor  = arg[2];
 
-  v = me.iceAmountN.getValue() + dist_nm * factor * me.sensitivityN.getValue();
+  var v = me.iceAmountN.getValue() + dist_nm * factor * me.sensitivityN.getValue();
   if( v < 0.0 ) {
     v = 0.0;
   }
@@ -185,13 +188,13 @@ IceSensitiveElement.update = func {
 #####################################################################
 # read the ice sensitive elements from the config file
 #####################################################################
-iceSensitiveElements = nil;
+var iceSensitiveElements = nil;
 
-icingConfigN = props.globals.getNode( "/sim/model/icing", 0 );
+var icingConfigN = props.globals.getNode( "/sim/model/icing", 0 );
 if( icingConfigN != nil ) {
   iceSensitiveElements = [];
-  iceableNodes = icingConfigN.getChildren( "iceable" );
-  foreach( iceable; iceableNodes ) {
+  var iceableNodes = icingConfigN.getChildren( "iceable" );
+  foreach( var iceable; iceableNodes ) {
     append( iceSensitiveElements, IceSensitiveElement.new( iceable ) );
   }
 };
@@ -199,28 +202,28 @@ if( icingConfigN != nil ) {
 #####################################################################
 # the time triggered loop
 #####################################################################
-elapsedTimeNode = props.globals.getNode( "/sim/time/elapsed-sec" );
-lastUpdate = 0.0;
-icing = func {
+var elapsedTimeNode = props.globals.getNode( "/sim/time/elapsed-sec" );
+var lastUpdate = 0.0;
+var icing = func {
 
-  temperature = temperatureN.getValue();
-  severity = ICING_NONE;
+  var temperature = temperatureN.getValue();
+  var severity = ICING_NONE;
   icingFactorN.setDoubleValue( ICING_FACTOR[severity] );
 
-  visibility = 0;
+  var visibility = 0;
   if( visibilityN != nil ) {
     visibility = visibilityN.getValue();
   }
 
   # check if we should create some ice
-  spread = temperature - dewpointN.getValue();
+  var spread = temperature - dewpointN.getValue();
   if( spread < maxSpreadN.getValue() and visibility < 1000 ) {
-    for( i = 0; i < size(ICING_TEMPERATURE); i = i + 1 ) {
+    for( var i = 0; i < size(ICING_TEMPERATURE); i = i + 1 ) {
       if( ICING_TEMPERATURE[i][0] > temperature and 
           ICING_TEMPERATURE[i][1] <= temperature ) {
-        s1 = ICING_TEMPERATURE[i][2];
-        s2 = ICING_TEMPERATURE[i][3];
-        ds = s2 - s1 + 1;
+        var s1 = ICING_TEMPERATURE[i][2];
+        var s2 = ICING_TEMPERATURE[i][3];
+        var ds = s2 - s1 + 1;
         severity = s1 + int(rand()*ds);
         icingFactorN.setDoubleValue( ICING_FACTOR[severity] );
         break;
@@ -240,9 +243,9 @@ icing = func {
   setSeverity( severity );
 
   # update all sensitive areas
-  now = elapsedTimeNode.getValue();
-  dt = now - lastUpdate;
-  foreach( iceable; iceSensitiveElements ) {
+  var now = elapsedTimeNode.getValue();
+  var dt = now - lastUpdate;
+  foreach( var iceable; iceSensitiveElements ) {
     iceable.update( dt, dt * speedN.getValue()/3600.0, icingFactorN.getValue() );
   }
 

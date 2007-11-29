@@ -6,11 +6,11 @@
 # ./running    (bool)      true if timer is running, false if stopped
 # ./start-time (double)    timestamp when the timer was last started or reset
 
-elapsedTimeSecN = props.globals.getNode( "/sim/time/elapsed-sec" );
+var elapsedTimeSecN = props.globals.getNode( "/sim/time/elapsed-sec" );
 
-timer = {
+var timer = {
   new : func {
-    m = { parents: [timer] };
+    var m = { parents: [timer] };
     m.base = arg[0];
     m.baseN = props.globals.getNode( m.base, 1 );
 
@@ -56,12 +56,12 @@ timer = {
 
   # return integer coded time as hmmss
   computeBCDTime : func {
-    t = me.timeN.getValue();
-    h = int(t / 3600);
-    t = t - (h*3600);
-    m = int(t / 60 );
-    t = t - (m*60);
-    s = int(t);
+    var t = me.timeN.getValue();
+    var h = int(t / 3600);
+    var t = t - (h*3600);
+    var m = int(t / 60 );
+    var t = t - (m*60);
+    var s = int(t);
     return h * 10000 + m * 100 + s;
   },
 
@@ -76,9 +76,9 @@ timer = {
 ####################################################################
 # KR87
 
-kr87 = {
+var kr87 = {
   new : func {
-    m = { parents: [kr87] };
+    var m = { parents: [kr87] };
     m.base = arg[0];
     m.baseN = props.globals.getNode( m.base, 1 );
 
@@ -164,7 +164,7 @@ kr87 = {
   update : func {
     me.flt.update();
     me.et.update(); 
-    m = me.displayModeN.getValue();
+    var m = me.displayModeN.getValue();
 
     if( m == 0 ) {
       # FRQ
@@ -176,7 +176,7 @@ kr87 = {
     # handles this - never flewn that long...
     if( m == 1 ) {
       # FLT, show mm:ss up to 59:59, then hh:mm
-      t = me.flt.computeBCDTime();
+      var t = me.flt.computeBCDTime();
       if( t >= 10000 ) {
         t = t / 100;
       }
@@ -193,9 +193,9 @@ kr87 = {
   }
 };
 
-kr87_0 = kr87.new( "/instrumentation/adf[0]" );
+var kr87_0 = kr87.new( "/instrumentation/adf[0]" );
 
-timer_update = func {
+var timer_update = func {
   kr87_0.update();
   settimer( timer_update, 0.2 );
 }

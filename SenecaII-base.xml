@@ -5,7 +5,7 @@
         <author>Torsten Dreyer</author>
         <startup>
             <splash-texture>Aircraft/SenecaII/splash.rgb</splash-texture>
-            <splash-title>Piper_PA34_200T_Seneca_II</splash-title>
+            <splash-title>Piper PA34 200T Seneca II</splash-title>
         </startup>
         <panel>
             <!--
@@ -55,6 +55,12 @@
                     <!-- no salvage control, no deicing of the fuselage -->
                     <sensitivity>0.3</sensitivity>
                     <output-property>/fdm/jsbsim/ice/fuselage</output-property>
+                </iceable>
+                <iceable>
+                    <name>Pitot tube</name>
+                    <sensitivity>1</sensitivity>
+                    <salvage-control>/controls/anti-ice/pitot-heat</salvage-control>
+                    <output-property>/systems/pitot/icing</output-property>
                 </iceable>
             </icing>
 
@@ -216,6 +222,10 @@
         </fuel>
         <lighting>
             <strobe>1</strobe>
+            <beacon>1</beacon>
+            <landing-lights>0</landing-lights>
+            <taxi-light>0</taxi-light>
+            <nav-lights>0</nav-lights>
         </lighting>
     </controls>
     <consumables>
@@ -258,6 +268,7 @@
         </dme>
         <icing>
             <file>Aircraft/SenecaII/Nasal/icing.nas</file>
+            <file>Aircraft/SenecaII/Nasal/PitotIcing.nas</file>
         </icing>
         <NLG>
             <file>Aircraft/SenecaII/Nasal/NLG.nas</file>
