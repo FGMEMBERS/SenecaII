@@ -1,0 +1,55 @@
+<PropertyList>
+  <name>Before Takeoff Check</name>
+  <description>This is the before takeoff checklist. Use it at the holding position, before entering the runway for takeoff.</description>
+  <interval>0</interval>
+
+  <init>
+    <set>
+      <property>/sim/current-view/view-number</property>
+      <value>0</value>
+    </set>
+  </init>
+
+  <step>
+    <message>
+      FUEL SELECTORS: on
+    </message>
+    <view>
+      <heading-offset-deg>-51</heading-offset-deg>
+      <pitch-offset-deg>-64</pitch-offset-deg>
+      <field-of-view>31</field-of-view>
+    </view>
+
+    <exit>
+      <condition>
+        <equals>
+          <property>controls/fuel/tank[0]/fuel_selector-position</property>
+          <value>1</value>
+        </equals>
+        <equals>
+          <property>controls/fuel/tank[1]/fuel_selector-position</property>
+          <value>1</value>
+        </equals>
+      </condition>
+    </exit>
+  </step>
+
+  <step>
+    <message>
+      CLEARANCE: received
+    </message>
+  </step>
+
+  <step>
+    <message>
+      DEPARTURE BRIEFING: complete
+    </message>
+  </step>
+
+  <step>
+    <message>
+      EMERGENCY BRIEFING: complete
+    </message>
+  </step>
+
+</PropertyList>

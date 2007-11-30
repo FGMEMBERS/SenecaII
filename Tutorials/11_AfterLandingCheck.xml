@@ -1,0 +1,43 @@
+<PropertyList>
+  <name>After Landing Check</name>
+  <description>This is the after landing checklist. Items to be checked after landing when workload permits. Usually after the runway is vacated.</description>
+  <interval>0</interval>
+
+  <init>
+    <set>
+      <property>/sim/current-view/view-number</property>
+      <value>0</value>
+    </set>
+  </init>
+
+  <step>
+    <message>
+      ANTI ICE: off
+    </message>
+  </step>
+
+  <step>
+    <message>
+      PITOT HEAT: off
+    </message>
+  </step>
+
+  <step>
+    <message>
+      STROBE LIGHTS: off
+    </message>
+  </step>
+
+  <step>
+    <message>
+      FLAPS: up
+    </message>
+  </step>
+
+  <step>
+    <message>
+      COWL FLAPS: open
+    </message>
+  </step>
+
+</PropertyList>

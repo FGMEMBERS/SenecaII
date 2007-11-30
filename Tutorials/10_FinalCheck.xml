@@ -1,0 +1,43 @@
+<PropertyList>
+  <name>Final Check</name>
+  <description>This is the final checklist. This is probably the most important checklist with its most important item "GEAR down/3green". Check these items at latest at the outer marker.</description>
+  <interval>0</interval>
+
+  <init>
+    <set>
+      <property>/sim/current-view/view-number</property>
+      <value>0</value>
+    </set>
+  </init>
+
+  <step>
+    <message>
+      GEAR: down/3 green
+    </message>
+  </step>
+
+  <step>
+    <message>
+      PROP: high rpm
+    </message>
+  </step>
+
+  <step>
+    <message>
+      MIXTURE: rich
+    </message>
+  </step>
+
+  <step>
+    <message>
+      FLAPS: set
+    </message>
+  </step>
+
+  <step>
+    <message>
+      LANDING LIGHT: on
+    </message>
+  </step>
+
+</PropertyList>

@@ -1,27 +1,25 @@
-GetPropertyPath = func {
-  node = arg[0];
+GetPropertyPath = func(node) {
   if( node.getParent() != nil ) {
     return GetPropertyPath( node.getParent() ) ~ "/" ~ node.getName();
   }
   return "";
 }
 
-listenerHash = {};
+var listenerHash = {};
 
-propertyListener = func {
-  node = cmdarg();
-  timer = listenerHash[ GetPropertyPath( node ) ];
+propertyListener = func(node) {
+  var timer = listenerHash[ GetPropertyPath( node ) ];
   if( timer != nil ) {
     timer.listener();
   }
 }
 
-timeNode = props.globals.getNode( "/sim/time/elapsed-sec" );
+var timeNode = props.globals.getNode( "/sim/time/elapsed-sec" );
 
-Timer = {};
+var Timer = {};
 
 Timer.new = func {
-  obj = {};
+  var obj = {};
   obj.parents = [Timer];
   obj.timerNode = arg[0];
   obj.name = obj.timerNode.getNode( "name" ).getValue();
@@ -34,15 +32,14 @@ Timer.new = func {
 
   setlistener( obj.startNode, propertyListener );
 
-  s = GetPropertyPath( obj.startNode );
+  var s = GetPropertyPath( obj.startNode );
   listenerHash[s] = obj;
 
   return obj;
 }
 
-Timer.getProperty = func {
-  prop = arg[0];
-  node = me.timerNode.getNode( prop );
+Timer.getProperty = func(prop) {
+  var node = me.timerNode.getNode( prop );
   if( node == nil ) {
     return nil;
   }
@@ -63,23 +60,22 @@ Timer.expire = func {
   }
 }
 
-timers = [];
+var timers = [];
 
-createTimer = func {
-  timer = arg[0];
-  t = Timer.new( timer );
+createTimer = func(timer) {
+  var t = Timer.new( timer );
   append( timers, t );
 }
 
-expireTimers = func {
-  foreach( timer; timers ) {
+var expireTimers = func {
+  foreach( var timer; timers ) {
     timer.expire();
   }
 }
 
 # read the property-tree
-timersNode = props.globals.getNode( "/sim/timers");
-timerNodes = timersNode.getChildren( "timer" );
-foreach( timer; timerNodes ) {
+var timersNode = props.globals.getNode( "/sim/timers");
+var timerNodes = timersNode.getChildren( "timer" );
+foreach( var timer; timerNodes ) {
   createTimer( timer );
 }

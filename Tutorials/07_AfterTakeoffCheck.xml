@@ -1,0 +1,37 @@
+<PropertyList>
+  <name>After Takeoff Check</name>
+  <description>This is the after takeoff checklist. Check these items when workload permits after takeoff.</description>
+  <interval>0</interval>
+
+  <init>
+    <set>
+      <property>/sim/current-view/view-number</property>
+      <value>0</value>
+    </set>
+  </init>
+
+  <step>
+    <message>
+      LANDING LIGHT: off
+    </message>
+  </step>
+
+  <step>
+    <message>
+      GEAR: up
+    </message>
+  </step>
+
+  <step>
+    <message>
+      FLAPS: up
+    </message>
+  </step>
+
+  <step>
+    <message>
+      CLIMB POWER: 31"/2450RPM
+    </message>
+  </step>
+
+</PropertyList>

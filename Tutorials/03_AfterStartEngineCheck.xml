@@ -1,0 +1,189 @@
+<PropertyList>
+  <name>After Start Engine Check</name>
+  <description>This is the after start enginechecklist. Check these items after the engines are started.</description>
+  <interval>0</interval>
+
+  <init>
+    <set>
+      <property>/sim/current-view/view-number</property>
+      <value>0</value>
+    </set>
+  </init>
+
+  <step>
+    <message>
+      THTOTTLES: 1000RPM
+    </message>
+    <view>
+      <heading-offset-deg>-15</heading-offset-deg>
+      <pitch-offset-deg>-25</pitch-offset-deg>
+      <field-of-view>32</field-of-view>
+    </view>
+
+    <exit>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>900</value>
+        </greater-than>
+        <less-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>1100</value>
+        </less-than>
+        <greater-than>
+          <property>engines/engine[1]/rpm</property>
+          <value>900</value>
+        </greater-than>
+        <less-than>
+          <property>engines/engine[1]/rpm</property>
+          <value>1100</value>
+        </less-than>
+      </condition>
+    </exit>
+  </step>
+
+  <step>
+    <message>
+      ALTERNATORS: both on
+    </message>
+    <view>
+      <heading-offset-deg>18</heading-offset-deg>
+      <pitch-offset-deg>-38</pitch-offset-deg>
+      <field-of-view>32</field-of-view>
+    </view>
+
+    <exit>
+      <condition>
+        <property>controls/electric/engine[0]/generator</property>
+        <property>controls/electric/engine[1]/generator</property>
+      </condition>
+    </exit>
+  </step>
+
+  <step>
+    <message>
+      OIL PRESSURE: checked
+    </message>
+    <view>
+      <heading-offset-deg>0</heading-offset-deg>
+      <pitch-offset-deg>-23</pitch-offset-deg>
+      <field-of-view>40</field-of-view>
+    </view>
+
+    <exit>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/oil-pressure-psi</property>
+          <value>30</value>
+        </greater-than>
+        <less-than>
+          <property>engines/engine[0]/oil-pressure-psi</property>
+          <value>80</value>
+        </less-than>
+        <greater-than>
+          <property>engines/engine[1]/oil-pressure-psi</property>
+          <value>30</value>
+        </greater-than>
+        <less-than>
+          <property>engines/engine[1]/oil-pressure-psi</property>
+          <value>80</value>
+        </less-than>
+      </condition>
+    </exit>
+  </step>
+
+  <step>
+    <message>
+      AMP METER: checked
+    </message>
+    <view>
+      <heading-offset-deg>0</heading-offset-deg>
+      <pitch-offset-deg>-23</pitch-offset-deg>
+      <field-of-view>40</field-of-view>
+    </view>
+
+    <exit>
+      <condition>
+        <greater-than>
+          <property>/systems/electrical/bus[0]/element[1]/i</property>
+          <value>0</value>
+        </greater-than>
+        <less-than>
+          <property>/systems/electrical/bus[0]/element[1]/i</property>
+          <value>65</value>
+        </less-than>
+      </condition>
+        <greater-than>
+          <property>/systems/electrical/bus[0]/element[2]/i</property>
+          <value>0</value>
+        </greater-than>
+        <less-than>
+          <property>/systems/electrical/bus[0]/element[2]/i</property>
+          <value>65</value>
+        </less-than>
+    </exit>
+  </step>
+
+  <step>
+    <message>
+      ANNUNCIATOR: checked
+    </message>
+    <view>
+      <heading-offset-deg>-9</heading-offset-deg>
+      <pitch-offset-deg>-17</pitch-offset-deg>
+      <field-of-view>40</field-of-view>
+    </view>
+
+    <exit>
+      <condition>
+        <property>instrumentation/annunciator/test</property>
+      </condition>
+    </exit>
+  </step>
+
+  <step>
+    <message>
+      RADIOS: on
+    </message>
+    <view>
+      <heading-offset-deg>-23</heading-offset-deg>
+      <pitch-offset-deg>-15</pitch-offset-deg>
+      <field-of-view>40</field-of-view>
+    </view>
+
+  </step>
+  <step>
+    <message>
+      ALTIMETER: set
+    </message>
+    <view>
+      <heading-offset-deg>-5</heading-offset-deg>
+      <pitch-offset-deg>-15</pitch-offset-deg>
+      <field-of-view>40</field-of-view>
+    </view>
+<!-- todo: check if 
+     /instrumentation/altimeter/setting-inhg 
+     equals (more or less) 
+     /environment/pressure-sea-level-inhg (when setting qnh)
+     /environment/pressure-inhg (when setting qfe)
+-->
+  </step>
+
+  <step>
+    <message>
+      GYRO: slave
+    </message>
+    <view>
+      <heading-offset-deg>-30</heading-offset-deg>
+      <pitch-offset-deg>-10</pitch-offset-deg>
+      <field-of-view>35</field-of-view>
+    </view>
+    <exit>
+      <condition>
+        <property>instrumentation/heading-indicator/mode-auto</property>
+      </condition>
+    </exit>
+  </step>
+
+
+</PropertyList>

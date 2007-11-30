@@ -177,6 +177,22 @@
             </timer>
         </timers>
 
+        <tutorials>
+          <tutorial include="Tutorials/___ColdStart.xml"/>
+          <tutorial include="Tutorials/___HotStart.xml"/>
+          <tutorial include="Tutorials/01_CockpitCheck.xml"/>
+          <tutorial include="Tutorials/02_StartEngine.xml"/>
+          <tutorial include="Tutorials/03_AfterStartEngineCheck.xml"/>
+          <tutorial include="Tutorials/04_TaxiCheck.xml"/>
+          <tutorial include="Tutorials/05_BeforeTakeoffCheck.xml"/>
+          <tutorial include="Tutorials/06_LineUpCheck.xml"/>
+          <tutorial include="Tutorials/07_AfterTakeoffCheck.xml"/>
+          <tutorial include="Tutorials/08_CruiseCheck.xml"/>
+          <tutorial include="Tutorials/09_ApproachCheck.xml"/>
+          <tutorial include="Tutorials/10_FinalCheck.xml"/>
+          <tutorial include="Tutorials/11_AfterLandingCheck.xml"/>
+        </tutorials>
+
     </sim>
 
     <controls>
