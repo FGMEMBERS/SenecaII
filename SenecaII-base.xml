@@ -161,7 +161,20 @@
         </sound>
 
         <help>
-            <title>PA34-200T Seneca</title>
+            <title>PA34-200T Seneca II</title>
+            <line>Quick startup:</line>
+            <line> - set magnetos to on by hitting '}' trice</line>
+            <line> - open throttles approx. 25 percent</line>
+            <line> - hit 's' for 2 seconds to start the engines</line>
+            <line> - hit 'B' to release brakes</line>
+            <line> - open throttles to 40 inches of manifold pressure</line>
+            <line> - rotate at 70 knots, climb at 100 knots</line>
+            <line></line>
+            <line>You can also use the tutorials under Help->Start Tutorial</line>
+            <line></line>
+            <line>For the online documentation go to</line>
+            <line>http://wiki.flightgear.org/flightgear_wiki/index.php?title=Piper_PA34-200T_Seneca_II</line>
+            <line></line>
         </help>
 
         <timers>
@@ -346,7 +359,8 @@
                     <load-watts>200</load-watts>
                     <switch-property>/controls/deice/prop-deice</switch-property>
                     <i-property>/systems/electrical/deice/prop-deice-amps</i-property>
-                </element> s <element>
+                </element> 
+                <element>
                     <type>load</type>
                     <name>beacon</name>
                     <load-watts>50</load-watts>
