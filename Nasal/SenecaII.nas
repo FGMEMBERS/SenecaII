@@ -26,7 +26,7 @@ Engines.new = func {
   }
   obj.overboostNodes = obj.annunciatorNode.getChildren( "overboost" );
 
-  obj.jsbEngineNodes = props.globals.getNode("/fdm/jsbsim/propulsion").getChildren("engine");
+  obj.jsbEngineNodes = props.globals.getNode("/fdm/jsbsim/propulsion",1).getChildren("engine");
   obj.pressureNode      = props.globals.getNode( "/systems/static/pressure-inhg" );
   obj.totalPressureNode = props.globals.getNode( "/systems/pitot/total-pressure-inhg" ).getValue();
 
@@ -55,33 +55,38 @@ Engines.update = func {
 
     # create a rpm-norm-inv property for propdisc transparency
     me.rpm = me.engineNodes[i].getNode( "rpm" ).getValue();
+    if( me.rpm == nil ) {
+      me.rpm = 0.0;
+    }
     var rpm_norm = me.rpm/2575;
     if( rpm_norm > 1 ) {
       rpm_norm = 1;
     }
     me.engineNodes[i].getNode( "rpm-norm-inv", 1 ).setDoubleValue( 1-rpm_norm );
 
-    # twiggle with manifold pressure
-    var mapAdjustNode = me.jsbEngineNodes[i].getNode( "map-adjust" );
-    if( mapAdjustNode != nil ) {
+    if( i < size(me.jsbEngineNodes) ) {
+      # twiggle with manifold pressure
+      var mapAdjustNode = me.jsbEngineNodes[i].getNode( "map-adjust" );
+      if( mapAdjustNode != nil ) {
 
-      # map depends on RPM
-      var ma = rpm_norm*0.37 + 0.63;
-      mapAdjustNode.setDoubleValue( ma );
+        # map depends on RPM
+        var ma = rpm_norm*0.37 + 0.63;
+        mapAdjustNode.setDoubleValue( ma );
 
-      # and on ram pressure
-     if( me.pressureNode != nil and me.totalPressureNode != nil ) {
-       var d = me.pressureNode.getValue();
-       if( d != 0 ) {
-         ma *= me.totalPressureNode.getValue() / d;
+        # and on ram pressure
+       if( me.pressureNode != nil and me.totalPressureNode != nil ) {
+         var d = me.pressureNode.getValue();
+         if( d != 0 ) {
+           ma *= me.totalPressureNode.getValue() / d;
+         }
        }
-     }
 
+      }
     }
 
     # adjust cooling area of engine depending of position of cowl flaps
     # range 2 - 2.5
-    if( me.cowlFlapsPosNode != nil ) {
+    if( me.cowlFlapsPosNode != nil and i < size(me.jsbEngineNodes) ) {
       var n = me.jsbEngineNodes[i].getNode("cooling-area");
       if( n != nil ) {
         n.setDoubleValue( me.cowlFlapsPosNode.getValue()*0.5 + 2 );
@@ -296,6 +301,7 @@ var seneca_update = func {
   slavedGyro.update();
   radarAltimeter();
   settimer(seneca_update, 0.1 );
+
 }
 
 setlistener("/sim/signals/fdm-initialized", seneca_update);
@@ -438,3 +444,55 @@ FuelPumpHandler.listener = func {
 
 FuelPumpHandler.new( 0 );
 FuelPumpHandler.new( 1 );
+
+########################################
+# Battery Master
+########################################
+
+var BatteryMasterHandler = {};
+
+BatteryMasterHandler.new = func {
+  var obj = {};
+  obj.parents = [BatteryMasterHandler];
+  obj.switchN = props.globals.getNode( "/controls/electric/battery-switch", 1 );
+  obj.clients = [
+    props.globals.getNode( "/instrumentation/nav[0]/serviceable", 1 ),
+    props.globals.getNode( "/instrumentation/nav[1]/serviceable", 1 ),
+    props.globals.getNode( "/instrumentation/adf[0]/serviceable", 1 )
+  ];
+
+  setlistener( obj.switchN, func { obj.listener() }, 1, 0 );
+
+  return obj;
+};
+
+BatteryMasterHandler.listener = func {
+  var v = me.switchN.getValue();
+  foreach( var client; me.clients ) {
+    client.setValue( v );
+  }
+};
+
+var batteryMasterHandler = BatteryMasterHandler.new();
+
+###############################################
+# propagate the emergency gear extension switch 
+# to the fcs of jsbsim
+###############################################
+var emergencyGearNode = props.globals.getNode( "controls/gear/gear-emergency-extend", 1 );
+var normalGearNode = props.globals.getNode( "controls/gear/gear-down", 1 );
+var fcsGearNode = props.globals.getNode( "fdm/jsbsim/gear/gear-cmd-emergency-norm", 1 );
+
+# emergency extend at any time
+setlistener( emergencyGearNode, func {
+  if( emergencyGearNode.getValue() == 1 ) {
+    fcsGearNode.setBoolValue( 1 );
+  }
+});
+
+# remove emergency extend only if gear is down
+setlistener( normalGearNode, func {
+  if( normalGearNode.getValue() == 1 and emergencyGearNode.getValue() == 0 ) {
+    fcsGearNode.setBoolValue( 0 );
+  }
+});

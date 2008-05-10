@@ -15,6 +15,9 @@ var distanza = 0.1653;
 var rad_to_deg = 180.0 / math.pi;
 
 var compressionNormNode = props.globals.getNode( "gear/gear[0]/compression-norm", 1 );
+if( compressionNormNode.getValue() == nil ) {
+  compressionNormNode.setDoubleValue( 0.0 );
+}
 var DNode = props.globals.getNode( "controls/gear/NLG_D_deg", 1 );
 var CNode = props.globals.getNode( "controls/gear/NLG_C_deg", 1 );
 
