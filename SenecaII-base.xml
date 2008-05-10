@@ -160,6 +160,13 @@
             <path>Aircraft/SenecaII/SenecaII-Sound.xml</path>
         </sound>
 
+        <flaps>
+          <setting>0.000</setting> <!-- Flaps 0 -->
+          <setting>0.250</setting> <!-- Flaps 10 -->
+          <setting>0.625</setting> <!-- Flaps 25 -->
+          <setting>1.000</setting> <!-- Flaps 40 -->
+        </flaps>
+
         <help>
             <title>PA34-200T Seneca II</title>
             <line>Quick startup:</line>
@@ -173,7 +180,7 @@
             <line>You can also use the tutorials under Help->Start Tutorial</line>
             <line></line>
             <line>For the online documentation go to</line>
-            <line>http://wiki.flightgear.org/flightgear_wiki/index.php?title=Piper_PA34-200T_Seneca_II</line>
+            <line>http://wiki.flightgear.org/flightgear_wiki/index.php?title=Seneca</line>
             <line></line>
         </help>
 
@@ -250,8 +257,8 @@
             </tank>
         </fuel>
         <lighting>
-            <strobe>1</strobe>
-            <beacon>1</beacon>
+            <strobe>0</strobe>
+            <beacon>0</beacon>
             <landing-lights>0</landing-lights>
             <taxi-light>0</taxi-light>
             <nav-lights>0</nav-lights>
@@ -269,7 +276,15 @@
     </consumables>
     <limits>
         <max-flap-extension-speed>
-            <flaps>0.3</flaps>
+            <flaps>0.20</flaps>
+            <speed>129</speed>
+        </max-flap-extension-speed>
+        <max-flap-extension-speed>
+            <flaps>0.60</flaps>
+            <speed>115</speed>
+        </max-flap-extension-speed>
+        <max-flap-extension-speed>
+            <flaps>0.99</flaps>
             <speed>105</speed>
         </max-flap-extension-speed>
         <max-gear-extension-speed>129</max-gear-extension-speed>
@@ -279,7 +294,6 @@
     <nasal>
         <SenecaII>
             <file>Aircraft/SenecaII/Nasal/SenecaII.nas</file>
-            <file>Aircraft/SenecaII/Nasal/Magnetos.nas</file>
             <file>Aircraft/SenecaII/Nasal/electric.nas</file>
             <file>Aircraft/SenecaII/Nasal/timers.nas</file>
             <file>Aircraft/SenecaII/Nasal/hsi.nas</file>
@@ -404,5 +418,27 @@
             <com-mic n="2">0</com-mic>
         </audio-panel>
     </instrumentation>
+    <fdm>
+      <jsbsim>
+        <aero>
+          <Cnp-factor archive="n">1.0</Cnp-factor>
+        </aero>
+        <gear>
+          <unit n="0">
+            <actuator-pos-norm>0</actuator-pos-norm>
+            <pos-norm>0</pos-norm>
+          </unit>
+          <unit n="1">
+            <actuator-pos-norm>0</actuator-pos-norm>
+            <pos-norm>0</pos-norm>
+          </unit>
+          <unit n="2">
+            <actuator-pos-norm>0</actuator-pos-norm>
+            <pos-norm>0</pos-norm>
+          </unit>
+          <emergency-pos-norm>0</emergency-pos-norm>
+        </gear>
+      </jsbsim>
+    </fdm>
 
 </PropertyList>
