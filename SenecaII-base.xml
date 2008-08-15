@@ -264,12 +264,27 @@
             <nav-lights>0</nav-lights>
         </lighting>
     </controls>
+
+    <gear>
+      <gear n="0">
+        <indicator-servicable type="bool" archive="y">true</indicator-servicable>
+      </gear>
+      <gear n="1">
+        <indicator-servicable type="bool" archive="y">true</indicator-servicable>
+      </gear>
+      <gear n="2">
+        <indicator-servicable type="bool" archive="y">true</indicator-servicable>
+      </gear>
+    </gear>
+
     <consumables>
         <fuel>
             <tank n="0">
+                <capacity-gal_us>61.5</capacity-gal_us>
                 <level-gal_us>50</level-gal_us>
             </tank>
             <tank n="1">
+                <capacity-gal_us>61.5</capacity-gal_us>
                 <level-gal_us>50</level-gal_us>
             </tank>
         </fuel>

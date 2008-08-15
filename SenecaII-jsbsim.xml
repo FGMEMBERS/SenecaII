@@ -12,16 +12,16 @@
 -->
 <?xml-stylesheet href="JSBSim.xsl" type="application/xml"?>
 <fdm_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:/home/torsten/FlightGear/Aircraft/SenecaII/JSBSim.xsd"
-    name="SenecaII" version="2.0" release="BETA">
-    
+    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd" name="SenecaII"
+    version="2.0" release="BETA">
+
     <fileheader>
         <author>Torsten Dreyer with a little help from DATCOM+</author>
         <filecreationdate>2006-01-16</filecreationdate>
         <description>Model for a PA34-200T Seneca II</description>
         <reference title="Seneca II JSBSim FlightModel"/>
     </fileheader>
-    
+
     <!-- **********************************************************************
         METRICS
         ********************************************************************** -->
@@ -43,7 +43,7 @@
         <location name="AERORP" unit="IN">
             <x> -49.5 </x>
             <y> 0 </y>
-            <z> 45.3</z>
+            <z> 45.4</z>
         </location>
         <!-- the eyepoint of the pilot (left or right eye?) -->
         <location name="EYEPOINT" unit="IN">
@@ -69,7 +69,7 @@
         <emptywt unit="LBS"> 3300 </emptywt>
         <!-- the center of gravity -->
         <location name="CG" unit="IN">
-            <x>-51.0 </x>
+            <x>-61.0 </x>
             <y> 0.0 </y>
             <z> 45.3 </z>
         </location>
@@ -106,9 +106,9 @@
             <location unit="IN">
                 <x>-116.5</x>
                 <y>0</y>
-                <z>0</z>
+                <z>-1.5</z>
             </location>
-            <static_friction> 0.8 </static_friction>
+            <static_friction> 0.82 </static_friction>
             <dynamic_friction> 0.5 </dynamic_friction>
             <rolling_friction> 0.03 </rolling_friction>
             <spring_coeff unit="LBS/FT"> 5400 </spring_coeff>
@@ -122,10 +122,10 @@
             <location unit="IN">
                 <x>-32.8</x>
                 <y>-59.1</y>
-                <z>0</z>
+                <z>-1.5</z>
             </location>
-            <static_friction> 0.8 </static_friction>
-            <dynamic_friction> 0.5 </dynamic_friction>
+            <static_friction> 1.95</static_friction>
+            <dynamic_friction> 0.7 </dynamic_friction>
             <rolling_friction> 0.03 </rolling_friction>
             <spring_coeff unit="LBS/FT"> 5400 </spring_coeff>
             <damping_coeff unit="LBS/FT/SEC"> 1600 </damping_coeff>
@@ -137,10 +137,10 @@
             <location unit="IN">
                 <x>-32.8</x>
                 <y>59.1</y>
-                <z>0</z>
+                <z>-1.5</z>
             </location>
-            <static_friction> 0.8 </static_friction>
-            <dynamic_friction> 0.5 </dynamic_friction>
+            <static_friction> 1.95</static_friction>
+            <dynamic_friction> 0.7 </dynamic_friction>
             <rolling_friction> 0.03 </rolling_friction>
             <spring_coeff unit="LBS/FT"> 5400 </spring_coeff>
             <damping_coeff unit="LBS/FT/SEC"> 1600 </damping_coeff>
@@ -319,6 +319,7 @@
                 </clipto>
                 <output>fcs/elevator-pos-norm</output>
             </summer>
+
             <aerosurface_scale name="Elevator Control">
                 <input>fcs/pitch-trim-sum</input>
                 <gain>0.01745</gain>
@@ -367,7 +368,7 @@
                 </range>
                 <output>fcs/right-aileron-pos-rad</output>
             </aerosurface_scale>
-            <aerosurface_scale name="Left Aileron Norm">
+            <aerosurface_scale name="Right Aileron Norm">
                 <input>-fcs/roll-trim-sum</input>
                 <range>
                     <min>-1</min>
@@ -403,6 +404,7 @@
             Flaps
         -->
         <channel name="Flaps">
+<!--
             <kinematic name="Flaps Control">
                 <input>fcs/flap-cmd-norm</input>
                 <traverse>
@@ -417,13 +419,12 @@
                 </traverse>
                 <output>fcs/flap-pos-norm</output>
             </kinematic>
-            <aerosurface_scale name="Flap Pos Deg">
+            <aerosurface_scale name="Flap Pos Degi">
                 <input>fcs/flap-pos-norm</input>
                 <range>
                     <min>0</min>
                     <max>40</max>
                 </range>
-                <output>fcs/flap-pos-deg</output>
             </aerosurface_scale>
             <aerosurface_scale name="Flap Pos Rad">
                 <input>fcs/flap-pos-norm</input>
@@ -432,28 +433,118 @@
                     <min>0</min>
                     <max>40</max>
                 </range>
-                <output>fcs/flap-pos-rad</output>
             </aerosurface_scale>
-            
-        </channel>
-        <!--
-            Gear
-        -->
-        <channel name="Landing Gear">
-            <kinematic name="Gear Control">
-                <input>gear/gear-cmd-norm</input>
+-->
+            <kinematic name="Flaps Control">
+                <input>fcs/flap-cmd-norm</input>
                 <traverse>
                     <setting>
                         <position>0</position>
                         <time>0</time>
                     </setting>
                     <setting>
-                        <position>1</position>
-                        <time>5</time>
+                        <position>10</position>
+                        <time>1</time>
+                    </setting>
+                    <setting>
+                        <position>25</position>
+                        <time>1</time>
+                    </setting>
+                    <setting>
+                        <position>40</position>
+                        <time>1</time>
                     </setting>
                 </traverse>
-                <output>gear/gear-pos-norm</output>
+                <output>fcs/flap-pos-deg</output>
             </kinematic>
+
+            <aerosurface_scale name="Flap Position Normalizer">
+              <input>fcs/flap-pos-deg</input>
+              <domain>
+                <min>0</min>  <!-- Flaps actual minimum position -->
+                <max>40</max>  <!-- Flaps actual maximum position -->
+              </domain>
+              <range>
+                <min>0</min>  <!-- Flaps normalized minimum position -->
+                <max>1</max>  <!-- Flaps normalized maximum position -->
+              </range>
+              <output>fcs/flap-pos-norm</output>
+            </aerosurface_scale>
+        </channel>
+        <!--
+            Gear
+        -->
+        <channel name="Landing Gear">
+            <!-- force gear down on ground. Squad switch is on left main gear -->
+            <switch name="gear switch">
+              <default value="0"/>
+              <test logic="OR" value="1">
+                gear/unit[1]/WOW == 1
+                gear/gear-cmd-norm == 1
+              </test>
+            </switch>
+
+            <!-- create a input property fcs/gear-emergency-extend -->
+            <switch name="gear emergency extend">
+              <default value="0"/>
+              <test value="1">
+                gear/gear-cmd-emergency-norm == 1
+              </test>
+            </switch>
+
+            <!-- normal actuators driven by gear switch -->
+            <actuator name="Gear Nose Actuator">
+                <input>fcs/gear-switch</input>
+                <rate_limit>0.1</rate_limit>
+                <output>gear/unit[0]/actuator-pos-norm</output>
+            </actuator>
+            <actuator name="Gear Left Actuator">
+                <input>fcs/gear-switch</input>
+                <rate_limit>0.13</rate_limit>
+                <output>gear/unit[1]/actuator-pos-norm</output>
+            </actuator>
+            <actuator name="Gear Right Actuator">
+                <input>fcs/gear-switch</input>
+                <rate_limit>0.15</rate_limit>
+                <output>gear/unit[2]/actuator-pos-norm</output>
+            </actuator>
+
+            <!-- "gravity" actuator for emergency extension -->
+            <actuator name="Gear Emergency Actuator">
+                <input>fcs/gear-emergency-extend</input>
+                <rate_limit>0.2</rate_limit>
+                <output>gear/emergency-pos-norm</output>
+            </actuator>
+
+            <!-- now add up the gear positions -->
+            <summer name="Nose Gear Sum">
+                <input>gear/emergency-pos-norm</input>
+                <input>gear/unit[0]/actuator-pos-norm</input>
+                <clipto>
+                    <min>0</min>
+                    <max>1</max>
+                </clipto>
+                <output>gear/unit[0]/pos-norm</output>
+            </summer>
+            <summer name="Left Gear Sum">
+                <input>gear/emergency-pos-norm</input>
+                <input>gear/unit[1]/actuator-pos-norm</input>
+                <clipto>
+                    <min>0</min>
+                    <max>1</max>
+                </clipto>
+                <output>gear/unit[1]/pos-norm</output>
+            </summer>
+            <summer name="Right Gear Sum">
+                <input>gear/emergency-pos-norm</input>
+                <input>gear/unit[2]/actuator-pos-norm</input>
+                <clipto>
+                    <min>0</min>
+                    <max>1</max>
+                </clipto>
+                <output>gear/unit[2]/pos-norm</output>
+            </summer>
+
         </channel>
         <!--
             Cowl Flaps currently implemented as speed brake
@@ -479,17 +570,17 @@
         AERODYNAMICS
         ********************************************************************** -->
     <aerodynamics>
-        
+
         <alphalimits unit="DEG">
             <min>-5.0</min>
             <max>14.0</max>
         </alphalimits>
-        
+
         <hysteresis_limits unit="DEG">
             <min> 5.0</min>
             <max>20.0</max>
         </hysteresis_limits>
-        
+
         <!-- ************************************** 
             ASSUMPTIONS AND LIMITATIONS
             
@@ -503,7 +594,7 @@
             Cyr, CyDr, Cyda, ClDr, Cndr
             
             ************************************** -->
-        
+
         <!-- don't use ground effect for now -->
         <function name="aero/function/ground-effect-factor-lift">
             <description>Change in lift due to ground effect factor.</description>
@@ -518,7 +609,7 @@
                 <value>1</value>
             </sum>
         </function>
-        
+
         <function name="aero/function/ground-effect-factor-drag">
             <description>Change in drag due to ground effect</description>
             <!--
@@ -532,7 +623,7 @@
                 <value>1</value>
             </sum>
         </function>
-        
+
         <!-- ********************************************************************** -->
         <axis name="LIFT">
             <function name="aero/coefficient/CLwbh">
@@ -570,8 +661,8 @@
                         </tableData>
                     </table>
                 </product>
-            </function>            
-            
+            </function>
+
             <function name="aero/coefficient/CLDf">
                 <description>Delta_lift_due_to_flap_deflection</description>
                 <product>
@@ -588,17 +679,17 @@
                         </tableData>
                     </table>
                 </product>
-            </function>         
+            </function>
             <!--
-                <function name="aero/coefficient/CLDe">
-                <description>Lift_due_to_Elevator_Deflection</description>
-                <product>
+            <function name="aero/coefficient/CLDe">
+              <description>Lift_due_to_Elevator_Deflection</description>
+              <product>
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <property>fcs/elevator-pos-rad</property>
                 <value>0.8100</value>
-                </product>
-                </function>
+              </product>
+            </function>
             -->
             <function name="aero/coefficient/CLq">
                 <description>
@@ -634,7 +725,7 @@
                     </table>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/CLad">
                 <description>
                     Basic Lift Coefficient due to AOA rate(per radian)
@@ -645,7 +736,7 @@
                     <property>aero/qbar-area</property>
                     <!-- added manually -->
                     <property>aero/alphadot-rad_sec</property>
-                    <property>aero/ci2vel</property>               
+                    <property>aero/ci2vel</property>
                     <!-- end added -->
                     <table>
                         <independentVar>aero/alpha-rad</independentVar>
@@ -673,7 +764,7 @@
                     </table>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/CLicew">
                 <description>Lift_decrease_due_to_ice_on_wing</description>
                 <product>
@@ -728,8 +819,8 @@
                         </tableData>
                     </table>
                 </product>
-            </function>            
-            
+            </function>
+
             <function name="aero/coefficient/CDDf">
                 <description>Delta_drag_due_to_flap_deflection</description>
                 <product>
@@ -746,8 +837,8 @@
                         </tableData>
                     </table>
                 </product>
-            </function>     
-            
+            </function>
+
             <function name="aero/coefficient/CDi">
                 <description>
                     AILERONS: Piper PA34-200T Seneca-II Aircraft                               
@@ -785,19 +876,26 @@
                         </tableData>
                     </table>
                 </product>
-            </function>    
-            
+            </function>
+
             <function name="aero/coefficient/CDgear">
                 <description>Drag_due_to_landing_gear</description>
                 <product>
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>aero/function/ground-effect-factor-drag</property>
-                    <property>gear/gear-pos-norm</property>
+                    <product>
+                      <sum>
+                        <property>gear/unit[0]/pos-norm</property>
+                        <property>gear/unit[1]/pos-norm</property>
+                        <property>gear/unit[2]/pos-norm</property>
+                      </sum>
+                      <value>0.33</value>
+                    </product>
                     <value>0.009</value>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/CDcowl">
                 <description>Drag_due_to_cowl_flaps</description>
                 <product>
@@ -808,7 +906,7 @@
                     <value>0.0082</value>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/CDicew">
                 <description>Drag_due_to_ice_on_wing</description>
                 <product>
@@ -824,13 +922,22 @@
                     </table>
                 </product>
             </function>
-            
-            
+
+            <function name="aero/coefficient/CDbeta">
+                <description>Drag_due_to_sideslip</description>
+                <product>
+                    <property>aero/qbar-area</property>
+                    <property>aero/mag-beta-rad</property>
+                    <value>0.1700</value>
+                </product>
+            </function>
+
+
         </axis>
         <!-- ********************************************************************** -->
         <axis name="SIDE">
-            
-            
+
+
             <function name="aero/coefficient/Cyb">
                 <description>
                     Side Force coefficient due to Sideslip(per radian)
@@ -839,10 +946,10 @@
                 <product>
                     <property>aero/qbar-area</property>
                     <property>aero/beta-rad</property>
-                    <value>-0.5661</value> 
+                    <value>-0.5661</value>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/Cyp">
                 <description>
                     Side Force Coefficient due to Roll Rate(per radian)
@@ -876,12 +983,12 @@
                     </table>
                 </product>
             </function>
-            
-            
+
+
             <!-- *************************
                 Not calculated by DATCOM+
                 ************************* -->
-            
+
             <function name="aero/coefficient/Cyr">
                 <description>
                     Side Force due to Yaw Rate(DATCOM does not calculate)
@@ -892,12 +999,12 @@
                     <value>    .000    </value>
                 </product>
             </function>
-            
-            
+
+
             <!-- *************************
                 Not calculated by DATCOM+
                 ************************* -->
-            
+
             <function name="aero/coefficient/CyDr">
                 <description>
                     Side Force due to rudder(DATCOM does not calculate)
@@ -907,12 +1014,12 @@
                     <value>    .000    </value>
                 </product>
             </function>
-            
-            
+
+
             <!-- *************************
                 Not calculated by DATCOM+
                 ************************* -->
-            
+
             <function name="aero/coefficient/CyDa">
                 <description>
                     Side Force due to aileron(DATCOM does not calculate)
@@ -923,12 +1030,12 @@
                     <value>    .000    </value>
                 </product>
             </function>
-            
+
         </axis>
         <!-- ********************************************************************** -->
         <axis name="ROLL">
-            
-            
+
+
             <function name="aero/coefficient/Clb">
                 <description>
                     Roll Moment coefficient due to Beta(per radian)
@@ -964,7 +1071,7 @@
                     </table>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/Clp">
                 <description>
                     Roll Moment coefficient due to roll rate(per radian)
@@ -1001,7 +1108,7 @@
                     </table>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/Clr">
                 <description>
                     Roll Moment coefficient due to yaw rate(per radian)
@@ -1039,7 +1146,7 @@
                     </table>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/ClDa">
                 <description>
                     AILERONS: Piper PA34-200T Seneca-II Aircraft                               
@@ -1064,12 +1171,12 @@
                     </table>
                 </product>
             </function>
-            
-            
+
+
             <!-- *************************
                 Not calculated by DATCOM+
                 ************************* -->
-            
+
             <function name="aero/coefficient/ClDr">
                 <description>
                     Roll moment due to rudder(DATCOM does not calculate)
@@ -1082,11 +1189,11 @@
                     <value>    .000    </value>
                 </product>
             </function>
-            
+
         </axis>
-        
+
         <!-- ********************************************************************** -->
-        
+
         <axis name="PITCH">
             <function name="aero/coefficient/Cmde">
                 <description>Pitch_moment_due_to_elevator_deflection</description>
@@ -1094,10 +1201,10 @@
                     <property>aero/qbar-area</property>
                     <property>metrics/cbarw-ft</property>
                     <property>fcs/elevator-pos-rad</property>
-                    <value>-0.6030</value>
+                    <value>-1.6030</value>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/Cm_basic">
                 <description>
                     Basic_Pitch_moment_coefficient
@@ -1130,8 +1237,8 @@
                         </tableData>
                     </table>
                 </product>
-            </function> 
-            
+            </function>
+
             <function name="aero/coefficient/Cmq">
                 <description>
                     Pitch moment coefficient due to pitch rate(per radian)
@@ -1146,7 +1253,7 @@
                     <value>-21.17</value>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/Cmff">
                 <description>Delta_pitch_due_to_flap_deflection</description>
                 <product>
@@ -1172,7 +1279,7 @@
                     </table>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/Cmadot">
                 <description>
                     Pitch moment coefficient due to AOA rate(per radian)
@@ -1212,8 +1319,8 @@
         </axis>
         <!-- ********************************************************************** -->
         <axis name="YAW">
-            
-            
+
+
             <function name="aero/coefficient/Cnb">
                 <description>
                     Yaw moment coefficient due to sideslip(per radian)
@@ -1250,7 +1357,7 @@
                     </table>
                 </product>
             </function>
-            
+<!--
             <function name="aero/coefficient/Cnp">
                 <description>
                     Yaw moment coefficient due to roll rate(per radian)
@@ -1288,7 +1395,7 @@
                     </table>
                 </product>
             </function>
-            
+-->
             <function name="aero/coefficient/Cnr">
                 <description>
                     Yaw Moment coefficient due to yaw rate(per radian)
@@ -1325,7 +1432,7 @@
                     </table>
                 </product>
             </function>
-            
+
             <function name="aero/coefficient/CnDa">
                 <description>
                     AILERONS: Piper PA34-200T Seneca-II Aircraft                               
@@ -1361,13 +1468,13 @@
                     </table>
                 </product>
             </function>
-            
-            
+
+
             <!-- ******************************************************
                 CnDr is not calculated by DATCOM+, but a default value
                 is supplied.
                 ******************************************************-->
-            
+
             <function name="aero/coefficient/CnDr">
                 <description>
                     Yaw Coefficient due to rudder(DATCOM does not calculate)
@@ -1381,10 +1488,27 @@
                     <value>  -.6000E-01</value>
                 </product>
             </function>
-            
-            
-        </axis>        
+
+
+        </axis>
         <!-- ********************************************************************** -->
     </aerodynamics>
     <!-- ********************************************************************** -->
+<!-- - ->
+    <output name="SenecaII.csv" type="CSV" rate="5">
+        <simulation> OFF </simulation>
+        <atmosphere> OFF </atmosphere>
+        <massprops> OFF </massprops>
+        <rates> OFF </rates>
+        <velocities> OFF </velocities>
+        <forces> OFF </forces>
+        <moments> OFF </moments>
+        <position> OFF </position>
+        <propulsion> ON </propulsion>
+        <aerosurfaces> OFF </aerosurfaces>
+        <fcs> ON </fcs>
+        <ground_reactions> OFF </ground_reactions>
+        <coefficients> OFF </coefficients>
+    </output>
+<!- - -->
 </fdm_config>
