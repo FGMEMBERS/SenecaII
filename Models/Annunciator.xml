@@ -4,9 +4,34 @@
     
     <animation>
         <type>noshadow</type>
-        <object-name>Annunciator</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>Test</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property>/instrumentation/annunciator/test</property>
+            <value>1</value>
+          </binding>
+          <mod-up>
+            <binding>
+              <command>property-assign</command>
+              <property>/instrumentation/annunciator/test</property>
+              <value>0</value>
+            </binding>
+          </mod-up>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>Test</object-name>

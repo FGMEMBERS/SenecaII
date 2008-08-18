@@ -4,13 +4,30 @@
 
     <animation>
         <type>noshadow</type>
-        <object-name>cbpanel</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
 
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_0</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_0</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_0</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_0</property>
+        <property>controls/electric/circuitbreaker/cb_0_0</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -19,10 +36,23 @@
         </axis>
     </animation>
 
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_1</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_1</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_1</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_1</property>
+        <property>controls/electric/circuitbreaker/cb_0_1</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -32,9 +62,22 @@
     </animation>
 
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_2</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_2</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_2</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_2</property>
+        <property>controls/electric/circuitbreaker/cb_0_2</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -43,10 +86,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_3</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_3</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_3</object-name>3
-        <property>/controls/electric/circuitbreaker/cb_0_3</property>
+        <property>controls/electric/circuitbreaker/cb_0_3</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -55,10 +111,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_4</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_4</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_4</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_4</property>
+        <property>controls/electric/circuitbreaker/cb_0_4</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -67,10 +136,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_5</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_5</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_5</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_5</property>
+        <property>controls/electric/circuitbreaker/cb_0_5</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -79,10 +161,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_6</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_6</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_6</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_6</property>
+        <property>controls/electric/circuitbreaker/cb_0_6</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -91,10 +186,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_7</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_7</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_7</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_7</property>
+        <property>controls/electric/circuitbreaker/cb_0_7</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -103,10 +211,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_8</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_8</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_8</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_8</property>
+        <property>controls/electric/circuitbreaker/cb_0_8</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -115,10 +236,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_9</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_9</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_9</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_9</property>
+        <property>controls/electric/circuitbreaker/cb_0_9</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -127,10 +261,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_10</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_10</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_10</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_10</property>
+        <property>controls/electric/circuitbreaker/cb_0_10</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -139,10 +286,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_11</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_11</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_11</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_11</property>
+        <property>controls/electric/circuitbreaker/cb_0_11</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -151,10 +311,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_12</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_12</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_12</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_12</property>
+        <property>controls/electric/circuitbreaker/cb_0_12</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -163,10 +336,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_13</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_13</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_13</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_13</property>
+        <property>controls/electric/circuitbreaker/cb_0_13</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -175,10 +361,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_14</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_14</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_14</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_14</property>
+        <property>controls/electric/circuitbreaker/cb_0_14</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -188,9 +387,22 @@
     </animation>
     
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.0_15</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_0_15</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.0_15</object-name>
-        <property>/controls/electric/circuitbreaker/cb_0_15</property>
+        <property>controls/electric/circuitbreaker/cb_0_15</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -202,9 +414,22 @@
     <!-- center row -->
     
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_0</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_0</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_0</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_0</property>
+        <property>controls/electric/circuitbreaker/cb_1_0</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -213,10 +438,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_1</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_1</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_1</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_1</property>
+        <property>controls/electric/circuitbreaker/cb_1_1</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -225,10 +463,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_2</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_2</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_2</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_2</property>
+        <property>controls/electric/circuitbreaker/cb_1_2</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -238,9 +489,22 @@
     </animation>
     
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_3</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_3</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
-        <object-name>cbpanel.cb.1_3</object-name>3
-        <property>/controls/electric/circuitbreaker/cb_1_3</property>
+        <object-name>cbpanel.cb.1_3</object-name>
+        <property>controls/electric/circuitbreaker/cb_1_3</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -249,10 +513,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_4</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_4</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_4</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_4</property>
+        <property>controls/electric/circuitbreaker/cb_1_4</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -261,10 +538,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_5</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_5</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_5</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_5</property>
+        <property>controls/electric/circuitbreaker/cb_1_5</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -273,10 +563,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_6</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_6</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_6</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_6</property>
+        <property>controls/electric/circuitbreaker/cb_1_6</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -285,10 +588,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_7</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_7</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_7</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_7</property>
+        <property>controls/electric/circuitbreaker/cb_1_7</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -297,10 +613,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_8</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_8</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_8</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_8</property>
+        <property>controls/electric/circuitbreaker/cb_1_8</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -309,10 +638,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_9</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_9</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_9</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_9</property>
+        <property>controls/electric/circuitbreaker/cb_1_9</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -321,10 +663,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_10</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_10</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_10</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_10</property>
+        <property>controls/electric/circuitbreaker/cb_1_10</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -333,10 +688,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_11</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_11</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_11</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_11</property>
+        <property>controls/electric/circuitbreaker/cb_1_11</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -345,10 +713,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_12</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_12</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_12</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_12</property>
+        <property>controls/electric/circuitbreaker/cb_1_12</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -357,10 +738,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_13</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_13</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_13</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_13</property>
+        <property>controls/electric/circuitbreaker/cb_1_13</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -369,10 +763,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_14</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_14</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_14</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_14</property>
+        <property>controls/electric/circuitbreaker/cb_1_14</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -382,9 +789,22 @@
     </animation>
     
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.1_15</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_1_15</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.1_15</object-name>
-        <property>/controls/electric/circuitbreaker/cb_1_15</property>
+        <property>controls/electric/circuitbreaker/cb_1_15</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -395,9 +815,22 @@
     
     <!-- bottom row -->
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_0</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_0</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_0</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_0</property>
+        <property>controls/electric/circuitbreaker/cb_2_0</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -406,10 +839,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_1</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_1</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_1</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_1</property>
+        <property>controls/electric/circuitbreaker/cb_2_1</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -418,10 +864,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_2</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_2</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_2</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_2</property>
+        <property>controls/electric/circuitbreaker/cb_2_2</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -431,9 +890,22 @@
     </animation>
     
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_3</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_3</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
-        <object-name>cbpanel.cb.2_3</object-name>3
-        <property>/controls/electric/circuitbreaker/cb_2_3</property>
+        <object-name>cbpanel.cb.2_3</object-name>
+        <property>controls/electric/circuitbreaker/cb_2_3</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -442,10 +914,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_4</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_4</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_4</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_4</property>
+        <property>controls/electric/circuitbreaker/cb_2_4</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -454,10 +939,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_5</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_5</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_5</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_5</property>
+        <property>controls/electric/circuitbreaker/cb_2_5</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -466,10 +964,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_6</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_6</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_6</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_6</property>
+        <property>controls/electric/circuitbreaker/cb_2_6</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -478,10 +989,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_7</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_7</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_7</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_7</property>
+        <property>controls/electric/circuitbreaker/cb_2_7</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -490,10 +1014,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_8</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_8</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_8</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_8</property>
+        <property>controls/electric/circuitbreaker/cb_2_8</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -502,10 +1039,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_9</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_9</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_9</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_9</property>
+        <property>controls/electric/circuitbreaker/cb_2_9</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -514,10 +1064,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_10</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_10</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_10</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_10</property>
+        <property>controls/electric/circuitbreaker/cb_2_10</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -526,10 +1089,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_11</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_11</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_11</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_11</property>
+        <property>controls/electric/circuitbreaker/cb_2_11</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -538,10 +1114,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_12</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_12</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_12</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_12</property>
+        <property>controls/electric/circuitbreaker/cb_2_12</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -550,10 +1139,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_13</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_13</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_13</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_13</property>
+        <property>controls/electric/circuitbreaker/cb_2_13</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -562,10 +1164,23 @@
         </axis>
     </animation>
     
+    <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_14</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_14</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_14</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_14</property>
+        <property>controls/electric/circuitbreaker/cb_2_14</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>
@@ -575,9 +1190,22 @@
     </animation>
     
     <animation>
+        <type>pick</type>
+        <object-name>cbpanel.cb.2_15</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>controls/electric/circuitbreaker/cb_2_15</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>cbpanel.cb.2_15</object-name>
-        <property>/controls/electric/circuitbreaker/cb_2_15</property>
+        <property>controls/electric/circuitbreaker/cb_2_15</property>
         <factor>0.007</factor>
         <axis>
             <x>1.0</x>

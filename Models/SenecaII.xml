@@ -126,24 +126,6 @@
         </offsets>
     </model>
 
-    <panel>
-        <path>Aircraft/SenecaII/Models/CircuitbreakerPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.9099</x-m>
-            <y-m>0.28</y-m>
-            <z-m>1.23935</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.9099</x-m>
-            <y-m>0.58</y-m>
-            <z-m>1.23935</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.9099</x-m>
-            <y-m>0.28</y-m>
-            <z-m>1.32535</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Models/circuitbreaker.xml</path>
         <name>CBPanel</name>
@@ -1171,24 +1153,6 @@
             <z-m>1.57</z-m>
         </offsets>
     </model>
-    <panel>
-        <path>Aircraft/SenecaII/Models/AnnunciatorPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.274</y-m>
-            <z-m>1.5605</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.16</y-m>
-            <z-m>1.5605</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.274</y-m>
-            <z-m>1.5706</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Models/Annunciator.xml</path>
         <name>Annunciator</name>
