@@ -26,7 +26,17 @@
             <z-m>1.60978</z-m>
         </top-left>
     </panel>
-
+<!--
+    <model>
+        <path>Aircraft/SenecaII/Models/fire.xml</path>
+        <name>engineFire</name>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </offsets>
+    </model>
+-->
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel.xml</path>
         <name>SwitchPanel</name>
@@ -347,7 +357,7 @@
         <object-name>Windows</object-name>
         <condition>
             <not-equals>
-                <property>/sim/current-view/view-number</property>
+                <property>sim/current-view/view-number</property>
                 <value>0</value>
             </not-equals>
         </condition>
@@ -368,7 +378,7 @@
         <object-name>WindshieldDeice</object-name>
         <condition>
             <not>
-                <property>/sim/model/hide-windshield-deice</property>
+                <property>sim/model/hide-windshield-deice</property>
             </not>
         </condition>
     </animation>
@@ -388,11 +398,11 @@
         <condition>
             <or>
                 <not-equals>
-                    <property>/sim/current-view/view-number</property>
+                    <property>sim/current-view/view-number</property>
                     <value>0</value>
                 </not-equals>
                 <not>
-                    <property>/sim/model/hide-yoke</property>
+                    <property>sim/model/hide-yoke</property>
                 </not>
             </or>
         </condition>
@@ -401,7 +411,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Yoke.L</object-name>
-        <property>/controls/flight/aileron</property>
+        <property>controls/flight/aileron</property>
         <factor>90.0</factor>
         <axis>
             <x1-m>1</x1-m>
@@ -415,7 +425,7 @@
     <animation>
         <type>translate</type>
         <object-name>Yoke.L</object-name>
-        <property>/controls/flight/elevator</property>
+        <property>controls/flight/elevator</property>
         <factor>-0.10</factor>
         <axis>
             <x>1.0</x>
@@ -434,11 +444,11 @@
         <condition>
             <or>
                 <not-equals>
-                    <property>/sim/current-view/view-number</property>
+                    <property>sim/current-view/view-number</property>
                     <value>0</value>
                 </not-equals>
                 <not>
-                    <property>/sim/model/hide-yoke</property>
+                    <property>sim/model/hide-yoke</property>
                 </not>
             </or>
         </condition>
@@ -446,7 +456,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Yoke.R</object-name>
-        <property>/controls/flight/aileron</property>
+        <property>controls/flight/aileron</property>
         <factor>90.0</factor>
         <axis>
             <x1-m>1</x1-m>
@@ -460,7 +470,7 @@
     <animation>
         <type>translate</type>
         <object-name>Yoke.R</object-name>
-        <property>/controls/flight/elevator</property>
+        <property>controls/flight/elevator</property>
         <factor>-0.10</factor>
         <axis>
             <x>1.0</x>
@@ -477,7 +487,7 @@
     <animation>
         <type>rotate</type>
         <object-name>ThrottleControl.L</object-name>
-        <property>/controls/engines/engine[0]/throttle</property>
+        <property>controls/engines/engine[0]/throttle</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -491,7 +501,7 @@
     <animation>
         <type>rotate</type>
         <object-name>ThrottleControl.R</object-name>
-        <property>/controls/engines/engine[1]/throttle</property>
+        <property>controls/engines/engine[1]/throttle</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -505,7 +515,7 @@
     <animation>
         <type>rotate</type>
         <object-name>PropellerControl.L</object-name>
-        <property>/controls/engines/engine[0]/propeller-pitch</property>
+        <property>controls/engines/engine[0]/propeller-pitch</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -519,7 +529,7 @@
     <animation>
         <type>rotate</type>
         <object-name>PropellerControl.R</object-name>
-        <property>/controls/engines/engine[1]/propeller-pitch</property>
+        <property>controls/engines/engine[1]/propeller-pitch</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -533,7 +543,7 @@
     <animation>
         <type>rotate</type>
         <object-name>MixtureControl.L</object-name>
-        <property>/controls/engines/engine[0]/mixture</property>
+        <property>controls/engines/engine[0]/mixture</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -547,7 +557,7 @@
     <animation>
         <type>rotate</type>
         <object-name>MixtureControl.R</object-name>
-        <property>/controls/engines/engine[1]/mixture</property>
+        <property>controls/engines/engine[1]/mixture</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -561,7 +571,7 @@
     <animation>
         <type>rotate</type>
         <object-name>AlternateAirControl.L</object-name>
-        <property>/controls/engines/engine[0]/alternate-air</property>
+        <property>controls/engines/engine[0]/alternate-air</property>
         <factor>-45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -575,7 +585,7 @@
     <animation>
         <type>rotate</type>
         <object-name>AlternateAirControl.R</object-name>
-        <property>/controls/engines/engine[1]/alternate-air</property>
+        <property>controls/engines/engine[1]/alternate-air</property>
         <factor>-45.0</factor>
         <axis>
             <x1-m>-1.87609</x1-m>
@@ -589,7 +599,7 @@
     <animation>
         <type>rotate</type>
         <object-name>CowlFlapsControl.L</object-name>
-        <property>/controls/engines/engine[0]/cowl-flaps-norm</property>
+        <property>controls/engines/engine[0]/cowl-flaps-norm</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.90301</x1-m>
@@ -603,7 +613,7 @@
     <animation>
         <type>rotate</type>
         <object-name>CowlFlapsControl.R</object-name>
-        <property>/controls/engines/engine[1]/cowl-flaps-norm</property>
+        <property>controls/engines/engine[1]/cowl-flaps-norm</property>
         <factor>45.0</factor>
         <axis>
             <x1-m>-1.90301</x1-m>
@@ -665,7 +675,7 @@
     <animation>
         <type>rotate</type>
         <object-name>PanelLightsDimmer</object-name>
-        <property>/controls/lighting/instruments-norm</property>
+        <property>controls/lighting/instruments-norm</property>
         <factor>-112.5</factor>
         <axis>
             <x>0.0</x>
@@ -683,7 +693,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RadioLightsDimmer</object-name>
-        <property>/controls/lighting/radio-norm</property>
+        <property>controls/lighting/radio-norm</property>
         <factor>-112.5</factor>
         <axis>
             <x>0.0</x>
@@ -706,7 +716,7 @@
     <animation>
         <type>rotate</type>
         <object-name>FlapControl</object-name>
-        <property>/controls/flight/flaps</property>
+        <property>controls/flight/flaps</property>
         <factor>80</factor>
         <axis>
             <x>0.0</x>
@@ -719,6 +729,44 @@
             <z-m>0.907574</z-m>
         </center>
     </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>FlapControl</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>controls.flapsDown(1)</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>controls.flapsDown(0)</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>FlapControl</object-name>
+      <visible>true</visible>
+      <action>
+        <button>2</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>controls.flapsDown(-1)</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>controls.flapsDown(0)</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
 
     <animation>
         <type>noshadow</type>
@@ -727,7 +775,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RudderTrimControl</object-name>
-        <property>/controls/flight/rudder-trim</property>
+        <property>controls/flight/rudder-trim</property>
         <factor>360</factor>
         <axis>
             <x1-m>-1.36372</x1-m>
@@ -746,7 +794,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RudderTrimIndicator</object-name>
-        <property>/controls/flight/rudder-trim</property>
+        <property>controls/flight/rudder-trim</property>
         <factor>30</factor>
         <axis>
             <x1-m>-1.36372</x1-m>
@@ -765,7 +813,7 @@
     <animation>
         <type>rotate</type>
         <object-name>ElevatorTrimControl</object-name>
-        <property>/controls/flight/elevator-trim</property>
+        <property>controls/flight/elevator-trim</property>
         <factor>-360</factor>
         <axis>
             <x1-m>-1.45075</x1-m>
@@ -783,7 +831,7 @@
     <animation>
         <type>rotate</type>
         <object-name>ElevatorTrimIndicator</object-name>
-        <property>/controls/flight/elevator-trim</property>
+        <property>controls/flight/elevator-trim</property>
         <factor>-30</factor>
         <axis>
             <x1-m>-1.45075</x1-m>
@@ -821,7 +869,7 @@
     <animation>
         <type>translate</type>
         <object-name>FuelSelectorControl.L</object-name>
-        <property>/controls/fuel/tank[0]/fuel_selector-position</property>
+        <property>controls/fuel/tank[0]/fuel_selector-position</property>
         <factor>-0.0225</factor>
         <axis>
             <x>1.0</x>
@@ -837,7 +885,7 @@
     <animation>
         <type>translate</type>
         <object-name>FuelSelectorControl.R</object-name>
-        <property>/controls/fuel/tank[1]/fuel_selector-position</property>
+        <property>controls/fuel/tank[1]/fuel_selector-position</property>
         <factor>-0.0225</factor>
         <axis>
             <x>1.0</x>
@@ -855,7 +903,7 @@
     <animation>
         <type>rotate</type>
         <object-name>GearLever</object-name>
-        <property>/controls/gear/gear-down</property>
+        <property>controls/gear/gear-down</property>
         <factor>60</factor>
         <axis>
             <x>0</x>
@@ -868,6 +916,19 @@
             <z-m>1.24928</z-m>
         </center>
     </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>GearLever</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/gear/gear-down</property>
+        </binding>
+      </action>
+    </animation>
 
     <animation>
         <type>noshadow</type>
@@ -878,36 +939,39 @@
         <type>select</type>
         <object-name>GearLight.Nose.Cover.On</object-name>
         <condition>
-            <equals>
-                <property>/gear/gear[0]/position-norm</property>
-                <value>1.0</value>
-            </equals>
+            <property>gear/gear[0]/indicator-servicable</property>
+            <greater-than>
+                <property>gear/gear[0]/position-norm</property>
+                <value>0.9</value>
+            </greater-than>
         </condition>
     </animation>
     <animation>
         <type>select</type>
         <object-name>GearLight.Left.Cover.On</object-name>
         <condition>
-            <equals>
-                <property>/gear/gear[1]/position-norm</property>
-                <value>1.0</value>
-            </equals>
+            <property>gear/gear[1]/indicator-servicable</property>
+            <greater-than>
+                <property>gear/gear[1]/position-norm</property>
+                <value>0.9</value>
+            </greater-than>
         </condition>
     </animation>
     <animation>
         <type>select</type>
         <object-name>GearLight.Right.Cover.On</object-name>
         <condition>
-            <equals>
-                <property>/gear/gear[2]/position-norm</property>
-                <value>1.0</value>
-            </equals>
+            <property>gear/gear[2]/indicator-servicable</property>
+            <greater-than>
+                <property>gear/gear[2]/position-norm</property>
+                <value>0.9</value>
+            </greater-than>
         </condition>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>ParkingBrakeControl</object-name>
-        <property>/controls/gear/brake-parking</property>
+        <property>controls/gear/brake-parking</property>
         <factor>-80</factor>
         <axis>
             <x>0</x>
@@ -919,6 +983,19 @@
             <y-m>-0.114674</y-m>
             <z-m>1.20868</z-m>
         </center>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>ParkingBrakeControl</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/gear/brake-parking</property>
+        </binding>
+      </action>
     </animation>
     <!-- Instruments -->
     <!-- top row -->
@@ -1229,7 +1306,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Stabilizer</object-name>
-        <property>/surface-positions/elevator-pos-norm</property>
+        <property>surface-positions/elevator-pos-norm</property>
         <factor>22.5</factor>
         <axis>
             <x1-m>3.56</x1-m>
@@ -1243,7 +1320,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Rudder</object-name>
-        <property>/surface-positions/rudder-pos-norm</property>
+        <property>surface-positions/rudder-pos-norm</property>
         <factor>25</factor>
         <axis>
             <x1-m>3.55</x1-m>
@@ -1257,7 +1334,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftFlap</object-name>
-        <property>/surface-positions/flap-pos-norm</property>
+        <property>surface-positions/flap-pos-norm</property>
         <factor>40</factor>
         <axis>
             <x1-m>-0.18</x1-m>
@@ -1271,7 +1348,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightFlap</object-name>
-        <property>/surface-positions/flap-pos-norm</property>
+        <property>surface-positions/flap-pos-norm</property>
         <factor>-40</factor>
         <axis>
             <x1-m>-0.18</x1-m>
@@ -1285,7 +1362,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftAileron</object-name>
-        <property>/surface-positions/left-aileron-pos-norm</property>
+        <property>surface-positions/left-aileron-pos-norm</property>
         <factor>20</factor>
         <axis>
             <x1-m>-0.18</x1-m>
@@ -1299,7 +1376,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightAileron</object-name>
-        <property>/surface-positions/right-aileron-pos-norm</property>
+        <property>surface-positions/right-aileron-pos-norm</property>
         <factor>20</factor>
         <axis>
             <x1-m>-0.18</x1-m>
@@ -1319,7 +1396,7 @@
     <animation>
         <type>rotate</type>
         <object-name>TaxiLandingLight</object-name>
-        <property>/gear/gear[0]/position-norm</property>
+        <property>gear/gear[0]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1343,7 +1420,7 @@
     <animation>
         <type>rotate</type>
         <object-name>GearNose</object-name>
-        <property>/gear/gear[0]/position-norm</property>
+        <property>gear/gear[0]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1366,7 +1443,7 @@
     <animation>
         <type>rotate</type>
         <object-name>GearNose</object-name>
-        <property>/surface-positions/rudder-pos-norm</property>
+        <property>surface-positions/rudder-pos-norm</property>
         <factor>-30</factor>
         <axis>
             <x1-m>-2.97</x1-m>
@@ -1380,7 +1457,7 @@
     <animation>
         <type>translate</type>
         <object-name>GearNose</object-name>
-        <property>/gear/gear[0]/compression-norm</property>
+        <property>gear/gear[0]/compression-norm</property>
         <factor>0.209</factor>
         <axis>
             <x>0.0</x>
@@ -1393,7 +1470,7 @@
     <animation>
         <type>rotate</type>
         <object-name>NLG</object-name>
-        <property>/gear/gear[0]/position-norm</property>
+        <property>gear/gear[0]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1417,7 +1494,7 @@
     <animation>
         <type>rotate</type>
         <object-name>NLG</object-name>
-        <property>/surface-positions/rudder-pos-norm</property>
+        <property>surface-positions/rudder-pos-norm</property>
         <factor>-30</factor>
         <axis>
             <x1-m>-2.97</x1-m>
@@ -1433,7 +1510,7 @@
         <type>translate</type>
         <object-name>NLG_B</object-name>
         <object-name>NLG_C</object-name>
-        <property>/gear/gear[0]/compression-norm</property>
+        <property>gear/gear[0]/compression-norm</property>
         <factor>0.1653</factor>
         <axis>
             <x>2.5</x>
@@ -1446,7 +1523,7 @@
     <animation>
         <type>rotate</type>
         <object-name>NLG_D</object-name>
-        <property>/controls/gear/NLG_D_deg</property>
+        <property>controls/gear/NLG_D_deg</property>
         <factor>1</factor>
         <center>
             <x-m>-2.839</x-m>
@@ -1463,7 +1540,7 @@
     <animation>
         <type>rotate</type>
         <object-name>NLG_C</object-name>
-        <property>/controls/gear/NLG_C_deg</property>
+        <property>controls/gear/NLG_C_deg</property>
         <factor>1</factor>
         <center>
             <x-m>-2.874</x-m>
@@ -1481,7 +1558,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftNosegearCover</object-name>
-        <property>/gear/gear[0]/position-norm</property>
+        <property>gear/gear[0]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -1505,7 +1582,7 @@
     <animation>
         <type>spin</type>
         <object-name>NLG_Wheel</object-name>
-        <property>/fdm/jsbsim/velocities/vg-fps</property>
+        <property>fdm/jsbsim/velocities/vg-fps</property>
         <factor>-13.8</factor>
         <axis>
             <x>0</x>
@@ -1522,7 +1599,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightNosegearCover</object-name>
-        <property>/gear/gear[0]/position-norm</property>
+        <property>gear/gear[0]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -1546,7 +1623,7 @@
     <animation>
         <type>rotate</type>
         <object-name>GearLeft</object-name>
-        <property>/gear/gear[1]/position-norm</property>
+        <property>gear/gear[1]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1572,7 +1649,7 @@
         <object-name>GearLeft.Axle</object-name>
         <object-name>GearLeft.Wheel</object-name>
         <object-name>GearLeft.Piston</object-name>
-        <property>/gear/gear[1]/compression-norm</property>
+        <property>gear/gear[1]/compression-norm</property>
         <factor>0.17</factor>
         <axis>
             <x>0.0</x>
@@ -1584,7 +1661,7 @@
     <animation>
         <type>spin</type>
         <object-name>GearLeft.Wheel</object-name>
-        <property>/fdm/jsbsim/velocities/vg-fps</property>
+        <property>fdm/jsbsim/velocities/vg-fps</property>
         <factor>-13.8</factor>
         <axis>
             <x>0</x>
@@ -1601,7 +1678,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftMainGearCover</object-name>
-        <property>/gear/gear[1]/position-norm</property>
+        <property>gear/gear[1]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1625,7 +1702,7 @@
     <animation>
         <type>rotate</type>
         <object-name>GearRight</object-name>
-        <property>/gear/gear[2]/position-norm</property>
+        <property>gear/gear[2]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1651,7 +1728,7 @@
         <object-name>GearRight.Axle</object-name>
         <object-name>GearRight.Wheel</object-name>
         <object-name>GearRight.Piston</object-name>
-        <property>/gear/gear[2]/compression-norm</property>
+        <property>gear/gear[2]/compression-norm</property>
         <factor>0.17</factor>
         <axis>
             <x>0.0</x>
@@ -1662,7 +1739,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightMainGearCover</object-name>
-        <property>/gear/gear[2]/position-norm</property>
+        <property>gear/gear[2]/position-norm</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1686,7 +1763,7 @@
     <animation>
         <type>spin</type>
         <object-name>GearRight.Wheel</object-name>
-        <property>/fdm/jsbsim/velocities/vg-fps</property>
+        <property>fdm/jsbsim/velocities/vg-fps</property>
         <factor>-13.8</factor>
         <axis>
             <x>0</x>
@@ -1704,7 +1781,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftCowlFlap</object-name>
-        <property>/surface-positions/speedbrake-pos-norm</property>
+        <property>surface-positions/speedbrake-pos-norm</property>
         <factor>10</factor>
         <axis>
             <x1-m>-1.26</x1-m>
@@ -1719,7 +1796,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightCowlFlap</object-name>
-        <property>/surface-positions/speedbrake-pos-norm</property>
+        <property>surface-positions/speedbrake-pos-norm</property>
         <factor>-10</factor>
         <axis>
             <x1-m>-1.26</x1-m>
@@ -1735,7 +1812,7 @@
         <type>rotate</type>
         <object-name>CowlFlapsControl.L</object-name>
         <object-name>CowlFlapsControl.R</object-name>
-        <property>/surface-positions/speedbrake-pos-norm</property>
+        <property>surface-positions/speedbrake-pos-norm</property>
         <factor>45</factor>
         <offset-deg>-45</offset-deg>
         <axis>
@@ -1748,6 +1825,34 @@
             <y-m>0</y-m>
             <z-m>1.01161</z-m>
         </center>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>CowlFlapsControl.L</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/flight/speedbrake</property>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>CowlFlapsControl.R</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/flight/speedbrake</property>
+        </binding>
+      </action>
     </animation>
 
     <!-- Left Propeller -->
@@ -1771,7 +1876,7 @@
         <object-name>LeftPropDisc</object-name>
         <condition>
             <greater-than>
-                <property>/engines/engine[0]/rpm</property>
+                <property>engines/engine[0]/rpm</property>
                 <value>350</value>
             </greater-than>
         </condition>
@@ -1779,7 +1884,7 @@
     <animation>
         <type>spin</type>
         <object-name>LeftPropDisc</object-name>
-        <property>/engines/engine[0]/rpm</property>
+        <property>engines/engine[0]/rpm</property>
         <factor>1</factor>
         <axis>
             <x>1</x>
@@ -1799,7 +1904,7 @@
     <animation>
         <type>spin</type>
         <object-name>LeftPropeller</object-name>
-        <property>/engines/engine[0]/rpm</property>
+        <property>engines/engine[0]/rpm</property>
         <factor>1</factor>
         <axis>
             <x>1</x>
@@ -1817,7 +1922,7 @@
         <object-name>LeftPropeller</object-name>
         <condition>
             <less-than>
-                <property>/engines/engine[0]/rpm</property>
+                <property>engines/engine[0]/rpm</property>
                 <value>400</value>
             </less-than>
         </condition>
@@ -1825,7 +1930,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftPropeller.1</object-name>
-        <property>/engines/engine[0]/thruster/pitch</property>
+        <property>engines/engine[0]/thruster/pitch</property>
         <offset-deg>-10</offset-deg>
         <axis>
             <x1-m>-2.76321</x1-m>
@@ -1839,7 +1944,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftPropeller.2</object-name>
-        <property>/engines/engine[0]/thruster/pitch</property>
+        <property>engines/engine[0]/thruster/pitch</property>
         <offset-deg>-10</offset-deg>
         <axis>
             <x1-m>-2.76321</x1-m>
@@ -1872,7 +1977,7 @@
         <object-name>RightPropDisc</object-name>
         <condition>
             <greater-than>
-                <property>/engines/engine[1]/rpm</property>
+                <property>engines/engine[1]/rpm</property>
                 <value>350</value>
             </greater-than>
         </condition>
@@ -1880,7 +1985,7 @@
     <animation>
         <type>spin</type>
         <object-name>RightPropDisc</object-name>
-        <property>/engines/engine[1]/rpm</property>
+        <property>engines/engine[1]/rpm</property>
         <factor>-1</factor>
         <axis>
             <x>1</x>
@@ -1902,7 +2007,7 @@
         <object-name>RightPropeller</object-name>
         <condition>
             <less-than>
-                <property>/engines/engine[1]/rpm</property>
+                <property>engines/engine[1]/rpm</property>
                 <value>400</value>
             </less-than>
         </condition>
@@ -1910,7 +2015,7 @@
     <animation>
         <type>spin</type>
         <object-name>RightPropeller</object-name>
-        <property>/engines/engine[1]/rpm</property>
+        <property>engines/engine[1]/rpm</property>
         <factor>-1</factor>
         <axis>
             <x>1</x>
@@ -1926,7 +2031,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightPropeller.1</object-name>
-        <property>/engines/engine[1]/thruster/pitch</property>
+        <property>engines/engine[1]/thruster/pitch</property>
         <offset-deg>-10</offset-deg>
         <axis>
             <x1-m>-2.76334</x1-m>
@@ -1940,7 +2045,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightPropeller.2</object-name>
-        <property>/engines/engine[1]/thruster/pitch</property>
+        <property>engines/engine[1]/thruster/pitch</property>
         <offset-deg>-10</offset-deg>
         <axis>
             <x1-m>-2.76334</x1-m>
@@ -1960,7 +2065,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Compass.Ring</object-name>
-        <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+        <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
         <axis>
             <x>0.0</x>
             <y>0.0</y>
@@ -1987,7 +2092,7 @@
     <animation>
         <type>rotate</type>
         <object-name>PaxDoor</object-name>
-        <property>/sim/model/door-positions/pax-door/position-norm</property>
+        <property>sim/model/door-positions/pax-door/position-norm</property>
         <factor>-70</factor>
         <axis>
             <x1-m>-0.275292</x1-m>
@@ -2002,7 +2107,7 @@
     <animation>
         <type>rotate</type>
         <object-name>BaggageDoor</object-name>
-        <property>/sim/model/door-positions/baggage-door/position-norm</property>
+        <property>sim/model/door-positions/baggage-door/position-norm</property>
         <factor>-170</factor>
         <axis>
             <x1-m>0.586459</x1-m>
@@ -2017,7 +2122,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightDoor</object-name>
-        <property>/sim/model/door-positions/right-door/position-norm</property>
+        <property>sim/model/door-positions/right-door/position-norm</property>
         <factor>-55</factor>
         <axis>
             <x1-m>-1.73429</x1-m>
@@ -2091,7 +2196,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Overhead.CockpitLightSwitch</object-name>
-        <property>/controls/lighting/panel-norm</property>
+        <property>controls/lighting/panel-norm</property>
         <factor>-40.0</factor>
         <axis>
             <x1-m>-1.20476</x1-m>
@@ -2102,6 +2207,48 @@
             <z2-m>1.94148</z2-m>
         </axis>
     </animation>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>EmergencyExtend</object-name>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>GearEmergencyKnob</object-name>
+        <property>controls/gear/gear-emergency-extend</property>
+        <factor>0.02</factor>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>GearEmergencySecure</object-name>
+        <property>controls/gear/gear-emergency-extend-unlock</property>
+        <factor>80.0</factor>
+        <axis>
+            <x1-m>-1.90973</x1-m>
+            <y1-m>-0.100783</y1-m>
+            <z1-m>1.22169</z1-m>
+            <x2-m>-1.90973</x2-m>
+            <y2-m>-0.0770258</y2-m>
+            <z2-m>1.22169</z2-m>
+        </axis>
+    </animation>
+<!--
+    <model>
+        <path>Aircraft/SenecaII/Models/Beam.xml</path>
+        <offsets>
+            <x-m>-2.93</x-m>
+            <y-m>0</y-m>
+            <z-m>0.809</z-m>
+        </offsets>
+    </model>
+-->
 
     <!-- LOD for specific objects -->
     <!--
