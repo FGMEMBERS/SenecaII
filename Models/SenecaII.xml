@@ -51,25 +51,6 @@
         </offsets>
     </model>
 
-    <!-- Deice Controlpanel -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/DeiceControlPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.099</y-m>
-            <z-m>1.3275</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>0.051</y-m>
-            <z-m>1.3275</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.099</y-m>
-            <z-m>1.3925</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/DeiceControl.xml</path>
         <name>DeiceControl</name>

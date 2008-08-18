@@ -28,6 +28,27 @@
     </animation>
     
     <animation>
+        <type>pick</type>
+        <object-name>DeiceControl.SurfaceSwitch</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property>/controls/deice/surface-deice</property>
+            <value>1</value>
+          </binding>
+          <mod-up>
+            <binding>
+              <command>property-assign</command>
+              <property>/controls/deice/surface-deice</property>
+              <value>0</value>
+            </binding>
+          </mod-up>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>DeiceControl.SurfaceSwitch</object-name>
         <property>/controls/deice/surface-deice</property>
@@ -42,6 +63,20 @@
             <y-m>0</y-m>
             <z-m>-0.00498202</z-m>
         </center>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>DeiceControl.PropSwitch</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/deice/prop-deice</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -59,6 +94,20 @@
             <z-m>-0.00498202</z-m>
         </center>
     </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>DeiceControl.WindshieldSwitch</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/deice/windshield-deice</property>
+          </binding>
+        </action>
+    </animation>
     <animation>
         <type>rotate</type>
         <object-name>DeiceControl.WindshieldSwitch</object-name>
@@ -74,6 +123,20 @@
             <y-m>0</y-m>
             <z-m>-0.00498202</z-m>
         </center>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>DeiceControl.WingLightSwitch</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/deice/wingice-light</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -110,6 +173,10 @@
     </animation>
     <animation>
         <type>noshadow</type>
-        <object-name>DeiceControl</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
 </PropertyList>
