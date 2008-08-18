@@ -27,61 +27,6 @@
         </top-left>
     </panel>
 
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel1.xml</path>
-        <bottom-left>
-            <x-m>-1.554374</x-m>
-            <y-m>-0.55917</y-m>
-            <z-m>1.32001</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.772686</x-m>
-            <y-m>-0.55917</y-m>
-            <z-m>1.32001</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.554374</x-m>
-            <y-m>-0.59315</y-m>
-            <z-m>1.35515</z-m>
-        </top-left>
-    </panel>
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel2.xml</path>
-        <bottom-left>
-            <x-m>-1.554374</x-m>
-            <y-m>-0.55917</y-m>
-            <z-m>1.270011</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.772686</x-m>
-            <y-m>-0.55917</y-m>
-            <z-m>1.270011</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.554374</x-m>
-            <y-m>-0.59315</y-m>
-            <z-m>1.3051452</z-m>
-        </top-left>
-    </panel>
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel3.xml</path>
-        <bottom-left>
-            <x-m>-1.554374</x-m>
-            <y-m>-0.55917</y-m>
-            <z-m>1.2200109</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.6748207</x-m>
-            <y-m>-0.55917</y-m>
-            <z-m>1.2200109</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.554374</x-m>
-            <y-m>-0.59315</y-m>
-            <z-m>1.2551452</z-m>
-        </top-left>
-    </panel>
-
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel.xml</path>
         <name>SwitchPanel</name>

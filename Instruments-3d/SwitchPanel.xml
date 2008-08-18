@@ -5,7 +5,11 @@
     
     <animation>
         <type>noshadow</type>
-        <object-name>SwitchPanel</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
     
     <animation>
@@ -52,6 +56,19 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>Magneto.L.L</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/engines/engine[0]/magneto[0]</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>Magneto.L.R</object-name>
         <property>/controls/engines/engine[0]/magneto[1]</property>
@@ -68,6 +85,19 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>Magneto.L.R</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/engines/engine[0]/magneto[1]</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>Magneto.R.L</object-name>
         <property>/controls/engines/engine[1]/magneto[0]</property>
@@ -80,6 +110,19 @@
             <y2-m>0.0257256</y2-m>
             <z2-m>0.0509521</z2-m>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>Magneto.R.L</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/engines/engine[1]/magneto[0]</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -96,6 +139,19 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>Magneto.R.R</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/engines/engine[1]/magneto[1]</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>Starter</object-name>
         <property>/controls/engines/engine[0]/starter</property>
@@ -108,6 +164,48 @@
             <y2-m>-0.0243243</y2-m>
             <z2-m>0.0561997</z2-m>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>Starter.L</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property>/controls/engines/engine[0]/starter</property>
+            <value type="bool">1</value>
+          </binding>
+          <mod-up>
+            <binding>
+              <command>property-assign</command>
+              <property>/controls/engines/engine[0]/starter</property>
+              <value type="bool">0</value>
+            </binding>
+          </mod-up>
+        </action>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>Starter.R</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property>/controls/engines/engine[1]/starter</property>
+            <value type="bool">1</value>
+          </binding>
+          <mod-up>
+            <binding>
+              <command>property-assign</command>
+              <property>/controls/engines/engine[1]/starter</property>
+              <value type="bool">0</value>
+            </binding>
+          </mod-up>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -124,6 +222,27 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>Primer.L</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property>/controls/engines/engine[0]/primer</property>
+            <value type="bool">1</value>
+          </binding>
+          <mod-up>
+            <binding>
+              <command>property-assign</command>
+              <property>/controls/engines/engine[0]/primer</property>
+              <value type="bool">0</value>
+            </binding>
+          </mod-up>
+        </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>Primer.L</object-name>
         <property>/controls/engines/engine[0]/primer</property>
@@ -133,6 +252,27 @@
             <y>-0.0137498</y>
             <z>-0.0127771</z>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>Primer.R</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property>/controls/engines/engine[1]/primer</property>
+            <value type="bool">1</value>
+          </binding>
+          <mod-up>
+            <binding>
+              <command>property-assign</command>
+              <property>/controls/engines/engine[1]/primer</property>
+              <value type="bool">0</value>
+            </binding>
+          </mod-up>
+        </action>
     </animation>
     <animation>
         <type>translate</type>
@@ -147,6 +287,19 @@
     </animation>
     <!-- Center Row -->
     <animation>
+        <type>pick</type>
+        <object-name>LandingLight</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/lighting/landing-lights</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>LandingLight</object-name>
         <property>/controls/lighting/landing-lights</property>
@@ -159,6 +312,19 @@
             <y2-m>0.0257256</y2-m>
             <z2-m>0.00112367</z2-m>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>TaxiLight</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/lighting/taxi-light</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -175,6 +341,19 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>NavLight</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/lighting/nav-lights</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>NavLight</object-name>
         <property>/controls/lighting/nav-lights</property>
@@ -187,6 +366,19 @@
             <y2-m>0.0257256</y2-m>
             <z2-m>0.00112367</z2-m>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>AntiCollLight.Fin</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/lighting/beacon</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -203,6 +395,19 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>AntiCollLight.Wing</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/lighting/strobe</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>AntiCollLight.Wing</object-name>
         <property>/controls/lighting/strobe</property>
@@ -215,6 +420,19 @@
             <y2-m>0.0257256</y2-m>
             <z2-m>0.00112367</z2-m>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>PitotHeat</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/anti-ice/pitot-heat</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -231,6 +449,19 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>FuelPump.L</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/engines/engine[0]/fuel-pump</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>FuelPump.L</object-name>
         <property>/controls/engines/engine[0]/fuel-pump</property>
@@ -243,6 +474,19 @@
             <y2-m>0.0257256</y2-m>
             <z2-m>0.00112367</z2-m>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>FuelPump.R</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/engines/engine[1]/fuel-pump</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
@@ -260,6 +504,19 @@
     </animation>
     <!-- bottom row -->
     <animation>
+        <type>pick</type>
+        <object-name>Master</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/electric/battery-switch</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>Master</object-name>
         <property>/controls/electric/battery-switch</property>
@@ -274,6 +531,19 @@
         </axis>
     </animation>
     <animation>
+        <type>pick</type>
+        <object-name>Alternator.L</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/electric/engine[0]/generator</property>
+          </binding>
+        </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>Alternator.L</object-name>
         <property>/controls/electric/engine[0]/generator</property>
@@ -286,6 +556,19 @@
             <y2-m>0.0323168</y2-m>
             <z2-m>-0.0516043</z2-m>
         </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>Alternator.R</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>/controls/electric/engine[1]/generator</property>
+          </binding>
+        </action>
     </animation>
     <animation>
         <type>rotate</type>
