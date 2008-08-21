@@ -12,17 +12,17 @@
         <type>material</type>
         <object-name>FuelFlow</object-name>
         <emission>
-            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+            <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>controls/lighting/instruments-norm</factor-prop>
         </emission>
     </animation>
     
     <animation>
         <type>rotate</type>
         <object-name>Left</object-name>
-        <property>/engines/engine[0]/fuel-flow-gph</property>
+        <property>engines/engine[0]/fuel-flow-gph</property>
         <factor>-10.4</factor>
         <center>
             <x-m>0.0</x-m>
@@ -38,12 +38,20 @@
     <animation>
         <type>rotate</type>
         <object-name>Right</object-name>
-        <property>/engines/engine[1]/fuel-flow-gph</property>
+        <property>engines/engine[1]/fuel-flow-gph</property>
         <factor>-10.4</factor>
         <axis>
             <x>1</x>
             <y>0</y>
             <z>0</z>
         </axis>
+    </animation>
+    <animation>
+        <type>noshadow</type>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
 </PropertyList>
