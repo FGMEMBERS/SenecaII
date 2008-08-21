@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<!--
+  $Id$
+  Garmin gtx330 3d model
+   Texture image is (c) Garmin (www.garmin.com)
+    
+   Maintainer: Torsten Dreyer ( Torsten at t3r dot de)
+    
+  $Log$
+  Revision 1.1  2008/08/21 11:15:47  torsten
+  Added gps155 and gtx330 - nonfunctional
+
+-->
+<PropertyList>
+  <path>gtx330.ac</path>
+
+  <animation>
+    <type>noshadow</type>
+  </animation>
+  <animation>
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-m>10</max-m>
+  </animation>
+<!--
+  <animation>
+    <type>material</type>
+    <object-name>gma340.Chassis</object-name>
+
+    <emission>
+      <red>0.05</red>
+      <green>0.1.</green>
+      <blue>0.05</blue>
+      <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+    </emission>
+  </animation>
+-->
+</PropertyList>
