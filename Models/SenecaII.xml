@@ -163,24 +163,6 @@
     <!--
         KX165 Comm/Nav 1
     -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/kx165Panel.xml</path>
-        <bottom-left>
-            <x-m>-1.896</x-m>
-            <y-m>-0.129</y-m>
-            <z-m>1.51</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.896</x-m>
-            <y-m>0.029</y-m>
-            <z-m>1.51</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.896</x-m>
-            <y-m>-0.129</y-m>
-            <z-m>1.56</z-m>
-        </top-left>
-    </panel>
     <model>
         <name>kx165tso1</name>
         <path>Aircraft/SenecaII/Instruments-3d/kx165tso1.xml</path>
@@ -193,24 +175,6 @@
     <!--
         KX165 Comm/Nav 2
     -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/kx165-2Panel.xml</path>
-        <bottom-left>
-            <x-m>-1.896</x-m>
-            <y-m>-0.129</y-m>
-            <z-m>1.455</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.896</x-m>
-            <y-m>0.029</y-m>
-            <z-m>1.455</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.896</x-m>
-            <y-m>-0.129</y-m>
-            <z-m>1.505</z-m>
-        </top-left>
-    </panel>
     <model>
         <name>kx165tso2</name>
         <path>Aircraft/SenecaII/Instruments-3d/kx165tso2.xml</path>

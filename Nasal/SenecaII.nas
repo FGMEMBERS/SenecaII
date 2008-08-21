@@ -232,7 +232,6 @@ SlavedGyro.new = func {
   obj.offsetNode = obj.hiNode.getNode( "offset-deg", 1 );
 
   obj.modeNode = obj.hiNode.getNode( "mode-auto", 1 );
-  obj.modeNode.setBoolValue( 0 );
 
   obj.rotateNode = obj.hiNode.getNode( "rotate", 1 );
   obj.rotateNode.setIntValue( 0 );
@@ -496,3 +495,30 @@ setlistener( normalGearNode, func {
     fcsGearNode.setBoolValue( 0 );
   }
 });
+
+var MHz2kHz = {};
+MHz2kHz.new = func(MHz,kHz) {
+  var obj = {};
+  obj.parents = [MHz2kHz];
+  obj.MHzN = props.globals.getNode( MHz, 1 );
+  obj.kHzN = props.globals.getNode( kHz, 1 );
+  setlistener( MHz, func { obj.listener() }, 1, 0 );
+}
+
+MHz2kHz.listener = func {
+  var val = me.MHzN.getValue();
+  if( val == nil ) {
+    val = 0.0;
+  }
+  
+  me.kHzN.setIntValue( ((val * 10000)+5)/10 );
+}
+
+MHz2kHz.new("instrumentation/comm[0]/frequencies/selected-mhz", "instrumentation/comm[0]/frequencies/selected-khz" );
+MHz2kHz.new("instrumentation/comm[0]/frequencies/standby-mhz", "instrumentation/comm[0]/frequencies/standby-khz" );
+MHz2kHz.new("instrumentation/comm[1]/frequencies/selected-mhz", "instrumentation/comm[1]/frequencies/selected-khz" );
+MHz2kHz.new("instrumentation/comm[1]/frequencies/standby-mhz", "instrumentation/comm[1]/frequencies/standby-khz" );
+MHz2kHz.new("instrumentation/nav[0]/frequencies/selected-mhz", "instrumentation/nav[0]/frequencies/selected-khz" );
+MHz2kHz.new("instrumentation/nav[0]/frequencies/standby-mhz", "instrumentation/nav[0]/frequencies/standby-khz" );
+MHz2kHz.new("instrumentation/nav[1]/frequencies/selected-mhz", "instrumentation/nav[1]/frequencies/selected-khz" );
+MHz2kHz.new("instrumentation/nav[1]/frequencies/standby-mhz", "instrumentation/nav[1]/frequencies/standby-khz" );
