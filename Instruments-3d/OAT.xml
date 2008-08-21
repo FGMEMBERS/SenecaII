@@ -4,13 +4,17 @@
 
     <animation>
         <type>noshadow</type>
-        <object-name>oat</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
     
     <animation>
         <type>rotate</type>
         <object-name>Needle</object-name>
-        <property>/environment/temperature-degc</property>
+        <property>environment/temperature-degc</property>
         <factor>-2.7</factor>
         <center>
             <x>0</x>
@@ -27,7 +31,7 @@
     <animation>
         <type>scale</type>
         <object-name>Ice</object-name>
-        <property>/fdm/jsbsim/ice/fuselage</property>
+        <property>fdm/jsbsim/ice/fuselage</property>
         <x-factor>0</x-factor>
         <x-offset>1.0</x-offset>
         <y-factor>0</y-factor>
