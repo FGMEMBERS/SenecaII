@@ -3,13 +3,46 @@
     <path>Pedals.ac</path>
     <animation>
         <type>noshadow</type>
-        <object-name>Pedals</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
     
     <animation>
+      <type>pick</type>
+      <object-name>Pedal.L</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/rudder</property>
+          <step>-0.05</step>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>Pedal.R</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/rudder</property>
+          <step>0.05</step>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
         <type>translate</type>
         <object-name>Pedal.L</object-name>
-        <object-name>Tubes.L</object-name>
         <property>controls/flight/rudder</property>
         <factor>0.06</factor>
         <axis>
@@ -18,6 +51,24 @@
             <z>0.0</z>
         </axis>
     </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>Tubes.L</object-name>
+        <property>controls/flight/rudder</property>
+        <factor>-11</factor>
+        <axis>
+            <x>0</x>
+            <y>1.0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.0595727</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.199098</z-m>
+        </center>
+    </animation>
+
     <animation>
         <type>rotate</type>
         <object-name>Pedal.L</object-name>
@@ -34,10 +85,10 @@
             <z-m>-0.0965262</z-m>
         </center>
     </animation>
+
     <animation>
         <type>translate</type>
         <object-name>Pedal.R</object-name>
-        <object-name>Tubes.R</object-name>
         <property>controls/flight/rudder</property>
         <factor>-0.06</factor>
         <axis>
@@ -46,6 +97,24 @@
             <z>0.0</z>
         </axis>
     </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>Tubes.R</object-name>
+        <property>controls/flight/rudder</property>
+        <factor>11</factor>
+        <axis>
+            <x>0</x>
+            <y>1.0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.0595727</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.199098</z-m>
+        </center>
+    </animation>
+
     <animation>
         <type>rotate</type>
         <object-name>Pedal.R</object-name>
