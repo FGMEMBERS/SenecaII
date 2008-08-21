@@ -1,38 +1,18 @@
 <?xml version="1.0" ?>
 <!--
-    $Id$
     This is the ki266 3d instrument.
     Modeled after King KI266 DME Indicator
     To function properly, dme.nas has to be included in the aircraft-set.xml
     Maintainer: Torsten Dreyer
-    
-    $Log$
-    Revision 1.2  2006/11/23 14:27:02  mfranz
-    Torsten DREYER:
-
-    """
-    - Added instruments lights for night flights
-    - Addes flashing strobe effect in clouds at night
-    - OBS knob on vor2 clickable
-    - subscale knob on altimeter clickable
-    - changes on aircraft 3d-model
-    - Fixed bug in HSI, wrong deflection of glideslope indicator and
-      transparency issue
-    - Added Roberto Inzerillo's nice nose gear and animations, new main gear
-    """
-
-    Revision 1.1  2006-06-01 12:58:33  mfranz
-    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
-
 -->
 <PropertyList>
     <params>
-        <in-range>/instrumentation/dme[0]/in-range</in-range>
-        <right-display>/instrumentation/dme[0]/min-kts-display</right-display>
-        <left-display>/instrumentation/dme[0]/miles-display</left-display>
-        <left-display-dot>/instrumentation/dme[0]/left-dot</left-display-dot>
-        <power-btn>/instrumentation/dme[0]/power-btn</power-btn>
-        <serviceable>/instrumentation/dme[0]/serviceable</serviceable>
+        <in-range>instrumentation/dme[0]/in-range</in-range>
+        <right-display>instrumentation/dme[0]/min-kts-display</right-display>
+        <left-display>instrumentation/dme[0]/miles-display</left-display>
+        <left-display-dot>instrumentation/dme[0]/left-dot</left-display-dot>
+        <power-btn>instrumentation/dme[0]/power-btn</power-btn>
+        <serviceable>instrumentation/dme[0]/serviceable</serviceable>
     </params>
 
     <path>ki266.ac</path>
@@ -52,17 +32,21 @@
     <!-- little thingie does no shadow -->
     <animation>
         <type>noshadow</type>
-        <object-name>ki266</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
 
     <animation>
         <type>material</type>
         <object-name>ModeSwitch</object-name>
         <emission>
-            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+            <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
+            <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
+            <blue-prop>sim/model/instrument-lighting/emission/blue</blue-prop>
+            <factor-prop>controls/lighting/instruments-norm</factor-prop>
         </emission>
     </animation>
 
@@ -84,11 +68,55 @@
         </center>
     </animation>
 
+    <animation>
+        <type>pick</type>
+        <object-name>on</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property alias="../../../../params/power-btn"/>
+            <value>1</value>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>off</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-assign</command>
+            <property alias="../../../../params/power-btn"/>
+            <value>0</value>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>PowerSwitch</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property alias="../../../../params/power-btn"/>
+          </binding>
+        </action>
+    </animation>
+
     <!-- the source switch -->
     <animation>
         <type>rotate</type>
         <object-name>SourceSelectorKnob</object-name>
-        <property>/instrumentation/dme/switch-position</property>
+        <property>instrumentation/dme/switch-position</property>
         <factor>-30</factor>
         <min-deg>-60</min-deg>
         <max-deg>0</max-deg>
@@ -105,6 +133,118 @@
         </center>
     </animation>
 
+    <animation>
+        <type>pick</type>
+        <object-name>SourceSelectorPick.R</object-name>
+        <visible>false</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+              <command>property-adjust</command>
+              <property>instrumentation/dme/switch-position</property>
+              <step>1</step>
+              <min>1</min>
+              <max>3</max>
+              <wrap>0</wrap>
+          </binding>
+          <binding>
+              <condition>
+                  <equals>
+                      <property>instrumentation/dme/switch-position</property>
+                      <value type="int">1</value>
+                  </equals>
+              </condition>
+              <command>property-assign</command>
+              <property>instrumentation/dme/frequencies/source</property>
+              <value>instrumentation/nav[0]/frequencies/selected-mhz</value>
+          </binding>
+          <binding>
+              <condition>
+                  <equals>
+                      <property>instrumentation/dme/switch-position</property>
+                      <value type="int">2</value>
+                  </equals>
+              </condition>
+              <command>property-assign</command>
+              <property>instrumentation/dme/frequencies/source</property>
+              <value>instrumentation/dme/frequencies/selected-mhz</value>
+          </binding>
+          <binding>
+              <condition>
+                  <equals>
+                      <property>instrumentation/dme/switch-position</property>
+                      <value type="int">2</value>
+                  </equals>
+              </condition>
+              <command>property-assign</command>
+              <property>instrumentation/dme/frequencies/selected-mhz</property>
+              <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+          </binding>
+          <binding>
+              <condition>
+                  <equals>
+                      <property>instrumentation/dme/switch-position</property>
+                      <value type="int">3</value>
+                  </equals>
+              </condition>
+              <command>property-assign</command>
+              <property>instrumentation/dme/frequencies/source</property>
+              <value>instrumentation/nav[1]/frequencies/selected-mhz</value>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>SourceSelectorPick.L</object-name>
+        <visible>false</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+              <command>property-adjust</command>
+              <property>instrumentation/dme/switch-position</property>
+              <step>-1</step>
+              <min>1</min>
+              <max>3</max>
+              <wrap>0</wrap>
+          </binding>
+          <binding>
+              <condition>
+                  <equals>
+                      <property>instrumentation/dme/switch-position</property>
+                      <value type="int">1</value>
+                  </equals>
+              </condition>
+              <command>property-assign</command>
+              <property>instrumentation/dme/frequencies/source</property>
+              <value>instrumentation/nav[0]/frequencies/selected-mhz</value>
+          </binding>
+          <binding>
+              <condition>
+                  <equals>
+                      <property>instrumentation/dme/switch-position</property>
+                      <value type="int">2</value>
+                  </equals>
+              </condition>
+              <command>property-assign</command>
+              <property>instrumentation/dme/frequencies/source</property>
+              <value>instrumentation/dme/frequencies/selected-mhz</value>
+          </binding>
+          <binding>
+              <condition>
+                  <equals>
+                      <property>instrumentation/dme/switch-position</property>
+                      <value type="int">2</value>
+                  </equals>
+              </condition>
+              <command>property-assign</command>
+              <property>instrumentation/dme/frequencies/selected-mhz</property>
+              <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
+          </binding>
+        </action>
+    </animation>
 
     <!-- the mode switch do display min/kts -->
     <animation>
@@ -112,7 +252,7 @@
         <object-name>Min</object-name>
         <condition>
             <not>
-                <property>/instrumentation/dme/switch-min-kts</property>
+                <property>instrumentation/dme/switch-min-kts</property>
             </not>
         </condition>
     </animation>
@@ -121,7 +261,7 @@
         <type>select</type>
         <object-name>Kts</object-name>
         <condition>
-            <property>/instrumentation/dme/switch-min-kts</property>
+            <property>instrumentation/dme/switch-min-kts</property>
         </condition>
     </animation>
 
@@ -129,12 +269,26 @@
         <type>translate</type>
         <object-name>ModeSwitch</object-name>
         <factor>-0.003</factor>
-        <property>/instrumentation/dme/switch-min-kts</property>
+        <property>instrumentation/dme/switch-min-kts</property>
         <axis>
             <x>1.0</x>
             <y>0.0</y>
             <z>0.0</z>
         </axis>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>ModeSwitch</object-name>
+        <visible>true</visible>
+        <action>
+          <button>0</button>
+          <repeatable>false</repeatable>
+          <binding>
+            <command>property-toggle</command>
+            <property>instrumentation/dme/switch-min-kts</property>
+          </binding>
+        </action>
     </animation>
 
     <!-- distance display, allways on. 

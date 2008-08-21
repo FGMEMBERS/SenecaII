@@ -247,24 +247,6 @@
     </model>
 
     <!-- KI266 DME Indicator -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/ki266Panel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>0.041</y-m>
-            <z-m>1.511</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>0.199</y-m>
-            <z-m>1.511</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>0.041</y-m>
-            <z-m>1.559</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/ki266.xml</path>
         <name>ki266</name>
