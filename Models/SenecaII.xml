@@ -236,24 +236,6 @@
     </model>
 
     <!-- ka51b slaving meter -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/ka51bPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>0.0375</y-m>
-            <z-m>1.5625</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>0.0625</y-m>
-            <z-m>1.5625</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>0.0375</y-m>
-            <z-m>1.5975</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/ka51b.xml</path>
         <name>ka51b</name>
