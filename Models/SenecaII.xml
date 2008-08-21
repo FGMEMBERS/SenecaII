@@ -151,24 +151,6 @@
     <!-- 
         Audio Panel
     -->
-    <panel>
-        <path>Aircraft/SenecaII/Models/gma340Panel.xml</path>
-        <bottom-left>
-            <x-m>-1.905</x-m>
-            <y-m>-0.13</y-m>
-            <z-m>1.563</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.905</x-m>
-            <y-m>0.03</y-m>
-            <z-m>1.563</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.905</x-m>
-            <y-m>-0.13</y-m>
-            <z-m>1.597</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Models/gma340.xml</path>
         <name>gma340</name>
@@ -265,6 +247,26 @@
         <offsets>
             <x-m>-1.91</x-m>
             <y-m>-0.05</y-m>
+            <z-m>1.43</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <name>gps155 gps</name>
+        <path>Aircraft/SenecaII/Models/gps155.xml</path>
+        <offsets>
+            <x-m>-1.91</x-m>
+            <y-m>0.12</y-m>
+            <z-m>1.48</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <name>gtx330 transponder</name>
+        <path>Aircraft/SenecaII/Models/gtx330.xml</path>
+        <offsets>
+            <x-m>-1.91</x-m>
+            <y-m>0.12</y-m>
             <z-m>1.43</z-m>
         </offsets>
     </model>
@@ -2214,6 +2216,22 @@
     </animation>
 
     <animation>
+      <type>pick</type>
+      <object-name>GearEmergencyKnob</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <condition>
+            <property>controls/gear/gear-emergency-extend-unlock</property>
+          </condition>
+          <command>property-toggle</command>
+          <property>controls/gear/gear-emergency-extend</property>
+        </binding>
+      </action>
+    </animation>
+    <animation>
         <type>translate</type>
         <object-name>GearEmergencyKnob</object-name>
         <property>controls/gear/gear-emergency-extend</property>
@@ -2225,6 +2243,24 @@
         </axis>
     </animation>
 
+    <animation>
+      <type>pick</type>
+      <object-name>GearEmergencySecure</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <condition>
+            <not>
+              <property>controls/gear/gear-emergency-extend</property>
+            </not>
+          </condition>
+          <command>property-toggle</command>
+          <property>controls/gear/gear-emergency-extend-unlock</property>
+        </binding>
+      </action>
+    </animation>
     <animation>
         <type>rotate</type>
         <object-name>GearEmergencySecure</object-name>
