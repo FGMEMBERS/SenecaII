@@ -940,24 +940,6 @@
         </offsets>
     </model>
     <!-- airspeed indicator -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/AirspeedPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.481245</y-m>
-            <z-m>1.47895</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.405245</y-m>
-            <z-m>1.47895</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.481245</y-m>
-            <z-m>1.55495</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Models/Airspeed.xml</path>
         <name>ASI</name>
