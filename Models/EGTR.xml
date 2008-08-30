@@ -4,7 +4,11 @@
     
     <animation>
         <type>noshadow</type>
-        <object-name>egt</object-name>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
     </animation>
     
     <animation>
