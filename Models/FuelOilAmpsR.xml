@@ -14,9 +14,13 @@
     
     <animation>
         <type>noshadow</type>
-        <object-name>FuelOilAmps</object-name>
     </animation>
-    
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>10</max-m>
+    </animation>
+
     <animation>
         <type>rotate</type>
         <object-name>AltAmps</object-name>
