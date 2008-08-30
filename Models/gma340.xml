@@ -6,29 +6,6 @@
     
    Maintainer: Torsten Dreyer ( Torsten at t3r dot de)
     
-  $Log$
-  Revision 1.3  2008/08/21 11:18:30  torsten
-  - Added pick animations for gma340
-  - Added gps155 and gtx330 to the panel
-  - Removed obsolete gma340Panel.xml
-
-  Revision 1.2  2006-11-23 14:27:03  mfranz
-  Torsten DREYER:
-
-  """
-  - Added instruments lights for night flights
-  - Addes flashing strobe effect in clouds at night
-  - OBS knob on vor2 clickable
-  - subscale knob on altimeter clickable
-  - changes on aircraft 3d-model
-  - Fixed bug in HSI, wrong deflection of glideslope indicator and
-    transparency issue
-  - Added Roberto Inzerillo's nice nose gear and animations, new main gear
-  """
-
-  Revision 1.1  2006-06-01 12:58:33  mfranz
-  Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
-
 -->
 <PropertyList>
   <path>gma340.ac</path>
@@ -303,8 +280,19 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
-        <command>property-toggle</command>
+        <command>property-assign</command>
         <property>/instrumentation/audio-panel/com-mic[0]</property>
+        <value>1</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com-mic[1]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com-mic[2]</property>
+        <value>0</value>
       </binding>
     </action>
   </animation>
@@ -328,8 +316,19 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
-        <command>property-toggle</command>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com-mic[0]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
         <property>/instrumentation/audio-panel/com-mic[1]</property>
+        <value>1</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com-mic[2]</property>
+        <value>0</value>
       </binding>
     </action>
   </animation>
@@ -353,8 +352,19 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
-        <command>property-toggle</command>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com-mic[0]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com-mic[1]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
         <property>/instrumentation/audio-panel/com-mic[2]</property>
+        <value>1</value>
       </binding>
     </action>
   </animation>
