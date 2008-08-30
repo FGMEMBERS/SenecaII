@@ -81,6 +81,17 @@
                     <label>Seneca</label>
                     <enabled type="bool">true</enabled>
                     <item>
+                        <label>Malfunctions..</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                              var mal = gui.Dialog.new("/sim/gui/dialogs/SenecaII/menu/dialog", 
+                                                                "Aircraft/SenecaII/Dialogs/malfunctions-dialog.xml");
+                              mal.open();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
                         <label>Show/hide yoke</label>
                         <binding>
                             <command>property-toggle</command>
@@ -311,7 +322,6 @@
             <file>Aircraft/SenecaII/Nasal/SenecaII.nas</file>
             <file>Aircraft/SenecaII/Nasal/electric.nas</file>
             <file>Aircraft/SenecaII/Nasal/timers.nas</file>
-            <file>Aircraft/SenecaII/Nasal/hsi.nas</file>
             <file>Aircraft/Generic/limits.nas</file>
             <file>Aircraft/SenecaII/Nasal/hsiBugError.nas</file>
         </SenecaII>
@@ -432,6 +442,9 @@
             <com-mic n="1">0</com-mic>
             <com-mic n="2">0</com-mic>
         </audio-panel>
+        <heading-indicator>
+            <mode-auto archive="y">1</mode-auto>
+        </heading-indicator>
     </instrumentation>
     <fdm>
       <jsbsim>

@@ -3,50 +3,53 @@
 
 #   set up the properties read and updated
 
-var hsi = "/instrumentation/hsi";
 var power = "/systems/electrical/outputs/autopilot";
-var autopilotControls = "/autopilot/CENTURYIII/controls";
 
 # internal
 
-var internalHeadingBugError = "/autopilot/internal/heading-bug-error-deg";
+var internalHeadingBugErrorN = props.globals.getNode( "/autopilot/internal/heading-bug-error-deg",1);
+if( internalHeadingBugErrorN.getValue() == nil )
+  internalHeadingBugErrorN.setDoubleValue(0);
 
-# hsi
-var propHsi = props.globals.getNode(hsi, 1);
+var hsiHdgBugErrorDegN   = props.globals.getNode("/autopilot/internal/hsi-heading-bug-error-deg",1);
 
-var hsiCursorRotationDeg = propHsi.getNode("cursor-rotation-deg", 1);
-var hsiHdgBugErrorDeg    = propHsi.getNode("heading-bug-error-deg",1);
+var headingN = props.globals.getNode("/instrumentation/heading-indicator/indicated-heading-deg",1); 
+if( headingN.getValue() == nil )
+  headingN.setDoubleValue(0);
+
+var selectedRadialN = props.globals.getNode("/instrumentation/nav[0]/radials/selected-deg",1);
+if( selectedRadialN.getValue() == nil )
+  selectedRadialN.setDoubleValue(0);
 
 # Autopilot controls
-var propAutopilotControls = props.globals.getNode(autopilotControls, 1);
+var propAutopilotControlsN = props.globals.getNode("/autopilot/CENTURYIII/controls", 1);
 
-#rollControl = propAutopilotControls.getNode("roll", 1);
-var hdgControl = propAutopilotControls.getNode("hdg", 1);
-var modeControl = propAutopilotControls.getNode("mode", 1);
+#rollControl = propAutopilotControlsN.getNode("roll", 1);
+var hdgControl = propAutopilotControlsN.getNode("hdg", 1);
+var modeControl = propAutopilotControlsN.getNode("mode", 1);
 
 
-var headingBugError = 0.0;
 
 var headingBugErrorUpdate = func {
 
-  var cursorRot     = hsiCursorRotationDeg.getValue();
-  var mode          = modeControl.getValue();
+  var headingBugError = 0.0;
+
+  var mode = modeControl.getValue();
   if ( hdgControl.getValue() ) {
      if ( mode == 2 ) {
         # HDG mode
-        headingBugError = getprop(internalHeadingBugError);
+        headingBugError = internalHeadingBugErrorN.getValue();
      } elsif ( mode == 4 ) {
         # LOC REV mode
-        headingBugError = 180 - cursorRot;
+        headingBugError = selectedRadialN.getValue() - headingN.getValue() + 180;
      } else {
         # NAV or OMNI or LOC NORM modes
-        if (cursorRot < 180 ) {
-           headingBugError = -cursorRot;
-        } else {
-           headingBugError = 360 - cursorRot;
-        }
+        headingBugError = selectedRadialN.getValue() - headingN.getValue();
      }
-     hsiHdgBugErrorDeg.setDoubleValue(headingBugError);
+     while( headingBugError > 180 )
+       headingBugError = headingBugError - 360;
+
+     hsiHdgBugErrorDegN.setDoubleValue(headingBugError);
    }
    settimer(headingBugErrorUpdate, 0.5);
 }

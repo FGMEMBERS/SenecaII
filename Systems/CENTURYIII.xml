@@ -150,7 +150,7 @@
     <name>heading-bug-filter</name>
     <debug>false</debug>
     <type>double-exponential</type>
-    <input>/instrumentation/hsi/heading-bug-error-deg</input>
+    <input>/autopilot/internal/hsi-heading-bug-error-deg</input>
     <output>/autopilot/internal/filtered-heading-bug-error-deg</output>
     <filter-time>0.01</filter-time>
    </filter>

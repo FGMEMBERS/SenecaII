@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<PropertyList>
+  <name>SenecaII malfunctions</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Malfunctions</label>
+  </text>
+
+  <hrule/>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Landing Gear Failures</label>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Nose</label>
+      <property>/fdm/jsbsim/fcs/gear-nose-actuator/malfunction/fail_stuck</property>
+      <binding>
+        <command>property-toggle</command>
+        <property>/fdm/jsbsim/fcs/gear-nose-actuator/malfunction/fail_stuck</property>
+      </binding>
+    </checkbox>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Left Main</label>
+      <property>/fdm/jsbsim/fcs/gear-left-actuator/malfunction/fail_stuck</property>
+      <binding>
+        <command>property-toggle</command>
+        <property>/fdm/jsbsim/fcs/gear-left-actuator/malfunction/fail_stuck</property>
+      </binding>
+    </checkbox>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Right Main</label>
+      <property>/fdm/jsbsim/fcs/gear-right-actuator/malfunction/fail_stuck</property>
+      <binding>
+        <command>property-toggle</command>
+        <property>/fdm/jsbsim/fcs/gear-right-actuator/malfunction/fail_stuck</property>
+      </binding>
+    </checkbox>
+
+  </group>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Gear Indicator Failures</label>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Nose</label>
+      <property></property>
+      <binding>
+       <command>nasal</command>
+       <script></script>
+      </binding>
+    </checkbox>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Left Main</label>
+      <property></property>
+      <binding>
+       <command>nasal</command>
+       <script></script>
+      </binding>
+    </checkbox>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Right Main</label>
+      <property></property>
+      <binding>
+       <command>nasal</command>
+       <script></script>
+      </binding>
+    </checkbox>
+
+  </group>
+
+  <hrule/>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+</PropertyList>

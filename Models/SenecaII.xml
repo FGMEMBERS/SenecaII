@@ -1006,24 +1006,6 @@
         </offsets>
     </model>
     <!--Radar Altimeter -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/kra10aPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.225745</y-m>
-            <z-m>1.47945</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.150745</y-m>
-            <z-m>1.47945</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.225745</y-m>
-            <z-m>1.55445</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/kra10a.xml</path>
         <name>KRA10</name>
@@ -1055,26 +1037,8 @@
         </offsets>
     </model>
     <!-- hsi -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/HSIPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.4032842</y-m>
-            <z-m>1.39394</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.3132058</y-m>
-            <z-m>1.39394</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.4032842</y-m>
-            <z-m>1.46994</z-m>
-        </top-left>
-    </panel>
     <model>
-        <path>Aircraft/SenecaII/Models/hsi-bk-hi.xml</path>
+        <path>Aircraft/SenecaII/Models/ki525a.xml</path>
         <name>HSI</name>
         <offsets>
             <x-m>-1.915</x-m>
