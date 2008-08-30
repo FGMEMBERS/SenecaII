@@ -9,6 +9,35 @@
        <green>1.0</green>
        <blue>0.0</blue>
        <factor-prop>autopilot/CENTURYIII/settings/gs-captured</factor-prop>
+       <offset-prop>autopilot/CENTURYIII/gs-light-test</offset-prop>
       </emission>
+    </animation>
+    <animation>
+        <type>noshadow</type>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>20</max-m>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-assign</command>
+          <property>autopilot/CENTURYIII/gs-light-test</property>
+          <value>1</value>
+        </binding>
+        <mod-up>
+          <binding>
+            <command>property-assign</command>
+          <property>autopilot/CENTURYIII/gs-light-test</property>
+            <value>0</value>
+          </binding>
+        </mod-up>
+      </action>
     </animation>
 </PropertyList>
