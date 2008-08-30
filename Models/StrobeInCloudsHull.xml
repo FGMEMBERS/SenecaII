@@ -16,21 +16,21 @@
         <type>select</type>
         <object-name>StrobeInCloudsHull</object-name>
         <condition>
-            <property>/sim/model/lights/strobe/state</property>
+            <property>sim/model/lights/strobe/state</property>
             <equals>
-                <property>/sim/current-view/view-number</property>
+                <property>sim/current-view/view-number</property>
                 <value>0</value>
             </equals>
             <less-than>
-                <property>/environment/effective-visibility-m</property>
+                <property>environment/effective-visibility-m</property>
                 <value>100</value>
             </less-than>
             <greater-than>
-                <property>/environment/effective-visibility-m</property>
+                <property>environment/effective-visibility-m</property>
                 <value>0</value>
             </greater-than>
             <greater-than>
-                <property>/sim/time/sun-angle-rad</property>
+                <property>sim/time/sun-angle-rad</property>
                 <value>1.57</value>
             </greater-than>
         </condition>
