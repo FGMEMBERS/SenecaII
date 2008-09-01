@@ -10,18 +10,18 @@
             <condition>
                 <and>
                     <and>
-                        <property>/instrumentation/comm[0]/test-btn</property>
-                        <property>/instrumentation/comm[0]/serviceable</property>
-                        <property>/instrumentation/nav[0]/power-btn</property>
+                        <property>instrumentation/comm[0]/test-btn</property>
+                        <property>instrumentation/comm[0]/serviceable</property>
+                        <property>instrumentation/nav[0]/power-btn</property>
                     </and>
                     <or>
-                        <property>/instrumentation/audio-panel/com[0]</property>
-                        <property>/instrumentation/audio-panel/com-mic[0]</property>
+                        <property>instrumentation/audio-panel/com[0]</property>
+                        <property>instrumentation/audio-panel/com-mic[0]</property>
                     </or>
                 </and>
             </condition>
             <volume>
-                <property>/instrumentation/comm[0]/volume</property>
+                <property>instrumentation/comm[0]/volume</property>
                 <type>lin</type>
                 <factor>1.0</factor>
             </volume>
@@ -34,18 +34,18 @@
             <condition>
                 <and>
                     <and>
-                        <property>/instrumentation/comm[1]/test-btn</property>
-                        <property>/instrumentation/comm[1]/serviceable</property>
-                        <property>/instrumentation/nav[1]/power-btn</property>
+                        <property>instrumentation/comm[1]/test-btn</property>
+                        <property>instrumentation/comm[1]/serviceable</property>
+                        <property>instrumentation/nav[1]/power-btn</property>
                     </and>
                     <or>
-                        <property>/instrumentation/audio-panel/com[1]</property>
-                        <property>/instrumentation/audio-panel/com-mic[1]</property>
+                        <property>instrumentation/audio-panel/com[1]</property>
+                        <property>instrumentation/audio-panel/com-mic[1]</property>
                     </or>
                 </and>
             </condition>
             <volume>
-                <property>/instrumentation/comm[1]/volume</property>
+                <property>instrumentation/comm[1]/volume</property>
                 <type>lin</type>
                 <factor>1.0</factor>
             </volume>
@@ -55,7 +55,7 @@
         <crank>
             <name>engstart1</name>
             <path>Sounds/engstart.wav</path>
-            <property>/engines/engine[0]/cranking</property>
+            <property>engines/engine[0]/cranking</property>
             <position>
                 <x>-2.0</x>
                 <y>0.0</y>
@@ -70,9 +70,9 @@
             <mode>looped</mode>
             <path>Sounds/cranking.wav</path>
             <condition>
-                <property>/engines/engine[0]/cranking</property>
+                <property>engines/engine[0]/cranking</property>
                 <not>
-                    <property>/engines/engine[0]/running</property>
+                    <property>engines/engine[0]/running</property>
                 </not>
             </condition>
             <position>
@@ -87,7 +87,7 @@
         <crank>
             <name>cough1</name>
             <path>Sounds/coughing.wav</path>
-            <property>/engines/engine[0]/running</property>
+            <property>engines/engine[0]/running</property>
             <position>
                 <x>-2.0</x>
                 <y>0.0</y>
@@ -101,21 +101,21 @@
             <name>engine1</name>
             <mode>looped</mode>
             <path>Sounds/wasp.wav</path>
-            <property>/engines/engine[0]/running</property>
+            <property>engines/engine[0]/running</property>
             <position>
                 <x>-2.0</x>
                 <y>0.0</y>
                 <z>-2.0</z>
             </position>
             <volume>
-                <property>/engines/engine[0]/mp-osi</property>
+                <property>engines/engine[0]/mp-osi</property>
                 <factor>0.009</factor>
                 <min>0.15</min>
                 <max>0.6</max>
                 <offset>0.15</offset>
             </volume>
             <pitch>
-                <property>/engines/engine[0]/rpm</property>
+                <property>engines/engine[0]/rpm</property>
                 <factor>0.0004</factor>
                 <min>0.1</min>
                 <max>2.0</max>
@@ -126,7 +126,7 @@
         <crank>
             <name>engstart2</name>
             <path>Sounds/engstart.wav</path>
-            <property>/engines/engine[1]/cranking</property>
+            <property>engines/engine[1]/cranking</property>
             <position>
                 <x>2.0</x>
                 <y>0.0</y>
@@ -141,9 +141,9 @@
             <mode>looped</mode>
             <path>Sounds/cranking.wav</path>
             <condition>
-                <property>/engines/engine[1]/cranking</property>
+                <property>engines/engine[1]/cranking</property>
                 <not>
-                    <property>/engines/engine[1]/running</property>
+                    <property>engines/engine[1]/running</property>
                 </not>
             </condition>
             <position>
@@ -158,7 +158,7 @@
         <crank>
             <name>cough2</name>
             <path>Sounds/coughing.wav</path>
-            <property>/engines/engine[1]/running</property>
+            <property>engines/engine[1]/running</property>
             <position>
                 <x>2.0</x>
                 <y>0.0</y>
@@ -172,21 +172,21 @@
             <name>engine2</name>
             <mode>looped</mode>
             <path>Sounds/wasp.wav</path>
-            <property>/engines/engine[1]/running</property>
+            <property>engines/engine[1]/running</property>
             <position>
                 <x>2.0</x>
                 <y>0.0</y>
                 <z>-2.0</z>
             </position>
             <volume>
-                <property>/engines/engine[1]/mp-osi</property>
+                <property>engines/engine[1]/mp-osi</property>
                 <factor>0.009</factor>
                 <min>0.15</min>
                 <max>0.6</max>
                 <offset>0.15</offset>
             </volume>
             <pitch>
-                <property>/engines/engine[1]/rpm</property>
+                <property>engines/engine[1]/rpm</property>
                 <factor>0.0004</factor>
                 <min>0.1</min>
                 <max>2.0</max>
@@ -199,22 +199,81 @@
             <path>Sounds/rumble.wav</path>
             <condition>
                 <or>
-                    <property>/gear/gear[0]/wow</property>
-                    <property>/gear/gear[1]/wow</property>
-                    <property>/gear/gear[2]/wow</property>
+                    <property>gear/gear[0]/wow</property>
+                    <property>gear/gear[1]/wow</property>
+                    <property>gear/gear[2]/wow</property>
                 </or>
             </condition>
             <volume>
-                <property>/velocities/airspeed-kt</property>
+                <property>velocities/airspeed-kt</property>
                 <type>log</type>
                 <factor>0.5</factor>
             </volume>
         </rumble>
+
+        <!-- 
+        Gear Warning according to POH:
+        A micro switch incorporated in the throttle quadrant activates the
+        gear warning horn under the following conditions
+        (a) gear is not locked down and the manifold pressure has fallen below
+            14 inches on either one or both engines
+        (b) the gear selector switch is in the UP position and the aircraft is
+            on ground
+        -->
+        <gear-warn>
+            <name>gear warning</name>
+            <mode>looped</mode>
+            <path>Sounds/gear-hrn.wav</path>
+            <condition>
+             <or>
+              <and>
+                <property>gear/gear[1]/wow</property>
+                <not>
+                  <property>controls/gear/gear-down</property>
+                </not>
+              </and>
+              <and>
+                <or>
+                  <less-than>
+                    <property>gear/gear[0]/position-norm</property>
+                    <value>0.95</value>
+                  </less-than>
+                  <less-than>
+                    <property>gear/gear[1]/position-norm</property>
+                    <value>0.95</value>
+                  </less-than>
+                  <less-than>
+                    <property>gear/gear[2]/position-norm</property>
+                    <value>0.95</value>
+                  </less-than>
+                </or>
+                <or>
+                  <less-than>
+                    <property>controls/engines/engine[0]/throttle</property>
+                    <value>0.2</value>
+                  </less-than>
+                  <less-than>
+                    <property>controls/engines/engine[1]/throttle</property>
+                    <value>0.2</value>
+                  </less-than>
+                </or>
+              </and>
+             </or>
+            </condition>
+            <position>
+              <x>-2.0</x>
+              <y>0.40</y>
+              <z>1.40</z>
+            </position>
+            <reference-dist>2.0</reference-dist>
+            <max-dist>5.0</max-dist>
+        </gear-warn>
+
         <gear>
             <name>gear</name>
             <mode>in-transit</mode>
             <path>Sounds/gear.wav</path>
-            <property>/gear/gear[0]/position-norm</property>
+            <property>gear/gear[0]/position-norm</property>
             <pitch>
                 <internal>dt_play</internal>
                 <offset>1.0</offset>
@@ -228,7 +287,7 @@
             <path>Sounds/gear-lck.wav</path>
             <condition>
                 <equals>
-                    <property>/gear/gear[0]/position-norm</property>
+                    <property>gear/gear[0]/position-norm</property>
                     <value>0</value>
                 </equals>
             </condition>
@@ -240,17 +299,17 @@
             <path>Sounds/squeal.wav</path>
             <condition>
                 <or>
-                    <property>/gear/gear[0]/wow</property>
-                    <property>/gear/gear[1]/wow</property>
-                    <property>/gear/gear[2]/wow</property>
+                    <property>gear/gear[0]/wow</property>
+                    <property>gear/gear[1]/wow</property>
+                    <property>gear/gear[2]/wow</property>
                 </or>
             </condition>
             <volume>
-                <property>/velocities/speed-down-fps</property>
+                <property>velocities/speed-down-fps</property>
                 <factor>0.05</factor>
             </volume>
             <volume>
-                <property>/velocities/airspeed-kt</property>
+                <property>velocities/airspeed-kt</property>
                 <factor>0.01</factor>
             </volume>
             <volume>
@@ -259,7 +318,7 @@
                 <max>1.0</max>
             </volume>
             <pitch>
-                <property>/velocities/airspeed-kt</property>
+                <property>velocities/airspeed-kt</property>
                 <factor>0.0025</factor>
                 <offset>1.2</offset>
             </pitch>
@@ -268,7 +327,7 @@
             <name>flaps</name>
             <mode>in-transit</mode>
             <path>Sounds/flaps.wav</path>
-            <property>/surface-positions/flap-pos-norm</property>
+            <property>surface-positions/flap-pos-norm</property>
             <volume>
                 <factor>0.45</factor>
             </volume>
@@ -279,22 +338,22 @@
             <name>wind</name>
             <mode>looped</mode>
             <path>Sounds/wind.wav</path>
-            <property>/velocities/airspeed-kt</property>
+            <property>velocities/airspeed-kt</property>
             <volume>
-                <property>/position/altitude-ft</property>
+                <property>position/altitude-ft</property>
                 <factor>-0.000015</factor>
                 <offset>1.0</offset>
                 <min>0.1</min>
                 <max>1.0</max>
             </volume>
             <volume>
-                <property>/velocities/airspeed-kt</property>
+                <property>velocities/airspeed-kt</property>
                 <factor>0.0015</factor>
                 <min>0.03</min>
                 <max>0.25</max>
             </volume>
             <pitch>
-                <property>/velocities/airspeed-kt</property>
+                <property>velocities/airspeed-kt</property>
                 <factor>0.01</factor>
                 <offset>1.25</offset>
             </pitch>
@@ -302,9 +361,9 @@
         <stall>
             <name>stall</name>
             <path>Sounds/stall.wav</path>
-            <property>/sim/alarms/stall-warning</property>
+            <property>sim/alarms/stall-warning</property>
             <volume>
-                <property>/velocities/airspeed-kt</property>
+                <property>velocities/airspeed-kt</property>
                 <min>30.0</min>
             </volume>
             <reference-dist>10.0</reference-dist>
