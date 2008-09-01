@@ -10,6 +10,7 @@
         <comm-frq-selected>instrumentation/comm[0]/frequencies/selected-khz</comm-frq-selected>
         <comm-frq-standby>instrumentation/comm[0]/frequencies/standby-khz</comm-frq-standby>
         <comm-frq-mhz-standby>instrumentation/comm[0]/frequencies/standby-mhz</comm-frq-mhz-standby>
+        <comm-frq-mhz-selected>instrumentation/comm[0]/frequencies/selected-mhz</comm-frq-mhz-selected>
         <comm-volume>instrumentation/comm[0]/volume</comm-volume>
         <comm-test>instrumentation/comm[0]/test-btn</comm-test>
 
@@ -17,6 +18,7 @@
         <nav-frq-selected>instrumentation/nav[0]/frequencies/selected-khz</nav-frq-selected>
         <nav-frq-standby>instrumentation/nav[0]/frequencies/standby-khz</nav-frq-standby>
         <nav-frq-mhz-standby>instrumentation/nav[0]/frequencies/standby-mhz</nav-frq-mhz-standby>
+        <nav-frq-mhz-selected>instrumentation/nav[0]/frequencies/selected-mhz</nav-frq-mhz-selected>
         <nav-volume>instrumentation/nav[0]/volume</nav-volume>
         <nav-audio>instrumentation/nav[0]/audio-btn</nav-audio>
     </params>
@@ -662,8 +664,8 @@
         </binding>
         <binding>
           <command>property-swap</command>
-          <property alias="../../../../params/comm-frq-selected"/>
-          <property alias="../../../../params/comm-frq-standby"/>
+          <property alias="../../../../params/comm-frq-mhz-selected"/>
+          <property alias="../../../../params/comm-frq-mhz-standby"/>
         </binding>
         <mod-up>
           <binding>
@@ -689,8 +691,8 @@
         </binding>
         <binding>
           <command>property-swap</command>
-          <property alias="../../../../params/nav-frq-selected"/>
-          <property alias="../../../../params/nav-frq-standby"/>
+          <property alias="../../../../params/nav-frq-mhz-selected"/>
+          <property alias="../../../../params/nav-frq-mhz-standby"/>
         </binding>
         <mod-up>
           <binding>
