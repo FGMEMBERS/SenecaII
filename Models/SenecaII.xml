@@ -774,24 +774,6 @@
     </animation>
 
     <!-- fuel selector -->
-    <panel>
-        <path>Aircraft/SenecaII/Models/FuelSelectorPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.23475</x-m>
-            <y-m>-0.0405157</y-m>
-            <z-m>0.946814</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.23475</x-m>
-            <y-m>0.0042118</y-m>
-            <z-m>0.946814</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.31266</x-m>
-            <y-m>-0.0405157</y-m>
-            <z-m>0.946814</z-m>
-        </top-left>
-    </panel>
     <animation>
         <type>noshadow</type>
         <object-name>FuelSelectorControl.L</object-name>
@@ -806,6 +788,23 @@
             <y>0.0</y>
             <z>0.0</z>
         </axis>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>FuelSelectorControl.L</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/fuel/tank[0]/fuel_selector-position</property>
+          <step>1</step>
+          <min>-1</min>
+          <max>2</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
     </animation>
 
     <animation>
@@ -822,6 +821,23 @@
             <y>0.0</y>
             <z>0.0</z>
         </axis>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>FuelSelectorControl.R</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/fuel/tank[1]/fuel_selector-position</property>
+          <step>1</step>
+          <min>-1</min>
+          <max>2</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
     </animation>
 
     <!-- gear lever and indicators -->
@@ -1000,7 +1016,7 @@
     <!-- center row -->
     <!-- adf -->
     <model>
-        <path>Aircraft/Instruments-3d/adf/adf.xml</path>
+        <path>Aircraft/SenecaII/Models/ki227_228.xml</path>
         <name>ADF</name>
         <offsets>
             <x-m>-1.915</x-m>
