@@ -59,7 +59,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Airspeed.Needle</object-name>
-        <property alias="../../indicated-speed-kt"/>
+        <property alias="../../params/indicated-speed-kts"/>
         <interpolation>
             <entry>
                 <ind> 0</ind>
