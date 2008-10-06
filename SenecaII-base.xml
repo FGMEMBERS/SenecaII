@@ -421,7 +421,8 @@
     <instrumentation>
         <adf>
             <ident-audible archive="y">0</ident-audible>
-            <volume-norm>1.0</volume-norm>s </adf>
+            <volume-norm>1.0</volume-norm>
+        </adf>
         <nav n="0">
             <ident>0</ident>
             <volume>0.5</volume>
