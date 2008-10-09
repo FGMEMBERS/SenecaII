@@ -293,6 +293,36 @@ var engines = Engines.new();
 
 var slavedGyro = SlavedGyro.new();
 
+var savedata = func {
+  var props2save = [
+    "consumables/fuel/used-kg",
+    "instrumentation/comm[0]/volume",
+    "instrumentation/comm[0]/frequencies/selected-mhz",
+    "instrumentation/comm[0]/frequencies/standby-mhz",
+    "instrumentation/comm[0]/test-btn",
+    "instrumentation/nav[0]/audio-btn",
+    "instrumentation/nav[0]/power-btn",
+    "instrumentation/nav[0]/frequencies/selected-mhz",
+    "instrumentation/nav[0]/frequencies/standby-mhz",
+    "instrumentation/comm[1]/volume",
+    "instrumentation/comm[1]/frequencies/selected-mhz",
+    "instrumentation/comm[1]/frequencies/standby-mhz",
+    "instrumentation/comm[1]/test-btn",
+    "instrumentation/nav[1]/audio-btn",
+    "instrumentation/nav[1]/power-btn",
+    "instrumentation/nav[1]/frequencies/selected-mhz",
+    "instrumentation/nav[1]/frequencies/standby-mhz",
+    "instrumentation/adf/frequencies/selected-khz",
+    "instrumentation/adf/frequencies/standby-khz",
+    "instrumentation/dme/frequencies/selected-mhz",
+    "instrumentation/dme/frequencies/switch-position"
+  ];
+  foreach( var p; props2save ) {
+    aircraft.data.add( p );
+  }
+}
+
+
 var seneca_update = func {
   gearInTransit.update();
   suction.update();
@@ -303,7 +333,12 @@ var seneca_update = func {
 
 }
 
-setlistener("/sim/signals/fdm-initialized", seneca_update);
+var seneca_init = func {
+  savedata();
+  seneca_update();
+};
+
+setlistener("/sim/signals/fdm-initialized", seneca_init );
 
 var paxDoor = aircraft.door.new( "/sim/model/door-positions/pax-door", 1, 0 );
 var baggageDoor = aircraft.door.new( "/sim/model/door-positions/baggage-door", 2, 0 );
