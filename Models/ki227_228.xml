@@ -4,9 +4,9 @@
   Maintainer: Torsten Dreyer
 
   The VOR needle is currently hardwired to NAV1
-  
+  The ADF needle is currently hardwired to ADF1
   To show the KI228 RMI instrument, set the property
-  instrumentation/adf/mode=ki228
+  instrumentation/adf/model=ki228
 
   To show the KI227 ADF instrument, set the property
   instrumentation/adf/mode=ki227
@@ -18,9 +18,9 @@
   <path>ki227_228.ac</path>
 
   <params>
-    <model>instrumentation/adf/model</model>
-    <rotation-deg>instrumentation/adf/rotation-deg</rotation-deg>
-    <adf-bearing-deg>instrumentation/adf/indicated-bearing-deg</adf-bearing-deg>
+    <model>instrumentation/adf[0]/model</model>
+    <rotation-deg>instrumentation/adf[0]/rotation-deg</rotation-deg>
+    <adf-bearing-deg>instrumentation/adf[0]/indicated-bearing-deg</adf-bearing-deg>
     <vor-bearing-deg>instrumentation/nav[0]/radials/reciprocal-radial-deg</vor-bearing-deg>
     <indicated-heading>instrumentation/heading-indicator/indicated-heading-deg</indicated-heading>
   </params>
@@ -42,6 +42,7 @@
     <object-name>KI228.ADFNeedle</object-name>
     <object-name>KI228.VORNeedle</object-name>
     <object-name>Marker</object-name>
+    <object-name>HDGSelector</object-name>
     <emission>
       <red>1.0</red>
       <green>0.2</green>
@@ -250,5 +251,40 @@
     </action>
   </animation>
 
+  <animation>
+    <type>pick</type>
+    <object-name>HDGSelector</object-name>
+    <visible>true</visible>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/rotation-deg"/>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>HDGSelector</object-name>
+    <visible>true</visible>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/rotation-deg"/>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
 
 </PropertyList>
