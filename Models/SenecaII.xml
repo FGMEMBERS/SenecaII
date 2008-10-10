@@ -26,6 +26,7 @@
             <z-m>1.60978</z-m>
         </top-left>
     </panel>
+
 <!--
     <model>
         <path>Aircraft/SenecaII/Models/fire.xml</path>
@@ -165,7 +166,7 @@
     -->
     <model>
         <name>kx165tso1</name>
-        <path>Aircraft/SenecaII/Instruments-3d/kx165tso1.xml</path>
+        <path>Aircraft/Instruments-3d/kx165/kx165-1.xml</path>
         <offsets>
             <x-m>-1.91</x-m>
             <y-m>-0.05</y-m>
@@ -177,7 +178,7 @@
     -->
     <model>
         <name>kx165tso2</name>
-        <path>Aircraft/SenecaII/Instruments-3d/kx165tso2.xml</path>
+        <path>Aircraft/Instruments-3d/kx165/kx165-2.xml</path>
         <offsets>
             <x-m>-1.91</x-m>
             <y-m>-0.05</y-m>
@@ -1055,26 +1056,8 @@
         </offsets>
     </model>
     <!-- vor nav2 -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/Vor2Panel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.228245</y-m>
-            <z-m>1.39194</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.148245</y-m>
-            <z-m>1.39194</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.228245</y-m>
-            <z-m>1.47194</z-m>
-        </top-left>
-    </panel>
     <model>
-        <path>Aircraft/Instruments-3d/vor/vor2.xml</path>
+        <path>Aircraft/SenecaII/Models/ki209a-2.xml</path>
         <name>VOR2</name>
         <offsets>
             <x-m>-1.915</x-m>
