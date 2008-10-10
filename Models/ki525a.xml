@@ -44,6 +44,12 @@
         <object-name>HDGBug</object-name>
         <object-name>CDIPlate</object-name>
         <object-name>GS</object-name>
+        <object-name>GSMarker</object-name>
+        <object-name>GSLabel</object-name>
+        <object-name>Marker</object-name>
+        <object-name>LubberLine</object-name>
+        <object-name>OBSSelector</object-name>
+        <object-name>HDGSelector</object-name>
         <emission>
             <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
             <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
@@ -289,6 +295,42 @@
 
     <animation>
         <type>pick</type>
+        <object-name>HDGSelector</object-name>
+        <visible>true</visible>
+        <action>
+          <button>3</button>
+          <repeatable>true</repeatable>
+          <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/heading-bug"/>
+            <step>-1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>HDGSelector</object-name>
+        <visible>true</visible>
+        <action>
+          <button>4</button>
+          <repeatable>true</repeatable>
+          <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/heading-bug"/>
+            <step>1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
         <object-name>OBSSelectorPick.L</object-name>
         <visible>false</visible>
         <action>
@@ -352,6 +394,42 @@
             <command>property-adjust</command>
             <property alias="../../../../params/selected-radial"/>
             <step>10</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>OBSSelector</object-name>
+        <visible>true</visible>
+        <action>
+          <button>3</button>
+          <repeatable>true</repeatable>
+          <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/selected-radial"/>
+            <step>-1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>OBSSelector</object-name>
+        <visible>true</visible>
+        <action>
+          <button>4</button>
+          <repeatable>true</repeatable>
+          <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/selected-radial"/>
+            <step>1</step>
             <min>0</min>
             <max>360</max>
             <wrap>1</wrap>
