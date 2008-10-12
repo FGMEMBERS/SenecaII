@@ -8,25 +8,6 @@
         <pitch-deg>0</pitch-deg>
     </offsets>
 
-    <panel>
-        <path>Aircraft/SenecaII/Models/DashboardPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.63106</y-m>
-            <z-m>1.20217</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>0.63106</y-m>
-            <z-m>1.20217</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.63106</y-m>
-            <z-m>1.60978</z-m>
-        </top-left>
-    </panel>
-
 <!--
     <model>
         <path>Aircraft/SenecaII/Models/fire.xml</path>
@@ -602,7 +583,7 @@
             <factor-prop>/controls/lighting/panel-norm</factor-prop>
         </emission>
     </animation>
-    
+    -->    
     <animation>
         <type>rotate</type>
         <object-name>PanelLightsDimmer</object-name>
@@ -619,7 +600,7 @@
             <z-m>1.26778</z-m>
         </center>
     </animation>
-    -->
+
 
     <animation>
         <type>rotate</type>
@@ -636,6 +617,82 @@
             <y-m>0.165896</y-m>
             <z-m>1.30714</z-m>
         </center>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>RadioLightsDimmer</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/radio-norm</property>
+        </binding>
+      </action>
+      <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/lighting/radio-norm</property>
+          <step>-.01</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>0</wrap>
+        </binding>
+      </action>
+      <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/lighting/radio-norm</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>0</wrap>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>PanelLightsDimmer</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/instruments-norm</property>
+        </binding>
+      </action>
+      <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/lighting/instruments-norm</property>
+          <step>-.01</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>0</wrap>
+        </binding>
+      </action>
+      <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/lighting/instruments-norm</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>0</wrap>
+        </binding>
+      </action>
     </animation>
 
 
@@ -678,11 +735,6 @@
           </binding>
          </mod-up>
       </action>
-    </animation>
-    <animation>
-      <type>pick</type>
-      <object-name>FlapControl</object-name>
-      <visible>true</visible>
       <action>
         <button>2</button>
         <repeatable>false</repeatable>
