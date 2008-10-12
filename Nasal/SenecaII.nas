@@ -391,8 +391,7 @@ var setmagneto = func {
   m.setIntValue( v );
 }
 
-var magnetolistener = func {
-  var m = cmdarg();
+var magnetolistener = func(m) {
   var eng = m.getParent();
   var m2 = eng.getChildren("magneto");
   var v = m.getValue();
@@ -435,8 +434,7 @@ setlistener( "/controls/engines/engine[1]/magnetos", magnetolistener );
 ########################################
 
 var instrumentsFactorNode = props.globals.getNode( "/sim/model/material/instruments/factor" );
-var dimmerlistener = func {
-  var  n = cmdarg();
+var dimmerlistener = func(n) {
   instrumentsFactorNode.setValue( n.getValue() );
 }
 

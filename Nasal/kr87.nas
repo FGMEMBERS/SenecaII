@@ -145,14 +145,14 @@ var kr87 = {
     }
   },
 
-  setButtonListener : func {
-    if( cmdarg().getBoolValue() ) {
+  setButtonListener : func(n) {
+    if( n.getBoolValue() ) {
       me.et.restart();
     }
   },
 
-  powerButtonListener : func {
-    if( cmdarg().getBoolValue() and !me.power ) {
+  powerButtonListener : func(n) {
+    if( n.getBoolValue() and !me.power ) {
       # power on, restart timer and start with FRQ display
       me.et.restart();
       me.flt.restart();
