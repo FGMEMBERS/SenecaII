@@ -164,12 +164,6 @@
             <max>100</max>
           </binding>
         </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>KnobPick.L</object-name>
-        <visible>false</visible>
         <action>
           <button>1</button>
           <repeatable>true</repeatable>
@@ -198,12 +192,6 @@
             <max>100</max>
           </binding>
         </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>KnobPick.R</object-name>
-        <visible>false</visible>
         <action>
           <button>1</button>
           <repeatable>true</repeatable>
@@ -211,6 +199,34 @@
             <command>property-adjust</command>
             <property alias="../../../../params/tas-face-rotation"/>
             <step>10</step>
+            <min>-10</min>
+            <max>100</max>
+          </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>Airspeed.Knob</object-name>
+        <visible>true</visible>
+        <action>
+          <button>3</button>
+          <repeatable>true</repeatable>
+          <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/tas-face-rotation"/>
+            <step>-1</step>
+            <min>-10</min>
+            <max>100</max>
+          </binding>
+        </action>
+        <action>
+          <button>4</button>
+          <repeatable>true</repeatable>
+          <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/tas-face-rotation"/>
+            <step>1</step>
             <min>-10</min>
             <max>100</max>
           </binding>

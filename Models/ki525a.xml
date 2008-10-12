@@ -227,30 +227,6 @@
         <wrap>1</wrap>
       </binding>
     </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelectorPick.R</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/heading-bug"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelectorPick.L</object-name>
-    <visible>false</visible>
     <action>
       <button>1</button>
       <repeatable>true</repeatable>
@@ -269,6 +245,18 @@
     <type>pick</type>
     <object-name>HDGSelectorPick.R</object-name>
     <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/heading-bug"/>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
     <action>
       <button>1</button>
       <repeatable>true</repeatable>
@@ -299,12 +287,6 @@
         <wrap>1</wrap>
       </binding>
     </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelector</object-name>
-    <visible>true</visible>
     <action>
       <button>4</button>
       <repeatable>true</repeatable>
@@ -335,30 +317,6 @@
         <wrap>1</wrap>
       </binding>
     </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>OBSSelectorPick.R</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/selected-radial"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>OBSSelectorPick.L</object-name>
-    <visible>false</visible>
     <action>
       <button>1</button>
       <repeatable>true</repeatable>
@@ -377,6 +335,18 @@
     <type>pick</type>
     <object-name>OBSSelectorPick.R</object-name>
     <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/selected-radial"/>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
     <action>
       <button>1</button>
       <repeatable>true</repeatable>
@@ -407,12 +377,6 @@
         <wrap>1</wrap>
       </binding>
     </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>OBSSelector</object-name>
-    <visible>true</visible>
     <action>
       <button>4</button>
       <repeatable>true</repeatable>
