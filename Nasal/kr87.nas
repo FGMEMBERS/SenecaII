@@ -95,8 +95,8 @@ var kr87 = {
     m.rightDisplayN = m.baseN.getNode( "right-display", 1 );
     m.standbyFrequencyN = m.baseN.getNode( "frequencies/standby-khz", 1 );
 
-    setlistener( m.base ~ "/set-btn", func { m.setButtonListener() } );
-    setlistener( m.base ~ "/power-btn", func { m.powerButtonListener() } );
+    setlistener( m.base ~ "/set-btn", func(n) { m.setButtonListener(n) } );
+    setlistener( m.base ~ "/power-btn", func(n) { m.powerButtonListener(n) } );
 
 #   will be set from audiopanel
 #    m.baseN.getNode( "ident-audible" ).setBoolValue( 1 );
