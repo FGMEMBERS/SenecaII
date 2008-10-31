@@ -300,7 +300,6 @@ var seneca_update = func {
   slavedGyro.update();
   radarAltimeter();
   settimer(seneca_update, 0.1 );
-
 }
 
 var seneca_init = func {
@@ -332,11 +331,16 @@ var seneca_init = func {
     "instrumentation/adf/frequencies/selected-khz",
     "instrumentation/adf/frequencies/standby-khz",
     "instrumentation/dme/frequencies/selected-mhz",
-    "instrumentation/dme/frequencies/switch-position",
+    "instrumentation/dme/switch-position",
     "instrumentation/adf/model",
     "instrumentation/adf/rotation-deg",
-    "autopilot/settings/heading-bug-deg"
+    "autopilot/settings/heading-bug-deg",
+    "sim/model/hide-yoke"
   );
+#  ki266.new(0);
+
+#  LightSpots.new( "/sim/model/light-spots" );
+
   seneca_update();
 };
 
@@ -392,6 +396,7 @@ var setmagneto = func {
 }
 
 var magnetolistener = func(m) {
+
   var eng = m.getParent();
   var m2 = eng.getChildren("magneto");
   var v = m.getValue();
@@ -413,8 +418,16 @@ var magnetolistener = func(m) {
   }
 };
 
+var magnetoswitchlistener = func(m) {
+  setmagneto( m.getParent().getIndex(), m.getIndex() );
+};
+
 setlistener( "/controls/engines/engine[0]/magnetos", magnetolistener );
 setlistener( "/controls/engines/engine[1]/magnetos", magnetolistener );
+setlistener( "/controls/engines/engine[0]/magneto[0]", magnetoswitchlistener, 1, 0 );
+setlistener( "/controls/engines/engine[0]/magneto[1]", magnetoswitchlistener, 1, 0 );
+setlistener( "/controls/engines/engine[1]/magneto[0]", magnetoswitchlistener, 1, 0 );
+setlistener( "/controls/engines/engine[1]/magneto[1]", magnetoswitchlistener, 1, 0 );
 
 ########################################
 # Sync the fuel selector controls with the properties
@@ -435,6 +448,7 @@ setlistener( "/controls/engines/engine[1]/magnetos", magnetolistener );
 
 var instrumentsFactorNode = props.globals.getNode( "/sim/model/material/instruments/factor" );
 var dimmerlistener = func(n) {
+
   instrumentsFactorNode.setValue( n.getValue() );
 }
 
