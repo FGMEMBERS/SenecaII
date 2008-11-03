@@ -1,43 +1,15 @@
-<?xml version="1.0" ?>
+<?xml version = '1.0' encoding = 'UTF-8' ?>
 <PropertyList>
-    <path>ControlLight.ac</path>
-    <animation>
-      <type>material</type>
-      <object-name>GS-light</object-name>
-      <emission>
-       <red>0.0</red>
-       <green>1.0</green>
-       <blue>0.0</blue>
-       <factor-prop>autopilot/CENTURYIII/settings/gs-captured</factor-prop>
-       <offset-prop>autopilot/CENTURYIII/gs-light-test</offset-prop>
-      </emission>
-    </animation>
-    <animation>
-        <type>noshadow</type>
-    </animation>
-    <animation>
-        <type>range</type>
-        <min-m>0</min-m>
-        <max-m>20</max-m>
-    </animation>
-    <animation>
-      <type>pick</type>
-      <visible>true</visible>
-      <action>
-        <button>0</button>
-        <repeatable>false</repeatable>
-        <binding>
-          <command>property-assign</command>
-          <property>autopilot/CENTURYIII/gs-light-test</property>
-          <value>1</value>
-        </binding>
-        <mod-up>
-          <binding>
-            <command>property-assign</command>
-          <property>autopilot/CENTURYIII/gs-light-test</property>
-            <value>0</value>
-          </binding>
-        </mod-up>
-      </action>
-    </animation>
+
+  <params>
+    <value>autopilot/CENTURYIII/settings/gs-captured</value>
+    <test>controls/lighting/gs-captured-light-test</test>
+  </params>
+
+  <path>ControlLight-Green.ac</path>
+
+  <animation include="ControlLightLightSelectAnimation.xml"/>
+  <animation include="ControlLightPickAnimation.xml"/>
+  <animation include="ControlLightTranslateAnimation.xml"/>
+
 </PropertyList>
