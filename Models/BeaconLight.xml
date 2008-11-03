@@ -4,7 +4,6 @@
     
     <animation>
         <type>noshadow</type>
-        <object-name>Light</object-name>
     </animation>
 
     <animation>

@@ -11,4 +11,12 @@
             <blue>1.0</blue>
         </emission>
     </animation>
+    <animation>
+        <type>noshadow</type>
+    </animation>
+    <animation>
+        <type>range</type>
+        <min-m>0</min-m>
+        <max-m>20</max-m>
+    </animation>
 </PropertyList>
