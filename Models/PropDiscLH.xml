@@ -1,0 +1,30 @@
+<PropertyList>
+
+  <params>
+    <rpm-norm-inv>/engines/engine[0]/rpm-norm-inv</rpm-norm-inv>
+    <rpm>engines/engine[0]/rpm</rpm>
+  </params>
+
+  <path>PropDisc.ac</path>
+
+  <animation include="PropDiscMaterialAnimation.xml"/>
+  <animation include="PropDiscSelectAnimation.xml"/>
+
+  <animation>
+    <type>spin</type>
+    <object-name>PropDisc</object-name>
+    <property alias="../../params/rpm"/>
+    <factor>1</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+  </animation>
+
+</PropertyList>

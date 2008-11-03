@@ -1,0 +1,11 @@
+<PropertyList>
+  <type>material</type>
+  <object-name>PropDisc</object-name>
+  <threshold>0.001</threshold>
+  <transparency>
+    <alpha>0.2</alpha>
+    <factor-prop alias="../../../params/rpm-norm-inv"/>
+    <min>0.0</min>
+    <max>1.0</max>
+  </transparency>
+</PropertyList>

@@ -1,0 +1,10 @@
+<PropertyList>
+  <type>select</type>
+  <object-name>PropDisc</object-name>
+  <condition>
+    <greater-than>
+      <property alias="../../../../params/rpm"/>
+      <value>350</value>
+    </greater-than>
+  </condition>
+</PropertyList>
