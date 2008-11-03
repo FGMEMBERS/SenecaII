@@ -391,7 +391,7 @@
             <file>Aircraft/SenecaII/Nasal/timers.nas</file>
             <file>Aircraft/Generic/limits.nas</file>
             <file>Aircraft/SenecaII/Nasal/hsiBugError.nas</file>
-            <file>Aircraft/SenecaII/Nasal/dme.nas</file>
+            <file>Aircraft/Instruments-3d/ki266/ki266.nas</file>
         </SenecaII>
         <century3>
             <file>Aircraft/Generic/century3.nas</file>

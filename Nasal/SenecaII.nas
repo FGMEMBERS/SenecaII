@@ -338,7 +338,7 @@ var seneca_init = func {
     "sim/model/hide-yoke",
     "sim/model/hide-windshield-deice"
   );
-#  ki266.new(0);
+  ki266.new(0);
 
 #  LightSpots.new( "/sim/model/light-spots" );
 
