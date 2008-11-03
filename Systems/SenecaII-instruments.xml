@@ -72,6 +72,11 @@
     <number>1</number>
   </turn-indicator>
 
+  <dme>
+    <name>dme</name>
+    <number>0</number>
+  </dme>
+
   <nav-radio>
     <name>nav</name>
     <number>0</number>
@@ -81,5 +86,11 @@
     <name>nav</name>
     <number>1</number>
   </nav-radio>
+
+  <magnetic-compass>
+    <name>magnetic-compass</name>
+    <number>0</number>
+  </magnetic-compass>
+
 
 </PropertyList>
