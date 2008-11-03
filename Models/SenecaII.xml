@@ -230,8 +230,8 @@
 
     <!-- KI266 DME Indicator -->
     <model>
-        <path>Aircraft/SenecaII/Instruments-3d/ki266.xml</path>
-        <name>ki266</name>
+        <path>Aircraft/SenecaII/Models/dme.xml</path>
+        <name>dme</name>
         <offsets>
             <x-m>-1.91</x-m>
             <y-m>0.12</y-m>
@@ -947,6 +947,22 @@
     </animation>
     <animation>
         <type>select</type>
+        <object-name>GearLight.Nose.Cover.Off</object-name>
+        <condition>
+         <or>
+          <not>
+            <property>gear/gear[0]/indicator-servicable</property>
+          </not>
+          <less-than>
+             <property>gear/gear[0]/position-norm</property>
+             <value>0.9</value>
+          </less-than>
+         </or>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
         <object-name>GearLight.Left.Cover.On</object-name>
         <condition>
             <property>gear/gear[1]/indicator-servicable</property>
@@ -958,6 +974,22 @@
     </animation>
     <animation>
         <type>select</type>
+        <object-name>GearLight.Left.Cover.Off</object-name>
+        <condition>
+         <or>
+          <not>
+            <property>gear/gear[1]/indicator-servicable</property>
+          </not>
+          <less-than>
+             <property>gear/gear[1]/position-norm</property>
+             <value>0.9</value>
+          </less-than>
+         </or>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
         <object-name>GearLight.Right.Cover.On</object-name>
         <condition>
             <property>gear/gear[2]/indicator-servicable</property>
@@ -967,6 +999,22 @@
             </greater-than>
         </condition>
     </animation>
+    <animation>
+        <type>select</type>
+        <object-name>GearLight.Right.Cover.Off</object-name>
+        <condition>
+         <or>
+          <not>
+            <property>gear/gear[2]/indicator-servicable</property>
+          </not>
+          <less-than>
+             <property>gear/gear[2]/position-norm</property>
+             <value>0.9</value>
+          </less-than>
+         </or>
+        </condition>
+    </animation>
+
     <animation>
         <type>rotate</type>
         <object-name>ParkingBrakeControl</object-name>
@@ -1783,47 +1831,15 @@
     </animation>
 
     <!-- Left Propeller -->
-    <animation>
-        <type>noshadow</type>
-        <object-name>LeftPropDisc</object-name>
-    </animation>
-    <animation>
-        <type>material</type>
-        <object-name>LeftPropDisc</object-name>
-        <threshold>0.001</threshold>
-        <transparency>
-            <alpha>0.2</alpha>
-            <factor-prop>/engines/engine[0]/rpm-norm-inv</factor-prop>
-            <min>0.0</min>
-            <max>1.0</max>
-        </transparency>
-    </animation>
-    <animation>
-        <type>select</type>
-        <object-name>LeftPropDisc</object-name>
-        <condition>
-            <greater-than>
-                <property>engines/engine[0]/rpm</property>
-                <value>350</value>
-            </greater-than>
-        </condition>
-    </animation>
-    <animation>
-        <type>spin</type>
-        <object-name>LeftPropDisc</object-name>
-        <property>engines/engine[0]/rpm</property>
-        <factor>1</factor>
-        <axis>
-            <x>1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-        <center>
+    <model>
+        <path>Aircraft/SenecaII/Models/PropDiscLH.xml</path>
+        <name>PropDisc.L</name>
+        <offsets>
             <x-m>-2.76321</x-m>
             <y-m>-1.84169</y-m>
             <z-m>1.31469</z-m>
-        </center>
-    </animation>
+        </offsets>
+    </model>
     <animation>
         <type>noshadow</type>
         <object-name>LeftPropeller</object-name>
@@ -1884,47 +1900,15 @@
     </animation>
 
     <!-- Right Propeller -->
-    <animation>
-        <type>noshadow</type>
-        <object-name>RightPropDisc</object-name>
-    </animation>
-    <animation>
-        <type>material</type>
-        <object-name>RightPropDisc</object-name>
-        <threshold>0.001</threshold>
-        <transparency>
-            <alpha>0.2</alpha>
-            <factor-prop>/engines/engine[1]/rpm-norm-inv</factor-prop>
-            <min>0.0</min>
-            <max>1.0</max>
-        </transparency>
-    </animation>
-    <animation>
-        <type>select</type>
-        <object-name>RightPropDisc</object-name>
-        <condition>
-            <greater-than>
-                <property>engines/engine[1]/rpm</property>
-                <value>350</value>
-            </greater-than>
-        </condition>
-    </animation>
-    <animation>
-        <type>spin</type>
-        <object-name>RightPropDisc</object-name>
-        <property>engines/engine[1]/rpm</property>
-        <factor>-1</factor>
-        <axis>
-            <x>1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-        <center>
+    <model>
+        <path>Aircraft/SenecaII/Models/PropDiscRH.xml</path>
+        <name>PropDisc.R</name>
+        <offsets>
             <x-m>-2.76321</x-m>
             <y-m>1.84169</y-m>
             <z-m>1.31469</z-m>
-        </center>
-    </animation>
+        </offsets>
+    </model>
     <animation>
         <type>noshadow</type>
         <object-name>RightPropeller</object-name>
@@ -2200,24 +2184,15 @@
             <z2-m>1.22169</z2-m>
         </axis>
     </animation>
-<!--
+    <!--
     <model>
-        <path>Aircraft/SenecaII/Models/Beam.xml</path>
+        <path>Aircraft/SenecaII/Models/LightSpot.xml</path>
+        <name>LandingLightSpot</name>
         <offsets>
-            <x-m>-2.93</x-m>
+            <x-m>-2.95674</x-m>
             <y-m>0</y-m>
-            <z-m>0.809</z-m>
+            <z-m>0.808733</z-m>
         </offsets>
     </model>
--->
-
-    <!-- LOD for specific objects -->
-    <!--
-    <animation>
-        <type>range</type>
-        <object-name>Cockpit</object-name>
-        <min-m>0</min-m>
-        <max-m>100</max-m>
-    </animation>
     -->
 </PropertyList>
