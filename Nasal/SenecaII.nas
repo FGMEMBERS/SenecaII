@@ -335,7 +335,8 @@ var seneca_init = func {
     "instrumentation/adf/model",
     "instrumentation/adf/rotation-deg",
     "autopilot/settings/heading-bug-deg",
-    "sim/model/hide-yoke"
+    "sim/model/hide-yoke",
+    "sim/model/hide-windshield-deice"
   );
 #  ki266.new(0);
 
