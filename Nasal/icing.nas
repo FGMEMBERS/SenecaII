@@ -4,7 +4,10 @@
 # Maintainer: Torsten Dreyer (Torsten at t3r dot de)
 #
 # $Log$
-# Revision 1.3  2007/11/29 18:26:49  mfranz
+# Revision 1.4  2008/11/21 10:27:34  torsten
+# make use of Node.initNode() method
+#
+# Revision 1.3  2007-11-29 18:26:49  mfranz
 # Torsten DREYER:
 #
 # - add var to local variables
@@ -34,16 +37,6 @@
 # /environment/icing/icing-severity-name   textual representation of icing severity one of
 #                                          none,trace,light,moderate,severe
 # /environment/icing/icing-factor          ammound of ice accumulation per NAM
-
-#########################################################################################
-# helper function, returns a propertynode or creates it with default value
-var createNodeWithDefault = func {
-  node = arg[0].getNode( arg[1], 1 );
-  if( node.getValue() == nil ) {
-    node.setValue( arg[2] );
-  }
-  return node;
-}
 
 #########################################################################
 # implementation of the global icemachine
@@ -94,10 +87,10 @@ var speedN        = props.globals.getNode( "/velocities/airspeed-kt" );
 var icingRootN    = props.globals.getNode( "/environment/icing", 1 );
 var visibilityN   = props.globals.getNode( "/environment/effective-visibility-m" );
 
-var severityN     = createNodeWithDefault( icingRootN, "icing-severity", ICING_NONE );
-var severityNameN = createNodeWithDefault( icingRootN, "icing-severity-name", ICING_CATEGORY[severityN.getValue()] );
-var icingFactorN  = createNodeWithDefault( icingRootN, "icing-factor", 0.0 );
-var maxSpreadN    = createNodeWithDefault( icingRootN, "max-spread-degc", 0.1 );
+var severityN     = icingRootN.initNode( "icing-severity", ICING_NONE, "INT" );
+var severityNameN = icingRootN.initNode( "icing-severity-name", ICING_CATEGORY[severityN.getValue()] );
+var icingFactorN  = icingRootN.initNode( "icing-factor", 0.0 );
+var maxSpreadN    = icingRootN.initNode( "max-spread-degc", 0.1 );
 
 var setSeverity = func {
   var value = arg[0];
@@ -126,33 +119,27 @@ IceSensitiveElement.new = func {
   obj.parents = [IceSensitiveElement];
   obj.node = arg[0];
 
-  obj.nameN = createNodeWithDefault( obj.node, "name", "noname" );
+  obj.nameN = obj.node.initNode( "name", "noname" );
   var n = obj.node.getNode( "salvage-control", 0 );
   obj.controlN = nil;
   if( n != nil ) {
     n = n.getValue();
     if( n != nil ) {
-      obj.controlN = props.globals.getNode( n );
-      if( obj.controlN.getValue() == nil ) {
-        obj.controlN.setBoolValue( 0 );
-      }
+      obj.controlN = props.globals.initNode( n, 0, "BOOL" );
     }
   }
-  obj.sensitivityN = createNodeWithDefault( obj.node, "sensitivity", 1.0 );
+  obj.sensitivityN = obj.node.initNode( "sensitivity", 1.0 );
 
   obj.iceAmountN = nil;
   n = obj.node.getNode( "output-property", 0 );
   if( n != nil ) {
     n = n.getValue();
     if( n != nil ) {
-      obj.iceAmountN = props.globals.getNode( n, 1 );
-      if( obj.iceAmountN.getValue() == nil ) {
-        obj.iceAmountN.setDoubleValue( 0.0 );
-      }
+      obj.iceAmountN = props.globals.initNode( n, 0.0 );
     }
   }
   if( obj.iceAmountN == nil ) {
-    obj.iceAmountN = createNodeWithDefault( obj.node, "ice-inches", 0.0 );
+    obj.iceAmountN = obj.node.initNode( "ice-inches", 0.0 );
   }
 
   return obj;

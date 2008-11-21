@@ -14,20 +14,9 @@ var timer = {
     m.base = arg[0];
     m.baseN = props.globals.getNode( m.base, 1 );
 
-    m.timeN = m.baseN.getNode( "time", 1 );
-    if( m.timeN.getValue() == nil ) {
-      m.timeN.setDoubleValue( 0.0 );
-    }
-
-    m.runningN = m.baseN.getNode( "running", 1 );
-    if( m.runningN.getValue() == nil ) {
-      m.runningN.setBoolValue( 0 );
-    }
-
-    m.startTimeN = m.baseN.getNode( "start-time", 1 );
-    if( m.startTimeN.getValue() == nil ) {
-      m.startTimeN.setDoubleValue( -1.0 );
-    }
+    m.timeN = m.baseN.initNode( "time", 0.0 );
+    m.runningN = m.baseN.initNode( "running", 0, "BOOL" );
+    m.startTimeN = m.baseN.initNode( "start-time", -1.0 );
 
     return m;
   },
@@ -87,43 +76,23 @@ var kr87 = {
     m.et  = timer.new( m.base ~ "/enroute-timer" );
     m.et.restart();
 
-    m.displayModeN = m.baseN.getNode( "display-mode",1 );
-    if( m.displayModeN.getValue() == nil ) {
-      m.displayModeN.setIntValue( 0 );
-    }
+    m.displayModeN = m.baseN.initNode( "display-mode", 0, "INT" );
 
     m.rightDisplayN = m.baseN.getNode( "right-display", 1 );
     m.standbyFrequencyN = m.baseN.getNode( "frequencies/standby-khz", 1 );
 
-    setlistener( m.base ~ "/set-btn", func(n) { m.setButtonListener(n) } );
-    setlistener( m.base ~ "/power-btn", func(n) { m.powerButtonListener(n) } );
-
 #   will be set from audiopanel
 #    m.baseN.getNode( "ident-audible" ).setBoolValue( 1 );
-    m.volumeNormN = m.baseN.getNode( "volume-norm", 1 );
-    if( m.volumeNormN.getValue() == nil ) {
-      m.volumeNormN.setDoubleValue( 0.0 );
-    }
+    m.volumeNormN = m.baseN.initNode( "volume-norm", 0.0 );
 
     m.power = 0;
 
-    m.powerButtonN = m.baseN.getNode( "power-btn", 1 );
-    if( m.volumeNormN.getValue() == 0 ) {
-      m.powerButtonN.setBoolValue( 0 );
-    } else {
-      m.powerButtonN.setBoolValue( 1 );
-    }
-
-
-    m.adfButtonN = m.baseN.getNode( "adf-btn" );
-    if( m.adfButtonN.getValue() == nil ) {
-      m.adfButtonN.setBoolValue( 0 );
-    }
-
-    m.bfoButtonN = m.baseN.getNode( "bfo-btn" );
-    if( m.bfoButtonN.getValue() == nil ) {
-      m.bfoButtonN.setBoolValue( 0 );
-    }
+    m.powerButtonN = m.baseN.initNode( "power-btn", 0, "BOOL" ); 
+    m.powerButtonN.setBoolValue( m.volumeNormN.getValue() != 0 );
+    m.setButtonN = m.baseN.initNode( "set-btn", 0, "BOOL" );
+    m.powerButtonN.setBoolValue( m.powerButtonN.getValue() );
+    m.adfButtonN = m.baseN.initNode( "adf-btn", 0, "BOOL" );
+    m.bfoButtonN = m.baseN.initNode( "bfo-btn", 0, "BOOL" );
 
     m.modeN = m.baseN.getNode( "mode" );
     setlistener( m.base ~ "/adf-btn", func { m.modeButtonListener() } );
@@ -142,12 +111,6 @@ var kr87 = {
       }
     } else {
       me.modeN.setValue( "ant" );
-    }
-  },
-
-  setButtonListener : func(n) {
-    if( n.getBoolValue() ) {
-      me.et.restart();
     }
   },
 
@@ -190,15 +153,24 @@ var kr87 = {
       }
       me.rightDisplayN.setIntValue( t );
     }
+
+    if( me.setButtonN.getValue() ) {
+      me.et.restart();
+    }
+
+    if( me.powerButtonN.getBoolValue() and !me.power ) {
+      # power on, restart timer and start with FRQ display
+      me.et.restart();
+      me.flt.restart();
+      me.displayModeN.setIntValue( 0 );
+    }
+    me.power = me.powerButtonN.getValue();
+
+    settimer( func { me.update() }, 0.1 );
   }
 };
 
-var kr87_0 = kr87.new( "/instrumentation/adf[0]" );
+var kr87_0 = kr87.new( "/instrumentation/adf[0]" ).update();
 
-var timer_update = func {
-  kr87_0.update();
-  settimer( timer_update, 0.2 );
-}
-
-timer_update();
+#setlistener("/sim/signals/fdm-initialized", func { timer_update() } );
 
