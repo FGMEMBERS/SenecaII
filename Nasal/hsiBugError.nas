@@ -7,19 +7,10 @@ var power = "/systems/electrical/outputs/autopilot";
 
 # internal
 
-var internalHeadingBugErrorN = props.globals.getNode( "/autopilot/internal/heading-bug-error-deg",1);
-if( internalHeadingBugErrorN.getValue() == nil )
-  internalHeadingBugErrorN.setDoubleValue(0);
-
-var hsiHdgBugErrorDegN   = props.globals.getNode("/autopilot/internal/hsi-heading-bug-error-deg",1);
-
-var headingN = props.globals.getNode("/instrumentation/heading-indicator/indicated-heading-deg",1); 
-if( headingN.getValue() == nil )
-  headingN.setDoubleValue(0);
-
-var selectedRadialN = props.globals.getNode("/instrumentation/nav[0]/radials/selected-deg",1);
-if( selectedRadialN.getValue() == nil )
-  selectedRadialN.setDoubleValue(0);
+var internalHeadingBugErrorN = props.globals.initNode( "/autopilot/internal/heading-bug-error-deg", 0.0 );
+var hsiHdgBugErrorDegN   = props.globals.initNode("/autopilot/internal/hsi-heading-bug-error-deg", 0.0 );
+var headingN = props.globals.initNode("/instrumentation/heading-indicator/indicated-heading-deg", 0.0); 
+var selectedRadialN = props.globals.initNode("/instrumentation/nav[0]/radials/selected-deg", 0.0 );
 
 # Autopilot controls
 var propAutopilotControlsN = props.globals.getNode("/autopilot/CENTURYIII/controls", 1);

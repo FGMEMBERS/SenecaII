@@ -16,13 +16,11 @@ Engines.new = func {
   obj.engineNodes = obj.enginesNode.getChildren( "engine" );
 
   obj.annunciatorNode = props.globals.getNode( "/instrumentation/annunciator" );
-  obj.oilNode = obj.annunciatorNode.getNode( "oil", 1 );
-  obj.oilNode.setBoolValue( 0 );
+  obj.oilNode = obj.annunciatorNode.initNode( "oil", 0, "BOOL" );
 
   for( var i = 0; i < size(obj.engineNodes); i = i+1 ) {
     var s = "overboost[" ~ i ~ "]";
-    var n = obj.annunciatorNode.getNode( s, 1 );
-    n.setBoolValue( 0 );
+    var n = obj.annunciatorNode.initNode( s, 0, "BOOL" );
   }
   obj.overboostNodes = obj.annunciatorNode.getChildren( "overboost" );
 
@@ -54,7 +52,7 @@ Engines.update = func {
     }
 
     # create a rpm-norm-inv property for propdisc transparency
-    me.rpm = me.engineNodes[i].getNode( "rpm" ).getValue();
+    me.rpm = me.engineNodes[i].getNode( "rpm", 1 ).getValue();
     if( me.rpm == nil ) {
       me.rpm = 0.0;
     }
@@ -122,8 +120,7 @@ GearInTransit.new = func {
   obj.parents = [GearInTransit];
   obj.gearNode = props.globals.getNode( "/gear" );
   obj.gearNodes = obj.gearNode.getChildren( "gear" );
-  obj.inTransitNode = obj.gearNode.getNode( "in-transit", 1 );
-  obj.inTransitNode.setBoolValue( 0 );
+  obj.inTransitNode = obj.gearNode.initNode( "in-transit", 0 "BOOL" );
   return obj;
 }
 
@@ -196,12 +193,9 @@ Suction.update = func {
 }
 
 ##################################################
-var heightNode = props.globals.getNode( "/position/altitude-agl-ft", "true" );
-heightNode.setDoubleValue( 0.0 );
-var dhNode = props.globals.getNode( "/instrumentation/radar-altimeter/decision-height", "true" );
-dhNode.setDoubleValue( 0.0 );
-var dhFlagNode = props.globals.getNode( "/instrumentation/radar-altimeter/decision-height-flag", "true" );
-dhFlagNode.setBoolValue( 0 );
+var heightNode = props.globals.initNode( "/position/altitude-agl-ft", 0.0 );
+var dhNode = props.globals.initNode( "/instrumentation/radar-altimeter/decision-height", 0.0 );
+var dhFlagNode = props.globals.initNode( "/instrumentation/radar-altimeter/decision-height-flag", 0, "BOOL" );
 
 ###################################################
 # set DH Flag
@@ -226,16 +220,10 @@ SlavedGyro.new = func {
   obj.parents = [SlavedGyro];
 
   obj.hiNode = props.globals.getNode( "/instrumentation/heading-indicator" );
-  obj.errorIndicatorNode = obj.hiNode.getNode( "error-indicator", 1 );
-  obj.errorIndicatorNode.setDoubleValue( 0 );
-
+  obj.errorIndicatorNode = obj.hiNode.initNode( "error-indicator", 0.0 );
   obj.offsetNode = obj.hiNode.getNode( "offset-deg", 1 );
-
   obj.modeNode = obj.hiNode.getNode( "mode-auto", 1 );
-
-  obj.rotateNode = obj.hiNode.getNode( "rotate", 1 );
-  obj.rotateNode.setIntValue( 0 );
-
+  obj.rotateNode = obj.hiNode.initNode( "rotate", 0, "INT" );
   obj.timeNode = props.globals.getNode( "/sim/time/elapsed-sec" );
  
   obj.fastrate = 3;
@@ -463,19 +451,10 @@ FuelPumpHandler.new = func {
   var m = {};
   m.parents = [FuelPumpHandler];
   m.engineControlRootN = props.globals.getNode( "/controls/engines/engine[" ~ arg[0] ~ "]" );
-  m.annunciatorLightN = props.globals.getNode( "/instrumentation/annunciator/fuelpump[" ~ arg[0] ~ "]", 1 );
-  if( m.annunciatorLightN.getValue() == nil ) {
-    m.annunciatorLightN.setBoolValue( 0 );
-  }
+  m.annunciatorLightN = props.globals.initNode( "/instrumentation/annunciator/fuelpump[" ~ arg[0] ~ "]", 0, "BOOL" );
 
-  m.fuelPumpControlN = m.engineControlRootN.getNode( "fuel-pump", 1 );
-  if( m.fuelPumpControlN.getValue() == nil ) {
-    m.fuelPumpControlN.setBoolValue( 0 );
-  }
-  m.primerControlN   = m.engineControlRootN.getNode( "primer", 1 );
-  if( m.primerControlN.getValue() == nil ) {
-    m.primerControlN.setBoolValue( 0 );
-  }
+  m.fuelPumpControlN = m.engineControlRootN.initNode( "fuel-pump", 0, "BOOL" );
+  m.primerControlN   = m.engineControlRootN.initNode( "primer", 0, "BOOL" );
 
   setlistener( m.fuelPumpControlN, func { m.listener() }, 1, 0 );
   setlistener( m.primerControlN, func { m.listener() }, 1, 0 );
@@ -503,7 +482,7 @@ var BatteryMasterHandler = {};
 BatteryMasterHandler.new = func {
   var obj = {};
   obj.parents = [BatteryMasterHandler];
-  obj.switchN = props.globals.getNode( "/controls/electric/battery-switch", 1 );
+  obj.switchN = props.globals.initNode( "/controls/electric/battery-switch", 0, "BOOL" );
   obj.clients = [
     props.globals.getNode( "/instrumentation/nav[0]/serviceable", 1 ),
     props.globals.getNode( "/instrumentation/nav[1]/serviceable", 1 ),
@@ -528,8 +507,8 @@ var batteryMasterHandler = BatteryMasterHandler.new();
 # propagate the emergency gear extension switch 
 # to the fcs of jsbsim
 ###############################################
-var emergencyGearNode = props.globals.getNode( "controls/gear/gear-emergency-extend", 1 );
-var normalGearNode = props.globals.getNode( "controls/gear/gear-down", 1 );
+var emergencyGearNode = props.globals.initNode( "controls/gear/gear-emergency-extend", 0, "BOOL" );
+var normalGearNode = props.globals.initNode( "controls/gear/gear-down", 0, "BOOL" );
 var fcsGearNode = props.globals.getNode( "fdm/jsbsim/gear/gear-cmd-emergency-norm", 1 );
 
 # emergency extend at any time
