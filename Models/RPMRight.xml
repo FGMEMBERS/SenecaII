@@ -14,6 +14,7 @@
     <animation>
         <type>material</type>
         <object-name>Face</object-name>
+        <object-name>Needle</object-name>
         <emission>
             <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
             <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
