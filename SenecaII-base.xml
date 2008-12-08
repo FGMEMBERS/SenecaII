@@ -62,15 +62,6 @@
                     <output-property>/systems/pitot/icing</output-property>
                 </iceable>
             </icing>
-            <light-spots>
-              <auto-update type="bool">true</auto-update>
-              <light-spot>
-                <name>LandingLight</name>
-                <z-offset-m type="double">0.6</z-offset-m>
-                <pitch-offset-deg type="double">5</pitch-offset-deg>
-                <max-dist-m type="double">100</max-dist-m>
-              </light-spot>
-            </light-spots>
         </model>
 
         <view n="0">
