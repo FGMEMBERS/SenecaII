@@ -4,6 +4,9 @@
 # Maintainer: Torsten Dreyer (Torsten at t3r dot de)
 #
 # $Log$
+# Revision 1.3  2008/12/08 21:35:37  torsten
+# initNode - not getNode. Thanks m.
+#
 # Revision 1.2  2008/12/08 21:23:38  torsten
 # make use of initNode
 #
@@ -39,7 +42,7 @@ PitotIcingHandler.new = func {
 
   m.icingN = m.baseN.initNode( "icing", 0.0 );
 
-  m.serviceableN = m.baseN.getNode( "serviceable", 1, "BOOL" );
+  m.serviceableN = m.baseN.initNode( "serviceable", 1, "BOOL" );
 
   setlistener( m.icingN, func { m.listener() } );
 
