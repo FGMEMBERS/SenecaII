@@ -74,35 +74,15 @@
   <maxmp unit="INHG"> 29.2 </maxmp>
   <displacement unit="IN3"> 360.00 </displacement>
   <maxhp>200</maxhp>
-  <cycles> 2.0 </cycles>
+  <cycles> 4.0 </cycles>
   <idlerpm> 800.0 </idlerpm>
+  <maxrpm> 2575 </maxrpm>
   <maxthrottle> 1.0 </maxthrottle>
-  <minthrottle> 0.01 </minthrottle>
-  <!-- old config, ignored when supercharger is present -->
+  <minthrottle> 0.1 </minthrottle>
   <numboostspeeds>1</numboostspeeds>
   <boostoverride>0</boostoverride>
   <ratedboost1>6</ratedboost1>
   <ratedaltitude1>12000</ratedaltitude1>
   <ratedpower1>215</ratedpower1>
   <ratedrpm1>2575</ratedrpm1>
-  <!-- end of old config -->
-  
-  <!-- under construction: build a better supercharger code -->
-  <!--
-  <supercharger>
-    <stage>
-      <wastegate unit="INHG">42</wastegate>
-      <function name="propulsion/supercharger-stage1">
-        <description>The supercharger curve, multiplier of MP</description>
-        <product>
-          <value>2.5</value>
-          <table>
-            <independentVar>rpm</independentVar>
-            <tableData> 0 0.0 1000 0.1 2000 0.8 2575 1.0 </tableData>
-          </table>
-        </product>
-      </function>
-    </stage>
-  </supercharger>
-  -->
 </piston_engine>
