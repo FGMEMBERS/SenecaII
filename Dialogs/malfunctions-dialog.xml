@@ -62,8 +62,8 @@
       <label>Nose</label>
       <property></property>
       <binding>
-       <command>nasal</command>
-       <script></script>
+        <command>property-toggle</command>
+        <property>gear/gear[0]/indicator-servicable</property>
       </binding>
     </checkbox>
 
@@ -72,8 +72,8 @@
       <label>Left Main</label>
       <property></property>
       <binding>
-       <command>nasal</command>
-       <script></script>
+        <command>property-toggle</command>
+        <property>gear/gear[1]/indicator-servicable</property>
       </binding>
     </checkbox>
 
@@ -82,8 +82,8 @@
       <label>Right Main</label>
       <property></property>
       <binding>
-       <command>nasal</command>
-       <script></script>
+        <command>property-toggle</command>
+        <property>gear/gear[2]/indicator-servicable</property>
       </binding>
     </checkbox>
 
