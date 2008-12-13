@@ -294,6 +294,21 @@
         <property>/instrumentation/audio-panel/com-mic[2]</property>
         <value>0</value>
       </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[0]</property>
+        <value>1</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[1]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[2]</property>
+        <value>0</value>
+      </binding>
     </action>
   </animation>
   <animation>
@@ -330,6 +345,21 @@
         <property>/instrumentation/audio-panel/com-mic[2]</property>
         <value>0</value>
       </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[0]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[1]</property>
+        <value>1</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[2]</property>
+        <value>0</value>
+      </binding>
     </action>
   </animation>
   <animation>
@@ -364,6 +394,21 @@
       <binding>
         <command>property-assign</command>
         <property>/instrumentation/audio-panel/com-mic[2]</property>
+        <value>1</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[0]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[1]</property>
+        <value>0</value>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/audio-panel/com[2]</property>
         <value>1</value>
       </binding>
     </action>
