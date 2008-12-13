@@ -1077,24 +1077,6 @@
         </offsets>
     </model>
     <!-- altimeter -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/AltimeterPanel.xml</path>
-        <bottom-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.313245</y-m>
-            <z-m>1.47695</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.91</x-m>
-            <y-m>-0.233245</y-m>
-            <z-m>1.47695</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.91</x-m>
-            <y-m>-0.313245</y-m>
-            <z-m>1.55695</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/Instruments-3d/alt/alt.xml</path>
         <name>Altimeter</name>
@@ -1848,7 +1830,7 @@
         <type>spin</type>
         <object-name>LeftPropeller</object-name>
         <property>engines/engine[0]/rpm</property>
-        <factor>1</factor>
+        <factor>-1</factor>
         <axis>
             <x>1</x>
             <y>0</y>
@@ -1927,7 +1909,7 @@
         <type>spin</type>
         <object-name>RightPropeller</object-name>
         <property>engines/engine[1]/rpm</property>
-        <factor>-1</factor>
+        <factor>1</factor>
         <axis>
             <x>1</x>
             <y>0</y>
@@ -2184,15 +2166,17 @@
             <z2-m>1.22169</z2-m>
         </axis>
     </animation>
-    <!--
+
     <model>
-        <path>Aircraft/SenecaII/Models/LightSpot.xml</path>
-        <name>LandingLightSpot</name>
-        <offsets>
-            <x-m>-2.95674</x-m>
-            <y-m>0</y-m>
-            <z-m>0.808733</z-m>
-        </offsets>
+      <path>Aircraft/SenecaII/Models/GearMirror.xml</path>
+      <name>GearMirror</name>
+      <offsets>
+        <x-m>-2.2808</x-m>
+        <y-m>-1.35</y-m>
+        <z-m>1.2005</z-m>
+        <heading-deg>181</heading-deg>
+        <roll-deg>16</roll-deg>
+      </offsets>
     </model>
-    -->
+
 </PropertyList>
