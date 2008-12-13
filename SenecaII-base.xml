@@ -492,14 +492,7 @@
             <audio-btn>1</audio-btn>
         </marker-beacon>
 
-        <audio-panel>
-            <dme archive="y">0</dme>
-            <hi archive="y">1</hi>
-            <lo archive="y">0</lo>
-            <com-mic n="0">1</com-mic>
-            <com-mic n="1">0</com-mic>
-            <com-mic n="2">0</com-mic>
-        </audio-panel>
+        <audio-panel include="Models/gma340properties.xml"/>
         <heading-indicator>
             <mode-auto archive="y">1</mode-auto>
         </heading-indicator>
