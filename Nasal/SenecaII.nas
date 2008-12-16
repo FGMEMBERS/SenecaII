@@ -120,7 +120,7 @@ GearInTransit.new = func {
   obj.parents = [GearInTransit];
   obj.gearNode = props.globals.getNode( "/gear" );
   obj.gearNodes = obj.gearNode.getChildren( "gear" );
-  obj.inTransitNode = obj.gearNode.initNode( "in-transit", 0 "BOOL" );
+  obj.inTransitNode = obj.gearNode.initNode( "in-transit", 0, "BOOL" );
   return obj;
 }
 
@@ -129,7 +129,7 @@ GearInTransit.update = func {
 
   for( i = 0; i < size(me.gearNodes); i = i+1 ) {
     var position_norm = me.gearNodes[i].getNode("position-norm").getValue();
-    if( position_norm != nil and position_norm > 0.0 and position_norm < 1.0 ) {
+    if( position_norm != nil and position_norm > 0.01 and position_norm < 0.99 ) {
       inTransit = 1;
       break;
     }
