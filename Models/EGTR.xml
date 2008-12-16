@@ -1,41 +1,47 @@
 <?xml version="1.0" ?>
 <PropertyList>
-    <path>EGT.ac</path>
+
+  <path>EGT.ac</path>
     
-    <animation>
-        <type>noshadow</type>
-    </animation>
-    <animation>
-        <type>range</type>
-        <min-m>0</min-m>
-        <max-m>10</max-m>
-    </animation>
+  <params>
+    <value>engines/engine[1]/egt-degf</value>
+    <bug>engines/engine[1]/egt-bug</bug>
+  </params>
+
+  <animation>
+      <type>noshadow</type>
+  </animation>
+  <animation>
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-m>10</max-m>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>egt</object-name>
+    <emission>
+      <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
+      <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
+      <blue-prop>sim/model/instrument-lighting/emission/blue</blue-prop>
+      <factor-prop>controls/lighting/instruments-norm</factor-prop>
+    </emission>
+  </animation>
     
-    <animation>
-        <type>material</type>
-        <object-name>egt</object-name>
-        <emission>
-            <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>controls/lighting/instruments-norm</factor-prop>
-        </emission>
-    </animation>
-    
-    <animation>
-        <type>rotate</type>
-        <object-name>Needle</object-name>
-        <property>engines/engine[1]/egt-degf</property>
-        <interpolation>
-            <entry>
-                <ind>200</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>900</ind>
-                <dep>-90</dep>
-            </entry>
-        </interpolation>
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle</object-name>
+    <property alias="../../params/value"/>
+    <interpolation>
+      <entry>
+        <ind>200</ind>
+        <dep>0</dep>
+      </entry>
+      <entry>
+        <ind>900</ind>
+        <dep>-90</dep>
+      </entry>
+    </interpolation>
 <!-- JSBSim calculates egt to low
         <interpolation>
             <entry>
@@ -48,15 +54,126 @@
             </entry>
         </interpolation>
 -->
-        <axis>
-            <x>1.0</x>
-            <y>0.0</y>
-            <z>0.0</z>
-        </axis>
-        <center>
-            <x-m>-0.0015</x-m>
-            <y-m>0</y-m>
-            <z-m>-0.00766508</z-m>
-        </center>
-    </animation>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>-0.0015</x-m>
+      <y-m>0</y-m>
+      <z-m>-0.00766508</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Bug</object-name>
+    <property alias="../../params/bug"/>
+    <interpolation>
+      <entry>
+        <ind>200</ind>
+        <dep>0</dep>
+      </entry>
+      <entry>
+        <ind>900</ind>
+        <dep>-90</dep>
+      </entry>
+    </interpolation>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+    <center>
+      <x-m>-0.0015</x-m>
+      <y-m>0</y-m>
+      <z-m>-0.00766508</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Knob.Pick.L</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/bug"/>
+        <step>-5</step>
+        <min>200</min>
+        <max>900</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/bug"/>
+        <step>-50</step>
+        <min>200</min>
+        <max>900</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/bug"/>
+        <step>-5</step>
+        <min>200</min>
+        <max>900</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Knob.Pick.R</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/bug"/>
+        <step>5</step>
+        <min>200</min>
+        <max>900</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/bug"/>
+        <step>50</step>
+        <min>200</min>
+        <max>900</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/bug"/>
+        <step>5</step>
+        <min>200</min>
+        <max>900</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
 </PropertyList>
