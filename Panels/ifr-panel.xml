@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!--
+    Piper Seneca II panel
+-->
+
+<PropertyList>
+
+    <name>SenecaII IFR Panel</name>
+    <background>Aircraft/c172/Panels/Textures/panel-610x-bg.rgb</background>
+    <w>1024</w>
+    <h>768</h>
+    <view-height>768</view-height>
+
+    <instruments>
+
+        <instrument include="Airspeed.xml">
+            <name>Airspeed Indicator</name>
+            <x>304</x>
+            <y>618</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="../../Instruments/ati-c172s.xml">
+            <name>Attitude Gyro</name>
+            <x>508</x>
+            <y>618</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="../../Instruments/alt-c172s.xml">
+            <name>Altimeter</name>
+            <x>712</x>
+            <y>618</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="../../Instruments/adf-c172s.xml">
+            <name>ADF Gauge</name>
+            <x>100</x>
+            <y>414</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="../../Instruments/trn-c172s.xml">
+            <name>Turn Coordinator</name>
+            <x>304</x>
+            <y>414</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="../../Instruments/hsi-bk-hi.xml">
+            <name>Bendix King HSI</name>
+            <x>508</x>
+            <y>414</y>
+            <w>200</w>
+            <h>210</h>
+        </instrument>
+
+        <instrument include="../../Instruments/vsi-c172s.xml">
+            <name>Vertical Velocity Indicator</name>
+            <x>712</x>
+            <y>414</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="../../Instruments/vor2-c172s.xml">
+            <name>VOR 2 Gauge</name>
+            <params>
+                <nav-to-flag>/instrumentation/nav[1]/to-flag</nav-to-flag>
+                <nav-from-flag>/instrumentation/nav[1]/from-flag</nav-from-flag>
+                <nav-radial-selected>/instrumentation/nav[1]/radials/selected-deg</nav-radial-selected>
+                <nav-gs-needle-deflection>/instrumentation/nav[1]/gs-needle-deflection</nav-gs-needle-deflection>
+                <nav-heading-needle-deflection>/instrumentation/nav[1]/heading-needle-deflection</nav-heading-needle-deflection>
+                <nav-has-gs-needle>/sim/instrument-options/nav[1]/has-gs-needle</nav-has-gs-needle>
+                <nav-needles-pivot>/sim/instrument-options/nav[1]/needles-pivot</nav-needles-pivot>
+            </params>
+            <x>916</x>
+            <y>414</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="RPM.xml">
+            <name>RPM Left Gauge</name>
+            <params>
+                <source>/engines/engine[0]/rpm</source>
+            </params>
+            <x>304</x>
+            <y>210</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="MP.xml">
+            <name>MP Gauge</name>
+            <params>
+                <left>/engines/engine[0]/mp-osi</left>
+                <right>/engines/engine[1]/mp-osi</right>
+            </params>
+            <x>508</x>
+            <y>210</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+
+        <instrument include="RPM.xml">
+            <name>RPM Right Gauge</name>
+            <params>
+                <source>/engines/engine[1]/rpm</source>
+            </params>
+            <x>712</x>
+            <y>210</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+<!--
+        <instrument include="Panels/FF.xml">
+            <name>Fuel Flow Gauge</name>
+            <params>
+                <left>/engines/engine[0]/fuel-flow-gph</left>
+                <right>/engines/engine[1]/fuel-flow-gph</right>
+            </params>
+            <x>916</x>
+            <y>210</y>
+            <w>200</w>
+            <h>200</h>
+        </instrument>
+-->
+<!--
+        <instrument include="Panels/comnav-compact.xml">
+            <name>comnav1</name>
+            <x>916</x>
+            <y>693</y>
+            <w>200</w>
+            <h>50</h>
+        </instrument>
+-->
+<!--
+        <instrument include="Panels/comnav-compact.xml">
+            <name>comnav2</name>
+            <params>
+                <comm-freq-selected-prop>/instrumentation/comm[1]/frequencies/selected-mhz</comm-freq-selected-prop>
+                <comm-freq-standby-prop>/instrumentation/comm[1]/frequencies/standby-mhz</comm-freq-standby-prop>
+                <nav-freq-selected-prop>/instrumentation/nav[1]/frequencies/selected-mhz</nav-freq-selected-prop>
+                <nav-freq-standby-prop>/instrumentation/nav[1]/frequencies/standby-mhz</nav-freq-standby-prop>
+                <nav-morse-id-volume-prop>/instrumentation/nav[1]/volume</nav-morse-id-volume-prop>
+                <nav-morse-ident-toggle-prop>/instrumentation/nav[1]/ident</nav-morse-ident-toggle-prop>
+            </params>
+            <x>916</x>
+            <y>643</y>
+            <w>200</w>
+            <h>50</h>
+        </instrument>
+        
+        <instrument include="Panels/adf-compact.xml">
+            <name>adf radio</name>
+            <x>916</x>
+            <y>593</y>
+            <w>200</w>
+            <h>50</h>
+        </instrument>
+    
+        <instrument include="Panels/dme-compact.xml">
+            <name>dme indicator</name>
+            <x>866</x>
+            <y>543</y>
+            <w>100</w>
+            <h>50</h>
+        </instrument>
+-->
+       <!-- 
+        <instrument include="Panels/gear-indicator.xml">
+            <name>dme indicator</name>
+            <x>866</x>
+            <y>50</y>
+            <w>100</w>
+            <h>50</h>
+        </instrument>
+       --> 
+    </instruments>
+
+</PropertyList>
