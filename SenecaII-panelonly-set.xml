@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<PropertyList include="SenecaII-base.xml">
+    <sim>
+        <author>Torsten Dreyer</author>
+        <description>PA34-200T Seneca II (no 3d model, 2d panel only)</description>
+        <aircraft-version>1.0</aircraft-version>
+        <status>production</status>
+        <flight-model>jsb</flight-model>
+        <aero>SenecaII-jsbsim</aero>
+        <model>
+            <path>Aircraft/SenecaII/Models/nothing.ac</path>
+        </model>
+        <panel>
+            <path>Aircraft/SenecaII/Panels/ifr-panel.xml</path>
+            <visibility>true</visibility>
+        </panel>
+        <rendering>
+          <camera>
+            <window>
+              <name>FGFS-Primary</name>
+              <display>0</display>
+              <screen>0</screen>
+              <fullscreen type="bool">false</fullscreen>
+              <gui type="bool">true</gui>
+            </window>
+            <viewport>
+              <x>0</x>
+              <y>0</y>
+              <width>1280</width>
+              <height>800</height>
+            </viewport>
+            <view>
+              <heading-deg>0</heading-deg> <!-- + is to the left -->
+              <pitch-deg>0</pitch-deg> <!-- + is up -->
+              <roll-deg>0</roll-deg> <!-- + is counter-clockwise -->
+              <x>0</x> <!-- +x is right -->
+              <y>0</y> <!-- +y is up -->
+              <z>0</z> <!-- +z is backwards -->
+              <absolute type="bool">false</absolute>
+            </view>
+          </camera>
+
+          <camera>
+            <window>
+              <name>FGFS-Secondary</name>
+              <display>0</display>
+              <screen>1</screen>
+              <fullscreen type="bool">true</fullscreen>
+              <gui type="bool">true</gui>
+            </window>
+            <viewport>
+              <x>0</x>
+              <y>0</y>
+              <width>1280</width>
+              <height>1024</height>
+            </viewport>
+            <view>
+              <heading-deg>0</heading-deg> <!-- + is to the left -->
+              <pitch-deg>15</pitch-deg> <!-- + is up -->
+              <roll-deg>0</roll-deg> <!-- + is counter-clockwise -->
+              <x>0</x> <!-- +x is right -->
+              <y>0</y> <!-- +y is up -->
+              <z>0</z> <!-- +z is backwards -->
+              <absolute type="bool">false</absolute>
+            </view>
+          </camera>
+      </rendering>
+    </sim>
+</PropertyList>

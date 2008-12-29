@@ -1,21 +1,17 @@
 <?xml version="1.0"?>
-<PropertyList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../XMLSchemas/PropertyList.xsd">
+<PropertyList>
     <sim>
         <author>Torsten Dreyer</author>
         <startup>
             <splash-texture>Aircraft/SenecaII/splash.rgb</splash-texture>
             <splash-title>Piper PA34 200T Seneca II</splash-title>
         </startup>
+
         <panel>
-            <!--
-            <path>Aircraft/SenecaII/SenecaII-panel.xml</path>
--->
             <visibility>false</visibility>
         </panel>
 
         <model>
-            <path>Aircraft/SenecaII/Models/SenecaII.xml</path>
             <instrument-lighting>
                 <emission>
                     <red>1.0</red>
@@ -332,6 +328,10 @@
             <panel-norm type="double">0.0</panel-norm>
             <instruments-norm type="double">0.0</instruments-norm>
         </lighting>
+        <deice>
+          <surface-deice>0</surface-deice>
+          <surface-deice-wingtail-light>0</surface-deice-wingtail-light>
+        </deice>
     </controls>
 
     <gear>
@@ -517,6 +517,12 @@
           </unit>
           <emergency-pos-norm>0</emergency-pos-norm>
         </gear>
+        <ice>
+          <wing type="double">0.0</wing>
+          <stabilizer type="double">0.0</stabilizer>
+          <propeller type="double">0.0</propeller>
+          <fuselage type="double">0.0</fuselage>
+        </ice>
       </jsbsim>
     </fdm>
 
