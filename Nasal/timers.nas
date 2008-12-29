@@ -26,7 +26,8 @@ Timer.new = func {
   obj.enableNode = obj.getProperty( "enable-property" );
   obj.startNode  = obj.getProperty( "start-property" );
   obj.outputNode = obj.getProperty( "output-property" );
-  obj.outputNode.setBoolValue( 0 );
+  if( obj.outputNode != nil )
+    obj.outputNode.setBoolValue( 0 );
   obj.t0Node  = obj.timerNode.getNode( "t0" );
   obj.expires = 0;
 

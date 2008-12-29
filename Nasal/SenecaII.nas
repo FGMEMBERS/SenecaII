@@ -437,10 +437,10 @@ setlistener( "/controls/engines/engine[1]/magneto[1]", magnetoswitchlistener, 1,
 # Sync the dimmer controls with the according properties
 ########################################
 
-var instrumentsFactorNode = props.globals.getNode( "/sim/model/material/instruments/factor" );
+var instrumentsFactorNode = props.globals.initNode( "/sim/model/material/instruments/factor", 1.0 );
 var dimmerlistener = func(n) {
-
-  instrumentsFactorNode.setValue( n.getValue() );
+  if( n != nil )
+    instrumentsFactorNode.setValue( n.getValue() );
 }
 
 setlistener( "/controls/lighting/instruments-norm", dimmerlistener, 1, 0 );

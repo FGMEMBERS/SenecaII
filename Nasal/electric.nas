@@ -106,13 +106,13 @@ LinearElement.new = func {
   # a generator/battery (source) has a negative sign
   obj.i  = 0;
 
-  obj.riNode = obj.node.getNode("ri","true");
-  obj.u0Node = obj.node.getNode("u0","true");
+  obj.riNode = obj.node.initNode("ri", 0.0 );
+  obj.u0Node = obj.node.initNode("u0", 0.0 );
   var s = obj.node.getNode( "i-property" );
   if( s != nil ) {
-    obj.iNode  = props.globals.getNode(s.getValue(),"true");
+    obj.iNode  = props.globals.initNode(s.getValue(), 0 );
   } else {
-    obj.iNode  = obj.node.getNode("i","true");
+    obj.iNode  = obj.node.initNode("i", 0.0 );
   }
 
   return obj;
@@ -159,7 +159,7 @@ LoadElement.new = func {
   obj.insert( obj.parents, LoadElement );
 
   var s = node.getNode("switch-property").getValue();
-  obj.switchProperty = props.globals.getNode( s );
+  obj.switchProperty = props.globals.initNode( s, 0, "BOOL" );
 
   return obj;
 }
