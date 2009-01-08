@@ -15,55 +15,54 @@
             <visibility>true</visibility>
         </panel>
         <rendering>
-          <camera>
-            <window>
-              <name>FGFS-Primary</name>
-              <display>0</display>
-              <screen>0</screen>
-              <fullscreen type="bool">false</fullscreen>
-              <gui type="bool">true</gui>
-            </window>
-            <viewport>
-              <x>0</x>
-              <y>0</y>
-              <width>1280</width>
-              <height>800</height>
-            </viewport>
-            <view>
-              <heading-deg>0</heading-deg> <!-- + is to the left -->
-              <pitch-deg>0</pitch-deg> <!-- + is up -->
-              <roll-deg>0</roll-deg> <!-- + is counter-clockwise -->
-              <x>0</x> <!-- +x is right -->
-              <y>0</y> <!-- +y is up -->
-              <z>0</z> <!-- +z is backwards -->
-              <absolute type="bool">false</absolute>
-            </view>
-          </camera>
-
-          <camera>
-            <window>
-              <name>FGFS-Secondary</name>
-              <display>0</display>
-              <screen>1</screen>
-              <fullscreen type="bool">true</fullscreen>
-              <gui type="bool">true</gui>
-            </window>
-            <viewport>
-              <x>0</x>
-              <y>0</y>
-              <width>1280</width>
-              <height>1024</height>
-            </viewport>
-            <view>
-              <heading-deg>0</heading-deg> <!-- + is to the left -->
-              <pitch-deg>15</pitch-deg> <!-- + is up -->
-              <roll-deg>0</roll-deg> <!-- + is counter-clockwise -->
-              <x>0</x> <!-- +x is right -->
-              <y>0</y> <!-- +y is up -->
-              <z>0</z> <!-- +z is backwards -->
-              <absolute type="bool">false</absolute>
-            </view>
-          </camera>
-      </rendering>
+          <camera-group>
+            <camera>
+              <window>
+                <name type="string">Panel</name>
+                <host-name type="string"></host-name>
+                <display>0</display>
+                <screen>0</screen>
+                <fullscreen type = "bool">false</fullscreen>
+              </window>
+              <view>
+                <heading-deg type = "double">0</heading-deg>
+              </view>
+              <frustum>
+                <top>0.133</top>
+                <bottom>-0.133</bottom>
+                <left>-.1668</left>
+                <right>.1668</right>
+                <near>0.4</near>
+                <far>120000.0</far>
+              </frustum>
+            </camera>
+            <camera>
+              <window>
+                <name type="string">StraightAhead</name>
+                <host-name type="string"></host-name>
+                <display>0</display>
+                <screen>1</screen>
+                <fullscreen type = "bool">true</fullscreen>
+              </window>
+              <view>
+                <heading-deg type = "double">0.0</heading-deg>
+                <pitch-deg type = "double">10.0</pitch-deg>
+              </view>
+              <frustum>
+                <top>0.133</top>
+                <bottom>-0.133</bottom>
+                <left>-.1668</left>
+                <right>.1668</right>
+                <near>0.4</near>
+                <far>120000.0</far>
+              </frustum>
+            </camera>
+            <gui>
+              <window>
+                <name type="string">Panel</name>
+              </window>
+            </gui>
+          </camera-group>
+        </rendering>
     </sim>
 </PropertyList>
