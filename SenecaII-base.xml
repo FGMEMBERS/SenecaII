@@ -20,6 +20,15 @@
                 </emission>
             </instrument-lighting>
 
+            <material>
+              <cockpit>
+                <red type="double">0.5</red>
+                <green type="double">0.1</green>
+                <blue type="double">0.1</blue>
+                <factor type="double">0</factor>
+              </cockpit>
+            </material>
+
             <icing>
                 <iceable>
                     <name>Wing</name>
@@ -381,8 +390,11 @@
             <file>Aircraft/SenecaII/Nasal/electric.nas</file>
             <file>Aircraft/SenecaII/Nasal/timers.nas</file>
             <file>Aircraft/Generic/limits.nas</file>
-            <file>Aircraft/SenecaII/Nasal/hsiBugError.nas</file>
             <file>Aircraft/Instruments-3d/ki266/ki266.nas</file>
+            <file>Aircraft/SenecaII/Systems/kcs55.nas</file>
+            <script><![CDATA[
+              KCS55.new();
+            ]]></script>
         </SenecaII>
         <century3>
             <file>Aircraft/Generic/century3.nas</file>
@@ -464,7 +476,7 @@
             </bus>
             <!-- old outputs stuff -->
             <outputs>
-                <dme>1</dme>
+<!-- <dme>1</dme> -->
                 <adf>1</adf>
                 <nav n="0">1.1</nav>
                 <nav n="1">1.1</nav>
@@ -488,14 +500,17 @@
             <ident>0</ident>
             <volume>0.5</volume>
         </nav>
+        <dme>
+          <supply-voltage-norm type="double">0.6</supply-voltage-norm>
+          <min-supply-voltage-norm type="double">0.5</min-supply-voltage-norm>
+        </dme>
         <marker-beacon>
             <audio-btn>1</audio-btn>
         </marker-beacon>
 
         <audio-panel include="Models/gma340properties.xml"/>
-        <heading-indicator>
-            <mode-auto archive="y">1</mode-auto>
-        </heading-indicator>
+
+        <kcs55 include="Systems/kcs55.xml"/>
     </instrumentation>
     <fdm>
       <jsbsim>

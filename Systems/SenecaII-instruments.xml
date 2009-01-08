@@ -46,11 +46,13 @@
     <suction>instrumentation/attitude-indicator[1]/fake-suction</suction>
   </attitude-indicator>
 
+<!--
   <heading-indicator>
     <name>heading-indicator</name>
     <number>0</number>
     <suction>systems/vacuum[0]/suction-inhg</suction>
   </heading-indicator>
+-->
 
   <slip-skid-ball>
     <name>slip-skid-ball</name>
@@ -76,6 +78,11 @@
     <name>dme</name>
     <number>0</number>
   </dme>
+
+  <adf>
+    <name>adf</name>
+    <number>0</number>
+  </adf>
 
   <nav-radio>
     <name>nav</name>

@@ -144,18 +144,64 @@
     </config>
   </pid-controller>
 
-  <!--  Filter the heading bug error -->
+  <!-- Heading Select (HDG) Mode -->
 
+  <!--  Filter the course error in NAV mode -->
    <filter>
-    <name>heading-bug-filter</name>
+    <name>course-filter</name>
     <debug>false</debug>
+    <enable>
+      <prop>/autopilot/CENTURYIII/controls/mode</prop>
+      <value type="double">0</value>
+    </enable>
     <type>double-exponential</type>
-    <input>/autopilot/internal/hsi-heading-bug-error-deg</input>
-    <output>/autopilot/internal/filtered-heading-bug-error-deg</output>
+    <input>/autopilot/internal/course-error-deg</input>
+    <output>/autopilot/internal/filtered-heading-error-deg</output>
     <filter-time>0.01</filter-time>
    </filter>
 
-  <!-- Heading Select (HDG) Mode -->
+  <!--  Filter the course error in OMNI mode -->
+   <filter>
+    <name>course-filter</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/CENTURYIII/controls/mode</prop>
+      <value type="double">1</value>
+    </enable>
+    <type>double-exponential</type>
+    <input>/autopilot/internal/course-error-deg</input>
+    <output>/autopilot/internal/filtered-heading-error-deg</output>
+    <filter-time>0.01</filter-time>
+   </filter>
+
+  <!--  Filter the course error in APR mode -->
+   <filter>
+    <name>course-filter</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/CENTURYIII/controls/mode</prop>
+      <value type="double">3</value>
+    </enable>
+    <type>double-exponential</type>
+    <input>/autopilot/internal/course-error-deg</input>
+    <output>/autopilot/internal/filtered-heading-error-deg</output>
+    <filter-time>0.01</filter-time>
+   </filter>
+
+  <!--  Filter the heading bug error in HDG mode -->
+   <filter>
+    <name>heading-filter</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/CENTURYIII/controls/mode</prop>
+      <value type="double">2.0</value>
+    </enable>
+    <type>double-exponential</type>
+    <input>/autopilot/internal/heading-error-deg</input>
+    <output>/autopilot/internal/filtered-heading-error-deg</output>
+    <filter-time>0.01</filter-time>
+   </filter>
+
 
   <pid-controller>
     <name>Heading Select (HDG) Mode</name>
@@ -165,8 +211,7 @@
       <value type="bool">true</value>
     </enable>
     <input>
-      <prop>/autopilot/internal/filtered-heading-bug-error-deg</prop>
-<!--      <prop>/instrumentation/gps/true-bug-error-deg</prop> -->
+      <prop>/autopilot/internal/filtered-heading-error-deg</prop>
     </input>
     <reference>
       <prop>/autopilot/CENTURYIII/settings/target-intercept-angle</prop>

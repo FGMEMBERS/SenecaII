@@ -219,7 +219,7 @@
 
     <!-- ka51b slaving meter -->
     <model>
-        <path>Aircraft/SenecaII/Instruments-3d/ka51b.xml</path>
+        <path>Aircraft/SenecaII/Models/kcs55/ka51b.xml</path>
         <name>ka51b</name>
         <offsets>
             <x-m>-1.9099</x-m>
@@ -1119,7 +1119,7 @@
     </model>
     <!-- hsi -->
     <model>
-        <path>Aircraft/SenecaII/Models/ki525a.xml</path>
+        <path>Aircraft/SenecaII/Models/kcs55/ki525a.xml</path>
         <name>HSI</name>
         <offsets>
             <x-m>-1.915</x-m>
