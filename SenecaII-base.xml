@@ -476,7 +476,7 @@
             </bus>
             <!-- old outputs stuff -->
             <outputs>
-<!-- <dme>1</dme> -->
+                <dme>1</dme>
                 <adf>1</adf>
                 <nav n="0">1.1</nav>
                 <nav n="1">1.1</nav>
