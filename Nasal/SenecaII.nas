@@ -210,82 +210,16 @@ var radarAltimeter = func {
     dhFlagNode.setBoolValue( dhflag );
   }
 }
-###################################################
-# Slaved Gyro
-# fast mode: 180deg/min - 3deg/sec
-# slow mode: 3deg/min   - 0.05deg/sec
-var SlavedGyro = {};
-SlavedGyro.new = func {
-  var obj = {};
-  obj.parents = [SlavedGyro];
-
-  obj.hiNode = props.globals.getNode( "/instrumentation/heading-indicator" );
-  obj.errorIndicatorNode = obj.hiNode.initNode( "error-indicator", 0.0 );
-  obj.offsetNode = obj.hiNode.getNode( "offset-deg", 1 );
-  obj.modeNode = obj.hiNode.getNode( "mode-auto", 1 );
-  obj.rotateNode = obj.hiNode.initNode( "rotate", 0, "INT" );
-  obj.timeNode = props.globals.getNode( "/sim/time/elapsed-sec" );
- 
-  obj.fastrate = 3;
-  obj.slowrate = 0.05;
-  obj.last = obj.timeNode.getValue();
-  obj.dt = 0;
-
-  return obj;
-}
-
-SlavedGyro.update = func {
-  var now = me.timeNode.getValue();
-  me.dt = now - me.last;
-  me.last = now;
-
-  if( me.modeNode.getBoolValue() ) {
-    # slaved
-    var offset = me.offsetNode.getValue();
- 
-    var rate = 0.0;
-    if( offset >= 0.0 ) {
-      rate = me.slowrate;
-    }
-    if( offset > 3.0 ) {
-      rate = me.fastrate;
-    } 
-    if( offset < 0.0 ) {
-      rate = -me.slowrate;
-    } 
-    if( offset < -3.0 ) {
-      rate = -me.fastrate;
-    } 
-    me.rotate( rate );
-
-  } else {
-    # free
-    me.rotate( me.fastrate * me.rotateNode.getValue() );
-  }
-}
-
-SlavedGyro.rotate = func {
-  var rate = arg[0];
-  if( rate == 0 ) {
-    return;
-  }
-  me.offsetNode.setDoubleValue( me.offsetNode.getValue() - me.dt * rate );
-}
-
-
 
 ###################################################
 var gearInTransit = GearInTransit.new();
 var suction = Suction.new();
 var engines = Engines.new();
 
-var slavedGyro = SlavedGyro.new();
-
 var seneca_update = func {
   gearInTransit.update();
   suction.update();
   engines.update();
-  slavedGyro.update();
   radarAltimeter();
   settimer(seneca_update, 0.1 );
 }
@@ -306,7 +240,6 @@ var seneca_init = func {
     "instrumentation/nav[0]/power-btn",
     "instrumentation/nav[0]/frequencies/selected-mhz",
     "instrumentation/nav[0]/frequencies/standby-mhz",
-    "instrumentation/nav[0]/radials/selected-deg",
     "instrumentation/comm[1]/volume",
     "instrumentation/comm[1]/frequencies/selected-mhz",
     "instrumentation/comm[1]/frequencies/standby-mhz",
@@ -322,7 +255,6 @@ var seneca_init = func {
     "instrumentation/dme/switch-position",
     "instrumentation/adf/model",
     "instrumentation/adf/rotation-deg",
-    "autopilot/settings/heading-bug-deg",
     "sim/model/hide-yoke",
     "sim/model/hide-windshield-deice",
     "engines/engine[0]/egt-bug",
