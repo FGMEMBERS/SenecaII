@@ -249,8 +249,6 @@ var seneca_init = func {
     "instrumentation/nav[1]/frequencies/selected-mhz",
     "instrumentation/nav[1]/frequencies/standby-mhz",
     "instrumentation/nav[1]/radials/selected-deg",
-    "instrumentation/adf/frequencies/selected-khz",
-    "instrumentation/adf/frequencies/standby-khz",
     "instrumentation/dme/frequencies/selected-mhz",
     "instrumentation/dme/switch-position",
     "instrumentation/adf/model",

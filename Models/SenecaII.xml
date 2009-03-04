@@ -159,24 +159,6 @@
     <!-- 
         KR87 ADF Radio
     -->
-    <panel>
-        <path>Aircraft/SenecaII/Instruments-3d/kr87Panel.xml</path>
-        <bottom-left>
-            <x-m>-1.89</x-m>
-            <y-m>-0.129</y-m>
-            <z-m>1.415</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-1.89</x-m>
-            <y-m>0.029</y-m>
-            <z-m>1.415</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-1.89</x-m>
-            <y-m>-0.129</y-m>
-            <z-m>1.445</z-m>
-        </top-left>
-    </panel>
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/kr87.xml</path>
         <name>kr87</name>
