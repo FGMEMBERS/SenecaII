@@ -533,20 +533,44 @@
             </switch>
 
             <!-- normal actuators driven by gear switch -->
-            <actuator name="Gear Nose Actuator">
+            <actuator name="gear/unit[0]/actuator">
                 <input>fcs/gear-switch</input>
                 <rate_limit>0.1</rate_limit>
-                <output>gear/unit[0]/actuator-pos-norm</output>
+                <output>gear/unit[0]/target-actuator-pos-norm</output>
+                <clipto>
+                  <min>0</min>
+                  <max>1</max>
+                </clipto>
             </actuator>
-            <actuator name="Gear Left Actuator">
+
+            <!-- nose gear does not fully retract above 125kias
+                 (max gear retract speed is 109kias) -->
+            <switch name="gear/unit[0]/actuator-pos-norm">
+              <default value="gear/unit[0]/target-actuator-pos-norm"/>
+              <test value="0.8">
+                fcs/gear-switch == 0
+                gear/unit[0]/target-actuator-pos-norm lt 0.8
+                velocities/ve-kts gt 125
+              </test>
+            </switch>
+
+            <actuator name="gear/unit[1]/actuator">
                 <input>fcs/gear-switch</input>
                 <rate_limit>0.13</rate_limit>
                 <output>gear/unit[1]/actuator-pos-norm</output>
+                <clipto>
+                  <min>0</min>
+                  <max>1</max>
+                </clipto>
             </actuator>
-            <actuator name="Gear Right Actuator">
+            <actuator name="gear/unit[2]/actuator">
                 <input>fcs/gear-switch</input>
                 <rate_limit>0.15</rate_limit>
                 <output>gear/unit[2]/actuator-pos-norm</output>
+                <clipto>
+                  <min>0</min>
+                  <max>1</max>
+                </clipto>
             </actuator>
 
             <!-- "gravity" actuator for emergency extension -->
@@ -554,6 +578,10 @@
                 <input>fcs/gear-emergency-extend</input>
                 <rate_limit>0.2</rate_limit>
                 <output>gear/emergency-pos-norm</output>
+                <clipto>
+                  <min>0</min>
+                  <max>1</max>
+                </clipto>
             </actuator>
 
             <!-- now add up the gear positions -->
