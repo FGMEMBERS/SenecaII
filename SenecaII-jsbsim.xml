@@ -547,9 +547,10 @@
                  (max gear retract speed is 109kias) -->
             <switch name="gear/unit[0]/actuator-pos-norm">
               <default value="gear/unit[0]/target-actuator-pos-norm"/>
-              <test value="0.8">
+              <test value="gear/unit[0]/actuator-pos-norm">
                 fcs/gear-switch == 0
                 gear/unit[0]/target-actuator-pos-norm lt 0.8
+                gear/unit[0]/target-actuator-pos-norm gt 0.1
                 velocities/ve-kts gt 125
               </test>
             </switch>
