@@ -249,12 +249,12 @@
                 </or>
                 <or>
                   <less-than>
-                    <property>controls/engines/engine[0]/throttle</property>
-                    <value>0.2</value>
+                    <property>engines/engine/mp-inhg</property>
+                    <value>14</value>
                   </less-than>
                   <less-than>
-                    <property>controls/engines/engine[1]/throttle</property>
-                    <value>0.2</value>
+                    <property>engines/engine[1]/mp-inhg</property>
+                    <value>14</value>
                   </less-than>
                 </or>
               </and>
