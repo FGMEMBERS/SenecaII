@@ -639,7 +639,7 @@
         AERODYNAMICS
         ********************************************************************** -->
     <aerodynamics>
-
+        <property value="0.0">ice/wing</property>
         <alphalimits unit="DEG">
             <min>-5.0</min>
             <max>14.0</max>
