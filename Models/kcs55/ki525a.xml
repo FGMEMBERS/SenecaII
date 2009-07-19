@@ -34,8 +34,6 @@
     <property-base>sim/model/material/cockpit</property-base>
     <object-name>Chassis</object-name>
     <object-name>Screw</object-name>
-    <object-name>OBSSelector</object-name>
-    <object-name>HDGSelector</object-name>
     <emission>
       <red-prop>red</red-prop>
       <green-prop>green</green-prop>
