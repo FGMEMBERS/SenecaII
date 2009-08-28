@@ -235,6 +235,150 @@
         </offsets>
     </model>
 
+    <!-- Registration (left) -->
+    <text>
+      <name>Registration</name>
+      <offsets>
+        <x-m>0.45</x-m>
+        <y-m>-0.60</y-m>
+        <z-m>0.92</z-m>
+        <roll-deg>    1.0 </roll-deg>
+        <pitch-deg>   3.0 </pitch-deg>
+        <heading-deg> 6.0 </heading-deg>
+      </offsets>
+      <alignment>center-center</alignment>
+      <axis-alignment>xz-plane</axis-alignment>
+      <type type="string">text-value</type>
+      <property type="string">sim/model/immat</property>
+      <format type="string">%s</format> <!-- the printf() format to display the value -->
+      <font>arialbd.ttf</font> <!-- The font file name, relative to data/Fonts -->
+      <character-size type="double">0.35</character-size> <!-- size (height) im meters -->
+      <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+      <font-resolution>
+        <width type="int">128</width>
+        <height type="int">128</height>
+      </font-resolution>
+    </text>
+    <!-- Registration (right) -->
+    <text>
+      <name>Registration</name>
+      <offsets>
+        <x-m>0.45</x-m>
+        <y-m>0.60</y-m>
+        <z-m>0.92</z-m>
+        <roll-deg>    -1.0 </roll-deg>
+        <pitch-deg>   3.0 </pitch-deg>
+        <heading-deg> -6.0 </heading-deg>
+      </offsets>
+      <alignment>center-center</alignment>
+      <axis-alignment>reversed-xz-plane</axis-alignment>
+      <type type="string">text-value</type>
+      <property type="string">sim/model/immat</property>
+      <format type="string">%s</format> <!-- the printf() format to display the value -->
+      <font>arialbd.ttf</font> <!-- The font file name, relative to data/Fonts -->
+      <character-size type="double">0.35</character-size> <!-- size (height) im meters -->
+      <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+      <font-resolution>
+        <width type="int">128</width>
+        <height type="int">128</height>
+      </font-resolution>
+    </text>
+    <text>
+      <name>Registration</name>
+      <offsets>
+        <x-m>-0.87</x-m>
+        <y-m>-3.63</y-m>
+        <z-m>0.98</z-m>
+        <roll-deg>1</roll-deg>
+        <pitch-deg>7</pitch-deg>
+        <heading-deg>90</heading-deg>
+      </offsets>
+      <alignment>center-center</alignment>
+      <axis-alignment>reversed-xy-plane</axis-alignment>
+      <type type="string">text-value</type>
+      <property type="string">sim/model/immat</property>
+      <format type="string">%s</format> <!-- the printf() format to display the value -->
+      <font>arialbd.ttf</font> <!-- The font file name, relative to data/Fonts -->
+      <character-size type="double">0.50</character-size> <!-- size (height) im meters -->
+      <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+      <font-resolution>
+        <width type="int">128</width>
+        <height type="int">128</height>
+      </font-resolution>
+    </text>
+    <animation>
+      <type>material</type>
+      <object-name>Registration</object-name>
+      <emission>
+        <red>0.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </emission>
+      <ambient>
+        <red>0.1</red>
+        <green>0.1</green>
+        <blue>0.1</blue>
+      </ambient>
+      <diffuse>
+        <red>0.2</red>
+        <green>0.2</green>
+        <blue>0.2</blue>
+      </diffuse>
+      <specular>
+        <red>0.3</red>
+        <green>0.3</green>
+        <blue>0.3</blue>
+      </specular>
+    </animation>
+    <text>
+      <name>CockpitRegistrationLabel</name>
+      <offsets>
+        <x-m>-1.908</x-m>
+        <y-m>0.12</y-m>
+        <z-m>1.58</z-m>
+        <roll-deg>0</roll-deg>
+        <pitch-deg>0</pitch-deg>
+        <heading-deg>0</heading-deg>
+      </offsets>
+      <alignment>center-center</alignment>
+      <axis-alignment>yz-plane</axis-alignment>
+      <type type="string">text-value</type>
+      <property type="string">sim/model/immat</property>
+      <format type="string">%s</format> <!-- the printf() format to display the value -->
+      <font>arialbd.ttf</font> <!-- The font file name, relative to data/Fonts -->
+      <character-size type="double">0.015</character-size> <!-- size (height) im meters -->
+      <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+      <draw-boundingbox type="bool">true</draw-boundingbox>
+      <font-resolution>
+        <width type="int">64</width>
+        <height type="int">64</height>
+      </font-resolution>
+    </text>
+    <animation>
+      <type>material</type>
+      <object-name>CockpitRegistrationLabel</object-name>
+      <emission>
+        <red>0.0</red>
+        <green>0.0</green>
+        <blue>0.0</blue>
+      </emission>
+      <ambient>
+        <red>0.9</red>
+        <green>0.9</green>
+        <blue>0.9</blue>
+      </ambient>
+      <diffuse>
+        <red>0.9</red>
+        <green>0.9</green>
+        <blue>0.9</blue>
+      </diffuse>
+      <specular>
+        <red>0.9</red>
+        <green>0.9</green>
+        <blue>0.9</blue>
+      </specular>
+    </animation>
+
     <!-- Hide the windows at view from inside -->
     <animation>
         <type>select</type>
