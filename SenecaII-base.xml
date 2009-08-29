@@ -143,6 +143,15 @@
                         </binding>
                     </item>
                     <item>
+                        <label>A/C Registration</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>SenecaII.registrationDialog.toggle();</script>
+                        </binding>
+
+
+                    </item>
+                    <item>
                         <label>Show/hide yoke</label>
                         <binding>
                             <command>property-toggle</command>
@@ -388,6 +397,7 @@
             <file>Aircraft/SenecaII/Nasal/electric.nas</file>
             <file>Aircraft/SenecaII/Nasal/timers.nas</file>
             <file>Aircraft/Generic/limits.nas</file>
+            <file>Aircraft/SenecaII/Nasal/registration.nas</file> 
             <file>Aircraft/Instruments-3d/ki266/ki266.nas</file>
             <file>Aircraft/SenecaII/Systems/kcs55.nas</file>
             <script><![CDATA[
