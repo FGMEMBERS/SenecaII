@@ -16,7 +16,7 @@
     <type type="string">text-value</type>
     <property type="string">sim/multiplay/generic/string[0]</property>
     <format type="string">%s</format>
-    <font>../Aircraft/SenecaII/Fonts/BitstreamVera/VeraMoBd.ttf</font>
+    <font>LiberationFonts/LiberationSans-Bold.ttf</font>
     <character-size alias="../../params/size"/>
     <character-aspect-ratio type="double">1.0</character-aspect-ratio>
     <draw-alignment type="bool">false</draw-alignment>
