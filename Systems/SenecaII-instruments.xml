@@ -74,6 +74,11 @@
     <number>1</number>
   </turn-indicator>
 
+  <clock>
+    <name>clock</name>
+    <number>0</number>
+  </clock>
+
   <dme>
     <name>dme</name>
     <number>0</number>
