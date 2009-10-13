@@ -7,7 +7,7 @@
   <minpitch> 11 </minpitch>
   <maxpitch> 27 </maxpitch>
   <minrpm>  700 </minrpm>
-  <maxrpm> 2700 </maxrpm>
+  <maxrpm> 2575 </maxrpm>
 
   <table name="C_THRUST" type="internal">
     <tableData>

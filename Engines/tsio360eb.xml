@@ -70,21 +70,26 @@
     through the fully open throttle.
 -->
 <piston_engine name="tsio360eb">
-  <minmp unit="INHG"> 6.5 </minmp>
+  <!-- <air-intake-impedance-factor>0.0</air-intake-impedance-factor> -->
+  <ram-air-factor>1.0</ram-air-factor>
+  <minmp unit="INHG"> 2.5 </minmp>
   <maxmp unit="INHG"> 29.2 </maxmp>
   <displacement unit="IN3"> 360.00 </displacement>
   <bore unit="IN">4.438</bore>
   <stroke unit="IN">3.875</stroke>
   <cylinders>6</cylinders>
   <compression-ratio>7.5</compression-ratio>
-  <bsfc unit="LBS/HP*HR">0.4716</bsfc>
-  <!-- <volumetric-efficiency>??</volumetric-efficiency> -->
+  <bsfc unit="LBS/HP*HR">0.29</bsfc>
+  <volumetric-efficiency>0.46</volumetric-efficiency>
   <maxhp>200</maxhp>
   <cycles> 4.0 </cycles>
   <idlerpm> 800.0 </idlerpm>
   <maxrpm> 2575 </maxrpm>
+<!--
+  these are no longer needed
   <maxthrottle> 1.0 </maxthrottle>
   <minthrottle> 0.1 </minthrottle>
+-->
   <numboostspeeds>1</numboostspeeds>
   <boostoverride>0</boostoverride>
   <ratedboost1>6</ratedboost1>
