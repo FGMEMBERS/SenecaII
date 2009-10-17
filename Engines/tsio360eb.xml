@@ -80,7 +80,7 @@
   <cylinders>6</cylinders>
   <compression-ratio>7.5</compression-ratio>
   <bsfc unit="LBS/HP*HR">0.29</bsfc>
-  <volumetric-efficiency>0.46</volumetric-efficiency>
+  <volumetric-efficiency>0.51</volumetric-efficiency>
   <maxhp>200</maxhp>
   <cycles> 4.0 </cycles>
   <idlerpm> 800.0 </idlerpm>
