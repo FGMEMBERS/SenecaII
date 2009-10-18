@@ -148,8 +148,13 @@
                             <command>nasal</command>
                             <script>SenecaII.registrationDialog.toggle();</script>
                         </binding>
-
-
+                    </item>
+                    <item>
+                        <label>Show/hide Aircraft</label>
+                        <binding>
+                            <command>property-toggle</command>
+                            <property>sim/model/hide-model</property>
+                        </binding>
                     </item>
                     <item>
                         <label>Show/hide yoke</label>
@@ -483,10 +488,10 @@
             <outputs>
                 <dme>1</dme>
                 <adf>1</adf>
-                <nav n="0">1.1</nav>
-                <nav n="1">1.1</nav>
-                <turn-coordinator>12</turn-coordinator>
-                <autopilot>12</autopilot>
+                <nav n="0" type="double">12</nav>
+                <nav n="1" type="double">12</nav>
+                <turn-coordinator type="double">12</turn-coordinator>
+                <autopilot type="double">12</autopilot>
             </outputs>
         </electrical>
     </systems>

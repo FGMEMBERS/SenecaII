@@ -2180,4 +2180,13 @@
       </offsets>
     </model>
 
+    <animation>
+        <type>select</type>
+        <condition>
+            <not-equals>
+                <property>sim/model/hide-model</property>
+                <value>1</value>
+            </not-equals>
+        </condition>
+    </animation>
 </PropertyList>
