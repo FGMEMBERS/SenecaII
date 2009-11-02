@@ -516,9 +516,14 @@
         -->
         <channel name="Landing Gear">
             <!-- force gear down on ground. Squad switch is on left main gear -->
+            <!-- from here on 0 means "gear down" and 1 means "gear up" 
+                 to have gear down on program start. This is required by the current
+                 actuator implementation which does not allow the setting of an
+                 initial value for the output, but defaults to 0 (zero) :-(
+              -->
             <switch name="gear switch">
-              <default value="0"/>
-              <test logic="OR" value="1">
+              <default value="1"/>
+              <test logic="OR" value="0">
                 gear/unit[1]/WOW == 1
                 gear/gear-cmd-norm == 1
               </test>
@@ -526,8 +531,8 @@
 
             <!-- create a input property fcs/gear-emergency-extend -->
             <switch name="gear emergency extend">
-              <default value="0"/>
-              <test value="1">
+              <default value="1"/>
+              <test value="0">
                 gear/gear-cmd-emergency-norm == 1
               </test>
             </switch>
@@ -536,12 +541,18 @@
             <actuator name="gear/unit[0]/actuator">
                 <input>fcs/gear-switch</input>
                 <rate_limit>0.1</rate_limit>
-                <output>gear/unit[0]/target-actuator-pos-norm</output>
+                <output>gear/unit[0]/actuator-pos-inverted</output>
                 <clipto>
-                  <min>0</min>
-                  <max>1</max>
+                  <min>-1</min>
+                  <max>0</max>
                 </clipto>
+                <bias>-1.0</bias>
             </actuator>
+
+            <pure_gain name="gear/unit[0]/target-actuator-pos-norm">
+                <input>gear/unit[0]/actuator-pos-inverted</input>
+                <gain>-1.0</gain>
+            </pure_gain>
 
             <!-- nose gear does not fully retract above 125kias
                  (max gear retract speed is 109kias) -->
@@ -558,32 +569,51 @@
             <actuator name="gear/unit[1]/actuator">
                 <input>fcs/gear-switch</input>
                 <rate_limit>0.13</rate_limit>
-                <output>gear/unit[1]/actuator-pos-norm</output>
+                <output>gear/unit[1]/actuator-pos-inverted</output>
                 <clipto>
-                  <min>0</min>
-                  <max>1</max>
+                  <min>-1</min>
+                  <max>0</max>
                 </clipto>
+                <bias>-1.0</bias>
             </actuator>
+
+            <pure_gain name="gear/unit[1]/actuator-pos-norm">
+                <input>gear/unit[1]/actuator-pos-inverted</input>
+                <gain>-1.0</gain>
+            </pure_gain>
+
             <actuator name="gear/unit[2]/actuator">
                 <input>fcs/gear-switch</input>
                 <rate_limit>0.15</rate_limit>
-                <output>gear/unit[2]/actuator-pos-norm</output>
+                <output>gear/unit[2]/actuator-pos-inverted</output>
                 <clipto>
-                  <min>0</min>
-                  <max>1</max>
+                  <min>-1</min>
+                  <max>0</max>
                 </clipto>
+                <bias>-1.0</bias>
             </actuator>
+
+            <pure_gain name="gear/unit[2]/actuator-pos-norm">
+                <input>gear/unit[2]/actuator-pos-inverted</input>
+                <gain>-1.0</gain>
+            </pure_gain>
 
             <!-- "gravity" actuator for emergency extension -->
             <actuator name="Gear Emergency Actuator">
                 <input>fcs/gear-emergency-extend</input>
                 <rate_limit>0.2</rate_limit>
-                <output>gear/emergency-pos-norm</output>
+                <output>gear/emergency-pos-inverted</output>
                 <clipto>
-                  <min>0</min>
-                  <max>1</max>
+                  <min>-1</min>
+                  <max>0</max>
                 </clipto>
+                <bias>-1.0</bias>
             </actuator>
+
+            <pure_gain name="gear/emergency-pos-norm">
+                <input>gear/emergency-pos-inverted</input>
+                <gain>-1.0</gain>
+            </pure_gain>
 
             <!-- now add up the gear positions -->
             <summer name="Nose Gear Sum">
