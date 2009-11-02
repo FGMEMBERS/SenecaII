@@ -486,8 +486,8 @@
             </bus>
             <!-- old outputs stuff -->
             <outputs>
-                <dme>1</dme>
-                <adf>1</adf>
+                <dme type="double">12</dme>
+                <adf type="double">12</adf>
                 <nav n="0" type="double">12</nav>
                 <nav n="1" type="double">12</nav>
                 <turn-coordinator type="double">12</turn-coordinator>
@@ -527,21 +527,6 @@
         <aero>
           <Cnp-factor archive="n">1.0</Cnp-factor>
         </aero>
-        <gear>
-          <unit n="0">
-            <actuator-pos-norm>0</actuator-pos-norm>
-            <pos-norm>0</pos-norm>
-          </unit>
-          <unit n="1">
-            <actuator-pos-norm>0</actuator-pos-norm>
-            <pos-norm>0</pos-norm>
-          </unit>
-          <unit n="2">
-            <actuator-pos-norm>0</actuator-pos-norm>
-            <pos-norm>0</pos-norm>
-          </unit>
-          <emergency-pos-norm>0</emergency-pos-norm>
-        </gear>
         <ice>
           <wing type="double">0.0</wing>
           <stabilizer type="double">0.0</stabilizer>
