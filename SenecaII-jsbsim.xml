@@ -74,7 +74,7 @@
             <z> 45.3 </z>
         </location>
         <pointmass name="Pilot">
-            <weight unit="LBS"> 200.0 </weight>
+            <weight unit="LBS"> 150.0 </weight>
             <location name="POINTMASS" unit="IN">
                 <x> -51.5 </x>
                 <y> -11 </y>
@@ -82,7 +82,7 @@
             </location>
         </pointmass>
         <pointmass name="Co Pilot">
-            <weight unit="LBS"> 0.0 </weight>
+            <weight unit="LBS"> 150.0 </weight>
             <location name="POINTMASS" unit="IN">
                 <x> -51.5 </x>
                 <y> 11 </y>
@@ -90,7 +90,7 @@
             </location>
         </pointmass>
         <pointmass name="Middle Left Pax">
-            <weight unit="LBS"> 200.0 </weight>
+            <weight unit="LBS"> 0.0 </weight>
             <location name="POINTMASS" unit="IN">
                 <x> -20.0 </x>
                 <y> -11 </y>
@@ -106,7 +106,7 @@
             </location>
         </pointmass>
         <pointmass name="Rear Left Pax">
-            <weight unit="LBS"> 200.0 </weight>
+            <weight unit="LBS"> 0.0 </weight>
             <location name="POINTMASS" unit="IN">
                 <x> 9.5  </x>
                 <y> -11 </y>
@@ -130,7 +130,7 @@
             </location>
         </pointmass>
         <pointmass name="Aft Baggage">
-            <weight unit="LBS"> 0.0 </weight>
+            <weight unit="LBS"> 20.0 </weight>
             <location name="POINTMASS" unit="IN">
                 <x> 39.3 </x>
                 <y> 0 </y>
