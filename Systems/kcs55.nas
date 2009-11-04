@@ -34,28 +34,37 @@ var getLowPass = func( current, target, timeratio ) {
   if ( timeratio < 0.0 ) {
     if ( timeratio < -1.0 ) {
       #time went backwards; kill the filter
-      current = target;
-    } else {
-      # ignore mildly negative time
+      return target;
     }
+    # ignore mildly negative time
     return current;
   } 
+
   if ( timeratio < 0.2 ) {
     # Normal mode of operation; fast
     #  approximation to exp(-timeratio)
-    current = current * (1.0 - timeratio) + target * timeratio;
-    return current;
+    return current * (1.0 - timeratio) + target * timeratio;
   } 
 
   if ( timeratio > 5.0 ) {
     # Huge time step; assume filter has settled
-    current = target;
+    return target;
   } else {
     # Moderate time step; non linear response
-    var keep = math.exp(-timeratio);
-    current = current * keep + target * (1.0 - keep);
+    var catch = [];
+    var keep = 1;
+    # sometimes math.exp(-0) throws an exception
+    # this hack catches this unmotivated exception and 
+    # just ignores the low pass filter
+    # it will go away sometimes
+    call(func{keep = math.exp(-timeratio);}, [], nil, nil, catch );
+    if( size(catch) ) {
+      return target;
+    } else {
+      return current * keep + target * (1.0 - keep);
+    }
   }
-  return current;
+  return target; // unreached code
 }
 
 # The fluxgate

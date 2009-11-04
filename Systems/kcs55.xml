@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <PropertyList>
+
+  <ka51>
+    <!-- start in slaved mode -->
+    <slaved type="bool">true</slaved>
+  </ka51>
+  
   <ki525>
     <!-- The property where the position of the course arrow is written to -->
     <selected-course-property>instrumentation/nav[0]/radials/selected-deg</selected-course-property>
