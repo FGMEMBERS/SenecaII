@@ -64,7 +64,7 @@ var getLowPass = func( current, target, timeratio ) {
       return current * keep + target * (1.0 - keep);
     }
   }
-  return target; // unreached code
+  return target; # unreached code
 }
 
 # The fluxgate
