@@ -163,6 +163,8 @@ var KG102 = {
     obj.trueHeadingNode = props.globals.getNode( "/orientation/heading-deg", 1 );
 
     obj.gyroHeadingNode = obj.rootNode.initNode( "indicated-heading-deg", 0.0 );
+    props.globals.getNode( "/instrumentation/heading-indicator["~ num ~ "]/indicated-heading-deg", 1 ).
+          alias( obj.gyroHeadingNode );
     obj.spinNode = obj.rootNode.initNode( "spin-norm", 0 );
     obj.serviceableNode = obj.rootNode.initNode( "serviceable", 1, "BOOL" );
     obj.spinDecayPercentageNode = obj.rootNode.initNode( "spin-decay-percentage", 0.005 );
