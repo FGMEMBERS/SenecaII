@@ -534,29 +534,59 @@
         <type>rotate</type>
         <object-name>AlternateAirControl.L</object-name>
         <property>controls/engines/engine[0]/alternate-air</property>
-        <factor>-45.0</factor>
+        <factor>45.0</factor>
         <axis>
-            <x1-m>-1.87609</x1-m>
-            <y1-m>1</y1-m>
-            <z1-m>1.24033</z1-m>
-            <x2-m>-1.87609</x2-m>
-            <y2-m>-1</y2-m>
-            <z2-m>1.24033</z2-m>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
         </axis>
+        <center>
+            <x-m>-1.82328</x-m>
+            <y-m>0</y-m>
+            <z-m>1.22116</z-m>
+        </center>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>AlternateAirControl.L</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/engines/engine[0]/alternate-air</property>
+        </binding>
+      </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>AlternateAirControl.R</object-name>
         <property>controls/engines/engine[1]/alternate-air</property>
-        <factor>-45.0</factor>
+        <factor>45.0</factor>
         <axis>
-            <x1-m>-1.87609</x1-m>
-            <y1-m>1</y1-m>
-            <z1-m>1.24033</z1-m>
-            <x2-m>-1.87609</x2-m>
-            <y2-m>-1</y2-m>
-            <z2-m>1.24033</z2-m>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
         </axis>
+        <center>
+            <x-m>-1.82328</x-m>
+            <y-m>0</y-m>
+            <z-m>1.22116</z-m>
+        </center>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>AlternateAirControl.R</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/engines/engine[1]/alternate-air</property>
+        </binding>
+      </action>
     </animation>
     <animation>
         <type>rotate</type>

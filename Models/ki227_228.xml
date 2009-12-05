@@ -102,6 +102,24 @@
   <animation>
     <type>rotate</type>
     <object-name>CompassRose</object-name>
+    <property alias="../../params/rotation-deg"/>
+    <condition>
+      <equals>
+        <property alias="../../../../params/model"/>
+        <value>ki228</value>
+      </equals>
+    </condition>
+    <factor>1</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CompassRose</object-name>
     <property alias="../../params/indicated-heading"/>
     <condition>
       <equals>
