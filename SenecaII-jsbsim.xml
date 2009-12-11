@@ -646,11 +646,11 @@
 
         </channel>
         <!--
-            Cowl Flaps currently implemented as speed brake
+            Cowl Flaps 
         -->
         <channel name="Cowl Flaps">
-            <kinematic name="CowlFlaps Control">
-                <input>fcs/speedbrake-cmd-norm</input>
+            <kinematic name="Left Cowl Flaps">
+                <input>/controls/engines/engine[0]/cowl-flaps-norm</input>
                 <traverse>
                     <setting>
                         <position>0</position>
@@ -661,7 +661,21 @@
                         <time>1</time>
                     </setting>
                 </traverse>
-                <output>fcs/speedbrake-pos-norm</output>
+                <output>propulsion/engine[0]/cowl-flaps-norm</output>
+            </kinematic>
+            <kinematic name="Right Cowl Flaps">
+                <input>/controls/engines/engine[1]/cowl-flaps-norm</input>
+                <traverse>
+                    <setting>
+                        <position>0</position>
+                        <time>0</time>
+                    </setting>
+                    <setting>
+                        <position>1</position>
+                        <time>1</time>
+                    </setting>
+                </traverse>
+                <output>propulsion/engine[1]/cowl-flaps-norm</output>
             </kinematic>
         </channel>
     </flight_control>
@@ -1001,7 +1015,13 @@
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>aero/function/ground-effect-factor-drag</property>
-                    <property>fcs/speedbrake-pos-norm</property>
+                    <product> <!-- (left+right)/2 -->
+                      <sum>
+                        <property>propulsion/engine[0]/cowl-flaps-norm</property>
+                        <property>propulsion/engine[1]/cowl-flaps-norm</property>
+                      </sum>
+                      <value>0.5</value>
+                    </product>
                     <value>0.0082</value>
                 </product>
             </function>

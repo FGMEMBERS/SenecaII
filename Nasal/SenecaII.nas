@@ -30,7 +30,7 @@ Engines.new = func {
 
   obj.controlsNodes = props.globals.getNode( "/controls/engines" ).getChildren( "engine" );
 
-  obj.cowlFlapsPosNode = props.globals.getNode( "/surface-positions/speedbrake-pos-norm", 1 );
+#  obj.cowlFlapsPosNode = props.globals.getNode( "/surface-positions/speedbrake-pos-norm", 1 );
   return obj;
 }
 
@@ -84,12 +84,12 @@ Engines.update = func {
 
     # adjust cooling area of engine depending of position of cowl flaps
     # range 2 - 2.5
-    if( me.cowlFlapsPosNode != nil and i < size(me.jsbEngineNodes) ) {
-      var n = me.jsbEngineNodes[i].getNode("cooling-area");
-      if( n != nil ) {
-        n.setDoubleValue( me.cowlFlapsPosNode.getValue()*0.5 + 2 );
-      }
-    }
+#    if( me.cowlFlapsPosNode != nil and i < size(me.jsbEngineNodes) ) {
+#      var n = me.jsbEngineNodes[i].getNode("cooling-area");
+#      if( n != nil ) {
+#        n.setDoubleValue( me.cowlFlapsPosNode.getValue()*0.5 + 2 );
+#      }
+#    }
 
     # check for prop feather
     var featherN = me.controlsNodes[i].getChild( "propeller-feather" );
@@ -256,7 +256,9 @@ var seneca_init = func {
     "sim/model/hide-yoke",
     "sim/model/hide-windshield-deice",
     "engines/engine[0]/egt-bug",
-    "engines/engine[1]/egt-bug"
+    "engines/engine[1]/egt-bug",
+    "controls/engines/engine[0]/cowl-flaps-norm",
+    "controls/engines/engine[1]/cowl-flaps-norm"
   );
   ki266.new(0);
 

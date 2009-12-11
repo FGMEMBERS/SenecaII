@@ -79,6 +79,11 @@
                 <pitch-offset-deg>-15</pitch-offset-deg>
             </config>
         </view>
+        <view n="1">
+            <config>
+                <y-offset-m archive="y" type="double">3</y-offset-m>
+            </config>
+        </view>
         <view n="100">
           <name>Left Rear Pax View</name>
           <type>lookfrom</type>
@@ -174,7 +179,11 @@
                         <label>Open/close cowl-flaps</label>
                         <binding>
                             <command>property-toggle</command>
-                            <property>/controls/flight/speedbrake</property>
+                            <property>/controls/engines/engine[0]/cowl-flaps-norm</property>
+                        </binding>
+                        <binding>
+                            <command>property-toggle</command>
+                            <property>/controls/engines/engine[1]/cowl-flaps-norm</property>
                         </binding>
                     </item>
                     <item>
@@ -319,17 +328,15 @@
                 <magnetos>0</magnetos>
                 <magneto n="0">0</magneto>
                 <magneto n="1">0</magneto>
+                <cowl-flaps-norm type="double">1.0</cowl-flaps-norm>
             </engine>
             <engine n="1">
                 <magnetos>0</magnetos>
                 <magneto n="0">0</magneto>
                 <magneto n="1">0</magneto>
+                <cowl-flaps-norm type="double">1.0</cowl-flaps-norm>
             </engine>
         </engines>
-        <flight>
-            <!-- cowl flaps open -->
-            <speedbrake type="bool">1</speedbrake>
-        </flight>
         <gear>
             <brake-parking>1</brake-parking>
         </gear>

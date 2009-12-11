@@ -592,7 +592,8 @@
         <type>rotate</type>
         <object-name>CowlFlapsControl.L</object-name>
         <property>controls/engines/engine[0]/cowl-flaps-norm</property>
-        <factor>45.0</factor>
+        <offset-deg>45.0</offset-deg>
+        <factor>-45.0</factor>
         <axis>
             <x1-m>-1.90301</x1-m>
             <y1-m>1</y1-m>
@@ -606,7 +607,8 @@
         <type>rotate</type>
         <object-name>CowlFlapsControl.R</object-name>
         <property>controls/engines/engine[1]/cowl-flaps-norm</property>
-        <factor>45.0</factor>
+        <offset-deg>45.0</offset-deg>
+        <factor>-45.0</factor>
         <axis>
             <x1-m>-1.90301</x1-m>
             <y1-m>1</y1-m>
@@ -1769,7 +1771,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LeftCowlFlap</object-name>
-        <property>surface-positions/speedbrake-pos-norm</property>
+        <property>fdm/jsbsim/propulsion/engine[0]/cowl-flaps-norm</property>
         <factor>10</factor>
         <axis>
             <x1-m>-1.26</x1-m>
@@ -1784,7 +1786,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RightCowlFlap</object-name>
-        <property>surface-positions/speedbrake-pos-norm</property>
+        <property>fdm/jsbsim/propulsion/engine[1]/cowl-flaps-norm</property>
         <factor>-10</factor>
         <axis>
             <x1-m>-1.26</x1-m>
@@ -1797,25 +1799,6 @@
     </animation>
 
     <animation>
-        <type>rotate</type>
-        <object-name>CowlFlapsControl.L</object-name>
-        <object-name>CowlFlapsControl.R</object-name>
-        <property>surface-positions/speedbrake-pos-norm</property>
-        <factor>45</factor>
-        <offset-deg>-45</offset-deg>
-        <axis>
-            <x>0.0</x>
-            <y>1.0</y>
-            <z>0.0</z>
-        </axis>
-        <center>
-            <x-m>-1.90301</x-m>
-            <y-m>0</y-m>
-            <z-m>1.01161</z-m>
-        </center>
-    </animation>
-
-    <animation>
       <type>pick</type>
       <object-name>CowlFlapsControl.L</object-name>
       <visible>true</visible>
@@ -1824,7 +1807,7 @@
         <repeatable>false</repeatable>
         <binding>
           <command>property-toggle</command>
-          <property>/controls/flight/speedbrake</property>
+          <property>controls/engines/engine[0]/cowl-flaps-norm</property>
         </binding>
       </action>
     </animation>
@@ -1838,7 +1821,7 @@
         <repeatable>false</repeatable>
         <binding>
           <command>property-toggle</command>
-          <property>/controls/flight/speedbrake</property>
+          <property>controls/engines/engine[1]/cowl-flaps-norm</property>
         </binding>
       </action>
     </animation>
