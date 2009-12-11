@@ -22,7 +22,16 @@
 
     <exit>
       <condition>
-        <property>controls/flight/speedbrake</property>
+        <and>
+          <greater-than>
+            <property>controls/engines/engine[0]/cowl-flaps-norm</property>
+            <value>0.9</value>
+          </greater-than>
+          <greater-than>
+            <property>controls/engines/engine[1]/cowl-flaps-norm</property>
+            <value>0.9</value>
+          </greater-than>
+        </and>
       </condition>
     </exit>
   </step>
@@ -218,6 +227,16 @@
     </view>
 
     <exit>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>700</value>
+        </greater-than>
+        <greater-than>
+          <property>engines/engine[1]/rpm</property>
+          <value>700</value>
+        </greater-than>
+      </condition>
     </exit>
   </step>
 
@@ -232,6 +251,24 @@
     </view>
 
     <exit>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>900</value>
+        </greater-than>
+        <less-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>1100</value>
+        </less-than>
+        <greater-than>
+          <property>engines/engine[1]/rpm</property>
+          <value>900</value>
+        </greater-than>
+        <less-than>
+          <property>engines/engine[1]/rpm</property>
+          <value>1100</value>
+        </less-than>
+      </condition>
     </exit>
   </step>
 </PropertyList>

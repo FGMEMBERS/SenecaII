@@ -137,6 +137,10 @@
       <property>controls/deice/wingice-light</property>
       <value>0</value>
     </set>
+    <set>
+      <property>instrumentation/dme[0]/power-btn</property>
+      <value>0</value>
+    </set>
   </init>
 
   <end>

@@ -138,7 +138,7 @@
       <value>0</value>
     </set>
     <set>
-      <property>instrumentation/heading-indicator/mode-auto</property>
+      <property>instrumentation/kcs55/ka51/slaved</property>
       <value>1</value>
     </set>
     <nasal>

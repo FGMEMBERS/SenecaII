@@ -106,20 +106,20 @@
       <condition>
         <greater-than>
           <property>/systems/electrical/bus[0]/element[1]/i</property>
-          <value>0</value>
+          <value>-65</value>
         </greater-than>
         <less-than>
           <property>/systems/electrical/bus[0]/element[1]/i</property>
-          <value>65</value>
+          <value>0</value>
         </less-than>
       </condition>
         <greater-than>
           <property>/systems/electrical/bus[0]/element[2]/i</property>
-          <value>0</value>
+          <value>-65</value>
         </greater-than>
         <less-than>
           <property>/systems/electrical/bus[0]/element[2]/i</property>
-          <value>65</value>
+          <value>0</value>
         </less-than>
     </exit>
   </step>
@@ -180,7 +180,15 @@
     </view>
     <exit>
       <condition>
-        <property>instrumentation/heading-indicator/mode-auto</property>
+        <property>instrumentation/kcs55/ka51/slaved</property>
+        <greater-than>
+	  <property>instrumentation/kcs55/ki525/slaving-error-deg</property>
+          <value>-1</value>
+        </greater-than>
+        <less-than>
+	  <property>instrumentation/kcs55/ki525/slaving-error-deg</property>
+          <value>1</value>
+        </less-than>
       </condition>
     </exit>
   </step>
