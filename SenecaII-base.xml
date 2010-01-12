@@ -3,7 +3,7 @@
     <sim>
         <author>Torsten Dreyer</author>
         <startup>
-            <splash-texture>Aircraft/SenecaII/splash.rgb</splash-texture>
+            <splash-texture>Aircraft/SenecaII/splash.png</splash-texture>
             <splash-title>Piper PA34 200T Seneca II</splash-title>
         </startup>
 
