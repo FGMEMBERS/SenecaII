@@ -1,27 +1,21 @@
 #############################################################################
 var BaseElement = {};
 
-BaseElement.new = func {
+BaseElement.new = func(n) {
   var obj = {};
   obj.parents = [BaseElement];
-  obj.node = arg[0];
+  obj.node = n;
   return obj;
 }
 
 BaseElement.baseElementUpdate = func {
 }
 
-BaseElement.update = func {
-  me.baseElementUpdate(arg[0]);
+BaseElement.update = func(dt) {
+  me.baseElementUpdate(dt);
 }
 
-BaseElement.insert = func {
-  var vector = arg[0];
-  var object = arg[1];
-  var position = 0;
-  if( size(arg) > 2 ) {
-    position = arg[2];
-  }
+BaseElement.insert = func(vector, object, position = 0) {
   setsize( vector, size(vector) + 1 );
   for( i = size(vector)-1; i > position; i = i - 1 ) {
     vector[i] = vector[i-1];
@@ -29,10 +23,7 @@ BaseElement.insert = func {
   vector[position] = object;
 }
 
-BaseElement.interpolate = func {
-  var x = arg[0];
-  var pairs = arg[1];
-
+BaseElement.interpolate = func( x, pairs ) {
   n = size(pairs)-1;
   if( x <= pairs[0][0] ) {
     return pairs[0][1];
@@ -49,15 +40,10 @@ BaseElement.interpolate = func {
       return (x - x1)/(x2-x1)*(y2-y1)+y1;
     }
   }
-  print( "BaseElement.interpolate() is junk!" );
-  return 0;
+  return pairs[i][1];
 }
 
-BaseElement.getLowPass = func {
-  var current = arg[0];
-  var target  = arg[1];
-  var timeratio = arg[2];
-
+BaseElement.getLowPass = func(current, target, timeratio) {
   if ( timeratio < 0.0 ) {
     if ( timeratio < -1.0 ) {
       #time went backwards; kill the filter
@@ -93,14 +79,11 @@ LinearElement = {};
 
 # create a new linear element
 # args: node ri [u0]
-LinearElement.new = func {
-  var obj = BaseElement.new(arg[0]);
+LinearElement.new = func(n, ri, u0 = 0) {
+  var obj = BaseElement.new(n);
   obj.insert( obj.parents, LinearElement );
-  obj.ri = arg[1];
-  obj.u0 = 0;
-  if( size(arg) > 2 ) {
-    obj.u0 = arg[2];
-  }
+  obj.ri = ri;
+  obj.u0 = u0;
   # the current, that runs into our ri
   # so a load (drain) has a positive sign here and
   # a generator/battery (source) has a negative sign
@@ -131,8 +114,8 @@ LinearElement.linearElementUpdate = func {
   me.iNode.setDoubleValue( me.i );
 }
 
-LinearElement.update = func {
-  me.linearElementUpdate(arg[0]);
+LinearElement.update = func(dt) {
+  me.linearElementUpdate(dt);
 }
 
 LinearElement.isConnected = func {
@@ -144,21 +127,19 @@ LinearElement.isConnected = func {
 #############################################################################
 LoadElement = {};
 
-LoadElement.new = func {
-  var node = arg[0];
-
-  var p = node.getNode("load-watts").getValue();
-  var u = node.getParent().getNode("volts").getValue();
+LoadElement.new = func(n) {
+  var p = n.getNode("load-watts").getValue();
+  var u = n.getParent().getNode("volts").getValue();
   var r = 1e99;
   if( p != 0 ) {
     r = u * u / p;
   }
 
   var obj = {};
-  obj = LinearElement.new( arg[0], r );
+  obj = LinearElement.new( n, r );
   obj.insert( obj.parents, LoadElement );
 
-  var s = node.getNode("switch-property").getValue();
+  var s = n.getNode("switch-property").getValue();
   obj.switchProperty = props.globals.initNode( s, 0, "BOOL" );
 
   return obj;
@@ -173,11 +154,9 @@ LoadElement.isConnected = func {
 #############################################################################
 GeneratorElement = {};
 
-GeneratorElement.new = func {
-  var node = arg[0];
-
+GeneratorElement.new = func(node) {
   var obj = {};
-  obj = LinearElement.new( arg[0], 1, 0 );
+  obj = LinearElement.new( node, 1, 0 );
   obj.insert( obj.parents, GeneratorElement );
 
   var s = node.getNode("switch-property").getValue();
@@ -237,8 +216,8 @@ GeneratorElement.generatorElementUpdate = func {
   }
 }
 
-GeneratorElement.update = func {
-  me.generatorElementUpdate(arg[0]);
+GeneratorElement.update = func(dt) {
+  me.generatorElementUpdate(dt);
 }
 
 GeneratorElement.isConnected = func {
@@ -250,15 +229,13 @@ GeneratorElement.isConnected = func {
 #############################################################################
 BatteryElement = {};
 
-BatteryElement.new = func {
-  var node = arg[0];
-
+BatteryElement.new = func(node) {
 
   var u = node.getParent().getNode("volts").getValue();
   var c  = node.getNode("capacity-ah").getValue();
 
   var obj = {};
-  obj = LinearElement.new( arg[0], 0.03 / c, u );
+  obj = LinearElement.new( node, 0.03 / c, u );
   obj.insert( obj.parents, BatteryElement );
 
   obj.charge_curve = [[0.0,0.0],[0.2,0.8],[0.9,1.1],[1.4,1.35]];
@@ -279,7 +256,7 @@ BatteryElement.new = func {
   return obj;
 }
 
-BatteryElement.batteryElementUpdate = func {
+BatteryElement.batteryElementUpdate = func(dt) {
   me.linearElementUpdate();
 
   # i is negative for discharging
@@ -287,7 +264,7 @@ BatteryElement.batteryElementUpdate = func {
   if( me.i > 0 ) {
     factor = 0.8;
   }
-  var usedAh = me.i * factor * arg[0] / 3600.0;
+  var usedAh = me.i * factor * dt / 3600.0;
 
   var c = me.design_capacity * me.capacityNormNode.getValue() + usedAh;
 
@@ -309,8 +286,8 @@ BatteryElement.batteryElementUpdate = func {
   }
 }
 
-BatteryElement.update = func {
-  me.batteryElementUpdate(arg[0]);
+BatteryElement.update = func(dt) {
+  me.batteryElementUpdate(dt);
 }
 
 #############################################################################
@@ -318,11 +295,11 @@ BatteryElement.update = func {
 #############################################################################
 Bus = {};
 
-Bus.new = func {
-  var obj = BaseElement.new( arg[0] );
+Bus.new = func(n,idx) {
+  var obj = BaseElement.new( n );
   obj.insert( obj.parents, Bus );
 
-  obj.idx = arg[1];
+  obj.idx = idx;
 
   obj.elements = [];
   
@@ -341,9 +318,9 @@ Bus.new = func {
   return obj;
 }
 
-Bus.createElement= func {
-  var node = arg[0];
-  var idx = arg[1];
+Bus.createElement= func(n,idx) {
+  var node = n;
+  var idx = idx;
 
   var type = node.getNode("type").getValue();
 
@@ -364,7 +341,7 @@ Bus.createElement= func {
   return nil;
 }
 
-Bus.busUpdate = func {
+Bus.busUpdate = func(dt) {
   me.baseElementUpdate();
 
   me.load = 0.0;
@@ -396,12 +373,12 @@ Bus.busUpdate = func {
   me.iNode.setDoubleValue( me.i );
 
   foreach( element; me.elements ) {
-    element.update(arg[0]);
+    element.update(dt);
   }
 }
 
-Bus.update = func {
-  me.busUpdate(arg[0]);
+Bus.update = func(dt) {
+  me.busUpdate(dt);
 }
 
 #############################################################################
@@ -409,13 +386,13 @@ Bus.update = func {
 #############################################################################
 ElectricSystem = {};
 
-ElectricSystem.new = func {
+ElectricSystem.new = func(n) {
   var obj = {};
   obj.parents = [ElectricSystem];
 
   obj.bus = [];
 
-  obj.electricSystemNode = props.globals.getNode( arg[0] );
+  obj.electricSystemNode = props.globals.getNode( n );
 
   var busNodes = obj.electricSystemNode.getChildren( "bus" );
   for( i = 0; i < size(busNodes); i = i + 1 ) {
@@ -425,9 +402,9 @@ ElectricSystem.new = func {
   return obj;
 }
 
-ElectricSystem.update = func {
+ElectricSystem.update = func(dt) {
   foreach( bus; me.bus ) {
-    bus.update(arg[0]);
+    bus.update(dt);
   }
 }
 
@@ -436,13 +413,13 @@ ElectricSystem.update = func {
 
 var electricSystem = ElectricSystem.new("/systems/electrical");
 var elapsedTimeNode = props.globals.getNode( "/sim/time/elapsed-sec" );
-var t_now = 0;
+
 var t_last = 0;
 var update_electrical = func {
 
   var t_now = elapsedTimeNode.getValue();
   var dt = t_now - t_last;
-  var t_last = t_now;
+  t_last = t_now;
   
   electricSystem.update(dt);
   settimer( update_electrical, 0.1 );
