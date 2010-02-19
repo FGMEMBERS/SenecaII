@@ -8,6 +8,7 @@
 
   <params>
     <has-gs>instrumentation/nav[0]/has-gs</has-gs>
+    <gs-in-range>instrumentation/nav[0]/gs-in-range</gs-in-range>
 
     <gs-needle-deflection>instrumentation/kcs55/ki525/gs-deflection</gs-needle-deflection>
     <cdi-needle-deflection>instrumentation/kcs55/ki525/cdi-deflection</cdi-needle-deflection>
@@ -19,8 +20,6 @@
 
     <indicated-heading>instrumentation/kcs55/kg102/indicated-heading-deg</indicated-heading>
     <hdg-flag>instrumentation/kcs55/kg102/flag-norm</hdg-flag>
-
-    <heading-bug>autopilot/settings/heading-bug-deg</heading-bug>
   </params>
 
   <animation>
@@ -500,7 +499,7 @@
     <type>translate</type>
     <object-name>GS</object-name>
     <property alias="../../params/gs-needle-deflection"/>
-    <factor>0.004535342857142857143</factor>
+    <factor>0.016</factor>
     <axis>
       <x>0.0</x>
       <y>0.0</y>
@@ -513,14 +512,7 @@
     <object-name>GS</object-name>
     <condition>
       <property alias="../../../params/has-gs"/>
-      <greater-than>
-        <property alias="../../../../params/gs-needle-deflection"/>
-        <value>-5</value>
-      </greater-than>
-      <less-than>
-        <property alias="../../../../params/gs-needle-deflection"/>
-        <value>5.0</value>
-      </less-than>
+      <property alias="../../../params/gs-in-range"/>
     </condition>
   </animation>
 
