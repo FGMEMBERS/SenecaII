@@ -459,3 +459,11 @@ setlistener( normalGearNode, func {
   }
 });
 
+# reset compass rose rotation for the ki228
+setlistener( "/instrumentation/adf[0]/model", func(n) {
+  if( n != nil ) {
+    var v = n.getValue();
+    if( v != nil and v == "ki228" )
+      setprop("instrumentation/adf[0]/rotation-deg", 0 );
+  }
+}, 1, 0 );
