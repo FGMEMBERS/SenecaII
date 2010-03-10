@@ -214,7 +214,7 @@
     <!-- Altimatic IIIc Autopilot -->
 
     <model>
-        <path>Aircraft/Instruments-3d/Century-III/AltimaticIIIc.xml</path>
+        <path>Aircraft/SenecaII/Systems/AltimaticIIIc.xml</path>
         <name>AltimaticIIIc</name>
         <offsets>
             <x-m>-1.9099</x-m>
@@ -226,7 +226,7 @@
     <!-- Autopilot Mode -->
 
     <model>
-        <path>Aircraft/Instruments-3d/Century-III/AutopilotMode.xml</path>
+        <path>Aircraft/SenecaII/Systems/AutopilotMode.xml</path>
         <name>AutopilotMode</name>
         <offsets>
             <x-m>-1.9099</x-m>

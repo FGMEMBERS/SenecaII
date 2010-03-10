@@ -235,6 +235,9 @@
         <systems>
             <path>Aircraft/SenecaII/Systems/SenecaII-systems.xml</path>
             <autopilot>
+                <path>Aircraft/SenecaII/Systems/CENTURYIII-Controller.xml</path>
+            </autopilot>
+            <autopilot>
                 <path>Aircraft/SenecaII/Systems/CENTURYIII.xml</path>
             </autopilot>
             <electrical>
@@ -416,9 +419,6 @@
               KCS55.new();
             ]]></script>
         </SenecaII>
-        <century3>
-            <file>Aircraft/Generic/century3.nas</file>
-        </century3>           
         <kr87>
             <file>Aircraft/SenecaII/Nasal/kr87.nas</file>
         </kr87>

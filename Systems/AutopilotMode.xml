@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<!--
+    $Id$
+    This is the Altimatic IIIc Autopilot "Coupler Mode Selector" 3d instrument.
+    Maintainer: Torsten Dreyer, Dave Perry
+    
+    AltimaticIIIc is a Piper rename of the Century III autopilot
+
+-->
+<PropertyList>
+    <path>AutopilotMode.ac</path>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>AutopilotMode</object-name>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>AutopilotMode.Face</object-name>
+        <emission>
+          <red>0.45</red>
+          <green>0.09</green>
+          <blue>0.00001</blue>
+          <factor-prop>/sim/model/material/instruments/factor</factor-prop>
+        </emission>
+    </animation>
+    
+    <animation>
+        <type>material</type>
+        <object-name>AutopilotMode.Knob</object-name>
+        <emission>
+          <red>0.2</red>
+          <green>0.04</green>
+          <blue>0.00002</blue>
+          <factor-prop>/sim/model/material/instruments/factor</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>AutopilotMode.Knob</object-name>
+        <property>/autopilot/CENTURYIII/controls/mode</property>
+        <factor>-30</factor>
+        <offset-deg>60</offset-deg>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.00592792</z-m>
+        </center>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>AutopilotMode.FaceL</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/autopilot/CENTURYIII/controls/mode</property>
+          <step type="int">-1</step>
+          <min>0</min>
+          <max>4</max>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>AutopilotMode.FaceR</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/autopilot/CENTURYIII/controls/mode</property>
+          <step type="int">1</step>
+          <min>0</min>
+          <max>4</max>
+        </binding>
+      </action>
+    </animation>
+
+</PropertyList>

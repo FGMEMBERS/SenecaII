@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<!-- Altimatic IIIc Autopilot Configuration -->
+<!-- Written by Torsten Dreyer to match the performance described in -->
+<!-- CENTURY III AUTOPILOT FLIGHT SYSTEM - PILOT'S OPERATING HANDBOOK -->
+<!-- Based heavily on work from Dave Perry, who implemented the first -->
+<!-- working CENTURYIII autopilot for FlightGear -->
+<!-- This file contains the controller logic -->
+<PropertyList>
+
+  <params include="CENTURYIII-IO.xml"/>
+
+  <!-- hack to provide power and serviceable properties from 
+       old electrical system -->
+  <logic>
+    <name>electrical Power</name>
+    <debug>false</debug>
+    <input>
+      <greater-than>
+        <property>systems/electrical/outputs/autopilot</property>
+        <value type="double">10.0</value>
+      </greater-than>
+    </input>
+    <output alias="../../params/power"/>
+    <output alias="../../params/serviceable"/>
+  </logic>
+
+  <!-- Switch interconnectin logic -->
+  <logic>
+    <name>RollSwitch</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/serviceable"/>
+        <property alias="../../../../params/power"/>
+        <or>
+          <property alias="../../../../../params/controls/roll/on"/>
+          <property alias="../../../../../params/controls/hdg/on"/>
+          <property alias="../../../../../params/controls/roll/unlock"/>
+        </or>
+      </and>
+    </input>
+    <output alias="../../params/controls/roll/lock"/>
+  </logic>
+
+  <logic>
+    <name>RollSwitch feedback</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/controls/roll/lock"/>
+        <not>
+          <property alias="../../../../../params/controls/roll/off"/>
+        </not>
+      </and>
+    </input>
+    <output alias="../../params/controls/roll/unlock"/>
+  </logic>
+
+  <logic>
+    <name>RollSwitch_state</name>
+    <debug>false</debug>
+    <input>
+      <or>
+        <property alias="../../../../params/controls/roll/on"/>
+        <property alias="../../../../params/controls/roll/lock"/>
+        <!-- hdg switch also turns on roll -->
+        <property alias="../../../../params/controls/hdg/on"/>
+      </or>
+    </input>
+    <output alias="../../params/controls/roll/state"/>
+  </logic>
+
+  <logic>
+    <name>HdgSwitch</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/serviceable"/>
+        <property alias="../../../../params/power"/>
+        <or>
+          <property alias="../../../../../params/controls/hdg/on"/>
+          <property alias="../../../../../params/controls/hdg/unlock"/>
+        </or>
+      </and>
+    </input>
+    <output alias="../../params/controls/hdg/lock"/>
+  </logic>
+
+  <logic>
+    <name>HdgSwitch feedback</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/controls/hdg/lock"/>
+        <property alias="../../../../params/controls/roll/lock"/>
+        <not>
+          <property alias="../../../../../params/controls/hdg/off"/>
+        </not>
+      </and>
+    </input>
+    <output alias="../../params/controls/hdg/unlock"/>
+  </logic>
+
+  <logic>
+    <name>HdgSwitch_state</name>
+    <debug>false</debug>
+    <input>
+      <or>
+        <property alias="../../../../params/controls/hdg/on"/>
+        <property alias="../../../../params/controls/hdg/lock"/>
+      </or>
+    </input>
+    <output alias="../../params/controls/hdg/state"/>
+  </logic>
+
+  <logic>
+    <name>AltSwitch</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/serviceable"/>
+        <property alias="../../../../params/power"/>
+        <or>
+          <property alias="../../../../../params/controls/alt/on"/>
+          <property alias="../../../../../params/controls/alt/unlock"/>
+        </or>
+      </and>
+    </input>
+    <output alias="../../params/controls/alt/lock"/>
+  </logic>
+
+  <logic>
+    <name>AltSwitch feedback</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/controls/alt/lock"/>
+        <property alias="../../../../params/controls/roll/lock"/>
+        <property alias="../../../../params/controls/pitch/lock"/>
+        <not>
+          <property alias="../../../../../params/controls/alt/off"/>
+        </not>
+      </and>
+    </input>
+    <output alias="../../params/controls/alt/unlock"/>
+  </logic>
+
+  <logic>
+    <name>AltSwitch_state</name>
+    <debug>false</debug>
+    <input>
+      <or>
+        <property alias="../../../../params/controls/alt/on"/>
+        <property alias="../../../../params/controls/alt/lock"/>
+      </or>
+    </input>
+    <output alias="../../params/controls/alt/state"/>
+  </logic>
+
+  <logic>
+    <name>PitchSwitch</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/serviceable"/>
+        <property alias="../../../../params/power"/>
+        <or>
+          <property alias="../../../../../params/controls/pitch/on"/>
+          <property alias="../../../../../params/controls/alt/on"/>
+          <property alias="../../../../../params/controls/pitch/unlock"/>
+        </or>
+      </and>
+    </input>
+    <output alias="../../params/controls/pitch/lock"/>
+  </logic>
+
+  <logic>
+    <name>PitchSwitch feedback</name>
+    <debug>false</debug>
+    <input>
+      <and>
+        <property alias="../../../../params/controls/pitch/lock"/>
+        <property alias="../../../../params/controls/roll/lock"/>
+        <not>
+          <property alias="../../../../../params/controls/pitch/off"/>
+        </not>
+      </and>
+    </input>
+    <output alias="../../params/controls/pitch/unlock"/>
+  </logic>
+
+  <logic>
+    <name>PitchSwitch_state</name>
+    <debug>false</debug>
+    <input>
+      <or>
+        <property alias="../../../../params/controls/pitch/on"/>
+        <property alias="../../../../params/controls/pitch/lock"/>
+      </or>
+    </input>
+    <output alias="../../params/controls/pitch/state"/>
+  </logic>
+
+  <!-- Glideslope coupler logic -->
+
+  <pi-simple-controller>
+    <name>ALT timer</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <property alias="../../../../params/controls/alt/lock"/>
+      </condition>
+    </enable>
+    <reference>1</reference>
+    <output alias="../../params/controls/alt/lock-timer"/>
+    <config>
+      <Kp>0.0</Kp>
+      <Ki>0.05</Ki>
+      <min>0.0</min>
+      <max>1.0</max>
+    </config>
+  </pi-simple-controller>
+
+  <pi-simple-controller>
+    <name>LOC NORM timer</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <equals>
+          <property alias="../../../../../params/controls/mode"/>
+          <value alias="../../../../../params/const/mode-loc-norm"/>
+        </equals>
+      </condition>
+    </enable>
+    <reference>1</reference>
+    <output alias="../../params/controls/mode-timer"/>
+    <config>
+      <Kp>0.0</Kp>
+      <Ki>0.05</Ki>
+      <min>0.0</min>
+      <max>1.0</max>
+    </config>
+  </pi-simple-controller>
+
+  <pi-simple-controller>
+    <name>below GS timer</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <greater-than>
+          <property alias="../../../../../params/input/gs-deflection"/>
+          <value>0.6</value>
+        </greater-than>
+      </condition>
+    </enable>
+    <reference>1</reference>
+    <output alias="../../params/input/gs-deflection-timer"/>
+    <config>
+      <Kp>0.0</Kp>
+      <Ki>0.05</Ki>
+      <min>0.0</min>
+      <max>1.0</max>
+    </config>
+  </pi-simple-controller>
+
+  <logic>
+    <name>Glideslope Coupler Armed</name>
+    <debug>false</debug>
+    <input>
+      <!-- if mode is LOC NORM -->
+      <equals> 
+        <property alias="../../../../params/controls/mode"/>
+        <value alias="../../../../params/const/mode-loc-norm"/>
+      </equals>
+      <greater-than-equals> <!-- and for a at least 20 seconds -->
+        <property alias="../../../../params/controls/mode-timer"/>
+        <value>1.0</value>
+      </greater-than-equals>
+
+      <!-- and altitude hold -->
+      <property alias="../../../params/controls/alt/lock"/> 
+      <greater-than-equals> <!-- and for at least 20 seconds -->
+        <property alias="../../../../params/controls/alt/lock-timer"/>
+        <value>1.0</value>
+      </greater-than-equals>
+
+      <!-- and glideslope deflection up (min 60%) -->
+      <or>
+        <greater-than>
+          <property alias="../../../../../params/input/gs-deflection"/>
+          <value>0.6</value>
+        </greater-than>
+        <greater-than-equals> <!-- and for at least 20 seconds -->
+          <property alias="../../../../../params/input/gs-deflection-timer"/>
+          <value>1.0</value>
+        </greater-than-equals>
+        <property alias="../../../../params/controls/gs-armed"/>
+      </or>
+    </input>
+
+    <output alias="../../params/controls/gs-armed"/>
+  </logic>
+
+  <logic>
+    <name>Glideslope Captured</name>
+    <debug>false</debug>
+    <input>
+      <property alias="../../../params/controls/gs-armed"/>
+      <or>
+        <less-than>
+          <property alias="../../../../../params/input/gs-deflection"/>
+          <value>0.0</value>
+        </less-than>
+        <property alias="../../../../params/controls/gs-captured"/>
+      </or>
+    </input>
+    <output alias="../../params/controls/gs-captured"/>
+  </logic>
+
+</PropertyList>
