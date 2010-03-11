@@ -225,6 +225,7 @@ var seneca_update = func {
 }
 
 var seneca_init = func {
+  props.globals.initNode( "autopilot/CENTURYIII/controls/mode", 2, "INT" );
   aircraft.data.add(
     "instrumentation/airspeed-indicator/tas-face-rotation",
     "instrumentation/attitude-indicator[0]/horizon-offset-deg",
@@ -258,7 +259,8 @@ var seneca_init = func {
     "engines/engine[0]/egt-bug",
     "engines/engine[1]/egt-bug",
     "controls/engines/engine[0]/cowl-flaps-norm",
-    "controls/engines/engine[1]/cowl-flaps-norm"
+    "controls/engines/engine[1]/cowl-flaps-norm",
+    "autopilot/CENTURYIII/controls/mode"
   );
   ki266.new(0);
 
