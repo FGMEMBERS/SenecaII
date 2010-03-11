@@ -117,6 +117,16 @@
     <type>gain</type>
     <gain>1.0</gain>
     <input alias="../../params/input/selected-course"/>
+    <reference>
+      <condition>
+        <equals>
+          <property alias="../../../../../params/controls/mode"/>
+          <value alias="../../../../../params/const/mode-loc-rev"/>
+        </equals>
+      </condition>
+      <property alias="../../../params/input/course-error"/>
+      <scale>-1.0</scale>
+    </reference>
     <reference alias="../../params/input/course-error"/>
     <output alias="../../params/input/intercept-heading"/>
     <period>
