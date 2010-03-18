@@ -1,9 +1,29 @@
+#############################################################################
+# This file is part of FlightGear, the free flight simulator
+# http://www.flightgear.org/
+#
+# Copyright (C) 2009 Torsten Dreyer, Torsten (at) t3r _dot_ de
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#############################################################################
+
 #########################################################################################
 # $Id$
 # this are the helper functions to model structural icing on airplanes
 # Maintainer: Torsten Dreyer (Torsten at t3r dot de)
 #
 # $Log$
+# Revision 1.5  2010/03/18 07:47:11  torsten
+# Added copyright and license note. No functional change.
+#
 # Revision 1.4  2008/11/21 10:27:34  torsten
 # make use of Node.initNode() method
 #

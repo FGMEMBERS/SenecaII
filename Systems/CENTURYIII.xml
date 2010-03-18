@@ -1,4 +1,20 @@
 <?xml version="1.0"?>
+<!--
+ This file is part of FlightGear, the free flight simulator
+ http://www.flightgear.org/
+
+ Copyright (C) 2009 Torsten Dreyer, Torsten (at) t3r _dot_ de
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+-->
 <!-- Altimatic IIIc Autopilot Configuration -->
 <!-- Written by Torsten Dreyer to match the performance described in -->
 <!-- CENTURY III AUTOPILOT FLIGHT SYSTEM - PILOT'S OPERATING HANDBOOK -->
@@ -6,10 +22,6 @@
 <!-- working CENTURYIII autopilot for FlightGear -->
 <!-- this file contains the analog autopilot "model" -->
 <PropertyList>
-
-  <!-- TODO: filter the course error in NAV mode -->
-  <!-- TODO: filter the course error in LOC and LOC/REV mode -->
-  <!-- TODO: reverse course error in LOC/REV mode -->
 
   <params include="CENTURYIII-IO.xml"/>
 
@@ -377,7 +389,7 @@
   </pid-controller>
 
   <!-- ========================================================================== -->
-  <!-- Server Driver - Pass output commands thru a noise spike filter to avoid    -->
+  <!-- Server Driver - Pass output commands through a noise spike filter to avoid -->
   <!-- rapid control inputs and simulate slow movement of the servos              -->
   <!-- Disable servos in passive-mode                                             -->
   <!-- ========================================================================== -->
@@ -393,7 +405,7 @@
       </condition>
     </enable>
     <input alias="../../params/aileron-cmd"/>
-    <output>/controls/flight/aileron</output>
+    <output>controls/flight/aileron</output>
     <type>noise-spike</type>
     <max-rate-of-change>0.167</max-rate-of-change> <!-- 12 seconds for full travel -->
   </filter>
@@ -410,11 +422,25 @@
       </condition>
     </enable>
     <input alias="../../params/elevator-cmd"/>
-    <output>/controls/flight/elevator</output>
+    <output>controls/flight/elevator</output>
     <type>noise-spike</type>
     <max-rate-of-change>0.0769</max-rate-of-change> <!-- 26 seconds for full travel -->
   </filter>
 
-  <!-- elevator trim: 45 seconds for full travel -->
-
+  <filter>
+    <name>SERVO-DRIVER:elevator-trim</name>
+    <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <enable>
+      <condition>
+        <property alias="../../../../params/serviceable"/>
+        <property alias="../../../../params/power"/>
+        <property alias="../../../../params/controls/pitch/lock"/>
+      </condition>
+    </enable>
+    <input alias="../../params/elevator-trim-cmd"/>
+    <output>controls/flight/elevator-trim</output>
+    <type>noise-spike</type>
+    <max-rate-of-change>0.0444</max-rate-of-change> <!-- 45 seconds for full travel -->
+  </filter>
 </PropertyList>
