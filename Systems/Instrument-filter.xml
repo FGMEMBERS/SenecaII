@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+ This file is part of FlightGear, the free flight simulator
+ http://www.flightgear.org/
+
+ Copyright (C) 2009 Torsten Dreyer, Torsten (at) t3r _dot_ de
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+-->
+<!-- Some low pass filters to soften the response of various instruments -->
+<PropertyList>
+  <filter>
+    <name>RPM Indicator-Left filter</name>
+    <debug>false</debug>
+    <type>exponential</type>
+    <filter-time>0.5</filter-time> 
+    <input>engines/engine[0]/rpm</input>
+    <output>engines/engine[0]/rpm-filtered</output>
+  </filter>
+
+  <filter>
+    <name>RPM Indicator-Right filter</name>
+    <debug>false</debug>
+    <type>exponential</type>
+    <filter-time>0.6</filter-time>
+    <input>engines/engine[1]/rpm</input>
+    <output>engines/engine[1]/rpm-filtered</output>
+  </filter>
+
+  <filter>
+    <name>MAP Indicator-Left filter</name>
+    <debug>false</debug>
+    <type>exponential</type>
+    <filter-time>1.4</filter-time> 
+    <input>engines/engine[0]/mp-osi</input>
+    <output>engines/engine[0]/mp-osi-filtered</output>
+  </filter>
+
+  <filter>
+    <name>MAP Indicator-Right filter</name>
+    <debug>false</debug>
+    <type>exponential</type>
+    <filter-time>1.2</filter-time> 
+    <input>engines/engine[1]/mp-osi</input>
+    <output>engines/engine[1]/mp-osi-filtered</output>
+  </filter>
+
+</PropertyList>

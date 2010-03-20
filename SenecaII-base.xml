@@ -256,6 +256,9 @@
             <autopilot>
                 <path>Aircraft/SenecaII/Systems/CENTURYIII.xml</path>
             </autopilot>
+            <autopilot>
+                <path>Aircraft/SenecaII/Systems/Instrument-filter.xml</path>
+            </autopilot>
             <electrical>
                 <path/>
             </electrical>

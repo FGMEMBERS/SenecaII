@@ -42,7 +42,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Left</object-name>
-        <property>engines/engine[0]/mp-osi</property>
+        <property>engines/engine[0]/mp-osi-filtered</property>
         <offset-deg>158.82</offset-deg>
         <factor>-5.294117647</factor>
         <center>
@@ -59,7 +59,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Right</object-name>
-        <property>engines/engine[1]/mp-osi</property>
+        <property>engines/engine[1]/mp-osi-filtered</property>
         <offset-deg>158.82</offset-deg>
         <factor>-5.294117647</factor>
         <axis>

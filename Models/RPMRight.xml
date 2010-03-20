@@ -42,7 +42,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Pointer</object-name>
-        <property>engines/engine[1]/rpm</property>
+        <property>engines/engine[1]/rpm-filtered</property>
         <offset-deg>152.0</offset-deg>
         <factor>-.08</factor>
         <axis>
