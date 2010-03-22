@@ -79,40 +79,70 @@
         </offsets>
     </model>
     <model>
-        <path>Aircraft/SenecaII/Models/FuelOilAmpsL.xml</path>
+        <path>Aircraft/SenecaII/Models/FuelOilAmps.xml</path>
         <name>FuelOilAmps.L</name>
         <offsets>
             <x-m>-1.915</x-m>
             <y-m>-0.493693</y-m>
             <z-m>1.3594</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <amps>systems/electrical/bus[0]/element[1]/i</amps>
+            <cht>engines/engine[0]/cht-degf</cht>
+            <ot>engines/engine[0]/oil-temperature-degf</ot>
+            <op>engines/engine[0]/oil-pressure-psi</op>
+            <fuel>consumables/fuel/tank[0]/level-gal_us</fuel>
+          </params>
+        </overlay>
     </model>
     <model>
-        <path>Aircraft/SenecaII/Models/FuelOilAmpsR.xml</path>
+        <path>Aircraft/SenecaII/Models/FuelOilAmps.xml</path>
         <name>FuelOilAmps.R</name>
         <offsets>
             <x-m>-1.915</x-m>
             <y-m>-0.219902</y-m>
             <z-m>1.3594</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <amps>systems/electrical/bus[1]/element[1]/i</amps>
+            <cht>engines/engine[1]/cht-degf</cht>
+            <ot>engines/engine[1]/oil-temperature-degf</ot>
+            <op>engines/engine[1]/oil-pressure-psi</op>
+            <fuel>consumables/fuel/tank[1]/level-gal_us</fuel>
+          </params>
+        </overlay>
     </model>
     <model>
-        <path>Aircraft/SenecaII/Models/EGTL.xml</path>
+        <path>Aircraft/SenecaII/Models/EGT.xml</path>
         <name>EGT.L</name>
         <offsets>
             <x-m>-1.915</x-m>
             <y-m>0.164448</y-m>
             <z-m>1.35942</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <value>engines/engine[0]/egt-degf-filtered</value>
+            <bug>engines/engine[0]/egt-bug</bug>
+          </params>
+        </overlay>
     </model>
     <model>
-        <path>Aircraft/SenecaII/Models/EGTR.xml</path>
+        <path>Aircraft/SenecaII/Models/EGT.xml</path>
         <name>EGT.R</name>
         <offsets>
             <x-m>-1.915</x-m>
             <y-m>0.229532</y-m>
             <z-m>1.35942</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <value>engines/engine[1]/egt-degf-filtered</value>
+            <bug>engines/engine[1]/egt-bug</bug>
+          </params>
+        </overlay>
     </model>
     <model>
         <path>Aircraft/SenecaII/Models/Vacuum.xml</path>
@@ -1305,22 +1335,32 @@
         </offsets>
     </model>
     <model>
-        <path>Aircraft/SenecaII/Models/RPMLeft.xml</path>
+        <path>Aircraft/SenecaII/Models/RPM.xml</path>
         <name>RPM-Left</name>
         <offsets>
             <x-m>-1.915</x-m>
             <y-m>-0.315861</y-m>
             <z-m>1.28695</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <value>engines/engine[0]/rpm-filtered</value>
+          </params>
+        </overlay>
     </model>
     <model>
-        <path>Aircraft/SenecaII/Models/RPMRight.xml</path>
+        <path>Aircraft/SenecaII/Models/RPM.xml</path>
         <name>RPM-Right</name>
         <offsets>
             <x-m>-1.915</x-m>
             <y-m>-0.145861</y-m>
             <z-m>1.28695</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <value>engines/engine[1]/rpm-filtered</value>
+          </params>
+        </overlay>
     </model>
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/FuelFlow.xml</path>
