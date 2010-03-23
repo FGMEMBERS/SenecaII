@@ -18,14 +18,34 @@
 <PropertyList>
 
   <params>
-    <rpm-norm-inv>/engines/engine[1]/rpm-norm-inv</rpm-norm-inv>
-    <rpm>engines/engine[1]/rpm</rpm>
+    <rpm-norm-inv>/engines/engine[0]/rpm-norm-inv</rpm-norm-inv>
+    <rpm>engines/engine[0]/rpm</rpm>
   </params>
 
   <path>PropDisc.ac</path>
 
-  <animation include="PropDiscMaterialAnimation.xml"/>
-  <animation include="PropDiscSelectAnimation.xml"/>
+  <animation>
+    <type>material</type>
+    <object-name>PropDisc</object-name>
+    <threshold>0.001</threshold>
+    <transparency>
+      <alpha>0.2</alpha>
+      <factor-prop alias="../../../params/rpm-norm-inv"/>
+      <min>0.0</min>
+      <max>1.0</max>
+    </transparency>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>PropDisc</object-name>
+    <condition>
+      <greater-than>
+        <property alias="../../../../params/rpm"/>
+        <value>350</value>
+      </greater-than>
+    </condition>
+  </animation>
 
   <animation>
     <type>spin</type>

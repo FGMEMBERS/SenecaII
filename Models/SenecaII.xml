@@ -1884,13 +1884,19 @@
 
     <!-- Left Propeller -->
     <model>
-        <path>Aircraft/SenecaII/Models/PropDiscLH.xml</path>
+        <path>Aircraft/SenecaII/Models/PropDisc.xml</path>
         <name>PropDisc.L</name>
         <offsets>
             <x-m>-2.76321</x-m>
             <y-m>-1.84169</y-m>
             <z-m>1.31469</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <rpm-norm-inv>/engines/engine[0]/rpm-norm-inv</rpm-norm-inv>
+            <rpm>engines/engine[0]/rpm</rpm>
+          </params>
+        </overlay>
     </model>
     <animation>
         <type>noshadow</type>
@@ -1953,13 +1959,19 @@
 
     <!-- Right Propeller -->
     <model>
-        <path>Aircraft/SenecaII/Models/PropDiscRH.xml</path>
+        <path>Aircraft/SenecaII/Models/PropDisc.xml</path>
         <name>PropDisc.R</name>
         <offsets>
             <x-m>-2.76321</x-m>
             <y-m>1.84169</y-m>
             <z-m>1.31469</z-m>
         </offsets>
+        <overlay>
+          <params>
+            <rpm-norm-inv>/engines/engine[1]/rpm-norm-inv</rpm-norm-inv>
+            <rpm>engines/engine[1]/rpm</rpm>
+          </params>
+        </overlay>
     </model>
     <animation>
         <type>noshadow</type>
