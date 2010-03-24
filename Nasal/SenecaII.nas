@@ -61,13 +61,6 @@ Engines.update = func {
       break;
     }
 
-    me.mp_osi = me.engineNodes[i].getNode("mp-osi").getValue();
-    if( me.mp_osi != nil and me.mp_osi > 40.0 ) {
-      me.overboostNodes[i].setBoolValue( 1 );
-    } else {
-      me.overboostNodes[i].setBoolValue( 0 );
-    }
-
     # create a rpm-norm-inv property for propdisc transparency
     me.rpm = me.engineNodes[i].getNode( "rpm", 1 ).getValue();
     if( me.rpm == nil ) {
