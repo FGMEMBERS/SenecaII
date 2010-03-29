@@ -106,7 +106,7 @@
         </offsets>
         <overlay>
           <params>
-            <amps>systems/electrical/bus[1]/element[1]/i</amps>
+            <amps>systems/electrical/bus[0]/element[1]/i</amps>
             <cht>engines/engine[1]/cht-degf</cht>
             <ot>engines/engine[1]/oil-temperature-degf</ot>
             <op>engines/engine[1]/oil-pressure-psi</op>
