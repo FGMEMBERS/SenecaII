@@ -33,7 +33,7 @@ BaseElement.update = func(dt) {
 
 BaseElement.insert = func(vector, object, position = 0) {
   setsize( vector, size(vector) + 1 );
-  for( i = size(vector)-1; i > position; i = i - 1 ) {
+  for( var i = size(vector)-1; i > position; i = i - 1 ) {
     vector[i] = vector[i-1];
   }
   vector[position] = object;
@@ -47,7 +47,7 @@ BaseElement.interpolate = func( x, pairs ) {
   if( x >= pairs[n][0] ) {
     return pairs[n][0];
   }
-  for( i = 0; i < n; i = i + 1 ) {
+  for( var i = 0; i < n; i = i + 1 ) {
     if( x > pairs[i][0] and x <= pairs[i+1][0] ) {
       var x1 = pairs[i][0];
       var x2 = pairs[i+1][0];
@@ -328,17 +328,18 @@ Bus.new = func(n,idx) {
   obj.iNode = obj.node.getNode( "i-ampere", "true" );
 
   var elementNodes = obj.node.getChildren( "element" );
-  for( i = 0; i < size(elementNodes); i = i + 1 ) {
-    append( obj.elements, obj.createElement(elementNodes[i], i) );
+  foreach( var elementNode; elementNodes ) {
+    var element = obj.createElement(elementNode);
+    if( element != nil )
+      append( obj.elements, element );
   }
   return obj;
 }
 
-Bus.createElement= func(n,idx) {
+Bus.createElement= func(n) {
   var node = n;
-  var idx = idx;
 
-  var type = node.getNode("type").getValue();
+  var type = node.getNode("type",1).getValue();
 
   if( type == "battery" ) {
     return BatteryElement.new( node );
@@ -353,7 +354,7 @@ Bus.createElement= func(n,idx) {
     return LoadElement.new( node );
   } 
 
-  print("unknown element type " ~ type );
+  print("unknown element type ", type == nil ? "<nil>" : type );
   return nil;
 }
 
@@ -411,7 +412,7 @@ ElectricSystem.new = func(n) {
   obj.electricSystemNode = props.globals.getNode( n );
 
   var busNodes = obj.electricSystemNode.getChildren( "bus" );
-  for( i = 0; i < size(busNodes); i = i + 1 ) {
+  for( var i = 0; i < size(busNodes); i = i + 1 ) {
     append( obj.bus, Bus.new( busNodes[i], i ));
   }
 
