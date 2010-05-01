@@ -18,6 +18,24 @@
 <!-- Some low pass filters to soften the response of various instruments -->
 <PropertyList>
   <filter>
+    <name>NAV1 gs-needle deflection filter</name>
+    <debug>false</debug>
+    <type>exponential</type>
+    <filter-time>2.0</filter-time> 
+    <input>instrumentation/nav[0]/gs-needle-deflection-norm</input>
+    <output>instrumentation/nav[0]/gs-needle-deflection-filtered</output>
+  </filter>
+
+  <filter>
+    <name>NAV2 gs-needle deflection filter</name>
+    <debug>false</debug>
+    <type>exponential</type>
+    <filter-time>1.5</filter-time> 
+    <input>instrumentation/nav[1]/gs-needle-deflection-norm</input>
+    <output>instrumentation/nav[1]/gs-needle-deflection-filtered</output>
+  </filter>
+
+  <filter>
     <name>RPM Indicator-Left filter</name>
     <debug>false</debug>
     <type>exponential</type>

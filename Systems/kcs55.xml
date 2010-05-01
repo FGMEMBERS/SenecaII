@@ -31,7 +31,7 @@
 
   
     <!-- The property from where the deflection the gs arrows is read -->
-    <gs-deflection-property type="string">instrumentation/nav[0]/gs-needle-deflection-norm</gs-deflection-property>
+    <gs-deflection-property type="string">instrumentation/nav[0]/gs-needle-deflection-filtered</gs-deflection-property>
 
     <!-- The property from where the the state of the TO flag is read -->
     <to-flag-property type="string">instrumentation/nav[0]/to-flag</to-flag-property>
