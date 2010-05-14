@@ -16,13 +16,13 @@
  General Public License for more details.
 -->
 <!--
-  $Id$
+  $Id: gtx330.xml,v 1.2 2010/03/18 07:47:41 torsten Exp $
   Garmin gtx330 3d model
    Texture image is (c) Garmin (www.garmin.com)
     
    Maintainer: Torsten Dreyer ( Torsten at t3r dot de)
     
-  $Log$
+  $Log: gtx330.xml,v $
   Revision 1.2  2010/03/18 07:47:41  torsten
   Added copyright and license note. No functional change.
 

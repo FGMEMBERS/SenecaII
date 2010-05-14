@@ -13,7 +13,7 @@ kids 14
 OBJECT poly
 name "Label.Test"
 loc -0.00148132 0.00366186 0.0479297
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 0 0.00255438 -0.0115135
@@ -32,7 +32,7 @@ kids 0
 OBJECT poly
 name "Fuelpump.L"
 loc 0.00104024 -0.00240383 0.0350474
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 -0.00252156 -0.00275466 -0.00700559
@@ -51,7 +51,7 @@ kids 0
 OBJECT poly
 name "Fuelpump.R"
 loc 0.00104024 -0.00240383 0.0350474
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 -0.00252156 0.00325189 -0.102199
@@ -445,7 +445,7 @@ kids 0
 OBJECT poly
 name "GyroAirFace"
 loc -0.000306783 0.000342563 -0.0165516
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 0.00159999 0.00515591 0.00515591
@@ -464,7 +464,7 @@ kids 0
 OBJECT poly
 name "OverboostFace.L"
 loc -0.000306783 0.000342563 0.0210984
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 0.00159999 0.00515591 0.0020059
@@ -483,7 +483,7 @@ kids 0
 OBJECT poly
 name "OverboostFace.R"
 loc -0.000256783 0.000342563 -0.0479016
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 0.00154999 0.00515591 -0.00830591
@@ -502,7 +502,7 @@ kids 0
 OBJECT poly
 name "AltnFace"
 loc -0.000306783 0.000342563 -0.0353766
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 0.00159999 0.00515591 -0.00358091
@@ -521,7 +521,7 @@ kids 0
 OBJECT poly
 name "OilFace"
 loc -0.000306783 0.000342563 0.00227341
-texture "WarningLights.rgb"
+texture "WarningLights.png"
 crease 45.000000
 numvert 4
 0.00159999 0.00515591 -0.00673091

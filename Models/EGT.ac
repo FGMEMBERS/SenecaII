@@ -421,7 +421,7 @@ kids 0
 OBJECT poly
 name "Face"
 loc -0.00108333 0.00211694 0.00299342
-texture "FuelOilAmps.rgb"
+texture "FuelOilAmps.png"
 crease 45.000000
 numvert 6
 -0.002 -9.31323e-10 -0.025
@@ -469,7 +469,7 @@ kids 0
 OBJECT poly
 name "Cover"
 loc 0.000916667 0.00211694 0.00299342
-texture "FuelOilAmps.rgb"
+texture "FuelOilAmps.png"
 crease 45.000000
 numvert 4
 -0.002 -0.025 -0.025

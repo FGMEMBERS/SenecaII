@@ -10,7 +10,7 @@ kids 1
 OBJECT poly
 name "gma340.Knob.Right.Inner"
 loc 0.148171 -0.00524672 0.0748464
-texture "garmin.rgb"
+texture "garmin.png"
 crease 45.000000
 numvert 24
 -0.226818 -5.58794e-09 -0.100757
@@ -141,7 +141,7 @@ kids 0
 OBJECT poly
 name "gma340.Chassis"
 loc 0.0900891 0 0.109911
-texture "garmin.rgb"
+texture "garmin.png"
 crease 45.000000
 numvert 16
 -0.0850892 -0.0254 -0.0321692
@@ -216,7 +216,7 @@ kids 2
 OBJECT poly
 name "gma340.Knob.Right.Outer"
 loc -0.00362195 0 0
-texture "garmin.rgb"
+texture "garmin.png"
 crease 45.000000
 numvert 24
 -0.0805524 -6.51926e-09 -0.172202
@@ -347,7 +347,7 @@ kids 0
 OBJECT poly
 name "gma340.Knob.Right.Inner"
 loc 0.00362195 0 0
-texture "garmin.rgb"
+texture "garmin.png"
 crease 45.000000
 numvert 24
 -0.0879095 0.00359702 -0.169152
@@ -478,7 +478,7 @@ kids 0
 OBJECT poly
 name "box"
 loc -0.000560765 0.00262766 0.0759869
-texture "garmin.rgb"
+texture "garmin.png"
 crease 45.000000
 numvert 22
 -0.0142685 -0.0166257 -0.00283255
