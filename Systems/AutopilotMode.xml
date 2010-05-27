@@ -16,14 +16,6 @@
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  General Public License for more details.
 -->
-<!--
-    $Id$
-    This is the Altimatic IIIc Autopilot "Coupler Mode Selector" 3d instrument.
-    Maintainer: Torsten Dreyer, Dave Perry
-    
-    AltimaticIIIc is a Piper rename of the Century III autopilot
-
--->
 <PropertyList>
     <path>AutopilotMode.ac</path>
 

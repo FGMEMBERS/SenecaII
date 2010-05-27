@@ -388,6 +388,44 @@
     </config>
   </pid-controller>
 
+  <!-- elevator auto trim. The real CENTURYIII tries to trim control force 
+       to zero. Fg does not calculate these forces, so we try to trim the 
+       elevator-cmd to neutral -->
+  <filter>
+    <name>AP:elevator-cmd filter</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <property alias="../../../../params/controls/pitch/lock"/> 
+      </condition>
+    </enable>
+    <type>exponential</type>
+    <filter-time>10</filter-time>
+    <input>controls/flight/elevator</input>
+    <output>autopilot/CENTURYIII/filtered-elevator-cmd</output>
+  </filter>
+
+  <pi-simple-controller>
+    <name>AP:auto pitch trim</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <property alias="../../../../params/controls/pitch/lock"/> 
+      </condition>
+    </enable>
+    <config>
+      <Kp>0.0</Kp>
+      <Ki>0.2</Ki>
+    </config>
+    <input>
+      <scale>-1.0</scale>
+      <property>autopilot/CENTURYIII/filtered-elevator-cmd</property>
+    </input>
+    <output alias="../../params/elevator-trim-cmd"/>
+    <min>-1.0</min>
+    <max>1.0</max>
+  </pi-simple-controller>
+
   <!-- ========================================================================== -->
   <!-- Server Driver - Pass output commands through a noise spike filter to avoid -->
   <!-- rapid control inputs and simulate slow movement of the servos              -->
@@ -399,8 +437,6 @@
     <feedback-if-disabled>true</feedback-if-disabled>
     <enable>
       <condition>
-        <property alias="../../../../params/serviceable"/>
-        <property alias="../../../../params/power"/>
         <property alias="../../../../params/controls/roll/lock"/>
       </condition>
     </enable>
@@ -416,8 +452,6 @@
     <feedback-if-disabled>true</feedback-if-disabled>
     <enable>
       <condition>
-        <property alias="../../../../params/serviceable"/>
-        <property alias="../../../../params/power"/>
         <property alias="../../../../params/controls/pitch/lock"/>
       </condition>
     </enable>
@@ -430,7 +464,7 @@
   <filter>
     <name>SERVO-DRIVER:elevator-trim</name>
     <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
+    <feedback-if-disabled>false</feedback-if-disabled>
     <enable>
       <condition>
         <property alias="../../../../params/serviceable"/>

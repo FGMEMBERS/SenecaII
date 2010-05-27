@@ -16,41 +16,6 @@
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  General Public License for more details.
 -->
-<!--
-    $Id$
-    This is the Altimatic IIIc Autopilot 3d instrument.
-    Maintainer: Torsten Dreyer, Dave Perry
-    
-    $Log$
-    Revision 1.2  2010/03/18 07:46:32  torsten
-    Added copyright and license note. No functional change.
-
-    Revision 1.1  2010/03/10 21:15:31  torsten
-    Look mum, no Nasal!
-
-    First attempt of a Nasal-free Century III autopilot making use of many new features of the digital filters.
-
-    Revision 1.3  2008/02/02 17:45:28  mfranz
-    Dave PERRY:
-
-    "All the pa24 and pa28 and Seneca II hot spots are now visible in osg and
-    plib with ctrl-c."
-
-    Revision 1.2  2007-11-26 15:10:26  mfranz
-    Dave PERRY: remove two <global> in material animations
-
-    Revision 1.1  2007-10-10 20:48:37  mfranz
-    Dave PERRY:
-
-    "For more than a month, I have been working with Torsten Dryer to model
-    these three autopilots that are very common in aircraft manufactured in
-    the 1960s through the late 1980s.  The Altimatic IIIc in the SenecaII is
-    a variation on the Century III and uses the same nasal model."
-
-    Revision 1.1  2006-06-01 12:58:33  mfranz
-    Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
-
--->
 <PropertyList>
     <params>
       <light-factor>sim/model/material/instruments/factor</light-factor>
