@@ -205,14 +205,14 @@
            of the control surface.
       -->
       <condition>
-        <property alias="../../../../params/controls/roll/lock"/>
+        <property alias="../../../../params/controls/roll/state"/>
       </condition>
     </enable>
     <input alias="../../params/input/roll"/> <!-- compare actual roll with the reference -->
     <reference>
       <condition>
         <not><!-- if it's not heading mode, it's roll mode -->
-          <property alias="../../../../../params/controls/hdg/lock"/>
+          <property alias="../../../../../params/controls/hdg/state"/>
         </not>
       </condition>
       <!-- in roll mode, the position of the roll-knob is the reference -->
@@ -243,7 +243,7 @@
       <condition>
         <or>
           <not>
-            <property alias="../../../../../../params/controls/alt/lock"/>
+            <property alias="../../../../../../params/controls/alt/state"/>
           </not>
           <property alias="../../../../../params/controls/gs-captured"/>
         </or>
@@ -291,7 +291,7 @@
     <enable>
       <condition>
         <not>
-          <property alias="../../../../../params/controls/alt/lock"/>
+          <property alias="../../../../../params/controls/alt/state"/>
         </not>
       </condition>
     </enable>
@@ -308,7 +308,7 @@
     <debug>false</debug>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/alt/lock"/>
+        <property alias="../../../../params/controls/alt/state"/>
         <not>
           <property alias="../../../../../params/controls/gs-captured"/>
         </not>
@@ -331,7 +331,7 @@
     <debug>false</debug>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/alt/lock"/>
+        <property alias="../../../../params/controls/alt/state"/>
         <property alias="../../../../params/controls/gs-captured"/>
       </condition>
     </enable>
@@ -363,13 +363,13 @@
     <debug>false</debug>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/pitch/lock"/>
+        <property alias="../../../../params/controls/pitch/state"/>
       </condition>
     </enable>
     <input alias="../../params/input/pitch"/>
     <reference>
       <condition>
-        <property alias="../../../../params/controls/alt/lock"/>
+        <property alias="../../../../params/controls/alt/state"/>
       </condition>
       <property alias="../../../params/input/target-pitch"/> 
     </reference>
@@ -396,7 +396,7 @@
     <debug>false</debug>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/pitch/lock"/> 
+        <property alias="../../../../params/controls/pitch/state"/> 
       </condition>
     </enable>
     <type>exponential</type>
@@ -410,7 +410,7 @@
     <debug>false</debug>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/pitch/lock"/> 
+        <property alias="../../../../params/controls/pitch/state"/> 
       </condition>
     </enable>
     <config>
@@ -437,7 +437,7 @@
     <feedback-if-disabled>true</feedback-if-disabled>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/roll/lock"/>
+        <property alias="../../../../params/controls/roll/state"/>
       </condition>
     </enable>
     <input alias="../../params/aileron-cmd"/>
@@ -452,7 +452,7 @@
     <feedback-if-disabled>true</feedback-if-disabled>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/pitch/lock"/>
+        <property alias="../../../../params/controls/pitch/state"/>
       </condition>
     </enable>
     <input alias="../../params/elevator-cmd"/>
@@ -470,7 +470,7 @@
         <property alias="../../../../params/serviceable"/>
         <property alias="../../../../params/power"/>
         <or>
-         <property alias="../../../../../params/controls/pitch/lock"/> 
+         <property alias="../../../../../params/controls/pitch/state"/> 
          <not-equals>
            <property alias="../../../../../../params/controls/manual-trim"/>
            <value type="double">0.0</value>

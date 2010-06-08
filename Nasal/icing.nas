@@ -16,31 +16,8 @@
 #############################################################################
 
 #########################################################################################
-# $Id$
 # this are the helper functions to model structural icing on airplanes
 # Maintainer: Torsten Dreyer (Torsten at t3r dot de)
-#
-# $Log$
-# Revision 1.5  2010/03/18 07:47:11  torsten
-# Added copyright and license note. No functional change.
-#
-# Revision 1.4  2008/11/21 10:27:34  torsten
-# make use of Node.initNode() method
-#
-# Revision 1.3  2007-11-29 18:26:49  mfranz
-# Torsten DREYER:
-#
-# - add var to local variables
-# - relaxed timer in electrical.nas
-# - some cleanup
-# - added support for pitot icing"
-#
-# Revision 1.2  2006-11-25 12:24:09  mfranz
-# turn underscore into hyphen (effective-visibility-m)
-#
-# Revision 1.1  2006-06-01 12:58:33  mfranz
-# Torsten Dreyer: version 0.3 of the PA34-200T Seneca II (2006.05.30)
-#
 #
 # Simple model: we listen to temperature and dewpoint. If the difference (spread) 
 # is near zero and temperature is below zero, icing may occour.

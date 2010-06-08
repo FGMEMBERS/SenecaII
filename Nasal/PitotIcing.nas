@@ -16,29 +16,9 @@
 #############################################################################
 
 #########################################################################################
-# $Id$
 # Fail the airspeed indicator due to icing of the pitot tube
 # Maintainer: Torsten Dreyer (Torsten at t3r dot de)
 #
-# $Log$
-# Revision 1.4  2010/03/18 07:47:11  torsten
-# Added copyright and license note. No functional change.
-#
-# Revision 1.3  2008/12/08 21:35:37  torsten
-# initNode - not getNode. Thanks m.
-#
-# Revision 1.2  2008/12/08 21:23:38  torsten
-# make use of initNode
-#
-# Revision 1.1  2007-11-29 18:26:49  mfranz
-# Torsten DREYER:
-#
-# - add var to local variables
-# - relaxed timer in electrical.nas
-# - some cleanup
-# - added support for pitot icing"
-#
-# 
 # inputs
 # /instrumentation/airspeed-indicator[n]/icing
 #

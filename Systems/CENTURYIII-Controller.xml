@@ -144,7 +144,7 @@
     <debug>false</debug>
     <enable>
       <condition>
-        <property alias="../../../../params/controls/alt/lock"/>
+        <property alias="../../../../params/controls/alt/state"/>
       </condition>
     </enable>
     <reference>1</reference>
@@ -183,6 +183,7 @@
     <debug>false</debug>
     <enable>
       <condition>
+        <!-- TODO: only on mode LOC NORM? -->
         <greater-than>
           <property alias="../../../../../params/input/gs-deflection"/>
           <value>0.6</value>
@@ -193,7 +194,7 @@
     <output alias="../../params/input/gs-deflection-timer"/>
     <config>
       <Kp>0.0</Kp>
-      <Ki>0.05</Ki>
+      <Ki>0.05</Ki> <!-- 20 seconds -->
       <min>0.0</min>
       <max>1.0</max>
     </config>
@@ -214,7 +215,7 @@
       </greater-than-equals>
 
       <!-- and altitude hold -->
-      <property alias="../../../params/controls/alt/lock"/> 
+      <property alias="../../../params/controls/alt/state"/> 
       <greater-than-equals> <!-- and for at least 20 seconds -->
         <property alias="../../../../params/controls/alt/lock-timer"/>
         <value>1.0</value>
@@ -222,14 +223,16 @@
 
       <!-- and glideslope deflection up (min 60%) -->
       <or>
-        <greater-than>
-          <property alias="../../../../../params/input/gs-deflection"/>
-          <value>0.6</value>
-        </greater-than>
-        <greater-than-equals> <!-- and for at least 20 seconds -->
-          <property alias="../../../../../params/input/gs-deflection-timer"/>
-          <value>1.0</value>
-        </greater-than-equals>
+        <and>
+          <greater-than>
+            <property alias="../../../../../../params/input/gs-deflection"/>
+            <value>0.6</value>
+          </greater-than>
+          <greater-than-equals> <!-- and for at least 20 seconds -->
+            <property alias="../../../../../../params/input/gs-deflection-timer"/>
+            <value>1.0</value>
+          </greater-than-equals>
+        </and>
         <property alias="../../../../params/controls/gs-armed"/>
       </or>
     </input>
