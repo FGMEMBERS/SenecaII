@@ -113,7 +113,7 @@
 
   <!-- adjust the MAP due to RPM change by modifying the airtake-impedance -->
   <filter>
-    <name>MAP by RPM adjust</name>
+    <name>MAP by RPM adjust-Left</name>
     <type>gain</type>
     <gain>1.0</gain>
     <input>
@@ -127,7 +127,7 @@
   </filter>
 
   <filter>
-    <name>MAP by RPM adjust</name>
+    <name>MAP by RPM adjust-Right</name>
     <type>gain</type>
     <gain>1.0</gain>
     <input>
