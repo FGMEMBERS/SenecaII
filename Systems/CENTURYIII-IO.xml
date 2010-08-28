@@ -96,6 +96,9 @@
       <gs-deflection-2>instrumentation/nav[1]/gs-needle-deflection-norm</gs-deflection-2>
       <gs-deflection>autopilot/CENTURYIII/gs-deflection-norm</gs-deflection>
       <gs-deflection-timer>autopilot/CENTURYIII/gs-deflection-timer</gs-deflection-timer>
+      <gs-valid-1>instrumentation/nav[0]/has-gs</gs-valid-1>
+      <gs-valid-2>instrumentation/nav[1]/has-gs</gs-valid-2>
+      <gs-valid>autopilot/CENTURYIII/gs-valid</gs-valid>
 
       <course-error>autopilot/CENTURYIII/course-error-deg</course-error>
       <selected-heading>instrumentation/kcs55/ki525/selected-heading-deg</selected-heading>

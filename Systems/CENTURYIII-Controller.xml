@@ -26,7 +26,8 @@
   <params include="CENTURYIII-IO.xml"/>
 
   <!-- hack to provide power and serviceable properties from 
-       old electrical system -->
+       old electrical system, also check for circuit breaker
+  -->
   <logic>
     <name>electrical Power</name>
     <debug>false</debug>
@@ -35,6 +36,9 @@
         <property>systems/electrical/outputs/autopilot</property>
         <value type="double">10.0</value>
       </greater-than>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_0_12</property>
+      </not>
     </input>
     <output alias="../../params/power"/>
     <output alias="../../params/serviceable"/>
@@ -71,19 +75,14 @@
     <type>RS</type>
     <name>HdgSwitch</name>
     <set>
-      <or>
-        <property alias="../../../../params/controls/hdg/on"/>
-      </or>
+      <property alias="../../../params/controls/hdg/on"/>
     </set>
     <reset>
       <or>
         <property alias="../../../../params/controls/hdg/off"/>
-        <and>
-          <property alias="../../../../../params/controls/hdg/state"/>
-          <not>
-            <property alias="../../../../../../params/controls/roll/state"/>
-          </not>
-        </and>
+        <not>
+          <property alias="../../../../../params/controls/roll/state"/>
+        </not>
       </or>
     </reset>
     <output alias="../../params/controls/hdg/state"/>
@@ -93,23 +92,17 @@
     <type>RS</type>
     <name>PitchSwitch</name>
     <set>
-      <and>
-        <property alias="../../../../params/controls/roll/state"/>
-        <or>
-          <property alias="../../../../../params/controls/pitch/on"/>
-          <property alias="../../../../../params/controls/alt/on"/>
-        </or>
-      </and>
+      <or>
+        <property alias="../../../../params/controls/pitch/on"/>
+        <property alias="../../../../params/controls/alt/on"/>
+      </or>
     </set>
     <reset>
       <or>
         <property alias="../../../../params/controls/pitch/off"/>
-        <and>
-          <property alias="../../../../../params/controls/pitch/state"/>
-          <not>
-            <property alias="../../../../../../params/controls/roll/state"/>
-          </not>
-        </and>
+        <not>
+          <property alias="../../../../../params/controls/roll/state"/>
+        </not>
       </or>
     </reset>
     <output alias="../../params/controls/pitch/state"/>
@@ -119,19 +112,14 @@
     <type>RS</type>
     <name>AltSwitch</name>
     <set>
-      <or>
-        <property alias="../../../../params/controls/alt/on"/>
-      </or>
+      <property alias="../../../params/controls/alt/on"/>
     </set>
     <reset>
       <or>
         <property alias="../../../../params/controls/alt/off"/>
-        <and>
-          <property alias="../../../../../params/controls/alt/state"/>
-          <not>
-            <property alias="../../../../../../params/controls/pitch/state"/>
-          </not>
-        </and>
+        <not>
+          <property alias="../../../../../params/controls/pitch/state"/>
+        </not>
       </or>
     </reset>
     <output alias="../../params/controls/alt/state"/>
@@ -139,66 +127,80 @@
 
   <!-- Glideslope coupler logic -->
 
-  <pi-simple-controller>
+  <flipflop>
+    <debug>false</debug>
+    <!-- provides a 'true' signal if the ALT switch has
+         been on for at least 20 seconds -->
+    <type>monostable</type>
     <name>ALT timer</name>
-    <debug>false</debug>
-    <enable>
-      <condition>
+    <inverted type="bool">true</inverted>
+    <S>
+      <not>
         <property alias="../../../../params/controls/alt/state"/>
-      </condition>
-    </enable>
-    <reference>1</reference>
+      </not>
+    </S>
+    <J><true/></J>
+    <clock>
+      <property alias="../../../params/controls/alt/state"/>
+    </clock>
+    <time>20.0</time>
     <output alias="../../params/controls/alt/lock-timer"/>
-    <config>
-      <Kp>0.0</Kp>
-      <Ki>0.05</Ki>
-      <min>0.0</min>
-      <max>1.0</max>
-    </config>
-  </pi-simple-controller>
+  </flipflop>
 
-  <pi-simple-controller>
+  <flipflop>
+    <!-- provides a 'true' signal if the Mode switch has
+         been at LOC NORM for at least 20 seconds -->
+    <type>monostable</type>
     <name>LOC NORM timer</name>
-    <debug>false</debug>
-    <enable>
-      <condition>
-        <equals>
-          <property alias="../../../../../params/controls/mode"/>
-          <value alias="../../../../../params/const/mode-loc-norm"/>
-        </equals>
-      </condition>
-    </enable>
-    <reference>1</reference>
+    <inverted type="bool">true</inverted>
+    <S>
+<!--
+      <property alias="../../../params/power"/>
+      <property alias="../../../params/serviceable"/>
+-->
+      <not-equals>
+        <property alias="../../../../params/controls/mode"/>
+        <value alias="../../../../params/const/mode-loc-norm"/>
+      </not-equals>
+    </S>
+    <J><true/></J>
+    <clock>
+      <equals>
+        <property alias="../../../../params/controls/mode"/>
+        <value alias="../../../../params/const/mode-loc-norm"/>
+      </equals>
+    </clock>
+    <time>20.0</time>
     <output alias="../../params/controls/mode-timer"/>
-    <config>
-      <Kp>0.0</Kp>
-      <Ki>0.05</Ki>
-      <min>0.0</min>
-      <max>1.0</max>
-    </config>
-  </pi-simple-controller>
+  </flipflop>
 
-  <pi-simple-controller>
-    <name>below GS timer</name>
-    <debug>false</debug>
-    <enable>
-      <condition>
-        <!-- TODO: only on mode LOC NORM? -->
-        <greater-than>
-          <property alias="../../../../../params/input/gs-deflection"/>
-          <value>0.6</value>
-        </greater-than>
-      </condition>
-    </enable>
-    <reference>1</reference>
+  <flipflop>
+    <type>monostable</type>
+    <name>below GS and gs-valid timer</name>
+    <inverted type="bool">true</inverted>
+    <S>
+      <not>
+        <property alias="../../../../params/input/gs-valid"/>
+<!--
+        <property alias="../../../../params/power"/>
+        <property alias="../../../../params/serviceable"/>
+-->
+      </not>
+      <not-equals>
+        <property alias="../../../../params/controls/mode"/>
+        <value alias="../../../../params/const/mode-loc-norm"/>
+      </not-equals>
+    </S>
+    <J><true/></J>
+    <clock>
+      <greater-than>
+        <property alias="../../../../params/input/gs-deflection"/>
+        <value>0.6</value>
+      </greater-than>
+    </clock>
+    <time>20.0</time>
     <output alias="../../params/input/gs-deflection-timer"/>
-    <config>
-      <Kp>0.0</Kp>
-      <Ki>0.05</Ki> <!-- 20 seconds -->
-      <min>0.0</min>
-      <max>1.0</max>
-    </config>
-  </pi-simple-controller>
+  </flipflop>
 
   <logic>
     <name>Glideslope Coupler Armed</name>

@@ -102,6 +102,29 @@
     <output alias="../../params/input/gs-deflection"/>
   </filter>
 
+  <logic>
+    <name>AP:gs-valid select</name>
+    <input>
+      <or>
+        <and>
+          <not-equals>
+            <property alias="../../../../../../params/controls/nav-source"/>
+            <value alias="../../../../../../params/const/nav-2"/>
+          </not-equals>
+          <property alias="../../../../../params/input/gs-valid-1"/>
+        </and>
+        <and>
+          <equals>
+            <property alias="../../../../../../params/controls/nav-source"/>
+            <value alias="../../../../../../params/const/nav-2"/>
+          </equals>
+          <property alias="../../../../../params/input/gs-valid-2"/>
+        </and>
+      </or>
+    </input>
+    <output alias="../../params/input/gs-valid"/>
+  </logic>
+
   <pi-simple-controller>
     <name>cdi-integrator</name>
     <debug>false</debug>
