@@ -99,7 +99,7 @@
   <volumetric-efficiency>0.60</volumetric-efficiency>
   <maxhp>200</maxhp>
   <cycles> 4.0 </cycles>
-  <idlerpm> 800.0 </idlerpm>
+  <idlerpm> 500.0 </idlerpm>
   <maxrpm> 2575 </maxrpm>
 <!--
   these are no longer needed
