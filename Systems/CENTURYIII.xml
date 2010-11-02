@@ -480,6 +480,7 @@
     <name>SERVO-DRIVER:elevator-trim</name>
     <debug>false</debug>
     <feedback-if-disabled>false</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
     <enable>
       <condition>
         <property alias="../../../../params/serviceable"/>
