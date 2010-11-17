@@ -9,6 +9,11 @@
   Feathering lock engages at 800 RPM
 
   POH 8-9: Nitrogen pressure 22psi at 70-100degF
+
+  Propeller Owner's Manual 115N pg 6-36:
+  one degree of blade pitch change results in incr/decr of approx. 
+  140-150 RPM
+  
 -->
 <system name="PropGovernor">
 
@@ -22,14 +27,14 @@
       <!-- above 800rpm and rpm-lever in feather-position on not yet feathered -->
       <test logic="AND" value="80">
         propulsion/engine[0]/prop-governor/max-blade-angle le 50 
-        fcs/advance-cmd-norm lt 0.1
+        fcs/advance-cmd-norm[0] lt 0.1
         propulsion/engine[0]/propeller-rpm ge 800
       </test>
 
       <!-- feathered and rpm-lever not in feathered position -->
       <test logic="AND" value="30">
         propulsion/engine[0]/prop-governor/max-blade-angle gt 50
-        fcs/advance-cmd-norm ge 0.1
+        fcs/advance-cmd-norm[0] ge 0.1
       </test>
 
       <!-- provide an initial value for system start,
@@ -45,7 +50,7 @@
         <difference>
           <sum>
             <product>
-              <property>fcs/advance-cmd-norm</property>
+              <property>fcs/advance-cmd-norm[0]</property>
               <value>1875</value> <!-- max.rpm minus min.rpm -->
             </product>
             <value>700</value> <!-- min.rpm -->
@@ -66,7 +71,7 @@
           <product>
             <property>propulsion/engine[0]/oil-pressure-psi</property>
             <property>propulsion/engine[0]/prop-governor/underspeed-rpm</property>
-            <value>0.1</value> <!-- 1/max-underspeed-rpm -->
+            <value>1.0</value> <!-- 1/max-underspeed-rpm -->
           </product>
           <value>22.0</value> <!-- nitrogen pressure -->
         </difference>
@@ -111,14 +116,14 @@
       <!-- above 800rpm and rpm-lever in feather-position on not yet feathered -->
       <test logic="AND" value="80">
         propulsion/engine[1]/prop-governor/max-blade-angle le 50 
-        fcs/advance-cmd-norm lt 0.1
+        fcs/advance-cmd-norm[1] lt 0.1
         propulsion/engine[1]/propeller-rpm ge 800
       </test>
 
       <!-- feathered and rpm-lever not in feathered position -->
       <test logic="AND" value="30">
         propulsion/engine[1]/prop-governor/max-blade-angle gt 50
-        fcs/advance-cmd-norm ge 0.1
+        fcs/advance-cmd-norm[1] ge 0.1
       </test>
 
       <!-- provide an initial value for system start,
@@ -134,7 +139,7 @@
         <difference>
           <sum>
             <product>
-              <property>fcs/advance-cmd-norm</property>
+              <property>fcs/advance-cmd-norm[1]</property>
               <value>1875</value> <!-- max.rpm minus min.rpm -->
             </product>
             <value>700</value> <!-- min.rpm -->
