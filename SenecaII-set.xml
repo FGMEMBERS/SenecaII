@@ -20,7 +20,7 @@
         <author>Torsten Dreyer</author>
         <description>PA34-200T Seneca II (alias for SenecaII-jsbsim)</description>
         <aircraft-version>0.9</aircraft-version>
-        <status>early-production</status>
+        <status>production</status>
         <flight-model>jsb</flight-model>
         <aero>SenecaII-jsbsim</aero>
         <model>
