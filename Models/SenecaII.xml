@@ -235,6 +235,16 @@
         </offsets>
     </model>
 
+    <!--model>
+        <name>moving map</name>
+        <path>Aircraft/SenecaII/Models/Map.xml</path>
+        <offsets>
+            <x-m>-1.908</x-m>
+            <y-m>0.32</y-m>
+            <z-m>1.43</z-m>
+        </offsets>
+    </model-->
+
     <!-- ka51b slaving meter -->
     <model>
         <path>Aircraft/SenecaII/Models/kcs55/ka51b.xml</path>
@@ -1057,91 +1067,15 @@
       </action>
     </animation>
 
-    <animation>
-        <type>noshadow</type>
-        <object-name>GearLights</object-name>
-    </animation>
-
-    <animation>
-        <type>select</type>
-        <object-name>GearLight.Nose.Cover.On</object-name>
-        <condition>
-            <property>gear/gear[0]/indicator-servicable</property>
-            <greater-than>
-                <property>gear/gear[0]/position-norm</property>
-                <value>0.9</value>
-            </greater-than>
-        </condition>
-    </animation>
-    <animation>
-        <type>select</type>
-        <object-name>GearLight.Nose.Cover.Off</object-name>
-        <condition>
-         <or>
-          <not>
-            <property>gear/gear[0]/indicator-servicable</property>
-          </not>
-          <less-than>
-             <property>gear/gear[0]/position-norm</property>
-             <value>0.9</value>
-          </less-than>
-         </or>
-        </condition>
-    </animation>
-
-    <animation>
-        <type>select</type>
-        <object-name>GearLight.Left.Cover.On</object-name>
-        <condition>
-            <property>gear/gear[1]/indicator-servicable</property>
-            <greater-than>
-                <property>gear/gear[1]/position-norm</property>
-                <value>0.9</value>
-            </greater-than>
-        </condition>
-    </animation>
-    <animation>
-        <type>select</type>
-        <object-name>GearLight.Left.Cover.Off</object-name>
-        <condition>
-         <or>
-          <not>
-            <property>gear/gear[1]/indicator-servicable</property>
-          </not>
-          <less-than>
-             <property>gear/gear[1]/position-norm</property>
-             <value>0.9</value>
-          </less-than>
-         </or>
-        </condition>
-    </animation>
-
-    <animation>
-        <type>select</type>
-        <object-name>GearLight.Right.Cover.On</object-name>
-        <condition>
-            <property>gear/gear[2]/indicator-servicable</property>
-            <greater-than>
-                <property>gear/gear[2]/position-norm</property>
-                <value>0.9</value>
-            </greater-than>
-        </condition>
-    </animation>
-    <animation>
-        <type>select</type>
-        <object-name>GearLight.Right.Cover.Off</object-name>
-        <condition>
-         <or>
-          <not>
-            <property>gear/gear[2]/indicator-servicable</property>
-          </not>
-          <less-than>
-             <property>gear/gear[2]/position-norm</property>
-             <value>0.9</value>
-          </less-than>
-         </or>
-        </condition>
-    </animation>
+    <model>
+        <path>Aircraft/SenecaII/Models/GearIndicator.xml</path>
+        <name>GearIndicator</name>
+        <offsets>
+            <x-m>-1.90809</x-m>
+            <y-m>-0.0790045</y-m>
+            <z-m>1.29982</z-m>
+        </offsets>
+    </model>
 
     <animation>
         <type>rotate</type>
