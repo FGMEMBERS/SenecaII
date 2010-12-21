@@ -102,16 +102,16 @@ Engines.update = func {
 #    }
 
     # check for prop feather
-    var featherN = me.controlsNodes[i].getChild( "propeller-feather" );
-    if( me.controlsNodes[i].getChild( "propeller-pitch" ).getValue() < 0.1 ) {
-      if( featherN.getBoolValue() == 0 and me.rpm > 800 ) {
-        featherN.setBoolValue( 1 );
-      }
-    } else { 
-      if( featherN.getBoolValue() == 1 and me.rpm > 400 ) {
-        featherN.setBoolValue( 0 );
-      }
-    }
+#    var featherN = me.controlsNodes[i].getChild( "propeller-feather" );
+#    if( me.controlsNodes[i].getChild( "propeller-pitch" ).getValue() < 0.1 ) {
+#      if( featherN.getBoolValue() == 0 and me.rpm > 800 ) {
+#        featherN.setBoolValue( 1 );
+#      }
+#    } else { 
+#      if( featherN.getBoolValue() == 1 and me.rpm > 400 ) {
+#        featherN.setBoolValue( 0 );
+#      }
+#    }
   }
   me.oilNode.setBoolValue( me.oil );
 }
@@ -272,11 +272,11 @@ var seneca_init = func {
     "engines/engine[1]/egt-bug",
     "controls/engines/engine[0]/cowl-flaps-norm",
     "controls/engines/engine[1]/cowl-flaps-norm",
-    "autopilot/CENTURYIII/controls/mode"
+    "autopilot/CENTURYIII/controls/mode",
+    "controls/electric/battery-switch",
+    "controls/electric/avionic-switch"
   );
   ki266.new(0);
-
-#  LightSpots.new( "/sim/model/light-spots" );
 
   seneca_update();
 };
@@ -425,31 +425,31 @@ FuelPumpHandler.new( 1 );
 # Battery Master
 ########################################
 
-var BatteryMasterHandler = {};
+#var BatteryMasterHandler = {};
 
-BatteryMasterHandler.new = func {
-  var obj = {};
-  obj.parents = [BatteryMasterHandler];
-  obj.switchN = props.globals.initNode( "/controls/electric/battery-switch", 0, "BOOL" );
-  obj.clients = [
-    props.globals.getNode( "/instrumentation/nav[0]/serviceable", 1 ),
-    props.globals.getNode( "/instrumentation/nav[1]/serviceable", 1 ),
-    props.globals.getNode( "/instrumentation/adf[0]/serviceable", 1 )
-  ];
-
-  setlistener( obj.switchN, func { obj.listener() }, 1, 0 );
-
-  return obj;
-};
-
-BatteryMasterHandler.listener = func {
-  var v = me.switchN.getValue();
-  foreach( var client; me.clients ) {
-    client.setValue( v );
-  }
-};
-
-var batteryMasterHandler = BatteryMasterHandler.new();
+#BatteryMasterHandler.new = func {
+#  var obj = {};
+#  obj.parents = [BatteryMasterHandler];
+#  obj.switchN = props.globals.initNode( "/controls/electric/battery-switch", 0, "BOOL" );
+#  obj.clients = [
+#    props.globals.getNode( "/instrumentation/nav[0]/serviceable", 1 ),
+#    props.globals.getNode( "/instrumentation/nav[1]/serviceable", 1 ),
+#    props.globals.getNode( "/instrumentation/adf[0]/serviceable", 1 )
+#  ];
+#
+#  setlistener( obj.switchN, func { obj.listener() }, 1, 0 );
+#
+#  return obj;
+#};
+#
+#BatteryMasterHandler.listener = func {
+#  var v = me.switchN.getValue();
+#  foreach( var client; me.clients ) {
+#    client.setValue( v );
+#  }
+#};
+#
+#var batteryMasterHandler = BatteryMasterHandler.new();
 
 ###############################################
 # propagate the emergency gear extension switch 

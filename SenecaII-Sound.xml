@@ -18,6 +18,48 @@
 <PropertyList>
     <fx>
 
+        <HSI-gyro>
+            <type>avionics</type>
+            <name>HSIGyro</name>
+            <mode>looped</mode>
+            <path>Sounds/gear.wav</path>
+            <position>
+                <x>-1.915</x>
+                <y>-0.358245</y>
+                <z>1.43194</z>
+            </position>
+            <volume>
+              <max>0.2</max>
+            </volume>
+            <pitch>
+                <property>/instrumentation/kcs55/kg102/spin-norm</property>
+                <factor>1.5</factor>
+                <min>0.001</min>
+                <max>1.5</max>
+                <offset>0.0</offset>
+            </pitch>
+        </HSI-gyro>
+        <TC-gyro>
+            <type>avionics</type>
+            <name>TCGyro</name>
+            <mode>looped</mode>
+            <path>Sounds/gear.wav</path>
+            <position>
+                <x>-1.915</x>
+                <y>-0.443245</y>
+                <z>1.43194</z>
+            </position>
+            <volume>
+              <max>0.2</max>
+            </volume>
+            <pitch>
+                <property>/instrumentation/turn-indicator/spin</property>
+                <factor>1.6</factor>
+                <min>0.001</min>
+                <max>1.6</max>
+                <offset>0.0</offset>
+            </pitch>
+        </TC-gyro>
         <!-- make some noise if the test-button is pulled on kx165 (squelch open) -->
         <comm1-noise>
             <name>COMM1 noise</name>
@@ -290,13 +332,6 @@
             <mode>in-transit</mode>
             <path>Sounds/gear.wav</path>
             <property>gear/gear[0]/position-norm</property>
-            <pitch>
-                <internal>dt_play</internal>
-                <offset>1.0</offset>
-                <factor>-0.001</factor>
-            </pitch>
-            <reference-dist>10.0</reference-dist>
-            <max-dist>20.0</max-dist>
         </gear>
         <gear>
             <name>gear-lock</name>

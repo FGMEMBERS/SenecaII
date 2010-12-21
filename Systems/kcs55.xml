@@ -53,7 +53,7 @@
     <!-- the source of power for the gyro, this is the master power supply.
          The gyro contains the power supply for the other components of the kcs55 system.
      -->
-    <input-power-node>systems/electrical/bus[0]/u-volts</input-power-node>
+    <input-power-node>systems/electrical/outputs/hsi</input-power-node>
 
     <!-- The minimum operating voltage -->
     <input-power-min type="double">11.0</input-power-min>

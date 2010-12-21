@@ -2,9 +2,6 @@
 
 <system name="Property-Helpers">
 
-  <property>/engines/engine[0]/oil-pressure-psi</property>
-  <property>/engines/engine[1]/oil-pressure-psi</property>
-
   <channel name="Left">
     <pure_gain name="propulsion/engine[0]/oil-pressure-psi">
       <input>/engines/engine[0]/oil-pressure-psi</input>
