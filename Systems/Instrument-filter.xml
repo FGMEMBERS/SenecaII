@@ -140,4 +140,20 @@
     <max>9999</max>
   </filter>
 
+  <filter>
+    <name>Pitot-fail filter</name>
+    <initialize-to>output</initialize-to>
+    <enable>
+      <condition>
+        <not>
+          <property>systems/pitot/serviceable</property>
+        </not>
+      </condition>
+    </enable>
+    <type>exponential</type>
+    <filter-time>2</filter-time> 
+    <input>environment/pressure-inhg</input>
+    <output>systems/pitot/total-pressure-inhg</output>
+  </filter>
+
 </PropertyList>
