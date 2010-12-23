@@ -262,39 +262,43 @@ var KG102 = {
       heading = me.gyroHeadingNode.getValue();
       heading += turn;
 
-      if( me.ka51.slavedNode.getValue() != 0 ) {
-        # slaved mode, apply correction from the flux gate
-        var slavingError = me.ki525.slavingErrorNode.getValue();
-        var rate = 0.0;
-        if( slavingError > 0.0 ) {
-          rate = me.slowCorrectionRate;
-        }
-        if( slavingError < 0.0 ) {
-          rate = -me.slowCorrectionRate;
-        }
-        if( slavingError > 3.0 ) {
-          rate = me.fastCorrectionRate;
-          flag += 1;
-        }
-        if( slavingError < -3.0 ) {
-          rate = -me.fastCorrectionRate;
-          flag += 1;
-        }
-        heading += rate * dt;
+      var slavingErrorNorm = 0.0;
+      if( flag == 0 ) {
+        if( me.ka51.slavedNode.getValue() != 0 ) {
+          # slaved mode, apply correction from the flux gate
+          var slavingError = me.ki525.slavingErrorNode.getValue();
+          var rate = 0.0;
+          if( slavingError > 0.0 ) {
+            rate = me.slowCorrectionRate;
+          }
+          if( slavingError < 0.0 ) {
+            rate = -me.slowCorrectionRate;
+          }
+          if( slavingError > 3.0 ) {
+            rate = me.fastCorrectionRate;
+            flag += 1;
+          }
+          if( slavingError < -3.0 ) {
+            rate = -me.fastCorrectionRate;
+            flag += 1;
+          }
+          heading += rate * dt;
 
-        # calculate the output for the slaving meter
-        var slavingErrorNorm = slavingError / 3.0;
-        if( slavingErrorNorm > 1.0 )
-          slavingErrorNorm = 1.0;
-        if( slavingErrorNorm < -1.0 )
-          slavingErrorNorm = -1.0;
-        me.slavingMeterNormNode.setDoubleValue( slavingErrorNorm );
-      } else {
-        # manual mode, apply setting of manual slave switch
-        flag = 1;
-        var manualSlave = me.ka51.manualSlaveNode.getValue();
-        heading += manualSlave * me.fastCorrectionRate * dt;
+          # calculate the output for the slaving meter
+          var slavingErrorNorm = slavingError / 3.0;
+          if( slavingErrorNorm > 1.0 )
+            slavingErrorNorm = 1.0;
+          if( slavingErrorNorm < -1.0 )
+            slavingErrorNorm = -1.0;
+          me.slavingMeterNormNode.setDoubleValue( slavingErrorNorm );
+        } else {
+          # manual mode, apply setting of manual slave switch
+          flag = 1;
+          var manualSlave = me.ka51.manualSlaveNode.getValue();
+          heading += manualSlave * me.fastCorrectionRate * dt;
+        }
       }
+      me.slavingMeterNormNode.setDoubleValue( slavingErrorNorm );
       me.gyroHeadingNode.setDoubleValue( geo.normdeg(heading) );
     }
     me.spinNode.setDoubleValue( spin );
