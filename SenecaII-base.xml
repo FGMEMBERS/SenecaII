@@ -149,6 +149,15 @@
         </view>
         <menubar>
             <default>
+                <!--menu n="3">
+                  <item n="0">
+                  <label>Autopilot Settings</label>
+                    <binding>
+                      <command>nasal</command>
+                      <script>SenecaII.apDialog.open()</script>
+                    </binding>
+                  </item>
+                </menu-->
                 <menu n="10">
                     <label>Seneca</label>
                     <enabled type="bool">true</enabled>
@@ -361,16 +370,20 @@
         </electric>
         <engines>
             <engine n="0">
-                <magnetos>0</magnetos>
-                <magneto n="0">0</magneto>
-                <magneto n="1">0</magneto>
+                <magnetos type="int">0</magnetos>
+                <magneto n="0" type="bool">false</magneto>
+                <magneto n="1" type="bool">false</magneto>
                 <cowl-flaps-norm type="double">1.0</cowl-flaps-norm>
+                <primer type="bool">false</primer>
+                <starter-switch type="bool">false</starter-switch>
             </engine>
             <engine n="1">
-                <magnetos>0</magnetos>
-                <magneto n="0">0</magneto>
-                <magneto n="1">0</magneto>
+                <magnetos type="int">0</magnetos>
+                <magneto n="0" type="bool">false</magneto>
+                <magneto n="1" type="bool">false</magneto>
                 <cowl-flaps-norm type="double">1.0</cowl-flaps-norm>
+                <primer type="bool">false</primer>
+                <starter-switch type="bool">false</starter-switch>
             </engine>
         </engines>
         <gear>
@@ -446,6 +459,18 @@
         <!-- maximum-takeoff-mass-lbs type="double">4407</maximum-takeoff-mass-lbs>
         <maximum-landing-mass-lbs type="double">4407</maximum-landing-mass-lbs-->
     </limits>
+    <!--input>
+        <keyboard>
+            <key n="267">
+                <name>F11</name>
+                <desc>Pop up autopilot dialog</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>SenecaII.apDialog.toggle()</script>
+                </binding>
+            </key>
+        </keyboard>
+    </input-->
     <nasal>
         <SenecaII>
             <file>Aircraft/SenecaII/Nasal/SenecaII.nas</file>

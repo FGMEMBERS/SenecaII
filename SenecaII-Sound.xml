@@ -29,6 +29,7 @@
                 <z>1.43194</z>
             </position>
             <volume>
+              <property>/instrumentation/kcs55/kg102/spin-norm</property>
               <max>0.2</max>
             </volume>
             <pitch>
@@ -50,10 +51,10 @@
                 <z>1.43194</z>
             </position>
             <volume>
+              <property>/instrumentation/turn-indicator/spin</property>
               <max>0.2</max>
             </volume>
             <pitch>
-                <property>/instrumentation/turn-indicator/spin</property>
                 <factor>1.6</factor>
                 <min>0.001</min>
                 <max>1.6</max>
@@ -332,8 +333,11 @@
             <mode>in-transit</mode>
             <path>Sounds/gear.wav</path>
             <property>gear/gear[0]/position-norm</property>
+            <volume>
+              <max>0.25</max>
+            </volume>
         </gear>
-        <gear>
+        <gear-lock>
             <name>gear-lock</name>
             <path>Sounds/gear-lck.wav</path>
             <condition>
@@ -344,7 +348,7 @@
             </condition>
             <reference-dist>10.0</reference-dist>
             <max-dist>20.0</max-dist>
-        </gear>
+        </gear-lock>
         <squeal>
             <name>squeal</name>
             <path>Sounds/squeal.wav</path>

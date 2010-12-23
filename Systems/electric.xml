@@ -146,4 +146,35 @@
     </input>
     <output>/instrumentation/audio-panel[0]/serviceable</output>
   </logic>
+
+  <logic>
+    <name>Left-Engine-Starter</name>
+    <input>
+      <greater-than>
+        <property>/systems/electrical/battery-bus/u-volts</property>
+        <value type="double">10.0</value>
+      </greater-than>
+      <property>/controls/engines/engine[0]/starter-switch</property>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_0_2</property>
+      </not>
+    </input>
+    <output>/controls/engines/engine[0]/starter</output>
+  </logic>
+
+  <logic>
+    <name>Right-Engine-Starter</name>
+    <input>
+      <greater-than>
+        <property>/systems/electrical/battery-bus/u-volts</property>
+        <value type="double">10.0</value>
+      </greater-than>
+      <property>/controls/engines/engine[1]/starter-switch</property>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_0_2</property>
+      </not>
+    </input>
+    <output>/controls/engines/engine[1]/starter</output>
+  </logic>
+
 </PropertyList>
