@@ -58,7 +58,6 @@
     <gain>1.0</gain>
     <input>
       <condition>
-        <property>/controls/electric/avionic-switch</property>
         <not>
           <property>controls/electric/circuitbreaker/cb_0_9</property>
         </not>
@@ -76,7 +75,6 @@
     <gain>1.0</gain>
     <input>
       <condition>
-        <property>/controls/electric/avionic-switch</property>
         <not>
           <property>controls/electric/circuitbreaker/cb_2_13</property>
         </not>
@@ -132,5 +130,20 @@
       </not>
     </input>
     <output>/instrumentation/adf[0]/serviceable</output>
+  </logic>
+
+  <logic>
+    <name>Audio-Panel-Power-Observer</name>
+    <input>
+      <greater-than>
+        <property>/systems/electrical/avionic-bus/u-volts</property>
+        <value type="double">10.0</value>
+      </greater-than>
+      <property>/controls/electric/avionic-switch</property>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_2_14</property>
+      </not>
+    </input>
+    <output>/instrumentation/audio-panel[0]/serviceable</output>
   </logic>
 </PropertyList>
