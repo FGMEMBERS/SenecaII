@@ -1212,10 +1212,10 @@
     <!-- Copilots instruments -->
     <!-- art. horizon -->
     <model>
-        <path>Aircraft/Instruments-3d/ai/ai.xml</path>
-        <name>AI</name>
+        <path>Aircraft/SenecaII/Models/AI/AI.xml</path>
+        <name>AI2</name>
         <offsets>
-            <x-m>-1.915</x-m>
+            <x-m>-1.910</x-m>
             <y-m>0.358245</y-m>
             <z-m>1.51695</z-m>
         </offsets>

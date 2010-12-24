@@ -31,6 +31,10 @@
         <property>gear/gear[0]/position-norm</property>
         <value>0.9</value>
       </greater-than>
+      <greater-than>
+        <property>/systems/electrical/battery-bus/u-volts</property>
+        <value type="double">8.0</value>
+      </greater-than>
     </condition>
     <emission>
       <red>1.0</red>
@@ -47,6 +51,10 @@
         <property>gear/gear[1]/position-norm</property>
         <value>0.9</value>
       </greater-than>
+      <greater-than>
+        <property>/systems/electrical/battery-bus/u-volts</property>
+        <value type="double">8.0</value>
+      </greater-than>
     </condition>
     <emission>
       <red>1.0</red>
@@ -62,6 +70,10 @@
       <greater-than>
         <property>gear/gear[2]/position-norm</property>
         <value>0.9</value>
+      </greater-than>
+      <greater-than>
+        <property>/systems/electrical/battery-bus/u-volts</property>
+        <value type="double">8.0</value>
       </greater-than>
     </condition>
     <emission>

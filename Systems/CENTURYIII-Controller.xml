@@ -25,15 +25,14 @@
 
   <params include="CENTURYIII-IO.xml"/>
 
-  <!-- hack to provide power and serviceable properties from 
-       old electrical system, also check for circuit breaker
+  <!-- provide power and serviceable properties, also check for circuit breaker
   -->
   <logic>
     <name>electrical Power</name>
     <debug>false</debug>
     <input>
       <greater-than>
-        <property>systems/electrical/outputs/autopilot</property>
+        <property>/systems/electrical/battery-bus/u-volts</property>
         <value type="double">10.0</value>
       </greater-than>
       <not>

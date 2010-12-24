@@ -69,6 +69,23 @@
   </filter>
 
   <filter>
+    <name>AttitudeIndicator#2</name>
+    <debug>false</debug>
+    <type>gain</type>
+    <gain>0.4167</gain> <!-- 12V to 5psi -->
+    <input>
+      <condition>
+        <not>
+          <property>controls/electric/circuitbreaker/cb_2_6</property>
+        </not>
+      </condition>
+      <property>/systems/electrical/battery-bus/u-volts</property>
+    </input>
+    <input>0</input>
+    <output>instrumentation/attitude-indicator[1]/fake-suction</output>
+  </filter>
+
+  <filter>
     <name>HSI</name>
     <debug>false</debug>
     <type>gain</type>
@@ -115,6 +132,21 @@
     </input>
     <output>instrumentation/comm[1]/serviceable</output>
     <output>instrumentation/nav[1]/serviceable</output>
+  </logic>
+
+  <logic>
+    <name>DME-Power-Observer</name>
+    <input>
+      <greater-than>
+        <property>/systems/electrical/avionic-bus/u-volts</property>
+        <value type="double">10.0</value>
+      </greater-than>
+      <property>/controls/electric/avionic-switch</property>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_0_7</property>
+      </not>
+    </input>
+    <output>instrumentation/dme[0]/serviceable</output>
   </logic>
 
   <logic>
