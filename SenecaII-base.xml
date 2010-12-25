@@ -412,14 +412,17 @@
     </controls>
 
     <gear>
+      <transit-light>
+        <serviceable type="bool" userarchive="y">true</serviceable>
+      </transit-light>
       <gear n="0">
-        <indicator-servicable type="bool" archive="y">true</indicator-servicable>
+        <indicator-serviceable type="bool" archive="y">true</indicator-serviceable>
       </gear>
       <gear n="1">
-        <indicator-servicable type="bool" archive="y">true</indicator-servicable>
+        <indicator-serviceable type="bool" archive="y">true</indicator-serviceable>
       </gear>
       <gear n="2">
-        <indicator-servicable type="bool" archive="y">true</indicator-servicable>
+        <indicator-serviceable type="bool" archive="y">true</indicator-serviceable>
       </gear>
     </gear>
 

@@ -285,6 +285,9 @@
             <mode>looped</mode>
             <path>Sounds/gear-hrn.wav</path>
             <condition>
+             <not>
+               <property>controls/electric/circuitbreaker/cb_0_6</property>
+             </not>
              <or>
               <and>
                 <property>gear/gear[1]/wow</property>

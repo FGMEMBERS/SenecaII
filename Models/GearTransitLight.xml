@@ -20,8 +20,50 @@
     <animation>
         <type>material</type>
         <object-name>GearTransitLight</object-name>
+        <condition>
+          <property>gear/transit-light/serviceable</property>
+          <or>
+            <and>
+              <greater-than>
+                <property>gear/gear[0]/position-norm</property>
+                <value>0.01</value>
+              </greater-than>
+              <less-than>
+                <property>gear/gear[0]/position-norm</property>
+                <value>0.99</value>
+              </less-than>
+            </and>
+            <and>
+              <greater-than>
+                <property>gear/gear[1]/position-norm</property>
+                <value>0.01</value>
+              </greater-than>
+              <less-than>
+                <property>gear/gear[1]/position-norm</property>
+                <value>0.99</value>
+              </less-than>
+            </and>
+            <and>
+              <greater-than>
+                <property>gear/gear[2]/position-norm</property>
+                <value>0.01</value>
+              </greater-than>
+              <less-than>
+                <property>gear/gear[2]/position-norm</property>
+                <value>0.99</value>
+              </less-than>
+            </and>
+          </or>
+
+          <greater-than>
+            <property>/systems/electrical/battery-bus/u-volts</property>
+            <value type="double">8.0</value>
+          </greater-than>
+          <not>
+            <property>controls/electric/circuitbreaker/cb_0_6</property>
+          </not>
+        </condition>
         <emission>
-            <factor-prop>/gear/in-transit</factor-prop>
             <red>1.0</red>
             <green>1.0</green>
             <blue>1.0</blue>

@@ -209,4 +209,21 @@
     <output>/controls/engines/engine[1]/starter</output>
   </logic>
 
+  <logic>
+    <name>Gear Pump Control</name>
+    <input>
+      <greater-than>
+        <property>/systems/electrical/battery-bus/u-volts</property>
+        <value type="double">10.0</value>
+      </greater-than>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_0_5</property>
+      </not>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_0_6</property>
+      </not>
+    </input>
+    <output>/fdm/jsbsim/gear/serviceable</output>
+  </logic>
+
 </PropertyList>

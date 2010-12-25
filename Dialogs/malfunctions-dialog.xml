@@ -53,6 +53,10 @@
             <halign>center</halign>
             <label>Right</label>
           </text>
+          <text>
+            <halign>center</halign>
+            <label>Transit</label>
+          </text>
         </group>
         <group>
           <layout>vbox</layout>
@@ -83,6 +87,9 @@
               <command>dialog-apply</command>
             </binding>
           </checkbox>
+          <text>
+            <label> </label>
+          </text>
         </group>
         <group>
           <layout>vbox</layout>
@@ -113,6 +120,9 @@
               <command>dialog-apply</command>
             </binding>
           </checkbox>
+          <text>
+            <label> </label>
+          </text>
         </group>
         <group>
           <layout>vbox</layout>
@@ -143,6 +153,9 @@
               <command>dialog-apply</command>
             </binding>
           </checkbox>
+          <text>
+            <label> </label>
+          </text>
         </group>
       </group>
     </group>
@@ -160,7 +173,7 @@
         </text>
         <checkbox>
           <halign>center</halign>
-          <property>gear/gear[0]/indicator-servicable</property>
+          <property>gear/gear[0]/indicator-serviceable</property>
           <live>true</live>
           <binding>
             <command>dialog-apply</command>
@@ -168,7 +181,7 @@
         </checkbox>
         <checkbox>
           <halign>center</halign>
-          <property>gear/gear[1]/indicator-servicable</property>
+          <property>gear/gear[1]/indicator-serviceable</property>
           <live>true</live>
           <binding>
             <command>dialog-apply</command>
@@ -176,7 +189,15 @@
         </checkbox>
         <checkbox>
           <halign>center</halign>
-          <property>gear/gear[2]/indicator-servicable</property>
+          <property>gear/gear[2]/indicator-serviceable</property>
+          <live>true</live>
+          <binding>
+            <command>dialog-apply</command>
+          </binding>
+        </checkbox>
+        <checkbox>
+          <halign>center</halign>
+          <property>gear/transit-light/serviceable</property>
           <live>true</live>
           <binding>
             <command>dialog-apply</command>

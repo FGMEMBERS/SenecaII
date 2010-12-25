@@ -345,6 +345,7 @@
             <radius unit="IN">13.3</radius>
             <capacity unit="LBS">384</capacity>
             <contents unit="LBS">294</contents>
+            <type>AVGAS</type>
         </tank>
         <tank type="FUEL">
             <!-- Tank Number 1 (right wing) -->
@@ -356,6 +357,7 @@
             <radius unit="IN">13.3</radius>
             <capacity unit="LBS">384</capacity>
             <contents unit="LBS">294</contents>
+            <type>AVGAS</type>
         </tank>
     </propulsion>
     <!-- **********************************************************************
@@ -531,6 +533,7 @@
             Gear
         -->
         <property value="0">gear/gear-cmd-emergency-norm</property>
+        <property value="1">gear/serviceable</property>
         <channel name="Landing Gear">
             <!-- force gear down on ground. Squad switch is on left main gear -->
             <!-- from here on 0 means "gear down" and 1 means "gear up" 
@@ -546,6 +549,13 @@
               </test>
             </switch>
 
+            <switch name="gear target position">
+              <default value="fcs/gear-target-position"/>
+              <test logic="AND" value="fcs/gear-switch">
+                gear/serviceable == 1
+              </test>
+            </switch>
+
             <!-- create a input property fcs/gear-emergency-extend -->
             <switch name="gear emergency extend">
               <default value="1"/>
@@ -556,7 +566,7 @@
 
             <!-- normal actuators driven by gear switch -->
             <actuator name="gear/unit[0]/actuator">
-                <input>fcs/gear-switch</input>
+                <input>fcs/gear-target-position</input>
                 <rate_limit>0.1</rate_limit>
                 <output>gear/unit[0]/actuator-pos-inverted</output>
                 <clipto>
@@ -584,7 +594,7 @@
             </switch>
 
             <actuator name="gear/unit[1]/actuator">
-                <input>fcs/gear-switch</input>
+                <input>fcs/gear-target-position</input>
                 <rate_limit>0.13</rate_limit>
                 <output>gear/unit[1]/actuator-pos-inverted</output>
                 <clipto>
@@ -600,7 +610,7 @@
             </pure_gain>
 
             <actuator name="gear/unit[2]/actuator">
-                <input>fcs/gear-switch</input>
+                <input>fcs/gear-target-position</input>
                 <rate_limit>0.15</rate_limit>
                 <output>gear/unit[2]/actuator-pos-inverted</output>
                 <clipto>
@@ -698,13 +708,13 @@
     </flight_control>
 
     <system file="property-helpers"/>
-<!--    <system file="prop-governor"/> -->
+    <!-- system file="prop-governor"/ -->
 
     <!-- **********************************************************************
         AERODYNAMICS
         ********************************************************************** -->
     <aerodynamics>
-        <property value="0.0">ice/wing</property>
+<!--        <property value="0.0">ice/wing</property> -->
         <alphalimits unit="DEG">
             <min>-5.0</min>
             <max>14.0</max>

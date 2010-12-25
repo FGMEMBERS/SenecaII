@@ -117,37 +117,6 @@ Engines.update = func {
 }
 
 ##################################################
-# Gear in Transit 
-##################################################
-# input properties
-# /gear/gear[n]/position-norm
-# output properties
-# /gear/in-transit if any position-norm not 0 and not 1
-##################################################
-var GearInTransit = {};
-GearInTransit.new = func {
-  var obj = {};
-  obj.parents = [GearInTransit];
-  obj.gearNode = props.globals.getNode( "/gear" );
-  obj.gearNodes = obj.gearNode.getChildren( "gear" );
-  obj.inTransitNode = obj.gearNode.initNode( "in-transit", 0, "BOOL" );
-  return obj;
-}
-
-GearInTransit.update = func {
-  var inTransit = 0;
-
-  for( i = 0; i < size(me.gearNodes); i = i+1 ) {
-    var position_norm = me.gearNodes[i].getNode("position-norm").getValue();
-    if( position_norm != nil and position_norm > 0.01 and position_norm < 0.99 ) {
-      inTransit = 1;
-      break;
-    }
-  }
-  me.inTransitNode.setBoolValue( inTransit );
-}
-
-##################################################
 # Suction 
 ##################################################
 # input properties
@@ -222,12 +191,10 @@ var radarAltimeter = func {
 }
 
 ###################################################
-var gearInTransit = GearInTransit.new();
 var suction = Suction.new();
 var engines = Engines.new();
 
 var seneca_update = func {
-  gearInTransit.update();
   suction.update();
   engines.update();
   radarAltimeter();
