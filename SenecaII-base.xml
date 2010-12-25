@@ -482,6 +482,16 @@
             <file>Aircraft/SenecaII/Systems/kcs55.nas</file>
             <script><![CDATA[
               KCS55.new();
+
+              #override controls.startEngine, we use "starter-switch" instead of "starter"
+              controls.startEngine = func(v = 1) {
+                if (!v)
+                    return props.setAll("/controls/engines/engine", "starter-switch", 0);
+                foreach(var e; controls.engines)
+                    if(e.selected.getValue())
+                        e.controls.getNode("starter-switch",1).setBoolValue(v);
+              }
+
             ]]></script>
         </SenecaII>
         <kr87>
