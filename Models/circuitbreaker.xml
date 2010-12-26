@@ -277,6 +277,7 @@
         </axis>
     </animation>
     
+<!--
     <animation>
         <type>pick</type>
         <object-name>cbpanel.cb.0_10</object-name>
@@ -301,6 +302,7 @@
             <z>0.0</z>
         </axis>
     </animation>
+-->
     
     <animation>
         <type>pick</type>
@@ -529,6 +531,7 @@
         </axis>
     </animation>
     
+<!--
     <animation>
         <type>pick</type>
         <object-name>cbpanel.cb.1_4</object-name>
@@ -603,6 +606,7 @@
             <z>0.0</z>
         </axis>
     </animation>
+-->
     
     <animation>
         <type>pick</type>
@@ -1055,6 +1059,7 @@
         </axis>
     </animation>
     
+<!--
     <animation>
         <type>pick</type>
         <object-name>cbpanel.cb.2_9</object-name>
@@ -1079,6 +1084,7 @@
             <z>0.0</z>
         </axis>
     </animation>
+-->
     
     <animation>
         <type>pick</type>
@@ -1130,6 +1136,7 @@
         </axis>
     </animation>
     
+<!--
     <animation>
         <type>pick</type>
         <object-name>cbpanel.cb.2_12</object-name>
@@ -1154,6 +1161,7 @@
             <z>0.0</z>
         </axis>
     </animation>
+-->
     
     <animation>
         <type>pick</type>
@@ -1205,6 +1213,7 @@
         </axis>
     </animation>
     
+<!--
     <animation>
         <type>pick</type>
         <object-name>cbpanel.cb.2_15</object-name>
@@ -1229,5 +1238,6 @@
             <z>0.0</z>
         </axis>
     </animation>
+-->
     
 </PropertyList>
