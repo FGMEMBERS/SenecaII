@@ -238,13 +238,13 @@
                             </script>
                         </binding>
                     </item>
-                    <item>
+                    <!--item>
                         <label>Yaw Damper (on/off) default off</label>
                         <binding>
                             <command>property-toggle</command>
                             <property>/autopilot/CENTURYIII/settings/yaw-damper</property>
                         </binding>
-                    </item>
+                    </item-->
                     <!--
                     <item>
                         <label>Checklists..</label>
@@ -601,7 +601,9 @@
           <min-supply-voltage-norm type="double">0.5</min-supply-voltage-norm>
         </dme>
         <marker-beacon>
-            <audio-btn>1</audio-btn>
+            <audio-btn type="bool">true</audio-btn>
+            <power-btn type="bool">true</power-btn>
+            <serviceable type="bool">true</serviceable>
         </marker-beacon>
 
         <audio-panel include="Models/gma340properties.xml"/>

@@ -143,7 +143,7 @@
       </greater-than>
       <property>/controls/electric/avionic-switch</property>
       <not>
-        <property>controls/electric/circuitbreaker/cb_0_7</property>
+        <property>controls/electric/circuitbreaker/cb_2_7</property>
       </not>
     </input>
     <output>instrumentation/dme[0]/serviceable</output>
@@ -177,6 +177,7 @@
       </not>
     </input>
     <output>/instrumentation/audio-panel[0]/serviceable</output>
+    <output>/instrumentation/marker-beacon[0]/serviceable</output>
   </logic>
 
   <logic>
