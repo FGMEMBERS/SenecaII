@@ -294,6 +294,18 @@
     <!-- Registration (left) -->
     <model>
       <path>Aircraft/SenecaII/Models/registration.xml</path>
+      <condition>
+        <and>
+          <equals>
+            <property>sim/model/door-positions/pax-door/position-norm</property>
+            <value>0</value>
+          </equals>
+          <equals>
+            <property>sim/model/door-positions/baggage-door/position-norm</property>
+            <value>0</value>
+          </equals>
+        </and>
+      </condition>
       <offsets>
         <x-m>0.45</x-m>
         <y-m>-0.60</y-m>
