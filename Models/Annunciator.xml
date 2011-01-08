@@ -126,7 +126,7 @@
         <condition>
           <or>
             <property>/instrumentation/annunciator/test</property>
-            <property>/instrumentation/annunciator/overboost[0]</property>
+            <property>/instrumentation/annunciator/overboost[1]</property>
           </or>
           <greater-than>
             <property>/systems/electrical/battery-bus/u-volts</property>
