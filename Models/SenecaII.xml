@@ -543,6 +543,120 @@
         </axis>
     </animation>
     <animation>
+      <type>pick</type>
+      <object-name>ThrottleControl.L</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.mouseHandler.set( "/controls/engines/engine[0]/throttle", 0.01 );</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>SenecaII.mouseHandler.set()</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>ThrottleControl.R</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.mouseHandler.set( "/controls/engines/engine[1]/throttle", 0.01 );</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>SenecaII.mouseHandler.set()</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>MixtureControl.L</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.mouseHandler.set( "/controls/engines/engine[0]/mixture", 0.01 );</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>SenecaII.mouseHandler.set()</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>MixtureControl.R</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.mouseHandler.set( "/controls/engines/engine[1]/mixture", 0.01 );</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>SenecaII.mouseHandler.set()</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>PropellerControl.L</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.mouseHandler.set( "/controls/engines/engine[0]/propeller-pitch", 0.01 );</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>SenecaII.mouseHandler.set()</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>PropellerControl.R</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.mouseHandler.set( "/controls/engines/engine[1]/propeller-pitch", 0.01 );</script>
+         </binding>
+         <mod-up>
+          <binding>
+           <command>nasal</command>
+           <script>SenecaII.mouseHandler.set()</script>
+          </binding>
+         </mod-up>
+      </action>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>PropellerControl.L</object-name>
         <property>controls/engines/engine[0]/propeller-pitch</property>
