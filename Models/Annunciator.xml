@@ -166,6 +166,8 @@
         <condition>
           <or>
             <property>/instrumentation/annunciator/test</property>
+            <property>/instrumentation/vacuum/inoperative[0]</property>
+            <property>/instrumentation/vacuum/inoperative[1]</property>
             <property>/instrumentation/annunciator/vacuum</property>
           </or>
           <greater-than>
@@ -186,7 +188,14 @@
         <condition>
           <or>
             <property>/instrumentation/annunciator/test</property>
-            <property>/instrumentation/annunciator/alt</property>
+            <less-than>
+              <property>/systems/electrical/bus[0]/element[1]/u0</property>
+              <property>/systems/electrical/battery-bus/u-volts</property>
+            </less-than>
+            <less-than>
+              <property>/systems/electrical/bus[0]/element[2]/u0</property>
+              <property>/systems/electrical/battery-bus/u-volts</property>
+            </less-than>
           </or>
           <greater-than>
             <property>/systems/electrical/battery-bus/u-volts</property>
