@@ -15,192 +15,6 @@
 # General Public License for more details.
 #############################################################################
 
-##################################################
-# Engines
-##################################################
-# input properties
-# /engines/engine[n]/oil-pressure-psi
-# /engines/engine[n]/mp-osi
-# output properties
-# /instrumentation/annunciator/oil
-##################################################
-var Engines = {};
-Engines.new = func {
-  var obj = {};
-  obj.parents = [Engines];
-
-  obj.enginesNode = props.globals.getNode( "/engines" );
-  obj.engineNodes = obj.enginesNode.getChildren( "engine" );
-
-  obj.annunciatorNode = props.globals.getNode( "/instrumentation/annunciator" );
-  obj.oilNode = obj.annunciatorNode.initNode( "oil", 0, "BOOL" );
-
-  for( var i = 0; i < size(obj.engineNodes); i = i+1 ) {
-    var s = "overboost[" ~ i ~ "]";
-    var n = obj.annunciatorNode.initNode( s, 0, "BOOL" );
-  }
-  obj.overboostNodes = obj.annunciatorNode.getChildren( "overboost" );
-
-  obj.jsbEngineNodes = props.globals.getNode("/fdm/jsbsim/propulsion",1).getChildren("engine");
-  obj.pressureNode      = props.globals.getNode( "/systems/static/pressure-inhg" );
-  obj.totalPressureNode = props.globals.getNode( "/systems/pitot/total-pressure-inhg" ).getValue();
-
-  obj.controlsNodes = props.globals.getNode( "/controls/engines" ).getChildren( "engine" );
-
-#  obj.cowlFlapsPosNode = props.globals.getNode( "/surface-positions/speedbrake-pos-norm", 1 );
-  return obj;
-}
-
-Engines.update = func {
-  me.oil = 0;
-
-  for( var i = 0; i < size(me.engineNodes); i = i+1 ) {
-    var oil_pressure_psi = me.engineNodes[i].getNode("oil-pressure-psi").getValue();
-    if( oil_pressure_psi != nil and oil_pressure_psi < 30 ) {
-      me.oil = 1;
-      break;
-    }
-
-    # create a rpm-norm-inv property for propdisc transparency
-    me.rpm = me.engineNodes[i].getNode( "rpm", 1 ).getValue();
-    if( me.rpm == nil ) {
-      me.rpm = 0.0;
-    }
-    var rpm_norm = me.rpm/2575;
-    if( rpm_norm > 1 ) {
-      rpm_norm = 1;
-    }
-    me.engineNodes[i].getNode( "rpm-norm-inv", 1 ).setDoubleValue( 1-rpm_norm );
-
-    if( i < size(me.jsbEngineNodes) ) {
-      # twiggle with manifold pressure
-      var mapAdjustNode = me.jsbEngineNodes[i].getNode( "map-adjust" );
-      if( mapAdjustNode != nil ) {
-
-        # map depends on RPM
-        var ma = rpm_norm*0.37 + 0.63;
-        mapAdjustNode.setDoubleValue( ma );
-
-        # and on ram pressure
-       if( me.pressureNode != nil and me.totalPressureNode != nil ) {
-         var d = me.pressureNode.getValue();
-         if( d != 0 ) {
-           ma *= me.totalPressureNode.getValue() / d;
-         }
-       }
-
-      }
-    }
-
-    # adjust cooling area of engine depending of position of cowl flaps
-    # range 2 - 2.5
-#    if( me.cowlFlapsPosNode != nil and i < size(me.jsbEngineNodes) ) {
-#      var n = me.jsbEngineNodes[i].getNode("cooling-area");
-#      if( n != nil ) {
-#        n.setDoubleValue( me.cowlFlapsPosNode.getValue()*0.5 + 2 );
-#      }
-#    }
-
-    # check for prop feather
-#    var featherN = me.controlsNodes[i].getChild( "propeller-feather" );
-#    if( me.controlsNodes[i].getChild( "propeller-pitch" ).getValue() < 0.1 ) {
-#      if( featherN.getBoolValue() == 0 and me.rpm > 800 ) {
-#        featherN.setBoolValue( 1 );
-#      }
-#    } else { 
-#      if( featherN.getBoolValue() == 1 and me.rpm > 400 ) {
-#        featherN.setBoolValue( 0 );
-#      }
-#    }
-  }
-  me.oilNode.setBoolValue( me.oil );
-}
-
-##################################################
-# Suction 
-##################################################
-# input properties
-# /system/vacuum[n]/suction-inhg
-# output properties
-# /instrumentation/vacuum/suction-inhg    max of all suction-inhg
-# /instrumentation/vacuum/inoperative[n]  true if suction-inhg is less 3.5
-# /instrumentation/annunciator/suction    true if any suction is inoperative
-##################################################
-var Suction= {};
-
-Suction.new = func {
-  var obj = {};
-  obj.parents = [Suction];
-  obj.vacuumNodes = props.globals.getNode("/systems").getChildren("vacuum");
-
-  obj.instrumentationNode = props.globals.getNode( "/instrumentation/vacuum", 1 );
-  obj.suctionNode = obj.instrumentationNode.getNode( "suction-inhg", 1 );
-  
-  for( var i = 0; i < size(obj.vacuumNodes); i = i+1 ) {
-    var s = "inoperative[" ~ i ~ "]";
-    var n = obj.instrumentationNode.getNode( s, 1 );
-    n.setBoolValue( 1 );
-  }
-  obj.inoperativeNodes = obj.instrumentationNode.getChildren( "inoperative" );
-
-  obj.annunciatorNode = props.globals.getNode( "/instrumentation/annunciator/vacuum", 1 );
-
-  return obj;
-}
-
-Suction.update = func {
-  me.suction_inhg = 0.0;
-  me.annunciator = 0;
-
-  # find max(suction-inhg) of all vacuum systems
-  # end set warning-flag if U/S
-
-  for( var i = 0; i < size(me.vacuumNodes); i = i+1 ) {
-    me.suction = me.vacuumNodes[i].getNode("suction-inhg").getValue();
-    if( me.suction > me.suction_inhg ) {
-      me.suction_inhg = me.suction;
-    }
-    if( me.suction < 3.5 ) {
-      me.inoperativeNodes[i].setBoolValue( 1 );
-      me.annunciator = 1;
-    } else {
-      me.inoperativeNodes[i].setBoolValue( 0 );
-    }
-  }
-  me.suctionNode.setDoubleValue( me.suction_inhg );
-  me.annunciatorNode.setBoolValue( me.annunciator );
-}
-
-##################################################
-var heightNode = props.globals.initNode( "/position/altitude-agl-ft", 0.0 );
-var dhNode = props.globals.initNode( "/instrumentation/radar-altimeter/decision-height", 0.0 );
-var dhFlagNode = props.globals.initNode( "/instrumentation/radar-altimeter/decision-height-flag", 0, "BOOL" );
-
-###################################################
-# set DH Flag
-var dhflag = -1;
-var radarAltimeter = func {
-  var d = 0;
-  if( heightNode.getValue() <= dhNode.getValue() ) {
-    d = 1;
-  }
-  if( d != dhflag ) {
-    dhflag = d;
-    dhFlagNode.setBoolValue( dhflag );
-  }
-}
-
-###################################################
-var suction = Suction.new();
-var engines = Engines.new();
-
-var seneca_update = func {
-  suction.update();
-  engines.update();
-  radarAltimeter();
-  settimer(seneca_update, 0.1 );
-}
-
 var seneca_init = func {
   props.globals.initNode( "autopilot/CENTURYIII/controls/mode", 2, "INT" );
   props.globals.initNode( "autopilot/CENTURYIII/controls/manual-trim", 0, "INT" );
@@ -244,8 +58,6 @@ var seneca_init = func {
     "controls/electric/avionic-switch"
   );
   ki266.new(0);
-
-  seneca_update();
 };
 
 setlistener("/sim/signals/fdm-initialized", seneca_init );
@@ -334,19 +146,6 @@ setlistener( "/controls/engines/engine[1]/magneto[0]", magnetoswitchlistener, 1,
 setlistener( "/controls/engines/engine[1]/magneto[1]", magnetoswitchlistener, 1, 0 );
 
 ########################################
-# Sync the fuel selector controls with the properties
-#/controls/fuel/tank[n]/fuel_selector (boolean)
-#/controls/fuel/tank[n]/to_engine (int)
-########################################
-#fuelselectorlistener = func {
-#}
-
-#setlistener( "/controls/fuel/tank[0]/fuel_selector", fuelselectorlistener );
-#setlistener( "/controls/fuel/tank[1]/fuel_selector", fuelselectorlistener );
-#setlistener( "/controls/fuel/tank[0]/to_engine",     fuelselectorlistener );
-#setlistener( "/controls/fuel/tank[1]/to_engine",     fuelselectorlistener );
-
-########################################
 # Sync the dimmer controls with the according properties
 ########################################
 
@@ -387,36 +186,6 @@ FuelPumpHandler.listener = func {
 
 FuelPumpHandler.new( 0 );
 FuelPumpHandler.new( 1 );
-
-########################################
-# Battery Master
-########################################
-
-#var BatteryMasterHandler = {};
-
-#BatteryMasterHandler.new = func {
-#  var obj = {};
-#  obj.parents = [BatteryMasterHandler];
-#  obj.switchN = props.globals.initNode( "/controls/electric/battery-switch", 0, "BOOL" );
-#  obj.clients = [
-#    props.globals.getNode( "/instrumentation/nav[0]/serviceable", 1 ),
-#    props.globals.getNode( "/instrumentation/nav[1]/serviceable", 1 ),
-#    props.globals.getNode( "/instrumentation/adf[0]/serviceable", 1 )
-#  ];
-#
-#  setlistener( obj.switchN, func { obj.listener() }, 1, 0 );
-#
-#  return obj;
-#};
-#
-#BatteryMasterHandler.listener = func {
-#  var v = me.switchN.getValue();
-#  foreach( var client; me.clients ) {
-#    client.setValue( v );
-#  }
-#};
-#
-#var batteryMasterHandler = BatteryMasterHandler.new();
 
 ###############################################
 # propagate the emergency gear extension switch 

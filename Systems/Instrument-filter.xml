@@ -84,6 +84,104 @@
     <output>instrumentation/annunciator/overboost[1]</output>
   </logic>
 
+  <logic>
+    <name>Oil Pressure annunciator</name>
+    <input>
+      <or>
+        <less-than>
+          <property>/engines/engine[0]/oil-pressure-psi</property>
+          <value type="double">30.0</value>
+        </less-than>
+        <less-than>
+          <property>/engines/engine[1]/oil-pressure-psi</property>
+          <value type="double">30.0</value>
+        </less-than>
+      </or>
+    </input>
+    <output>/instrumentation/annunciator/oil</output>
+  </logic>
+
+  <filter>
+    <name>RPM-NORM-Inv Left</name>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+      <expression>
+        <clip>
+          <clipMin>0.0</clipMin>
+          <clipMax>1.0</clipMax>
+          <difference>
+            <value>1.0</value>
+            <div>
+              <property>/engines/engine[0]/rpm</property>
+              <value>2575</value>
+            </div>
+          </difference>
+        </clip>
+      </expression>
+    </input>
+    <output>/engines/engine[0]/rpm-norm-inv</output>
+  </filter>
+
+  <filter>
+    <name>RPM-NORM-Inv Right</name>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+      <expression>
+        <clip>
+          <clipMin>0.0</clipMin>
+          <clipMax>1.0</clipMax>
+          <difference>
+            <value>1.0</value>
+            <div>
+              <property>/engines/engine[1]/rpm</property>
+              <value>2575</value>
+            </div>
+          </difference>
+        </clip>
+      </expression>
+    </input>
+    <output>/engines/engine[1]/rpm-norm-inv</output>
+  </filter>
+
+  <filter>
+    <name>Suction indicator</name>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+      <expression>
+        <max>
+          <property>/systems/vacuum[0]/suction-inhg</property>
+          <property>/systems/vacuum[1]/suction-inhg</property>
+        </max>
+      </expression>
+    </input>
+    <output>/instrumentation/vacuum/suction-inhg</output>
+  </filter>
+
+  <logic>
+    <name>Left Suction annunciator</name>
+    <input>
+      <less-than>
+        <property>/systems/vacuum[0]/suction-inhg</property>
+        <value type="double">3.5</value>
+      </less-than>
+    </input>
+    <output>/instrumentation/vacuum/inoperative[0]</output>
+  </logic>
+
+  <logic>
+    <name>Right Suction annunciator</name>
+    <input>
+      <less-than>
+        <property>/systems/vacuum[1]/suction-inhg</property>
+        <value type="double">3.5</value>
+      </less-than>
+    </input>
+    <output>/instrumentation/vacuum/inoperative[1]</output>
+  </logic>
+
   <filter>
     <name>MAP Indicator-Right filter</name>
     <debug>false</debug>

@@ -180,8 +180,13 @@
             <red>1.0</red>
             <green>1.0</green>
             <blue>1.0</blue>
-            <factor-prop>/instrumentation/radar-altimeter/decision-height-flag</factor-prop>
         </emission>
+        <condition>
+          <less-than>
+            <property>/position/altitude-agl-ft</property>
+            <property>/instrumentation/radar-altimeter/decision-height</property>
+          </less-than>
+        </condition>
     </animation>
 
 </PropertyList>
