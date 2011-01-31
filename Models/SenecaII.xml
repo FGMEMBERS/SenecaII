@@ -1256,7 +1256,7 @@
     </model>
     <!-- art. horizon -->
     <model>
-        <path>Aircraft/Instruments-3d/ai/ai.xml</path>
+        <path>Aircraft/SenecaII/Models/AI/AttitudeGyro.xml</path>
         <name>AI</name>
         <offsets>
             <x-m>-1.915</x-m>
