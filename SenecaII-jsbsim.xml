@@ -690,6 +690,20 @@
                 </traverse>
                 <output>propulsion/engine[0]/cowl-flaps-norm</output>
             </kinematic>
+            <aerosurface_scale name="Left Cooling Factor">
+                <input>propulsion/engine[0]/cowl-flaps-norm</input>
+                <gain>1.0</gain>
+                <zero_centered>false</zero_centered>
+                <domain>
+                  <min>0</min>
+                  <max>1</max>
+                </domain>
+                <range>
+                    <min>0.48</min>
+                    <max>0.75</max>
+                </range>
+                <output>propulsion/engine[0]/cooling-factor</output>
+            </aerosurface_scale>
             <kinematic name="Right Cowl Flaps">
                 <input>/controls/engines/engine[1]/cowl-flaps-norm</input>
                 <traverse>
@@ -704,6 +718,20 @@
                 </traverse>
                 <output>propulsion/engine[1]/cowl-flaps-norm</output>
             </kinematic>
+            <aerosurface_scale name="Right Cooling Factor">
+                <input>propulsion/engine[1]/cowl-flaps-norm</input>
+                <gain>1.0</gain>
+                <zero_centered>false</zero_centered>
+                <domain>
+                  <min>0</min>
+                  <max>1</max>
+                </domain>
+                <range>
+                    <min>0.48</min>
+                    <max>0.75</max>
+                </range>
+                <output>propulsion/engine[1]/cooling-factor</output>
+            </aerosurface_scale>
         </channel>
     </flight_control>
 
