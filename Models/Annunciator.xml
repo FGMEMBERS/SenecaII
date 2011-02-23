@@ -67,6 +67,8 @@
           <or>
             <property>/instrumentation/annunciator/test</property>
             <property>/instrumentation/annunciator/fuelpump[0]</property>
+            <property>/controls/engines/engine[0]/fuel-pump</property>
+            <property>/controls/engines/engine[0]/primer</property>
           </or>
           <greater-than>
             <property>/systems/electrical/battery-bus/u-volts</property>
@@ -87,6 +89,8 @@
           <or>
             <property>/instrumentation/annunciator/test</property>
             <property>/instrumentation/annunciator/fuelpump[1]</property>
+            <property>/controls/engines/engine[1]/fuel-pump</property>
+            <property>/controls/engines/engine[1]/primer</property>
           </or>
           <greater-than>
             <property>/systems/electrical/battery-bus/u-volts</property>

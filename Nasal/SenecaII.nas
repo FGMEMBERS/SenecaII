@@ -157,36 +157,6 @@ var dimmerlistener = func(n) {
 
 setlistener( "/controls/lighting/instruments-norm", dimmerlistener, 1, 0 );
 
-########################################
-# fuel pumps and primer
-########################################
-var FuelPumpHandler = {};
-FuelPumpHandler.new = func {
-  var m = {};
-  m.parents = [FuelPumpHandler];
-  m.engineControlRootN = props.globals.getNode( "/controls/engines/engine[" ~ arg[0] ~ "]" );
-  m.annunciatorLightN = props.globals.initNode( "/instrumentation/annunciator/fuelpump[" ~ arg[0] ~ "]", 0, "BOOL" );
-
-  m.fuelPumpControlN = m.engineControlRootN.initNode( "fuel-pump", 0, "BOOL" );
-  m.primerControlN   = m.engineControlRootN.initNode( "primer", 0, "BOOL" );
-
-  setlistener( m.fuelPumpControlN, func { m.listener() }, 1, 0 );
-  setlistener( m.primerControlN, func { m.listener() }, 1, 0 );
-
-  return m;
-};
-
-FuelPumpHandler.listener = func {
-  var v = me.fuelPumpControlN.getBoolValue();
-  if( v == 0 ) {
-    v = me.primerControlN.getBoolValue();
-  }
-  me.annunciatorLightN.setBoolValue( v );
-};
-
-FuelPumpHandler.new( 0 );
-FuelPumpHandler.new( 1 );
-
 ###############################################
 # propagate the emergency gear extension switch 
 # to the fcs of jsbsim
