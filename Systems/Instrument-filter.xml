@@ -254,4 +254,36 @@
     <output>systems/pitot/total-pressure-inhg</output>
   </filter>
 
+  <logic>
+    <name>L/H fuel pump</name>
+    <debug>false</debug>
+    <input>
+      <or>
+        <greater-than>
+          <property>/engines/engine[0]/rpm</property>
+          <value type="double">600.0</value>
+        </greater-than>
+        <property>/controls/engines/engine[0]/primer</property>
+        <property>/controls/engines/engine[0]/fuel-pump</property>
+      </or>
+    </input>
+    <output>/systems/fuel/fuel-pump[0]/enabled</output>
+  </logic>
+
+  <logic>
+    <name>L/H fuel pump</name>
+    <debug>false</debug>
+    <input>
+      <or>
+        <greater-than>
+          <property>/engines/engine[1]/rpm</property>
+          <value type="double">600.0</value>
+        </greater-than>
+        <property>/controls/engines/engine[1]/primer</property>
+        <property>/controls/engines/engine[1]/fuel-pump</property>
+      </or>
+    </input>
+    <output>/systems/fuel/fuel-pump[1]/enabled</output>
+  </logic>
+
 </PropertyList>

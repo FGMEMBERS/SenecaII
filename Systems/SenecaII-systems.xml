@@ -20,8 +20,17 @@
   <electrical>
     <name>electrical</name>
     <number>0</number>
-    <path>Aircraft/Generic/generic-electrical.xml</path>
+    <path/>
   </electrical>
+
+<!--
+  <electrical>
+    <name>electrical</name>
+    <type>gnucap</type>
+    <number>1</number>
+    <path>Aircraft/SenecaII/Systems/electrical-system.xml</path>
+  </electrical>
+-->
 
   <pitot>
     <name>pitot</name>

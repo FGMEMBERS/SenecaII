@@ -15,6 +15,17 @@
 # General Public License for more details.
 #############################################################################
 
+var updateClients = [];
+var timeNode = props.globals.getNode( "/sim/time/elapsed-sec", 1 );
+var lastRun = timeNode.getValue();
+var timedUpdate = func {
+  var dt = timeNode.getValue() - lastRun;
+  foreach( var n; updateClients ) {
+    n.update( dt );
+  }
+  settimer( timedUpdate, 0 );
+};
+
 var seneca_init = func {
   props.globals.initNode( "autopilot/CENTURYIII/controls/mode", 2, "INT" );
   props.globals.initNode( "autopilot/CENTURYIII/controls/manual-trim", 0, "INT" );
@@ -55,9 +66,21 @@ var seneca_init = func {
     "controls/engines/engine[1]/cowl-flaps-norm",
     "autopilot/CENTURYIII/controls/mode",
     "controls/electric/battery-switch",
-    "controls/electric/avionic-switch"
+    "controls/electric/avionic-switch",
+    "controls/fuel/tank[0]/fuel_selector-position",
+    "controls/fuel/tank[1]/fuel_selector-position",
   );
   ki266.new(0);
+
+  updateClients = [];
+  foreach( var n; props.globals.getNode("/systems/fuel").getChildren( "fuel-pump" ) ) {
+      append( updateClients, FuelPump.new( n ) );
+  }
+
+  SetFuelSelector( 0 );
+  SetFuelSelector( 1 );
+
+  timedUpdate();
 };
 
 setlistener("/sim/signals/fdm-initialized", seneca_init );
@@ -156,6 +179,109 @@ var dimmerlistener = func(n) {
 }
 
 setlistener( "/controls/lighting/instruments-norm", dimmerlistener, 1, 0 );
+
+####################################################################
+
+var SetFuelSelector = func( side ) {
+  var pos = getprop("controls/fuel/tank[" ~ side ~ "]/fuel_selector-position"); 
+  var n = getprop( "/systems/fuel/fuel-pump[" ~ side ~ "]/source-tank" );
+  if( side == 0 ) {
+    if( pos == 1 )  n = 0;
+    else if( pos == -1 ) n = 1;
+    else n = -1;
+  } else if( side == 1 ) {
+    if( pos == 1 )  n = 1;
+    else if( pos == -1 ) n = 0;
+    else n = -1;
+  }
+  setprop( "/systems/fuel/fuel-pump[" ~ side ~ "]/source-tank", n );
+}
+
+var FuelTank = {};
+
+FuelTank.new = func(nr) {
+  var obj = {};
+  obj.parents = [FuelTank];
+  obj.baseN = props.globals.getNode( "/consumables/fuel/tank[" ~ nr ~ "]", 1 );
+  obj.emptyN = obj.baseN.initNode("empty", 0, "BOOL" );
+  obj.capacityN = obj.baseN.initNode("capacity-gal_us", 0.0 );
+  obj.contentN = obj.baseN.initNode("level-gal_us", 0.0 );
+
+  return obj;
+};
+
+FuelTank.empty = func() {
+  return me.emptyN.getValue() == 1;
+};
+
+FuelTank.level = func( level = nil ) {
+  if( level != nil )
+    me.contentN.setValue( level );
+  return me.contentN.getValue();
+};
+
+FuelTank.capacity = func() {
+  return me.capacityN.getValue();
+};
+
+var FuelPump = {};
+
+FuelPump.new = func(base) {
+  var obj = {};
+  obj.parents = [FuelPump];
+  obj.baseNode = base;
+
+  var n = base.getNode( "enable-prop" );
+  if( n != nil ) {
+    obj.enableNode = props.globals.initNode( n.getValue(), 0, "BOOL" );
+  } else {
+    obj.enableNode = base.initNode( "enabled", 0, "BOOL" );
+  }
+  obj.serviceableNode = base.initNode( "serviceable", 1, "BOOL" );
+  obj.sourceTankNode = base.initNode( "source-tank", -1, "INT" );
+
+  obj.tanks = [];
+  append( obj.tanks, FuelTank.new( 0 ) );
+  append( obj.tanks, FuelTank.new( 1 ) );
+  obj.destinationTank = FuelTank.new( base.getNode("destination-tank").getValue() );
+  obj.fuel_flow_gphNode = base.getNode( "fuel-flow-gph", 1 );
+  return obj;
+};
+
+FuelPump.update = func(dt) {
+  #if its of, go away
+  !me.enableNode.getValue() and return;
+  #if its broken, go away
+  !me.serviceableNode.getValue() and return;
+
+  var sourceTank = me.sourceTankNode.getValue();
+  if(sourceTank == nil or sourceTank < 0 or sourceTank >= size(me.tanks) ) return
+
+  #if  source is empty, go away
+  me.tanks[sourceTank].empty() and return;
+
+  # compute fuel flow
+  var flow_gph = me.fuel_flow_gphNode.getValue();
+
+  # no flow - nothing to compute
+  if( flow_gph == nil or flow_gph <= 0 ) return;
+
+  var transfer_fuel = flow_gph * dt / 3600;
+
+  #consume fuel, up to the available source-level 
+  #and destination-space
+  var source_level = me.tanks[sourceTank].level();
+  if( transfer_fuel > source_level )
+    transfer_fuel = source_level;
+
+  var destination_space = me.destinationTank.capacity() - me.destinationTank.level();
+
+  if( transfer_fuel > destination_space )
+    transfer_fuel = destination_space;
+
+  me.tanks[sourceTank].level( source_level - transfer_fuel );
+  me.destinationTank.level( me.destinationTank.level() + transfer_fuel );
+}
 
 ###############################################
 # propagate the emergency gear extension switch 

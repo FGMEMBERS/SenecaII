@@ -1121,6 +1121,10 @@
           <max>2</max>
           <wrap>true</wrap>
         </binding>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.SetFuelSelector(0)</script>
+        </binding>
       </action>
     </animation>
 
@@ -1153,6 +1157,10 @@
           <min>-1</min>
           <max>2</max>
           <wrap>true</wrap>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>SenecaII.SetFuelSelector(1)</script>
         </binding>
       </action>
     </animation>

@@ -275,6 +275,7 @@
                 <name>Electrical System</name>
                 <path>Aircraft/SenecaII/Systems/electric.xml</path>
             </autopilot>
+            <electrical><path/></electrical>
         </systems>
         <instrumentation>
           <path>Aircraft/SenecaII/Systems/SenecaII-instruments.xml</path>
@@ -391,8 +392,10 @@
         </gear>
         <fuel>
             <tank n="0">
-                <fuel_selector>true</fuel_selector>
-                <to_engine>1</to_engine>
+                <fuel_selector-position type="int">1</fuel_selector-position>
+            </tank>
+            <tank n="1">
+                <fuel_selector-position type="int">1</fuel_selector-position>
             </tank>
         </fuel>
         <lighting>
@@ -439,6 +442,10 @@
                 <capacity-gal_us type="double">64.0</capacity-gal_us>
                 <unusable-gal_us type="double">2.5</unusable-gal_us>
                 <level-gal_us type="double">50</level-gal_us>
+            </tank>
+            <tank n="2">
+            </tank>
+            <tank n="3">
             </tank>
         </fuel>
     </consumables>
@@ -592,6 +599,18 @@
                 <autopilot type="double">12</autopilot>
             </outputs>
         </electrical>
+        <fuel>
+            <fuel-pump n="0">
+              <name>L/H fuel pump</name>
+              <destination-tank type="int">2</destination-tank>
+              <fuel-flow-gph type="double">100</fuel-flow-gph>
+            </fuel-pump>
+            <fuel-pump n="1">
+              <name>R/H fuel pump</name>
+              <destination-tank type="int">3</destination-tank>
+              <fuel-flow-gph type="double">100</fuel-flow-gph>
+            </fuel-pump>
+        </fuel>
     </systems>
 
     <instrumentation>
