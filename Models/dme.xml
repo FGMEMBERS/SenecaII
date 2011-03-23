@@ -134,50 +134,6 @@
               <max>3</max>
               <wrap>0</wrap>
           </binding>
-          <binding>
-              <condition>
-                  <equals>
-                      <property>instrumentation/dme/switch-position</property>
-                      <value type="int">1</value>
-                  </equals>
-              </condition>
-              <command>property-assign</command>
-              <property>instrumentation/dme/frequencies/source</property>
-              <value>instrumentation/nav[0]/frequencies/selected-mhz</value>
-          </binding>
-          <binding>
-              <condition>
-                  <equals>
-                      <property>instrumentation/dme/switch-position</property>
-                      <value type="int">2</value>
-                  </equals>
-              </condition>
-              <command>property-assign</command>
-              <property>instrumentation/dme/frequencies/source</property>
-              <value>instrumentation/dme/frequencies/selected-mhz</value>
-          </binding>
-          <binding>
-              <condition>
-                  <equals>
-                      <property>instrumentation/dme/switch-position</property>
-                      <value type="int">2</value>
-                  </equals>
-              </condition>
-              <command>property-assign</command>
-              <property>instrumentation/dme/frequencies/selected-mhz</property>
-              <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
-          </binding>
-          <binding>
-              <condition>
-                  <equals>
-                      <property>instrumentation/dme/switch-position</property>
-                      <value type="int">3</value>
-                  </equals>
-              </condition>
-              <command>property-assign</command>
-              <property>instrumentation/dme/frequencies/source</property>
-              <value>instrumentation/nav[1]/frequencies/selected-mhz</value>
-          </binding>
         </action>
     </animation>
 
@@ -195,39 +151,6 @@
               <min>1</min>
               <max>3</max>
               <wrap>0</wrap>
-          </binding>
-          <binding>
-              <condition>
-                  <equals>
-                      <property>instrumentation/dme/switch-position</property>
-                      <value type="int">1</value>
-                  </equals>
-              </condition>
-              <command>property-assign</command>
-              <property>instrumentation/dme/frequencies/source</property>
-              <value>instrumentation/nav[0]/frequencies/selected-mhz</value>
-          </binding>
-          <binding>
-              <condition>
-                  <equals>
-                      <property>instrumentation/dme/switch-position</property>
-                      <value type="int">2</value>
-                  </equals>
-              </condition>
-              <command>property-assign</command>
-              <property>instrumentation/dme/frequencies/source</property>
-              <value>instrumentation/dme/frequencies/selected-mhz</value>
-          </binding>
-          <binding>
-              <condition>
-                  <equals>
-                      <property>instrumentation/dme/switch-position</property>
-                      <value type="int">2</value>
-                  </equals>
-              </condition>
-              <command>property-assign</command>
-              <property>instrumentation/dme/frequencies/selected-mhz</property>
-              <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
           </binding>
         </action>
     </animation>
