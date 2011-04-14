@@ -27,7 +27,7 @@ Torsten Dreyer torsten@t3r.de
             <w>435</w>
             <h>435    </h>
             <texture>
-                <path>Aircraft/SenecaII/Instruments/Textures/FF.rgb</path>
+                <path>Aircraft/SenecaII/Panels/Textures/FF.rgb</path>
                 <x1>0.0</x1>
                 <x2>1.0</x2>
                 <y1>0.0</y1>
@@ -41,7 +41,7 @@ Torsten Dreyer torsten@t3r.de
             <h>310</h>
 
             <texture>
-                <path>Aircraft/SenecaII/Instruments/Textures/Misc.rgb</path>
+                <path>Aircraft/SenecaII/Panels/Textures/Misc.rgb</path>
                 <x1>0.1875</x1>
                 <x2>0.29296875</x2>
                 <y1>0.0625</y1>
@@ -80,7 +80,7 @@ Torsten Dreyer torsten@t3r.de
             <h>310</h>
 
             <texture>
-                <path>Aircraft/SenecaII/Instruments/Textures/Misc.rgb</path>
+                <path>Aircraft/SenecaII/Panels/Textures/Misc.rgb</path>
                 <x1>0.326171875</x1>
                 <x2>0.435546875</x2>
                 <y1>0.0625</y1>
@@ -112,20 +112,20 @@ Torsten Dreyer torsten@t3r.de
 
             </transformations>
         </layer>
-
+<!--
         <layer>
             <name>Ring</name>
             <w>512</w>
             <h>512</h>
             <texture>
-                <path>Aircraft/SenecaII/Instruments/Textures/Ring.rgb</path>
+                <path>Aircraft/SenecaII/Panels/Textures/Ring.rgb</path>
                 <x1>0.0</x1>
                 <x2>1.0</x2>
                 <y1>0.0</y1>
                 <y2>1.0</y2>
             </texture>
         </layer>
-
+-->
     </layers>
 
 </PropertyList>
