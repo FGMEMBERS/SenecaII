@@ -50,26 +50,14 @@
     <property alias="../../params/value"/>
     <interpolation>
       <entry>
-        <ind>200</ind>
+        <ind>1200</ind>
         <dep>0</dep>
       </entry>
       <entry>
-        <ind>900</ind>
+        <ind>1770</ind>
         <dep>-90</dep>
       </entry>
     </interpolation>
-<!-- JSBSim calculates egt to low
-        <interpolation>
-            <entry>
-                <ind>1200</ind>
-                <dep>0</dep>
-            </entry>
-            <entry>
-                <ind>1770</ind>
-                <dep>-90</dep>
-            </entry>
-        </interpolation>
--->
     <axis>
       <x>1.0</x>
       <y>0.0</y>
@@ -88,11 +76,11 @@
     <property alias="../../params/bug"/>
     <interpolation>
       <entry>
-        <ind>200</ind>
+        <ind>1200</ind>
         <dep>0</dep>
       </entry>
       <entry>
-        <ind>900</ind>
+        <ind>1770</ind>
         <dep>-90</dep>
       </entry>
     </interpolation>
@@ -119,8 +107,8 @@
         <command>property-adjust</command>
         <property alias="../../../../params/bug"/>
         <step>-5</step>
-        <min>200</min>
-        <max>900</max>
+        <min>1200</min>
+        <max>1770</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -131,8 +119,8 @@
         <command>property-adjust</command>
         <property alias="../../../../params/bug"/>
         <step>-50</step>
-        <min>200</min>
-        <max>900</max>
+        <min>1200</min>
+        <max>1770</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -143,8 +131,8 @@
         <command>property-adjust</command>
         <property alias="../../../../params/bug"/>
         <step>-5</step>
-        <min>200</min>
-        <max>900</max>
+        <min>1200</min>
+        <max>1770</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -161,8 +149,8 @@
         <command>property-adjust</command>
         <property alias="../../../../params/bug"/>
         <step>5</step>
-        <min>200</min>
-        <max>900</max>
+        <min>1200</min>
+        <max>1770</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -173,8 +161,8 @@
         <command>property-adjust</command>
         <property alias="../../../../params/bug"/>
         <step>50</step>
-        <min>200</min>
-        <max>900</max>
+        <min>1200</min>
+        <max>1770</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -185,8 +173,8 @@
         <command>property-adjust</command>
         <property alias="../../../../params/bug"/>
         <step>5</step>
-        <min>200</min>
-        <max>900</max>
+        <min>1200</min>
+        <max>1770</max>
         <wrap>0</wrap>
       </binding>
     </action>

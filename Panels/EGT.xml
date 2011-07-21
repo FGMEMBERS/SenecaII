@@ -61,23 +61,13 @@ Torsten Dreyer (torsten _at_ t3r /dot/ de)
                     <scale>1.0</scale>
                     <interpolation>
                         <entry>
-                            <ind>300</ind>
-                            <dep>-45</dep>
-                        </entry>
-                        <entry>
-                            <ind>800</ind>
-                            <dep>45</dep>
-                        </entry>
-<!--
-                        <entry>
                             <ind>1200</ind>
                             <dep>-45</dep>
                         </entry>
                         <entry>
-                            <ind>1700</ind>
+                            <ind>1770</ind>
                             <dep>45</dep>
                         </entry>
--->
                     </interpolation>
                     <offset>0</offset>
                 </transformation>
