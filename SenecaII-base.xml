@@ -498,7 +498,7 @@
                      foreach(var i; which)
                          foreach(var e; controls.engines)
                              if(e.index == i)
-                                 e.controls.getNode("starter-switch").setBoolValue(v);
+                                 e.controls.getNode("starter-switch",1).setBoolValue(v);
                  } else {
                      foreach(var e; controls.engines)
                          if(e.selected.getValue())
