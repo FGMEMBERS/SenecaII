@@ -490,8 +490,13 @@
   <animation>
     <type>translate</type>
     <object-name>TO</object-name>
-    <property alias="../../params/to-flag"/>
-    <factor>0.00712488</factor>
+    <expression>
+      <product>
+        <property alias="../../../../params/to-flag"/>
+        <property alias="../../../../params/nav-flag"/>
+        <value>0.00712488</value>
+      </product>
+    </expression>
     <axis>
       <x>0.0</x>
       <y>0.0</y>
@@ -502,8 +507,13 @@
   <animation>
     <type>translate</type>
     <object-name>FROM</object-name>
-    <property alias="../../params/from-flag"/>
-    <factor>-0.00712488</factor>
+    <expression>
+      <product>
+        <property alias="../../../../params/from-flag"/>
+        <property alias="../../../../params/nav-flag"/>
+        <value>-0.00712488</value>
+      </product>
+    </expression>
     <axis>
       <x>0.0</x>
       <y>0.0</y>
