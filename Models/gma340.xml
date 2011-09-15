@@ -142,7 +142,7 @@
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
-        <property>instrumentation/audio-panel/dme</property>
+        <property>instrumentation/dme[0]/ident</property>
       </binding>
     </action>
   </animation>
@@ -152,7 +152,7 @@
     <condition>
       <property>/instrumentation/audio-panel/serviceable</property>
       <or>
-        <property>/instrumentation/audio-panel/dme</property>
+        <property>/instrumentation/dme[0]/ident</property>
         <property>/instrumentation/audio-panel/test</property>
       </or>
     </condition>
