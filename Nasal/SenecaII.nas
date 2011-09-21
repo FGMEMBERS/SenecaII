@@ -30,46 +30,6 @@ var seneca_init = func {
   props.globals.initNode( "autopilot/CENTURYIII/controls/mode", 2, "INT" );
   props.globals.initNode( "autopilot/CENTURYIII/controls/manual-trim", 0, "INT" );
   props.globals.initNode( "autopilot/CENTURYIII/controls/disconnect", 0, "BOOL" );
-  aircraft.data.add(
-    "instrumentation/airspeed-indicator/tas-face-rotation",
-    "instrumentation/attitude-indicator[0]/horizon-offset-deg",
-    "instrumentation/attitude-indicator[1]/horizon-offset-deg",
-    "instrumentation/altimeter[0]/setting-inhg",
-    "instrumentation/altimeter[1]/setting-inhg",
-    "instrumentation/radar-altimeter/decision-height",
-    "instrumentation/comm[0]/volume",
-    "instrumentation/comm[0]/frequencies/selected-mhz",
-    "instrumentation/comm[0]/frequencies/standby-mhz",
-    "instrumentation/comm[0]/test-btn",
-    "instrumentation/nav[0]/audio-btn",
-    "instrumentation/nav[0]/power-btn",
-    "instrumentation/nav[0]/frequencies/selected-mhz",
-    "instrumentation/nav[0]/frequencies/standby-mhz",
-    "instrumentation/comm[1]/volume",
-    "instrumentation/comm[1]/frequencies/selected-mhz",
-    "instrumentation/comm[1]/frequencies/standby-mhz",
-    "instrumentation/comm[1]/test-btn",
-    "instrumentation/nav[1]/audio-btn",
-    "instrumentation/nav[1]/power-btn",
-    "instrumentation/nav[1]/frequencies/selected-mhz",
-    "instrumentation/nav[1]/frequencies/standby-mhz",
-    "instrumentation/nav[1]/radials/selected-deg",
-    "instrumentation/dme/frequencies/selected-mhz",
-    "instrumentation/dme/switch-position",
-    "instrumentation/adf/model",
-    "instrumentation/adf/rotation-deg",
-    "sim/model/hide-yoke",
-    "sim/model/hide-windshield-deice",
-    "engines/engine[0]/egt-bug",
-    "engines/engine[1]/egt-bug",
-    "controls/engines/engine[0]/cowl-flaps-norm",
-    "controls/engines/engine[1]/cowl-flaps-norm",
-    "autopilot/CENTURYIII/controls/mode",
-    "controls/electric/battery-switch",
-    "controls/electric/avionic-switch",
-    "controls/fuel/tank[0]/fuel_selector-position",
-    "controls/fuel/tank[1]/fuel_selector-position",
-  );
   ki266.new(0);
 
   updateClients = [];

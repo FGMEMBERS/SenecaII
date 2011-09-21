@@ -292,6 +292,46 @@
       <setting type="double">1.000</setting>
       <!-- Flaps 40 -->
     </flaps>
+    <aircraft-data>
+      <path>instrumentation/airspeed-indicator/tas-face-rotation</path>
+      <path>instrumentation/attitude-indicator[0]/horizon-offset-deg</path>
+      <path>instrumentation/attitude-indicator[1]/horizon-offset-deg</path>
+      <path>instrumentation/altimeter[0]/setting-inhg</path>
+      <path>instrumentation/altimeter[1]/setting-inhg</path>
+      <path>instrumentation/radar-altimeter/decision-height</path>
+      <path>instrumentation/comm[0]/volume</path>
+      <path>instrumentation/comm[0]/frequencies/selected-mhz</path>
+      <path>instrumentation/comm[0]/frequencies/standby-mhz</path>
+      <path>instrumentation/comm[0]/test-btn</path>
+      <path>instrumentation/nav[0]/audio-btn</path>
+      <path>instrumentation/nav[0]/power-btn</path>
+      <path>instrumentation/nav[0]/frequencies/selected-mhz</path>
+      <path>instrumentation/nav[0]/frequencies/standby-mhz</path>
+      <path>instrumentation/comm[1]/volume</path>
+      <path>instrumentation/comm[1]/frequencies/selected-mhz</path>
+      <path>instrumentation/comm[1]/frequencies/standby-mhz</path>
+      <path>instrumentation/comm[1]/test-btn</path>
+      <path>instrumentation/nav[1]/audio-btn</path>
+      <path>instrumentation/nav[1]/power-btn</path>
+      <path>instrumentation/nav[1]/frequencies/selected-mhz</path>
+      <path>instrumentation/nav[1]/frequencies/standby-mhz</path>
+      <path>instrumentation/nav[1]/radials/selected-deg</path>
+      <path>instrumentation/dme/frequencies/selected-mhz</path>
+      <path>instrumentation/dme/switch-position</path>
+      <path>instrumentation/adf/model</path>
+      <path>instrumentation/adf/rotation-deg</path>
+      <path>sim/model/hide-yoke</path>
+      <path>sim/model/hide-windshield-deice</path>
+      <path>engines/engine[0]/egt-bug</path>
+      <path>engines/engine[1]/egt-bug</path>
+      <path>controls/engines/engine[0]/cowl-flaps-norm</path>
+      <path>controls/engines/engine[1]/cowl-flaps-norm</path>
+      <path>autopilot/CENTURYIII/controls/mode</path>
+      <path>controls/electric/battery-switch</path>
+      <path>controls/electric/avionic-switch</path>
+      <path>controls/fuel/tank[0]/fuel_selector-position</path>
+      <path>controls/fuel/tank[1]/fuel_selector-position</path>
+    </aircraft-data>
     <help>
       <title>PA34-200T Seneca II</title>
       <line>Quick startup:</line>
