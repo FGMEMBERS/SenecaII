@@ -22,7 +22,7 @@
             <w>20</w>
             <h>100</h>
             <texture>
-                <path>Aircraft/SenecaII/Panels/Textures/FuelOilAmps.png</path>
+                <path>Aircraft/Instruments/Textures/FuelOilAmps.png</path>
                 <x1>0.0</x1>
                 <x2>0.5</x2>
                 <y1>0.0</y1>
@@ -41,7 +41,7 @@
             <w>20</w>
             <h>100</h>
             <texture>
-                <path>Aircraft/SenecaII/Panels/Textures/FuelOilAmps.png</path>
+                <path>Aircraft/Instruments/Textures/FuelOilAmps.png</path>
                 <x1>0.5</x1>
                 <x2>1.0</x2>
                 <y1>0.0</y1>
@@ -60,7 +60,7 @@
             <w>20</w>
             <h>100</h>
             <texture>
-                <path>Aircraft/SenecaII/Panels/Textures/FuelOilAmps.png</path>
+                <path>Aircraft/Instruments/Textures/FuelOilAmps.png</path>
                 <x1>0.5</x1>
                 <x2>1.0</x2>
                 <y1>0.25</y1>
@@ -79,7 +79,7 @@
             <w>20</w>
             <h>100</h>
             <texture>
-                <path>Aircraft/SenecaII/Panels/Textures/FuelOilAmps.png</path>
+                <path>Aircraft/Instruments/Textures/FuelOilAmps.png</path>
                 <x1>0.0</x1>
                 <x2>0.5</x2>
                 <y1>0.25</y1>
@@ -98,7 +98,7 @@
             <w>20</w>
             <h>100</h>
             <texture>
-                <path>Aircraft/SenecaII/Panels/Textures/FuelOilAmps.png</path>
+                <path>Aircraft/Instruments/Textures/FuelOilAmps.png</path>
                 <x1>0.0</x1>
                 <x2>0.5</x2>
                 <y1>0.50</y1>

@@ -38,7 +38,7 @@
 
     <instruments>
 
-        <instrument include="fps.xml">
+        <instrument include="/Aircraft/Instruments/fps.xml">
             <name>frames per second</name>
             <x>20</x>
             <y>0</y>
