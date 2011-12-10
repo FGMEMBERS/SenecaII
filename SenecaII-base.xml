@@ -368,6 +368,9 @@
         <t0 type="double">6.0</t0>
       </timer>
     </timers>
+
+    <flight-recorder include="Systems/flight-recorder.xml"/>
+
     <tutorials>
       <tutorial include="Tutorials/___ColdStart.xml"/>
       <tutorial include="Tutorials/___HotStart.xml"/>
