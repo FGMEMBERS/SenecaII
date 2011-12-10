@@ -28,14 +28,17 @@
             <signal><type>bool</type><property type="string">/controls/engines/engine[%i]/fuel-pump</property></signal>
             <signal><type>bool</type><property type="string">/controls/electric/engine[%i]/generator</property></signal>
             <signal><type>bool</type><property type="string">/controls/engines/engine[%i]/alternate-air</property></signal>
-            <signal><type>double</type><property type="string">/controls/engines/engine[%i]/cowl-flaps-norm</property></signal>
-            <signal><type>double</type><property type="string">/fdm/jsbsim/propulsion/engine[%i]/cowl-flaps-norm</property></signal>
+            <signal><type>float</type><property type="string">/controls/engines/engine[%i]/cowl-flaps-norm</property></signal>
+            <signal><type>float</type><property type="string">/fdm/jsbsim/propulsion/engine[%i]/cowl-flaps-norm</property></signal>
         </signals>
         <signals include="/Aircraft/Generic/flightrecorder/components/gear-retractable.xml">
             <count type="int">3</count>
         </signals>
         <signals include="/Aircraft/Generic/flightrecorder/components/tanks.xml">
             <count type="int">4</count>
+        </signals>
+        <signals include="/Aircraft/Generic/flightrecorder/components/kx165.xml">
+            <count type="int">2</count>
         </signals>
 
         <signals>
@@ -59,7 +62,7 @@
             <signal><type>bool</type><property type="string">/controls/deice/wingice-light</property></signal>
 
             <signal><type>bool</type><property type="string">/instrumentation/radar-altimeter/decision-height</property></signal>
-            <signal><type>double</type><property type="string">/instrumentation/airspeed-indicator/tas-face-rotation</property></signal>
+            <signal><type>float</type><property type="string">/instrumentation/airspeed-indicator/tas-face-rotation</property></signal>
             <signal><type>bool</type><property type="string">/instrumentation/annunciator/test</property></signal>
 
             <signal><type>bool</type><property type="string">/controls/electric/circuitbreaker/cb_0_0</property></signal>
@@ -114,9 +117,9 @@
             <signal><type>bool</type><property type="string">/controls/gear/gear-emergency-extend</property></signal>
             <signal><type>bool</type><property type="string">/controls/gear/gear-emergency-extend-unlock</property></signal>
 
-            <signal><type>double</type><property type="string">/controls/lighting/instruments-norm</property></signal>
-            <signal><type>double</type><property type="string">/controls/lighting/panel-norm</property></signal>
-            <signal><type>double</type><property type="string">/controls/lighting/radio-norm</property></signal>
+            <signal><type>float</type><property type="string">/controls/lighting/instruments-norm</property></signal>
+            <signal><type>float</type><property type="string">/controls/lighting/panel-norm</property></signal>
+            <signal><type>float</type><property type="string">/controls/lighting/radio-norm</property></signal>
 
         </signals>
 
