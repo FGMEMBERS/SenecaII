@@ -759,7 +759,6 @@
         </channel>
     </flight_control>
 
-    <system file="property-helpers"/>
     <system file="prop-governor"/>
 
     <!-- **********************************************************************
@@ -819,6 +818,26 @@
                 <value>1</value>
             </sum>
         </function>
+
+        <function name="aero/function/velocity-induced-fps">
+            <description> velocity including the propulsion induced velocity.</description>
+            <sum>
+                <property>velocities/u-aero-fps</property>
+                <property>propulsion/engine[0]/prop-induced-velocity_fps</property>
+                <property>propulsion/engine[1]/prop-induced-velocity_fps</property>
+            </sum>
+        </function>
+
+        <function name="aero/function/qbar-induced-psf">
+            <description> q bar including the propulsion induced velocity.</description>
+            <product>
+                <property>aero/function/velocity-induced-fps</property>
+                <property>aero/function/velocity-induced-fps</property>
+                <property>atmosphere/rho-slugs_ft3</property>
+                <value>0.5</value>
+            </product>
+        </function>
+
 
         <!-- ********************************************************************** -->
         <axis name="LIFT">
@@ -1400,10 +1419,11 @@
             <function name="aero/coefficient/Cmde">
                 <description>Pitch_moment_due_to_elevator_deflection</description>
                 <product>
-                    <property>aero/qbar-area</property>
+                    <property>aero/function/qbar-induced-psf</property>
+                    <property>metrics/Sw-sqft</property>
                     <property>metrics/cbarw-ft</property>
                     <property>fcs/elevator-pos-rad</property>
-                    <value>-1.6030</value>
+                    <value>-1.16030</value>
                 </product>
             </function>
 
@@ -1684,7 +1704,8 @@
                     for good dynamic stability
                 </description>
                 <product>
-                    <property>aero/qbar-area</property>
+                    <property>aero/function/qbar-induced-psf</property>
+                    <property>metrics/Sw-sqft</property>
                     <property>metrics/bw-ft</property>
                     <property>fcs/rudder-pos-rad</property>
                     <value>  -.6000E-01</value>
