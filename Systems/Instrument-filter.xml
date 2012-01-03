@@ -286,4 +286,12 @@
     <output>/systems/fuel/fuel-pump[1]/enabled</output>
   </logic>
 
+  <flipflop>
+    <type>monostable</type>
+    <name>WingTailDeiceLight</name>
+    <S><property>/controls/deice/surface-deice</property></S>
+    <output>/controls/deice/surface-deice-wingtail-light</output>
+    <time><value>6.0</value></time>
+  </flipflop>
+
 </PropertyList>

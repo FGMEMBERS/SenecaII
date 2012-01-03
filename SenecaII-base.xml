@@ -353,21 +353,9 @@
       <line>You can also use the tutorials under Help-&gt;Start Tutorial</line>
       <line/>
       <line>For the online documentation go to</line>
-      <line>http://wiki.flightgear.org/index.php/Seneca</line>
+      <line>http://wiki.flightgear.org/Seneca</line>
       <line/>
     </help>
-    <timers>
-      <timer>
-        <type type="string">oneshot</type>
-        <name>WingTailDeiceLight</name>
-        <!--
-                <enable-property></enable-property>
-                -->
-        <start-property type="string">/controls/deice/surface-deice</start-property>
-        <output-property type="string">/controls/deice/surface-deice-wingtail-light</output-property>
-        <t0 type="double">6.0</t0>
-      </timer>
-    </timers>
 
     <flight-recorder include="Systems/flight-recorder.xml"/>
 
