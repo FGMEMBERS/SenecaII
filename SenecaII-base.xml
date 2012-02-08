@@ -219,28 +219,40 @@
           <item>
             <label>Open/close Front door</label>
             <binding>
-              <command>nasal</command>
-              <script><![CDATA[
-                SenecaII.rightDoor.toggle();
-              ]]></script>
+              <command>property-toggle</command>
+              <property>sim/model/door-positions/right-door/state</property>
+            </binding>
+            <binding>
+              <command>property-interpolate</command>
+              <property>sim/model/door-positions/right-door/position-norm</property>
+              <property>sim/model/door-positions/right-door/state</property>
+              <time>1.0</time>
             </binding>
           </item>
           <item>
             <label>Open/close PAX door</label>
             <binding>
-              <command>nasal</command>
-              <script><![CDATA[
-                SenecaII.paxDoor.toggle();
-              ]]></script>
+              <command>property-toggle</command>
+              <property>sim/model/door-positions/pax-door/state</property>
+            </binding>
+            <binding>
+              <command>property-interpolate</command>
+              <property>sim/model/door-positions/pax-door/position-norm</property>
+              <property>sim/model/door-positions/pax-door/state</property>
+              <time>1.0</time>
             </binding>
           </item>
           <item>
             <label>Open/close Baggage door</label>
             <binding>
-              <command>nasal</command>
-              <script><![CDATA[
-                SenecaII.baggageDoor.toggle();
-              ]]></script>
+              <command>property-toggle</command>
+              <property>sim/model/door-positions/baggage-door/state</property>
+            </binding>
+            <binding>
+              <command>property-interpolate</command>
+              <property>sim/model/door-positions/baggage-door/position-norm</property>
+              <property>sim/model/door-positions/baggage-door/state</property>
+              <time>1.0</time>
             </binding>
           </item>
           <!--item>

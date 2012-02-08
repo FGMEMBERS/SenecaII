@@ -45,10 +45,6 @@ var seneca_init = func {
 
 setlistener("/sim/signals/fdm-initialized", seneca_init );
 
-var paxDoor = aircraft.door.new( "/sim/model/door-positions/pax-door", 1, 0 );
-var baggageDoor = aircraft.door.new( "/sim/model/door-positions/baggage-door", 2, 0 );
-var rightDoor = aircraft.door.new( "/sim/model/door-positions/right-door", 1, 0 );
-
 var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.05, 0.05, 0.45 ], "/controls/lighting/beacon" );
 var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 0.05, 0.05, 0.05, 0.05, 0.35 ], "/controls/lighting/strobe" );
 
