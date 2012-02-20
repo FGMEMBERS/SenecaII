@@ -30,6 +30,7 @@
             <signal><type>bool</type><property type="string">/controls/engines/engine[%i]/alternate-air</property></signal>
             <signal><type>float</type><property type="string">/controls/engines/engine[%i]/cowl-flaps-norm</property></signal>
             <signal><type>float</type><property type="string">/fdm/jsbsim/propulsion/engine[%i]/cowl-flaps-norm</property></signal>
+            <signal><type>float</type><property type="string">engines/engine[%i]/mp-inhg</property></signal>
         </signals>
         <signals include="/Aircraft/Generic/flightrecorder/components/gear-retractable.xml">
             <count type="int">3</count>
