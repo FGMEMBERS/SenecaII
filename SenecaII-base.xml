@@ -276,22 +276,22 @@
     </menubar>
     <systems>
       <path>Aircraft/SenecaII/Systems/SenecaII-systems.xml</path>
-      <autopilot>
+      <property-rule>
         <name>CENTURYIII-Controller</name>
         <path>Aircraft/SenecaII/Systems/CENTURYIII-Controller.xml</path>
-      </autopilot>
+      </property-rule>
       <autopilot>
         <name>CENTURYIII</name>
         <path>Aircraft/SenecaII/Systems/CENTURYIII.xml</path>
       </autopilot>
-      <autopilot>
+      <property-rule>
         <name>Instrument-Filter</name>
         <path>Aircraft/SenecaII/Systems/Instrument-filter.xml</path>
-      </autopilot>
-      <autopilot>
+      </property-rule>
+      <property-rule>
         <name>Electrical System</name>
         <path>Aircraft/SenecaII/Systems/electric.xml</path>
-      </autopilot>
+      </property-rule>
       <electrical>
         <path/>
       </electrical>
