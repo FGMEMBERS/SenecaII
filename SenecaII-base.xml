@@ -391,6 +391,23 @@
           <tutorial include="Tutorials/92_ILSApproach.xml"/>
 -->
     </tutorials>
+    <checklists>
+      <checklist include="Checklists/cockpit.xml"/>
+      <checklist include="Checklists/before-start-engine.xml"/>
+      <checklist include="Checklists/start-engine.xml"/>
+      <checklist include="Checklists/after-start-engine.xml"/>
+      <checklist include="Checklists/taxi.xml"/>
+      <checklist include="Checklists/run-up.xml"/>
+      <checklist include="Checklists/before-take-off.xml"/>
+      <checklist include="Checklists/line-up.xml"/>
+      <checklist include="Checklists/after-take-off.xml"/>
+      <checklist include="Checklists/cruise.xml"/>
+      <checklist include="Checklists/approach.xml"/>
+      <checklist include="Checklists/final.xml"/>
+      <checklist include="Checklists/after-landing.xml"/>
+      <checklist include="Checklists/parking.xml"/>
+      <checklist include="Checklists/emergency.xml"/>
+    </checklists>
   </sim>
   <engines>
     <engine n="0">
