@@ -53,7 +53,7 @@
   <attitude-indicator>
     <name>attitude-indicator</name>
     <number>0</number>
-    <suction>systems/vacuum[0]/suction-inhg</suction>
+    <suction>instrumentation/vacuum/suction-inhg</suction>
   </attitude-indicator>
 
   <attitude-indicator>
