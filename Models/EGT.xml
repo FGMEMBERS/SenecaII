@@ -54,7 +54,7 @@
         <dep>0</dep>
       </entry>
       <entry>
-        <ind>1770</ind>
+        <ind>1700</ind>
         <dep>-90</dep>
       </entry>
     </interpolation>
@@ -80,7 +80,7 @@
         <dep>0</dep>
       </entry>
       <entry>
-        <ind>1770</ind>
+        <ind>1700</ind>
         <dep>-90</dep>
       </entry>
     </interpolation>
@@ -108,7 +108,7 @@
         <property alias="../../../../params/bug"/>
         <step>-5</step>
         <min>1200</min>
-        <max>1770</max>
+        <max>1700</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -120,7 +120,7 @@
         <property alias="../../../../params/bug"/>
         <step>-50</step>
         <min>1200</min>
-        <max>1770</max>
+        <max>1700</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -150,7 +150,7 @@
         <property alias="../../../../params/bug"/>
         <step>5</step>
         <min>1200</min>
-        <max>1770</max>
+        <max>1700</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -162,7 +162,7 @@
         <property alias="../../../../params/bug"/>
         <step>50</step>
         <min>1200</min>
-        <max>1770</max>
+        <max>1700</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -174,7 +174,7 @@
         <property alias="../../../../params/bug"/>
         <step>5</step>
         <min>1200</min>
-        <max>1770</max>
+        <max>1700</max>
         <wrap>0</wrap>
       </binding>
     </action>
