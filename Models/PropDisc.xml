@@ -24,6 +24,11 @@
 
   <path>PropDisc.ac</path>
 
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>PropDisc</object-name>
+  </effect>
+
   <animation>
     <type>material</type>
     <object-name>PropDisc</object-name>
