@@ -698,6 +698,9 @@
     </marker-beacon>
     <audio-panel include="Models/gma340properties.xml"/>
     <kcs55 include="Systems/kcs55.xml"/>
+    <magnetic-compass>
+      <pitch-offset-deg type="double">-0.64</pitch-offset-deg>
+    </magnetic-compass>
   </instrumentation>
   <fdm>
     <jsbsim>
