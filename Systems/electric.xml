@@ -45,6 +45,8 @@
     </input>
     <input>0</input>
     <output>/systems/electrical/avionic-bus/u-volts</output>
+    <output>/systems/electrical/outputs/comm[0]</output>
+    <output>/systems/electrical/outputs/comm[1]</output>
     <output>/systems/electrical/outputs/nav[0]</output>
     <output>/systems/electrical/outputs/nav[1]</output>
     <output>/systems/electrical/outputs/dme[0]</output>

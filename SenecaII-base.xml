@@ -679,6 +679,14 @@
       <volume-norm type="double">1.0</volume-norm>
       <model>ki227</model>
     </adf>
+    <comm n="0">
+      <power-btn type="bool">1</power-btn>
+      <power-good type="bool">1</power-good>
+    </comm>
+    <comm n="1">
+      <power-btn type="bool">1</power-btn>
+      <power-good type="bool">1</power-good>
+    </comm>
     <nav n="0">
       <ident type="bool">0</ident>
       <volume type="double">0.5</volume>
