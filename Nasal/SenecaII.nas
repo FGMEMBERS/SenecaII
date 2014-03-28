@@ -15,6 +15,25 @@
 # General Public License for more details.
 #############################################################################
 
+if( getprop("/sim/presets/onground") == 0 ) {
+  print("starting in air");
+  setprop("/sim/presets/running",1);
+  setprop("/consumables/fuel/tank[2]/level-m3", getprop("/consumables/fuel/tank[2]/capacity-m3"));
+  setprop("/consumables/fuel/tank[3]/level-m3", getprop("/consumables/fuel/tank[3]/capacity-m3"));
+  setprop("/controls/engines/engine[0]/magneto[0]", 1 );
+  setprop("/controls/engines/engine[0]/magneto[1]", 1 );
+  setprop("/controls/engines/engine[1]/magneto[0]", 1 );
+  setprop("/controls/engines/engine[1]/magneto[1]", 1 );
+  setprop("/controls/engines/engine[0]/magnetos", 3 );
+  setprop("/controls/engines/engine[1]/magnetos", 3 );
+  setprop("/controls/engines/engine[0]/throttle", 0.75 );
+  setprop("/controls/engines/engine[1]/throttle", 0.75 );
+  setprop("/controls/engines/engine[0]/propeller-pitch", 0.9 );
+  setprop("/controls/engines/engine[1]/propeller-pitch", 0.9 );
+
+  setprop("/controls/gear/gear-down", 0 );
+}
+
 var updateClients = [];
 var timeNode = props.globals.getNode( "/sim/time/elapsed-sec", 1 );
 var lastRun = timeNode.getValue();
@@ -27,9 +46,11 @@ var timedUpdate = func {
 };
 
 var seneca_init = func {
+
   props.globals.initNode( "autopilot/CENTURYIII/controls/mode", 2, "INT" );
   props.globals.initNode( "autopilot/CENTURYIII/controls/manual-trim", 0, "INT" );
   props.globals.initNode( "autopilot/CENTURYIII/controls/disconnect", 0, "BOOL" );
+
   ki266.new(0);
 
   updateClients = [];
@@ -41,6 +62,15 @@ var seneca_init = func {
   SetFuelSelector( 1 );
 
   timedUpdate();
+
+  if( getprop("/sim/presets/onground") == 0 ) {
+    ## Fly on A/P after 3 seconds
+    settimer( func {
+      setprop("/autopilot/CENTURYIII/controls/roll/button-state", 1 );
+      setprop("/autopilot/CENTURYIII/controls/pitch/button-state", 1 );
+      setprop("/autopilot/CENTURYIII/controls/alt/button-state", 1 );
+    }, 3 );
+  }
 };
 
 setlistener("/sim/signals/fdm-initialized", seneca_init );
@@ -54,9 +84,7 @@ setprop( "/instrumentation/nav[1]/ident", 0 );
 ########################################
 # Sync the magneto switches with magneto properties
 ########################################
-var setmagneto = func {
-  var eng = arg[0];
-  var mag = arg[1];
+var setmagneto = func(eng,mag) {
   var on = props.globals.getNode( "/controls/engines/engine[" ~ eng ~ "]/magneto[" ~ mag ~ "]" ).getValue();
   var m = props.globals.getNode( "/controls/engines/engine[" ~ eng ~ "]/magnetos" );
 
