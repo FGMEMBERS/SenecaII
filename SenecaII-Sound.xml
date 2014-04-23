@@ -19,7 +19,7 @@
     <fx>
 
         <HSI-gyro>
-            <type>avionics</type>
+            <type>Avionics</type>
             <name>HSIGyro</name>
             <mode>looped</mode>
             <path>Sounds/gear.wav</path>
@@ -41,7 +41,7 @@
             </pitch>
         </HSI-gyro>
         <TC-gyro>
-            <type>avionics</type>
+            <type>Avionics</type>
             <name>TCGyro</name>
             <mode>looped</mode>
             <path>Sounds/gear.wav</path>
