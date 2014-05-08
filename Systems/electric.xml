@@ -51,6 +51,7 @@
     <output>/systems/electrical/outputs/nav[1]</output>
     <output>/systems/electrical/outputs/dme[0]</output>
     <output>/systems/electrical/outputs/adf[0]</output>
+    <output>/systems/electrical/outputs/transponder</output>
   </filter>
 
   <filter>
@@ -227,6 +228,21 @@
       </not>
     </input>
     <output>/fdm/jsbsim/gear/serviceable</output>
+  </logic>
+
+  <logic>
+    <name>Transponder-Power-Observer</name>
+    <input>
+      <greater-than>
+        <property>/systems/electrical/avionic-bus/u-volts</property>
+        <value type="double">10.0</value>
+      </greater-than>
+      <property>/controls/electric/avionic-switch</property>
+      <not>
+        <property>controls/electric/circuitbreaker/cb_2_8</property>
+      </not>
+    </input>
+    <output>/instrumentation/transponder/serviceable</output>
   </logic>
 
 </PropertyList>

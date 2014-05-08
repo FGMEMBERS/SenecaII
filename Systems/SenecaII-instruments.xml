@@ -18,6 +18,12 @@
 
 <PropertyList>
 
+  <transponder>
+    <name>transponder</name>
+    <number>0</number>
+    <mode-c-altitude>/instrumentation/altimeter[0]/mode-c-alt-ft</mode-c-altitude>
+  </transponder>
+
   <airspeed-indicator>
     <name>airspeed-indicator</name>
     <number>0</number>
