@@ -271,7 +271,7 @@
   </logic>
 
   <logic>
-    <name>L/H fuel pump</name>
+    <name>R/H fuel pump</name>
     <debug>false</debug>
     <input>
       <or>
