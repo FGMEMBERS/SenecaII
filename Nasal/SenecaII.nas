@@ -30,6 +30,8 @@ if( getprop("/sim/presets/onground") == 0 ) {
   setprop("/controls/engines/engine[1]/throttle", 0.75 );
   setprop("/controls/engines/engine[0]/propeller-pitch", 0.9 );
   setprop("/controls/engines/engine[1]/propeller-pitch", 0.9 );
+  setprop("controls/fuel/tank[0]/fuel_selector-position", 1 );
+  setprop("controls/fuel/tank[1]/fuel_selector-position", 1 );
 
   setprop("/controls/gear/brake-parking", 0 );
   setprop("/controls/gear/gear-down", 0 );
