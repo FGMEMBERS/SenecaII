@@ -45,7 +45,7 @@ BaseElement.interpolate = func( x, pairs ) {
     return pairs[0][1];
   }
   if( x >= pairs[n][0] ) {
-    return pairs[n][0];
+    return pairs[n][1];
   }
   for( var i = 0; i < n; i = i + 1 ) {
     if( x > pairs[i][0] and x <= pairs[i+1][0] ) {
