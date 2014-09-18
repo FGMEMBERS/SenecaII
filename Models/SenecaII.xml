@@ -2329,15 +2329,4 @@
       </offsets>
     </model>
 
-    <animation>
-        <type>select</type>
-        <condition>
-          <not>
-            <and>
-              <property>sim/model/hide-model</property>
-              <property>/sim/current-view/internal</property>
-            </and>
-          </not>
-        </condition>
-    </animation>
 </PropertyList>

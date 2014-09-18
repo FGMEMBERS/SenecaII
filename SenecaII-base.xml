@@ -188,7 +188,7 @@
             <label>Show/hide Aircraft</label>
             <binding>
               <command>property-toggle</command>
-              <property>sim/model/hide-model</property>
+              <property>sim/rendering/draw-mask/aircraft</property>
             </binding>
           </item>
           <item>
