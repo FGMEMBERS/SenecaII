@@ -1,6 +1,5 @@
 { 
     "src":    "AI.svg",
-    "target": "Position2",
 
     "animations": [
       {
@@ -9,7 +8,7 @@
         "transforms": [{
           "type": "rotate",
           "a": {
-            "property": "/instrumentation/attitude-indicator/indicated-roll-deg",
+            "property": "roll",
             "scale": -1
           },
           "x": 256,
@@ -22,7 +21,7 @@
           "type": "translate",
           "x": 0,
           "y": {
-            "property": "/instrumentation/attitude-indicator/indicated-pitch-deg",
+            "property": "pitch",
             "scale": 6
           }
         }]

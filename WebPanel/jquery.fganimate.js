@@ -57,4 +57,27 @@
     return this;
   };
 
+  $.fn.fgLoadInstruments = function( dataTag ) {
+    var reply = [];
+
+    this.each(function() {
+      var instrumentDefinitionFile = $(this).data(dataTag);
+      $.ajax({
+        type: "GET",
+        url: instrumentDefinitionFile,
+        context: this,
+        async: false,
+        success: function (data,status,xhr) {
+          var i = new FGFS.Instrument(data);
+          reply.push(i);
+          $(this).append(i.svg);
+        },
+        error: function(xhr,status,msg) {
+          alert(status + " while reading '" + instrumentDefinitionFile + "': " + msg.toString() );
+        },
+    });
+  });
+  return reply;
+}
+
 }(jQuery));

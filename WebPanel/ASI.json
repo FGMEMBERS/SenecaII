@@ -1,6 +1,5 @@
 { 
     "src":    "ASI.svg",
-    "target": "Position1",
 
     "animations": [
       {
@@ -9,7 +8,7 @@
         "transforms": [{
           "type": "rotate",
           "a": {
-            "property": "/instrumentation/airspeed-indicator/indicated-speed-kt",
+            "property": "ias",
             "interpolation": "../Models/AirspeedInterpolation.xml"
           },
           "x": 256,
@@ -22,7 +21,7 @@
         "transforms": [{
           "type": "rotate",
               "a": {
-            "property": "/instrumentation/airspeed-indicator/tas-face-rotation",
+            "property": "tas",
             "scale": -1
           },
           "x": 256,

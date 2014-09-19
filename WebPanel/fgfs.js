@@ -34,7 +34,7 @@ FGFS.Property.prototype.getStringValue = function(val) {
 
 FGFS.Property.prototype.getNumValue = function(val) {
   var reply = this.value == null ? null : Number(this.value);
-  return isNaN(reply) ? 0 : reply;
+  return (isNaN(reply) || reply == null) ? 0 : reply;
 }
 
 FGFS.PropertyListener = function(arg) {
@@ -151,16 +151,23 @@ FGFS.InputValue = function(arg) {
   this.offset = 0;
   this.scale = 1;
   this.interpolationTable = null;
+  this.min = null;
+  this.max = null;
 
   this.getValue = function() {
     var value = this.value;
     if (this.property != null)
-      value = this.property.getValue();
+      value = this.property.getNumValue();
 
     if (this.interpolationTable != null && this.interpolationTable.length > 0)
       return FGFS.interpolate(value, this.interpolationTable);
 
-    return value * this.scale + this.offset;
+    value = value * this.scale + this.offset;
+    if( this.min != null && value < this.min )
+      return this.min;
+    if( this.max != null && value > this.min )
+      return this.max;
+    return value;
   }
 
   if (typeof (arg) == 'number') {
@@ -304,18 +311,15 @@ FGFS.TransformAnimation = function(arg) {
 
 FGFS.Instrument = function(arg) {
 
-  var target = $("#".concat(arg.target));
-  var instrument = this;
   // load svg into target
   $.ajax({
     type : "GET",
     url : arg.src,
+    async: false,
     dataType : "xml",
+    context: this,
     success : function(xml, status, xhr) {
-      $(xml).find("svg").each(function() {
-        target.append(this);
-        instrument.svg = this;
-      });
+      this.svg = $(xml).find("svg")[0];
     },
     error : function(xhr, status, msg) {
       alert(status + " while reading '" + arg.src + "': " + msg.toString());
@@ -350,3 +354,4 @@ FGFS.Instrument = function(arg) {
     });
   }
 }
+
