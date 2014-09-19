@@ -280,7 +280,7 @@
                 if( props.globals.getNode("/").getValue("sim/http/running",0) != 1 ) {
                   gui.popupTip("Internal webserver not running. Restart FlightGear with -httpd=8080", 5.0);
                 } else {
-                  var _url = "http://localhost:" ~ getprop("/sim/http/options/listening-port") ~ "/aircraft-dir/WebPanel/ASI.html";
+                  var _url = "http://localhost:" ~ getprop("/sim/http/options/listening-port") ~ "/aircraft-dir/WebPanel/Panel1.html";
                   fgcommand("open-browser", props.Node.new({ "url": _url }));
                 }
               </script>

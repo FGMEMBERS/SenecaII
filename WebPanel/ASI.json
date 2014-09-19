@@ -8,8 +8,10 @@
         "type":    "transform",
         "transforms": [{
           "type": "rotate",
-          "property": "/instrumentation/airspeed-indicator/indicated-speed-kt",
-          "interpolation": "../Models/AirspeedInterpolation.xml",
+          "a": {
+            "property": "/instrumentation/airspeed-indicator/indicated-speed-kt",
+            "interpolation": "../Models/AirspeedInterpolation.xml"
+          },
           "x": 256,
           "y": 256
         }]
@@ -19,8 +21,10 @@
         "type":    "transform",
         "transforms": [{
           "type": "rotate",
-          "property": "/instrumentation/airspeed-indicator/tas-face-rotation",
-          "scale": -1,
+              "a": {
+            "property": "/instrumentation/airspeed-indicator/tas-face-rotation",
+            "scale": -1
+          },
           "x": 256,
           "y": 256
         }]

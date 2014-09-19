@@ -17,18 +17,26 @@ body,html {
 }
 
 .big {
-	width: 100%;
-	height: 100%;
+	width: 9cm;
+	height: 9cm;
 }
 
 .instrument {
-	
+	border: 1px solid black;
+	background-color: #808080;
 }
+
 
 #Position1 {
 	position: absolute;
 	left: 0cm;
 	top: 0cm;
+}
+
+#Position2 {
+	position: absolute;
+	left: 9.2cm;
+	top:  0.0cm;
 }
 </style>
 
@@ -40,8 +48,10 @@ body,html {
 
 // define the properties we mirror from FlightGear
 var fgProps = {
-    ias:  new FGFS.Property("/instrumentation/airspeed-indicator/indicated-speed-kt"),
-    tas:  new FGFS.Property("/instrumentation/airspeed-indicator/tas-face-rotation"),
+    ias:   new FGFS.Property("/instrumentation/airspeed-indicator/indicated-speed-kt"),
+    tas:   new FGFS.Property("/instrumentation/airspeed-indicator/tas-face-rotation"),
+    roll:  new FGFS.Property("/instrumentation/attitude-indicator/indicated-roll-deg"),
+    pitch: new FGFS.Property("/instrumentation/attitude-indicator/indicated-pitch-deg"),
 };
 
 function fgGetNode( path ) 
@@ -61,7 +71,8 @@ $(document).ready(function() {
   var instruments = [];
 
   [
-    "ASI.json"
+    "ASI.json",
+    "AI.json"
   ].forEach(function(instrumentDefinitionFile) {
     $.ajax({
       type: "GET",
@@ -88,5 +99,6 @@ $(document).ready(function() {
 </head>
 <body>
 	<div id="Position1" class="big instrument"></div>
+	<div id="Position2" class="big instrument"></div>
 </body>
 </html>

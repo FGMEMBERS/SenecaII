@@ -1,0 +1,31 @@
+{ 
+    "src":    "AI.svg",
+    "target": "Position2",
+
+    "animations": [
+      {
+        "element": "#Roll",
+        "type":    "transform",
+        "transforms": [{
+          "type": "rotate",
+          "a": {
+            "property": "/instrumentation/attitude-indicator/indicated-roll-deg",
+            "scale": -1
+          },
+          "x": 256,
+          "y": 256
+        }]
+      },{
+        "element": "#Pitch",
+        "type":    "transform",
+        "transforms": [{
+          "type": "translate",
+          "x": 0,
+          "y": {
+            "property": "/instrumentation/attitude-indicator/indicated-pitch-deg",
+            "scale": 6
+          }
+        }]
+      }
+    ]
+}
