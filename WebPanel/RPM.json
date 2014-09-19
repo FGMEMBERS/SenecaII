@@ -1,0 +1,33 @@
+{ 
+    "src":    "RPM.svg",
+
+    "animations": [
+      {
+        "element": "#Left",
+        "type":    "transform",
+        "transforms": [{
+          "type": "rotate",
+          "a": {
+            "property": "rpmLeft",
+            "scale": 0.08,
+            "offset": -128
+          },
+          "x": 256,
+          "y": 256
+        }]
+      },{
+        "element": "#Right",
+        "type":    "transform",
+        "transforms": [{
+          "type": "rotate",
+          "a": {
+            "property": "rpmRight",
+            "scale": 0.08,
+            "offset": -128
+          },
+          "x": 256,
+          "y": 256
+        }]
+      }
+    ]
+}
