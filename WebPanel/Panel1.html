@@ -40,14 +40,20 @@ body,html {
 
 #Position2 {
 	position: absolute;
-	left: 9.2cm;
+	left: 9.1cm;
 	top:  0.0cm;
 }
 
 #Position3 {
-  position: absolute;
-  left: 18.4cm;
-  top:  0.0cm;
+	position: absolute;
+	left: 18.2cm;
+	top:  0.0cm;
+}
+
+#Position4 {
+	position: absolute;
+	left: 27.3cm;
+	top:  0.0cm;
 }
 </style>
 
@@ -63,6 +69,7 @@ var fgProps = {
     tas:      new FGFS.Property("/instrumentation/airspeed-indicator/tas-face-rotation"),
     roll:     new FGFS.Property("/instrumentation/attitude-indicator/indicated-roll-deg"),
     pitch:    new FGFS.Property("/instrumentation/attitude-indicator/indicated-pitch-deg"),
+    alt:      new FGFS.Property("/instrumentation/altimeter/indicated-altitude-ft"),
     rpmLeft:  new FGFS.Property("/engines/engine/rpm-filtered"),
     rpmRight: new FGFS.Property("/engines/engine[1]/rpm-filtered"),
 };
@@ -89,8 +96,9 @@ $(document).ready(function() {
 </script>
 </head>
 <body> 
-	<div id="Position1" class="big instrument" data-fg-instrument="ASI.json"></div>
+  <div id="Position1" class="big instrument" data-fg-instrument="ASI.json"></div>
   <div id="Position2" class="big instrument" data-fg-instrument="AI.json"></div>
-  <div id="Position3" class="small instrument" data-fg-instrument="RPM.json"></div>
+  <div id="Position3" class="big instrument" data-fg-instrument="ALT.json"></div>
+  <div id="Position4" class="small instrument" data-fg-instrument="RPM.json"></div>
 </body>
 </html>

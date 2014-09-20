@@ -1,0 +1,43 @@
+{ 
+    "src":    "ALT.svg",
+
+    "animations": [
+      {
+        "element": "#100",
+        "type":    "transform",
+        "transforms": [{
+          "type": "rotate",
+          "a": {
+            "property": "alt",
+            "scale": 0.36
+          },
+          "x": 256,
+          "y": 256
+        }]
+      },{
+        "element": "#1000",
+        "type":    "transform",
+        "transforms": [{
+          "type": "rotate",
+          "a": {
+            "property": "alt",
+            "scale": 0.036
+          },
+          "x": 256,
+          "y": 256
+        }]
+      },{
+        "element": "#10000",
+        "type":    "transform",
+        "transforms": [{
+          "type": "rotate",
+          "a": {
+            "property": "alt",
+            "scale": 0.0036
+          },
+          "x": 256,
+          "y": 256
+        }]
+      }
+    ]
+}
