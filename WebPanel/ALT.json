@@ -38,6 +38,19 @@
           "x": 256,
           "y": 256
         }]
+      },{
+        "element": "#KollsmannInHg",
+        "type":    "transform",
+        "transforms": [{
+          "type": "rotate",
+          "a": {
+            "property": "inhg",
+            "scale": -100,
+            "offset": 120
+          },
+          "x": 256,
+          "y": 256
+        }]
       }
     ]
 }
