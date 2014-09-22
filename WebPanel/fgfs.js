@@ -108,12 +108,24 @@ FGFS.PropertyListener = function(arg) {
 
 }
 
+// expects:
+// [
+//   [ "key", "/fg/property/path" ],
+//   [ "key", "/another/fg/property/path" ],
+// ]
 FGFS.PropertyMirror = function(mirroredProperties) {
+  var mirror = {}
+
+  for( var i = 0; i < mirroredProperties.length; i++ ) {
+    var pair = mirroredProperties[i];
+    mirror[pair[0]] = new FGFS.Property(pair[1]);
+  }
+
   var listener = new FGFS.PropertyListener({
     onopen : function() {
-      var keys = Object.keys(mirroredProperties);
+      var keys = Object.keys(mirror);
       for (var i = 0; i < keys.length; i++) {
-        listener.addProperty(mirroredProperties[keys[i]], function(n) {
+        listener.addProperty(mirror[keys[i]], function(n) {
           if (typeof (n.value) != 'undefined')
             this.prop.value = n.value;
         });
@@ -123,6 +135,14 @@ FGFS.PropertyMirror = function(mirroredProperties) {
   });
 
   this.listener = listener;
+  this.mirror = mirror;
+
+  this.getNode = function(id) {
+    return this.mirror[id];
+  };
+
+  // TODO: ugly static variable, change this!
+  FGFS.NodeProvider.mirror = this;
 }
 
 FGFS.interpolate = function(x, pairs) {
@@ -145,7 +165,18 @@ FGFS.interpolate = function(x, pairs) {
   return pairs[i][1];
 }
 
+
+FGFS.NodeProvider = {
+  mirror: null,
+  getNode: function(id) {
+    if( this.mirror == null )
+      throw new Error('no nodes without a mirror');
+    return this.mirror.getNode(id);
+  }
+}
+
 FGFS.InputValue = function(arg) {
+  this.__proto__ = FGFS.NodeProvider;
   this.value = 0;
   this.property = null;
   this.offset = 0;
@@ -173,11 +204,11 @@ FGFS.InputValue = function(arg) {
   if (typeof (arg) == 'number') {
     this.value = Number(arg);
   } else if (typeof (arg) == 'string') {
-    this.property = fgGetNode(arg);
+    this.property = this.getNode(arg);
   } else if (typeof (arg) == 'object') {
 
     if (typeof (arg.property) != 'undefined')
-      this.property = fgGetNode(arg.property);
+      this.property = this.getNode(arg.property);
 
     if (typeof (arg.value) != 'undefined')
       this.value = Number(arg.value);
@@ -354,4 +385,51 @@ FGFS.Instrument = function(arg) {
     });
   }
 }
+
+FGFS.FGPanel = function( propUrl ) 
+{
+
+  var defaultProps = {
+    instrumentSelector: ".instrument",
+    instrumentDataKey: "fgpanel-instrument",
+    updateInterval: 50,
+  };
+
+  this.props = Object.create( defaultProps );
+
+  if( typeof(propUrl) == 'string' ) {
+      $.ajax({
+        type : "GET",
+        url : propUrl,
+        async: false,
+        dataType : "json",
+        context: this,
+        success : function(data, status, xhr) {
+          data.__proto__ = defaultProps;
+          this.props = data;
+        },
+        error : function(xhr, status, msg) {
+          alert(status + " while reading '" + propUrl + "': " + msg.toString());
+        },
+      });
+  }
+
+  var mirror = new FGFS.PropertyMirror(this.props.propertyMirror);
+
+  var instruments = $(this.props.instrumentSelector).fgLoadInstruments(this.props.instrumentDataKey);
+
+  window.setInterval( function() {
+    instruments.forEach(function(instrument) {
+      instrument.update();
+    });
+  }, this.props.updateInterval );
+}
+
+$(document).ready(function() {
+  var hasFGPanel  = $("body").data("fgpanel");
+  if( hasFGPanel ) {
+    var panelProps = $("body").data("fgpanel-props");
+    new FGFS.FGPanel( panelProps == null ? "fgpanel.json" : panelProps );
+  }
+});
 

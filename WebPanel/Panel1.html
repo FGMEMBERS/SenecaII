@@ -52,6 +52,24 @@ body,html {
 
 #Position4 {
 	position: absolute;
+	left: 0cm;
+	top: 9.1cm;
+}
+
+#Position5 {
+	position: absolute;
+	left: 9.1cm;
+	top: 9.1cm;
+}
+
+#Position6 {
+	position: absolute;
+	left: 18.2cm;
+	top: 9.1cm;
+}
+
+#Position7 {
+	position: absolute;
 	left: 27.3cm;
 	top:  0.0cm;
 }
@@ -59,47 +77,18 @@ body,html {
 
 <script type="text/javascript" charset="utf-8"
 	src="/gui/3rdparty/jquery/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="fgfs.js"></script>
 <script type="text/javascript" charset="utf-8" src="jquery.fganimate.js"></script>
-<script type="text/javascript" charset="utf-8">
-
-// define the properties we mirror from FlightGear
-var fgProps = {
-    ias:      new FGFS.Property("/instrumentation/airspeed-indicator/indicated-speed-kt"),
-    tas:      new FGFS.Property("/instrumentation/airspeed-indicator/tas-face-rotation"),
-    roll:     new FGFS.Property("/instrumentation/attitude-indicator/indicated-roll-deg"),
-    pitch:    new FGFS.Property("/instrumentation/attitude-indicator/indicated-pitch-deg"),
-    alt:      new FGFS.Property("/instrumentation/altimeter/indicated-altitude-ft"),
-    inhg:     new FGFS.Property("/instrumentation/altimeter/setting-inhg"),
-    rpmLeft:  new FGFS.Property("/engines/engine/rpm-filtered"),
-    rpmRight: new FGFS.Property("/engines/engine[1]/rpm-filtered"),
-};
-
-function fgGetNode( id ) 
-{
-  return fgProps[id];
-}
-
-var mirror = new FGFS.PropertyMirror(fgProps);
-
-$(document).ready(function() {
-
-  var instruments = $(".instrument").fgLoadInstruments("fg-instrument" );
-
-  window.setInterval( function() {
-    instruments.forEach(function(instrument) {
-      instrument.update();
-    });
-
-  }, 50 );
-});
-
-</script>
+<script type="text/javascript" charset="utf-8" src="fgfs.js"></script>
 </head>
-<body> 
-  <div id="Position1" class="big instrument" data-fg-instrument="ASI.json"></div>
-  <div id="Position2" class="big instrument" data-fg-instrument="AI.json"></div>
-  <div id="Position3" class="big instrument" data-fg-instrument="ALT.json"></div>
-  <div id="Position4" class="small instrument" data-fg-instrument="RPM.json"></div>
+<body data-fgpanel="true" data-fgpanel-props="Panel1-properties.json">
+  <div id="Position1" class="big instrument" data-fgpanel-instrument="ASI.json"></div>
+  <div id="Position2" class="big instrument" data-fgpanel-instrument="AI.json"></div>
+  <div id="Position3" class="big instrument" data-fgpanel-instrument="ALT.json"></div>
+<!--
+  <div id="Position4" class="big instrument" data-fgpanel-instrument="TC.json"></div>
+  <div id="Position5" class="big instrument" data-fgpanel-instrument="HSI.json"></div>
+  <div id="Position6" class="big instrument" data-fgpanel-instrument="VSI.json"></div>
+-->
+  <div id="Position7" class="small instrument" data-fgpanel-instrument="RPM.json"></div>
 </body>
 </html>
