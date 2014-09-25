@@ -11,6 +11,8 @@
     [ "alt",       "/instrumentation/altimeter/indicated-altitude-ft" ],
     [ "inhg",      "/instrumentation/altimeter/setting-inhg" ],
     [ "rpmLeft",   "/engines/engine/rpm-filtered" ],
-    [ "rpmRight",  "/engines/engine[1]/rpm-filtered" ]
+    [ "rpmRight",  "/engines/engine[1]/rpm-filtered" ],
+    [ "turn",      "/instrumentation/turn-indicator/indicated-turn-rate" ],
+    [ "slip",      "/instrumentation/slip-skid-ball/indicated-slip-skid" ]
   ]
 }
