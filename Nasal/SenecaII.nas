@@ -148,12 +148,20 @@ var magnetoswitchlistener = func(m) {
   setmagneto( m.getParent().getIndex(), m.getIndex() );
 };
 
+var taxilandinglightlistener = func(n) {
+  setprop("/sim/rendering/als-secondary-lights/use-landing-light",
+    getprop("/controls/lighting/landing-lights") or getprop("/controls/lighting/taxi-light") );
+}
+
 setlistener( "/controls/engines/engine[0]/magnetos", magnetolistener );
 setlistener( "/controls/engines/engine[1]/magnetos", magnetolistener );
 setlistener( "/controls/engines/engine[0]/magneto[0]", magnetoswitchlistener, 1, 0 );
 setlistener( "/controls/engines/engine[0]/magneto[1]", magnetoswitchlistener, 1, 0 );
 setlistener( "/controls/engines/engine[1]/magneto[0]", magnetoswitchlistener, 1, 0 );
 setlistener( "/controls/engines/engine[1]/magneto[1]", magnetoswitchlistener, 1, 0 );
+
+setlistener( "/controls/lighting/landing-lights", taxilandinglightlistener, 1, 0 );
+setlistener( "/controls/lighting/taxi-light", taxilandinglightlistener, 1, 0 );
 
 ########################################
 # Sync the dimmer controls with the according properties
