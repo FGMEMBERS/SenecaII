@@ -75,7 +75,7 @@ Torsten Dreyer torsten@t3r.de
                 </transformation>
             </transformations>
         </layer>
-<!--
+
         <layer>
             <name>Ring</name>
             <w>512</w>
@@ -88,7 +88,7 @@ Torsten Dreyer torsten@t3r.de
                 <y2>1.0</y2>
             </texture>
         </layer>
--->
+
     </layers>
 
 </PropertyList>
