@@ -22,11 +22,10 @@ Torsten Dreyer torsten@t3r.de
     </params>
 
     <layers>
-
         <layer>
             <name>Face</name>
             <w>440</w>
-            <h>440    </h>
+            <h>440</h>
             <texture>
                 <path>Aircraft/SenecaII/Panels/Textures/FlapTrimIndicator.png</path>
                 <x1>0.0</x1>
@@ -51,8 +50,8 @@ Torsten Dreyer torsten@t3r.de
 
         <layer>
             <name>ElevatorTrimIndicator</name>
-            <w>35</w>
-            <h>20</h>
+            <w>50</w>
+            <h>30</h>
             <texture>
                 <path>Aircraft/SenecaII/Panels/Textures/FlapTrimIndicator.png</path>
                 <x1>0.87890625</x1>
@@ -75,8 +74,8 @@ Torsten Dreyer torsten@t3r.de
 
         <layer>
             <name>RudderTrimIndicator</name>
-            <w>35</w>
-            <h>20</h>
+            <w>50</w>
+            <h>30</h>
             <texture>
                 <path>Aircraft/SenecaII/Panels/Textures/FlapTrimIndicator.png</path>
                 <x1>0.87890625</x1>
@@ -103,8 +102,8 @@ Torsten Dreyer torsten@t3r.de
 
         <layer>
             <name>FlapIndicator</name>
-            <w>35</w>
-            <h>20</h>
+            <w>50</w>
+            <h>30</h>
             <texture>
                 <path>Aircraft/SenecaII/Panels/Textures/FlapTrimIndicator.png</path>
                 <x1>0.87890625</x1>
@@ -124,7 +123,7 @@ Torsten Dreyer torsten@t3r.de
               </transformation>
             </transformations>
         </layer>
-
+-->
     </layers>
 
 </PropertyList>

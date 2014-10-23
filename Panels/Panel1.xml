@@ -1,6 +1,6 @@
 <PropertyList>
 
-  <game-mode type="bool">true</game-mode>
+  <game-mode type="bool">false</game-mode>
 
   <panel include="ifr-panel.xml"/>
 
