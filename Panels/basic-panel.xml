@@ -100,8 +100,8 @@
             <h>80</h>
         </instrument>
 
-        <instrument include="FlapTrimIndicator.xml">
-            <name>FlapTrim</name>
+        <instrument include="adf.xml">
+            <name>ADF Indicator</name>
             <x alias="../../../params/col-4"/>
             <y alias="../../../params/row-2"/>
             <w>80</w>

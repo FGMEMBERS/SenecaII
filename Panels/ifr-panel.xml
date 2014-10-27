@@ -196,7 +196,7 @@
         </instrument>
 
         <instrument include="adf.xml">
-            <name>Turn Coordinator</name>
+            <name>ADF Coordinator</name>
             <x alias="../../../params/col-1"/>
             <y alias="../../../params/row-2"/>
             <w alias="../../../params/size-1"/>
