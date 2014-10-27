@@ -128,6 +128,14 @@
   <pi-simple-controller>
     <name>cdi-integrator</name>
     <debug>false</debug>
+    <enable>
+      <condition>
+        <not-equals>
+          <property alias="../../../../../params/controls/mode"/>
+          <value alias="../../../../../params/const/mode-hdg"/>
+        </not-equals>
+      </condition>
+    </enable>
     <config>
       <Kp>45.0</Kp>
       <Ki>0.40</Ki>
