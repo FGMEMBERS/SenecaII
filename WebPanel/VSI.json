@@ -9,7 +9,9 @@
           "type": "rotate",
           "a": {
             "property": "fpm",
-            "scale": 0.085
+            "scale": 0.085,
+            "max": 170,
+            "min": -170
           },
           "x": 128,
           "y": 128
