@@ -9,8 +9,8 @@
           "type": "rotate",
           "a": {
             "property": "rpmLeft",
-            "scale": 0.08,
-            "offset": -128
+            "scale": 0.082,
+            "offset": -152
           },
           "x": 256,
           "y": 256
@@ -22,8 +22,8 @@
           "type": "rotate",
           "a": {
             "property": "rpmRight",
-            "scale": 0.08,
-            "offset": -128
+            "scale": 0.082,
+            "offset": -152
           },
           "x": 256,
           "y": 256
