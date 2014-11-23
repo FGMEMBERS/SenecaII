@@ -547,8 +547,12 @@
         <unusable-gal_us type="double">2.5</unusable-gal_us>
         <level-gal_us type="double">50</level-gal_us>
       </tank>
-      <tank n="2"/>
-      <tank n="3"/>
+      <tank n="2">
+        <hidden type="bool">true</hidden>
+      </tank>
+      <tank n="3">
+        <hidden type="bool">true</hidden>
+      </tank>
     </fuel>
   </consumables>
   <limits>
