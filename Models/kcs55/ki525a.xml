@@ -24,7 +24,7 @@
 
   <params>
     <has-gs>instrumentation/nav[0]/has-gs</has-gs>
-    <gs-in-range>instrumentation/nav[0]/gs-in-range</gs-in-range>
+    <gs-in-range>instrumentation/nav[0]/gs/in-range</gs-in-range>
 
     <gs-needle-deflection>instrumentation/kcs55/ki525/gs-deflection</gs-needle-deflection>
     <cdi-needle-deflection>instrumentation/kcs55/ki525/cdi-deflection</cdi-needle-deflection>

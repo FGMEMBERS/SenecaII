@@ -362,6 +362,7 @@
       <path>controls/engines/engine[0]/cowl-flaps-norm</path>
       <path>controls/engines/engine[1]/cowl-flaps-norm</path>
       <path>autopilot/CENTURYIII/controls/mode</path>
+      <path>autopilot/CENTURYIII/controls/nav-source</path>
       <path>controls/electric/battery-switch</path>
       <path>controls/electric/avionic-switch</path>
       <path>controls/fuel/tank[0]/fuel_selector-position</path>
@@ -720,7 +721,7 @@
     </fuel>
   </systems>
   <instrumentation>
-    <use-new-navradio type="bool">false</use-new-navradio>
+    <use-new-navradio type="bool">true</use-new-navradio>
     <adf>
       <ident-audible>0</ident-audible>
       <volume-norm type="double">1.0</volume-norm>
