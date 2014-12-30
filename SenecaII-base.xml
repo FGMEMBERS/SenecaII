@@ -540,13 +540,13 @@
         <name type="string">Left Wing</name>
         <capacity-gal_us type="double">64.0</capacity-gal_us>
         <unusable-gal_us type="double">2.5</unusable-gal_us>
-        <level-gal_us type="double">50</level-gal_us>
+        <level-gal_us type="double">30</level-gal_us>
       </tank>
       <tank n="1">
         <name type="string">Right Wing</name>
         <capacity-gal_us type="double">64.0</capacity-gal_us>
         <unusable-gal_us type="double">2.5</unusable-gal_us>
-        <level-gal_us type="double">50</level-gal_us>
+        <level-gal_us type="double">30</level-gal_us>
       </tank>
       <tank n="2">
         <hidden type="bool">true</hidden>
@@ -571,12 +571,39 @@
     </max-flap-extension-speed>
     <max-gear-extension-speed type="double">129</max-gear-extension-speed>
     <vne type="double">190</vne>
-    <!-- standard -->
-    <maximum-takeoff-mass-lbs type="double">4570</maximum-takeoff-mass-lbs>
-    <maximum-landing-mass-lbs type="double">4342</maximum-landing-mass-lbs>
-    <!-- reduced mtom to 1999kg -->
-    <!-- maximum-takeoff-mass-lbs type="double">4407</maximum-takeoff-mass-lbs>
-        <maximum-landing-mass-lbs type="double">4407</maximum-landing-mass-lbs-->
+    <mass-and-balance>
+      <!-- standard -->
+      <maximum-takeoff-mass-lbs type="double">4570</maximum-takeoff-mass-lbs>
+      <maximum-landing-mass-lbs type="double">4342</maximum-landing-mass-lbs>
+      <!-- reduced mtom to 1999kg -->
+      <!-- maximum-takeoff-mass-lbs type="double">4407</maximum-takeoff-mass-lbs>
+          <maximum-landing-mass-lbs type="double">4407</maximum-landing-mass-lbs-->
+      <cg>
+        <dimension type="string">in</dimension>
+        <limit>
+          <entry>
+            <position type="double">82.0</position>
+            <mass-lbs type="double">2200</mass-lbs>
+          </entry>
+          <entry>
+            <position type="double">82.0</position>
+            <mass-lbs type="double">3400</mass-lbs>
+          </entry>
+          <entry>
+            <position type="double">90.6</position>
+            <mass-lbs type="double">4570</mass-lbs>
+          </entry>
+          <entry>
+            <position type="double">94.6</position>
+            <mass-lbs type="double">4570</mass-lbs>
+          </entry>
+          <entry>
+            <position type="double">94.6</position>
+            <mass-lbs type="double">2200</mass-lbs>
+          </entry>
+        </limit>
+      </cg>
+    </mass-and-balance>
   </limits>
   <input>
         <keyboard>

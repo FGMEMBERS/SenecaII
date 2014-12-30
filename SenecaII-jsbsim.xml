@@ -29,13 +29,14 @@
 <?xml-stylesheet href="JSBSim.xsl" type="application/xml"?>
 <fdm_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd" name="SenecaII"
-    version="2.0" release="BETA">
+    version="2.0" release="PRODUCTION">
 
     <fileheader>
         <author>Torsten Dreyer with a little help from DATCOM+</author>
         <filecreationdate>2006-01-16</filecreationdate>
         <description>Model for a PA34-200T Seneca II</description>
         <reference title="Seneca II JSBSim FlightModel"/>
+        <version>2014-12-30</version>
     </fileheader>
 
     <!-- **********************************************************************
@@ -57,98 +58,102 @@
             aerodynamic forces (lift and drag) 
         -->
         <location name="AERORP" unit="IN">
-            <x> -49.5 </x>
+            <x> 93.1 </x>
             <y> 0 </y>
             <z> 45.4</z>
         </location>
         <!-- the eyepoint of the pilot (left or right eye?) -->
         <location name="EYEPOINT" unit="IN">
-            <x>-45.3 </x>
+            <x> 97.3 </x>
             <y>-11.0 </y>
             <z> 69.0 </z>
         </location>
         <!-- the visual reference point of the 3d model -->
         <location name="VRP" unit="IN">
-            <x> 0.0 </x>
-            <y> 0.0 </y>
-            <z> 0.0 </z>
+            <x> 0 </x>
+            <y> 0 </y>
+            <z> 0 </z>
         </location>
     </metrics>
     <!-- **********************************************************************
         MASS_BALANCE
         ********************************************************************** -->
     <mass_balance>
+        <!-- use sample problem from SenecaII POH/AFM
+             VB-1150 Page 6-16, Issue Feb. 20 1981 
+        expect TOM 4115lbs and COG at 90.1 
+        -->
         <ixx unit="SLUG*FT2"> 5596 </ixx>
         <iyy unit="SLUG*FT2"> 5334 </iyy>
         <izz unit="SLUG*FT2"> 11945 </izz>
         <ixz unit="SLUG*FT2"> 0 </ixz>
-        <emptywt unit="LBS"> 3300 </emptywt>
+        <emptywt unit="LBS"> 2850 </emptywt>
         <!-- the center of gravity -->
         <location name="CG" unit="IN">
-            <x>-61.0 </x>
+            <x> 83.5 </x>
             <y> 0.0 </y>
             <z> 45.3 </z>
         </location>
         <pointmass name="Pilot">
-            <weight unit="LBS"> 150.0 </weight>
+            <weight unit="LBS"> 180.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> -51.5 </x>
+                <x> 85.5 </x>
                 <y> -11 </y>
                 <z> 50.5 </z>
             </location>
         </pointmass>
         <pointmass name="Co Pilot">
-            <weight unit="LBS"> 150.0 </weight>
+            <weight unit="LBS"> 200.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> -51.5 </x>
+                <x> 85.5 </x>
                 <y> 11 </y>
                 <z> 50.5 </z>
             </location>
         </pointmass>
         <pointmass name="Middle Left Pax">
-            <weight unit="LBS"> 0.0 </weight>
+            <weight unit="LBS"> 135.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> -20.0 </x>
+                <x> 119.1 </x>
                 <y> -11 </y>
                 <z> 50.5 </z>
             </location>
         </pointmass>
         <pointmass name="Middle Right Pax">
-            <weight unit="LBS"> 0.0 </weight>
+            <weight unit="LBS"> 115.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> -20.0 </x>
+                <x> 119.1 </x>
                 <y> 11 </y>
                 <z> 50.5 </z>
             </location>
         </pointmass>
         <pointmass name="Rear Left Pax">
-            <weight unit="LBS"> 0.0 </weight>
+            <weight unit="LBS"> 100.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> 9.5  </x>
+                <x> 157.6  </x>
                 <y> -11 </y>
                 <z> 50.5 </z>
             </location>
         </pointmass>
         <pointmass name="Rear Right Pax">
-            <weight unit="LBS"> 0.0 </weight>
+            <weight unit="LBS"> 80.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> 9.5 </x>
+                <x> 157.6 </x>
                 <y> 11 </y>
                 <z> 50.5 </z>
             </location>
         </pointmass>
         <pointmass name="Nose Baggage">
-            <weight unit="LBS"> 0.0 </weight>
+            <weight unit="LBS"> 50.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> -123.6 </x>
+                <x> 22.5 </x>
                 <y> 0 </y>
                 <z> 35.3 </z>
             </location>
         </pointmass>
         <pointmass name="Aft Baggage">
-            <weight unit="LBS"> 20.0 </weight>
+            <weight unit="LBS"> 40.0 </weight>
             <location name="POINTMASS" unit="IN">
-                <x> 39.3 </x>
+                <x> 178.7 </x>
                 <y> 0 </y>
                 <z> 35.3 </z>
             </location>
@@ -160,7 +165,7 @@
     <ground_reactions>
         <contact type="BOGEY" name="NOSE">
             <location unit="IN">
-                <x>-116.5</x>
+                <x> 25.3 </x>
                 <y>0</y>
                 <z>-1.5</z>
             </location>
@@ -176,7 +181,7 @@
         </contact>
         <contact type="BOGEY" name="LEFT_MAIN">
             <location unit="IN">
-                <x>-32.8</x>
+                <x>109.8</x>
                 <y>-59.1</y>
                 <z>-1.5</z>
             </location>
@@ -191,7 +196,7 @@
         </contact>
         <contact type="BOGEY" name="RIGHT_MAIN">
             <location unit="IN">
-                <x>-32.8</x>
+                <x>109.8</x>
                 <y>59.1</y>
                 <z>-1.5</z>
             </location>
@@ -206,7 +211,7 @@
         </contact>
         <contact type="STRUCTURE" name="TAIL_SKID">
             <location unit="IN">
-                <x> 154 </x>
+                <x> 296.6 </x>
                 <y> 0 </y>
                 <z>42.76 </z>
             </location>
@@ -217,7 +222,7 @@
         </contact>
         <contact type="STRUCTURE" name="NOSE">
             <location unit="IN">
-                <x> -164.7 </x>
+                <x> -21.1 </x>
                 <y> 0 </y>
                 <z> 43.2 </z>
             </location>
@@ -228,7 +233,7 @@
         </contact>
         <contact type="STRUCTURE" name="LEFT_WING">
             <location unit="IN">
-                <x> -39.7 </x>
+                <x> 102.9 </x>
                 <y> -229.1 </y>
                 <z> 55.2 </z>
             </location>
@@ -239,7 +244,7 @@
         </contact>
         <contact type="STRUCTURE" name="RIGHT_WING">
             <location unit="IN">
-                <x> -39.7 </x>
+                <x> 102.9 </x>
                 <y> 229.1 </y>
                 <z> 55.2 </z>
             </location>
@@ -250,7 +255,7 @@
         </contact>
         <contact type="STRUCTURE" name="VERTICAL_TAIL">
             <location unit="IN">
-                <x> 145.7 </x>
+                <x> 288.2 </x>
                 <y> 0.0 </y>
                 <z> 121.2 </z>
             </location>
@@ -261,7 +266,7 @@
         </contact>
         <contact type="STRUCTURE" name="CABIN_TOP">
             <location unit="IN">
-                <x> -53.9 </x>
+                <x> 196.5 </x>
                 <y> 0.0 </y>
                 <z> 77.6 </z>
             </location>
@@ -278,7 +283,7 @@
         <!-- left engine -->
         <engine file="tsio360eb">
             <location unit="IN">
-                <x>-107.9 </x>
+                <x> 250.5 </x>
                 <y> -71.6 </y>
                 <z> 51.6 </z>
             </location>
@@ -291,7 +296,7 @@
             <thruster file="bhc-c2yf-2">
                 <!-- turning clockwise viewed from cockpit -->
                 <location unit="IN">
-                    <x>-107.9 </x>
+                    <x> 250.5 </x>
                     <y> -71.6 </y>
                     <z> 51.6 </z>
                 </location>
@@ -306,7 +311,7 @@
         <!-- right engine -->
         <engine file="tsio360eb">
             <location unit="IN">
-                <x>-107.9 </x>
+                <x> 250.5 </x>
                 <y> 71.6 </y>
                 <z> 51.6 </z>
             </location>
@@ -319,7 +324,7 @@
             <thruster file="bhc-c2yf-2">
                 <!-- turning counterclockwise viewed from cockpit -->
                 <location unit="IN">
-                    <x>-107.9 </x>
+                    <x> 250.5 </x>
                     <y> 71.6 </y>
                     <z> 51.6 </z>
                 </location>
@@ -338,49 +343,49 @@
         <tank type="FUEL">
             <!-- Tank Number 0 (left wing) -->
             <location unit="IN">
-                <x>-31.5</x>
+                <x> 93.6 </x>
                 <y>-75.4</y>
                 <z>34.3</z>
             </location>
             <radius unit="IN">13.3</radius>
             <capacity unit="LBS">384</capacity>
-            <contents unit="LBS">294</contents>
+            <contents unit="LBS">180.5</contents>
             <type>AVGAS</type>
             <priority>0</priority>
         </tank>
         <tank type="FUEL">
             <!-- Tank Number 1 (right wing) -->
             <location unit="IN">
-                <x>-31.5</x>
+                <x> 93.6 </x>
                 <y>75.4</y>
                 <z>34.3</z>
             </location>
             <radius unit="IN">13.3</radius>
             <capacity unit="LBS">384</capacity>
-            <contents unit="LBS">294</contents>
+            <contents unit="LBS">180.5</contents>
             <type>AVGAS</type>
             <priority>0</priority>
         </tank>
         <tank type="FUEL">
             <!-- Pseudo Tank Number 2 (left wing) -->
             <location unit="IN">
-                <x>-31.5</x>
+                <x> 93.6 </x>
                 <y>-75.4</y>
                 <z>34.3</z>
             </location>
             <capacity unit="LBS">0.1</capacity>
-            <contents unit="LBS">0.0</contents>
+            <contents unit="LBS">0.1</contents>
             <type>AVGAS</type>
         </tank>
         <tank type="FUEL">
             <!-- Pseudo Tank Number 3 (right wing) -->
             <location unit="IN">
-                <x>-31.5</x>
+                <x> 93.6 </x>
                 <y>75.4</y>
                 <z>34.3</z>
             </location>
             <capacity unit="LBS">0.1</capacity>
-            <contents unit="LBS">0.0</contents>
+            <contents unit="LBS">0.1</contents>
             <type>AVGAS</type>
         </tank>
     </propulsion>
@@ -486,37 +491,6 @@
             Flaps
         -->
         <channel name="Flaps">
-<!--
-            <kinematic name="Flaps Control">
-                <input>fcs/flap-cmd-norm</input>
-                <traverse>
-                    <setting>
-                        <position>0</position>
-                        <time>0</time>
-                    </setting>
-                    <setting>
-                        <position>1</position>
-                        <time>1</time>
-                    </setting>
-                </traverse>
-                <output>fcs/flap-pos-norm</output>
-            </kinematic>
-            <aerosurface_scale name="Flap Pos Degi">
-                <input>fcs/flap-pos-norm</input>
-                <range>
-                    <min>0</min>
-                    <max>40</max>
-                </range>
-            </aerosurface_scale>
-            <aerosurface_scale name="Flap Pos Rad">
-                <input>fcs/flap-pos-norm</input>
-                <gain>0.01745</gain>
-                <range>
-                    <min>0</min>
-                    <max>40</max>
-                </range>
-            </aerosurface_scale>
--->
             <kinematic name="Flaps Control">
                 <input>fcs/flap-cmd-norm</input>
                 <traverse>
