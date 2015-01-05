@@ -765,10 +765,26 @@
     <nav n="0">
       <ident type="bool">0</ident>
       <volume type="double">0.5</volume>
+      <loc>
+        <ident-volume alias="../../volume"/>
+        <ident-enabled alias="../../ident"/>
+      </loc>
+      <vor>
+        <ident-volume alias="../../volume"/>
+        <ident-enabled alias="../../ident"/>
+      </vor>
     </nav>
     <nav n="1">
       <ident type="bool">0</ident>
       <volume type="double">0.5</volume>
+      <loc>
+        <ident-volume alias="../../volume"/>
+        <ident-enabled alias="../../ident"/>
+      </loc>
+      <vor>
+        <ident-volume alias="../../volume"/>
+        <ident-enabled alias="../../ident"/>
+      </vor>
     </nav>
     <dme>
       <supply-voltage-norm type="double">0.6</supply-voltage-norm>
