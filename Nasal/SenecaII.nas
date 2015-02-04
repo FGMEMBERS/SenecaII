@@ -41,10 +41,12 @@ var updateClients = [];
 var timeNode = props.globals.getNode( "/sim/time/elapsed-sec", 1 );
 var lastRun = timeNode.getValue();
 var timedUpdate = func {
-  var dt = timeNode.getValue() - lastRun;
+  var now = timeNode.getValue();
+  var dt = now - lastRun;
   foreach( var n; updateClients ) {
     n.update( dt );
   }
+  lastRun = now;
   settimer( timedUpdate, 0 );
 };
 
