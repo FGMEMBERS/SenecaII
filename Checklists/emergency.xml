@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PropertyList>
+  <title>Emergency (Abnormal) Check</title>  
+  <type>abnormal</type>
+  <item>
+    <name>In Case of Emergency</name>
+    <value>Don't Panic!</value>
+  </item>
+</PropertyList>
