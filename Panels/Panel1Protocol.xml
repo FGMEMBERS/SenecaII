@@ -4,7 +4,7 @@
  <comment>
   <![CDATA[
     Usage:
-    # fgfs --generic=socket,out,<hz>,<host>,55737,udp,../Aircraft/SenecaII/Protocols/Panel1.xml
+    # fgfs --generic=socket,out,<hz>,<host>,55737,udp,Aircraft/SenecaII/Protocols/Panel1.xml
   ]]>
  </comment>
 
