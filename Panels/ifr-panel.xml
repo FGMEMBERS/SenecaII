@@ -163,7 +163,7 @@
             <h>20</h>
         </instrument>
 
-        <instrument include="../../Instruments/clock.xml">
+        <instrument include="Aircraft/Instruments/clock.xml">
             <name>clock</name>
             <x>170</x>
             <y alias="../../../params/row-lights"/>
@@ -179,7 +179,7 @@
             <h alias="../../../params/size-1"/>
         </instrument>
 
-        <instrument include="../../Instruments/ati-c172s.xml">
+        <instrument include="Aircraft/Instruments/ati-c172s.xml">
             <name>Attitude Gyro</name>
             <x alias="../../../params/col-3"/>
             <y alias="../../../params/row-1"/>
@@ -187,7 +187,7 @@
             <h alias="../../../params/size-1"/>
         </instrument>
 
-        <instrument include="../../Instruments/alt-c172s.xml">
+        <instrument include="Aircraft/Instruments/alt-c172s.xml">
             <name>Altimeter</name>
             <x alias="../../../params/col-4"/>
             <y alias="../../../params/row-1"/>
@@ -203,7 +203,7 @@
             <h alias="../../../params/size-1"/>
         </instrument>
 
-        <instrument include="../../Instruments/trn-c172s.xml">
+        <instrument include="Aircraft/Instruments/trn-c172s.xml">
             <name>Turn Coordinator</name>
             <x alias="../../../params/col-2"/>
             <y alias="../../../params/row-2"/>
@@ -211,7 +211,7 @@
             <h alias="../../../params/size-1"/>
         </instrument>
 
-        <instrument include="../../Instruments/vsi-c172s.xml">
+        <instrument include="Aircraft/Instruments/vsi-c172s.xml">
             <name>Vertical Velocity Indicator</name>
             <x alias="../../../params/col-4"/>
             <y alias="../../../params/row-2"/>
@@ -250,7 +250,7 @@
         </instrument>
 
         <!-- right half -->
-        <instrument include="../../Instruments/kra-10a.xml">
+        <instrument include="Aircraft/Instruments/kra-10a.xml">
             <name>Radar Altimeter</name>
             <x alias="../../../params/col-r1"/>
             <y alias="../../../params/row-1"/>
@@ -258,7 +258,7 @@
             <h alias="../../../params/size-1"/>
         </instrument>
 
-        <instrument include="../../Instruments/vor2-c172s.xml">
+        <instrument include="Aircraft/Instruments/vor2-c172s.xml">
             <name>VOR 2 Gauge</name>
             <params>
                 <nav-to-flag>/instrumentation/nav[1]/from-flag</nav-to-flag>
@@ -364,7 +364,7 @@
 
 
 <!--
-        <instrument include="../../Instruments/navcom-kx155.xml">
+        <instrument include="Aircraft/Instruments/navcom-kx155.xml">
             <name>comnav1</name>
             <params>
               <comm-freq-selected-prop>/instrumentation/comm[0]/frequencies/selected-mhz</comm-freq-selected-prop>
@@ -380,7 +380,7 @@
             <h>50</h>
         </instrument>
 
-        <instrument include="../../Instruments/navcom-kx155.xml">
+        <instrument include="Aircraft/Instruments/navcom-kx155.xml">
             <name>comnav2</name>
             <params>
               <comm-freq-selected-prop>/instrumentation/comm[1]/frequencies/selected-mhz</comm-freq-selected-prop>
@@ -396,7 +396,7 @@
             <h>50</h>
         </instrument>
 
-        <instrument include="../../Instruments/kr-87adf.xml">
+        <instrument include="Aircraft/Instruments/kr-87adf.xml">
             <name>comnav2</name>
             <x alias="../../../params/radio-col"/>
             <y>148</y>
@@ -404,7 +404,7 @@
             <h>30</h>
         </instrument>
 
-        <instrument include="../../Instruments/xpdr-kt76c.xml">
+        <instrument include="Aircraft/Instruments/xpdr-kt76c.xml">
             <name>comnav2</name>
             <x alias="../../../params/radio-col"/>
             <y>116</y>
@@ -412,7 +412,7 @@
             <h>30</h>
         </instrument>
 
-        <instrument include="../../Instruments/dme.xml">
+        <instrument include="Aircraft/Instruments/dme.xml">
             <name>comnav2</name>
             <x alias="../../../params/radio-col"/>
             <y>84</y>

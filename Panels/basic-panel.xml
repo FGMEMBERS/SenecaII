@@ -43,7 +43,7 @@
             <h>80</h>
         </instrument>
 
-        <instrument include="../../Instruments/ati-c172s.xml">
+        <instrument include="Aircraft/Instruments/ati-c172s.xml">
             <name>Attitude Gyro</name>
             <x alias="../../../params/col-2"/>
             <y alias="../../../params/row-1"/>
@@ -51,7 +51,7 @@
             <h>80</h>
         </instrument>
 
-        <instrument include="../../Instruments/alt-c172s.xml">
+        <instrument include="Aircraft/Instruments/alt-c172s.xml">
             <name>Altimeter</name>
             <x alias="../../../params/col-3"/>
             <y alias="../../../params/row-1"/>
@@ -67,7 +67,7 @@
             <h>95</h>
         </instrument>
 
-        <instrument include="../../Instruments/trn-c172s.xml">
+        <instrument include="Aircraft/Instruments/trn-c172s.xml">
             <name>Turn Coordinator</name>
             <x alias="../../../params/col-1"/>
             <y alias="../../../params/row-2"/>
@@ -75,7 +75,7 @@
             <h>80</h>
         </instrument>
 
-        <instrument include="../../Instruments/vsi-c172s.xml">
+        <instrument include="Aircraft/Instruments/vsi-c172s.xml">
             <name>Vertical Velocity Indicator</name>
             <x alias="../../../params/col-3"/>
             <y alias="../../../params/row-2"/>
@@ -83,7 +83,7 @@
             <h>80</h>
         </instrument>
 
-        <instrument include="../../Instruments/vor2-c172s.xml">
+        <instrument include="Aircraft/Instruments/vor2-c172s.xml">
             <name>VOR 2 Gauge</name>
             <params>
                 <nav-to-flag>/instrumentation/nav[1]/to-flag</nav-to-flag>
