@@ -1,5 +1,5 @@
 define([
-        'jquery', 'knockout', 'text!./Autopilot.html', 'kojqui/slider'
+        'jquery', 'knockout', 'text!./Autopilot.html', 'kojqui/slider', 'kojqui/spinner'
 ], function(jquery, ko, htmlString) {
 
     function getBoolIcon(b) {
@@ -85,6 +85,33 @@ define([
         self.hdgMode = new ModeButtonVM(self.mode,2);
         self.locMode = new ModeButtonVM(self.mode,3);
         self.locrevMode = new ModeButtonVM(self.mode,4);
+
+        self.headingBug = ko.observable().extend({
+            observedProperty : "/instrumentation/kcs55/ki525/selected-heading-deg"
+        });
+
+        self.setHeadingBug = function(evt,ui) {
+            var value = self.headingBug();
+            while( value >= 360 ) value -= 360;
+            while( value < 0 ) value += 360;
+            self.headingBug.fgSetPropertyValue( value );
+        }
+
+        self.spinHeadingBug = function(evt,ui) {
+            var max = 360, min = 0;
+            var value = ui.value;
+            var ret = true;
+            if (value >= max) {
+                value -= max;
+                ret = false;
+            } else if (value < min) {
+                value += max;
+                ret = false;
+            }
+            $(evt.target).spinner("value",value);
+            self.headingBug.fgSetPropertyValue( value );
+            return ret;
+        }
     }
 
     ViewModel.prototype.dispose = function() {
