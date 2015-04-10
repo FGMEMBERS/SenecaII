@@ -1,0 +1,451 @@
+<style>
+.dualarcgauge {
+  border: 3px groove silver;
+  background-color: #101010;
+}
+.engine-instrument {
+	float: left;
+}
+
+.engine-instrument .dualarcgauge-scale-stroke {
+	stroke: white;
+}
+
+.engine-instrument .dualarcgauge-label, .engine-instrument .dualarcgauge-marker
+	{
+	font-family: 'Liberation Sans';
+	font-weight: 'bold';
+	stroke: none;
+}
+
+.engine-instrument .dualarcgauge-label {
+	fill: #fff;
+}
+
+.engine-instrument .dualarcgauge-value text {
+	font-family: 'Liberation Sans';
+	fill: #fff;
+	stroke: none;
+}
+
+.engine-instrument .dualarcgauge-value rect {
+	fill: #1000e0;
+	stroke: #fff;
+	stroke-width: 0.5;
+}
+
+.two-instruments {
+	width: 50%;
+}
+
+.three-instruments {
+	width: 33.333%;
+}
+
+.four-instruments {
+	width: 25%;
+}
+
+.engine-lever {
+  height: 300px;;
+}
+
+.throttle-control .ui-slider-handle {
+  border: 1px solid #c0c0c0;
+  border-radius: 10px;
+  background: #000;
+}
+
+.propeller-control .ui-slider-handle {
+  border: 1px solid #0000c0;
+  border-radius: 10px;
+  background: #00f;
+}
+
+.mixture-control .ui-slider-handle {
+  border: 1px solid #c00000;
+  border-radius: 10px;
+  background: #f00;
+}
+
+.engine-control-buttons button {
+  font-size: 80%;
+  display: block; 
+  width: 5em;
+}
+
+</style>
+<!--div data-bind="text: ko.toJSON($data)"></div-->
+<div data-bind="foreach: engineControls">
+
+    <fieldset style=" float: left; display: inline;">
+        <legend data-bind="text: label"></legend>
+        <div style="float: left; padding-right: 1.5ex;">
+            <div class="engine-lever throttle-control"
+                data-bind="slider: {
+            orientation: 'vertical', value: throttle, realtime: true, max: 1, min: 0, step: 0.01, slide: setThrottle
+        }, title: throttle">
+            </div>
+        </div>
+
+        <div style="float: left; padding-right: 1.5ex;">
+            <div class="engine-lever propeller-control"
+                data-bind="slider: {
+            orientation: 'vertical', value: pitch, realtime: true, max: 1, min: 0, step: 0.01, slide: setPitch
+        }, title: pitch">
+            </div>
+        </div>
+
+        <div style="float: left; padding-right: 1.5ex;">
+            <div class="engine-lever mixture-control"
+                data-bind="slider: {
+            orientation: 'vertical', value: mixture, realtime: true, max: 1, min: 0, step: 0.01, slide: setMixture
+        }, title: mixture">
+            </div>
+        </div>
+
+        <div style="float: left;" class="engine-control-buttons">
+            <button data-bind="button: {}">Primer</button>
+            <button data-bind="button: {}">Left</button>
+            <button data-bind="button: {}">Right</button>
+            <button data-bind="button: {}">Start</button>
+            <button data-bind="button: {}">FP L</button>
+            <button data-bind="button: {}">FP H</button>
+            <button data-bind="button: {}">On</button>
+            <button data-bind="button: {}">X</button>
+            <button data-bind="button: {}">Off</button>
+            <button data-bind="button: {}">Cowl</button>
+            <button data-bind="button: {}">AltAir</button>
+        </div>
+
+    </fieldset>
+</div>
+<fieldset>
+    <legend>Instruments</legend>
+    <div class="engine-instrument two-instruments">
+        <dualarcgauge
+            params="label: 'RPM',
+            marker: {
+              '0':    'white',
+              '500':  'white',
+              '1000': 'white',
+              '1500': 'white',
+              '2000': 'white',
+              '2575': 'red',
+              '3000': 'white',
+            },
+            ticks: {
+              '500':  {},
+              '600':  { width: 0.5 },
+              '700':  { width: 0.5 },
+              '800':  { width: 0.5 },
+              '900':  { width: 0.5 },
+              '1000': {},
+              '1500': {},
+              '1600':  { width: 0.5 },
+              '1700':  { width: 0.5 },
+              '1800':  { width: 0.5 },
+              '1900':  { width: 0.5 },
+              '2000': {},
+              '2100':  { color: 'black', width: 0.5 },
+              '2200':  { color: 'black', width: 0.5 },
+              '2300':  { width: 0.5 },
+              '2400':  { width: 0.5 },
+              '2500':  { width: 0.5 },
+              '2575': { color: 'red' },
+              '3000': {},
+            },
+            arcs: [{
+              color: 'green',
+              start: 500,
+              end: 2575
+            },{
+              color: 'yellow',
+              start: 2000,
+              end: 2200
+            },{
+              color: 'red',
+              start: 2575
+            }],
+            min: 0,
+            max: 3000,
+            interpolation: {
+              '0': 0,
+              '1500': 0.2,
+              '2500': 0.8,
+              '3000': 1.0 
+            },
+            left: {
+                value: leftRPM,
+                format: '%4d'
+            },
+            right: {
+                value: rightRPM,
+                format: '%4d'
+            }"></dualarcgauge>
+    </div>
+    <div class="engine-instrument two-instruments">
+        <dualarcgauge
+            params="label: 'Manifold Press', 
+            marker: {
+              '10': 'white',
+              '15': 'white',
+              '20': 'white',
+              '25': 'white',
+              '30': 'white',
+              '35': 'white',
+              '40': 'white',
+              '45': 'white',
+              '50': 'white',
+            },
+            ticks: {
+              '15':  {},
+              '16':  { width: 0.5 },
+              '17':  { width: 0.5 },
+              '18':  { width: 0.5 },
+              '19':  { width: 0.5 },
+              '20':  {},
+              '21':  { width: 0.5 },
+              '22':  { width: 0.5 },
+              '23':  { width: 0.5 },
+              '24':  { width: 0.5 },
+              '25':  {},
+              '26':  { width: 0.5 },
+              '27':  { width: 0.5 },
+              '28':  { width: 0.5 },
+              '29':  { width: 0.5 },
+              '30':  {},
+              '31':  { width: 0.5 },
+              '32':  { width: 0.5 },
+              '33':  { width: 0.5 },
+              '34':  { width: 0.5 },
+              '35':  {},
+              '36':  { width: 0.5 },
+              '37':  { width: 0.5 },
+              '38':  { width: 0.5 },
+              '39':  { width: 0.5 },
+              '40':  {},
+              '41':  { width: 0.5 },
+              '42':  { color: 'red' },
+              '45':  {},
+            },
+            arcs: [{
+              color: 'green',
+              start: 10,
+              end: 40
+            }],
+            
+            min: 10,
+            max: 50,
+            left: {
+                value: leftMAP,
+                format: '%3.1f'
+            },
+            right: {
+                value: rightMAP,
+                format: '%3.1f'
+            }"></dualarcgauge>
+    </div>
+    <div class="engine-instrument three-instruments">
+        <dualarcgauge
+            params="label: 'Fuel Flow GPH', 
+             marker: {
+              '0':   'white',
+              '10':  'white',
+              '15':  'white',
+              '20':  'white',
+              '25':  'white',
+            },
+            ticks: {
+              '10':  {},
+              '15':  {},
+              '20':  {},
+            },
+            arcs: [{
+              color: 'green',
+              start: 0,
+              end: 25
+            },{
+              color: 'red',
+              start: 5
+            }],
+            max: 25,
+            left: {
+                value: leftFF,
+                format: '%3.1f'
+            },
+            right: {
+                value: rightFF,
+                format: '%3.1f'
+            }"></dualarcgauge>
+    </div>
+    <div class="engine-instrument three-instruments">
+        <dualarcgauge
+            params="label: 'Exhaust Gas &deg;F', 
+             marker: {
+              '1200':   'white',
+              '1300':  'white',
+              '1400':  'white',
+              '1500':  'white',
+              '1600':  'white',
+              '1700':  'white',
+            },
+            ticks: {
+              '1250':  { width: 0.5 },
+              '1300':  {},
+              '1350':  { width: 0.5 },
+              '1400':  {},
+              '1450':  { width: 0.5 },
+              '1500':  {},
+              '1550':  { width: 0.5 },
+              '1600':  {},
+              '1650':  { width: 0.5 },
+            },
+            min: 1200,
+            max: 1700,
+            left: {
+                value: leftEGT,
+                format: '%d'
+            },
+            right: {
+                value: rightEGT,
+                format: '%d'
+            }"></dualarcgauge>
+    </div>
+    <div class="engine-instrument three-instruments">
+        <dualarcgauge
+            params="label: 'Cylinder Head &deg;F', 
+             marker: {
+              '200': 'white',
+              '460': 'white',
+            },
+            arcs: [{
+              color: 'green',
+              start: 210,
+              end: 450
+            },{
+              color: 'red',
+              start: 460
+            }],
+            min: 200,
+            max: 460,
+            left: {
+                value: leftCHT,
+                format: '%d'
+            },
+            right: {
+                value: rightCHT,
+                format: '%d'
+            }"></dualarcgauge>
+    </div>
+    <div class="engine-instrument four-instruments">
+        <dualarcgauge
+            params="label: 'Oil &deg;F', 
+            marker: {
+              '75': 'white',
+              '180': 'white',
+              '240': 'white',
+            },
+            ticks: {
+              '180': {},
+            },
+            arcs: [{
+              color: 'green',
+              start: 80,
+              end: 240
+            },{
+              color: 'red',
+              start: 240
+            }],
+            min: 75,
+            max: 240,
+            left: {
+                value: leftOilTemp,
+                format: '%d'
+            },
+            right: {
+                value: rightOilTemp,
+                format: '%d'
+            }"></dualarcgauge>
+    </div>
+    <div class="engine-instrument four-instruments">
+        <dualarcgauge
+            params="label: 'Oil Pressure', 
+             marker: {
+              '10': 'white',
+              '30': 'white',
+              '80': 'white',
+              '100': 'white',
+            },
+            arcs: [{
+              color: 'yellow',
+              start: 12,
+              end: 100
+            },{
+              color: 'red',
+              start: 12
+            },{
+              color: 'green',
+              start: 30,
+              end: 80
+            },{
+              color: 'red',
+              start: 100
+            }],
+            min: 10,
+            max: 100,
+            left: {
+                value: leftOilPress,
+                format: '%d'
+            },
+            right: {
+                value: rightOilPress,
+                format: '%d'
+            }"></dualarcgauge>
+    </div>
+    <div class="engine-instrument four-instruments">
+        <dualarcgauge
+            params="label: 'Alternator Amps', 
+            marker: {
+              '0': 'white',
+              '35': 'white',
+              '70': 'white',
+            },
+            ticks: {
+              '35': {},
+            },
+            max: 70,
+            left: {
+                value: leftAmps,
+                format: '%d'
+            },
+            right: {
+                value: rightAmps,
+                format: '%d'
+            }"></dualarcgauge>
+    </div>
+
+    <div class="engine-instrument four-instruments">
+        <dualarcgauge
+            params="label: 'Fuel', 
+            marker: {
+              '0': 'white',
+              '20': 'white',
+              '50': 'white',
+              '60': 'white',
+            },
+            ticks: {
+              '20': {},
+              '50': {},
+            },
+            max: 60,
+            left: {
+                value: leftFuel,
+                format: '%3.1f'
+            },
+            right: {
+                value: rightFuel,
+                format: '%3.1f'
+            }"></dualarcgauge>
+    </div>
+</fieldset>

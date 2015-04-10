@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="6 0 88 30" preserveAspectRatio="xMinYMin meet">
+ <path class="roundgauge-scale-stroke" d="M11,29.5 a 45,45 0 0 1 78,0 L93.3,27 A 50,50 0 0 0 6.7,27 z" stroke="black" stroke-width="0.5" fill="none"/>
+ <g transform="rotate(0,50,52)">
+   <path d="M45,25 l4.5,-8.66 v-10 h1 v10 l4.5,8.66z" stroke="black" stroke-width="0.5" fill="white" />
+   <text x="50" y="23.7" stroke="black" font-size="6" text-anchor="middle">R</text>
+ </g>
+ <g transform="rotate(0,50,52)">
+   <path d="M45,16 l5,-8.66 l5,8.66z" stroke="black" stroke-width="0.5" fill="white" />
+   <text x="50" y="14.7" stroke="black" font-size="6" text-anchor="middle">L</text>
+ </g>
+</svg>
