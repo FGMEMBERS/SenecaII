@@ -21,7 +21,14 @@
           "key": "Aircraft/Engines",
           "lib": "aircraft/Phi/Engines"
         }
+      },
+      "Autopilot": {
+        "component": {
+          "key": "Aircraft/Autopilot",
+          "lib": "aircraft/Phi/Autopilot"
+        }
       }
+
     }
   }
 }

@@ -1,0 +1,49 @@
+<style>
+</style>
+<fieldset>
+    <legend>Altimatic IIIc</legend>
+    <div style="padding-top: 4px; padding-bottom: 4px; padding-right: 1em; display: inline; float: left">
+        <div class=""
+            data-bind="slider: {
+                orientation: 'vertical',
+                value: targetPitch.value,
+                realtime: true,
+                max: targetPitch.max,
+                min: targetPitch.min,
+                step: targetPitch.step,
+                slide: targetPitch.set
+            }, 
+            attr: { title: targetPitch.value }">
+        </div>
+    </div>
+    <div class="ui-widget-header ui-corner-all" style="padding: 4px 8px 4px 4px; display: inline-block; float: left">
+    <button style="width: 7em;" data-bind="button: { icons: roll.icon }, click: roll.toggle">Roll</button>
+    <button style="width: 7em;" data-bind="button: { icons: hdg.icon }, click: hdg.toggle">Hdg</button>
+    <button style="width: 7em;" data-bind="button: { icons: alt.icon }, click: alt.toggle">Alt</button>
+    <button style="width: 7em;" data-bind="button: { icons: pitch.icon }, click: pitch.toggle">Pitch</button>
+    </div>
+
+    <div class="ui-widget-header ui-corner-all" style="padding: 4px 8px 4px 4px; display: inline-block; float: left">
+    <button style="width: 7em;" data-bind="button: { icons: omniMode.icon }, click: omniMode.set">Omni</button>
+    <button style="width: 7em;" data-bind="button: { icons: navMode.icon }, click: navMode.set">Nav</button>
+    <button style="width: 7em;" data-bind="button: { icons: hdgMode.icon }, click: hdgMode.set">Hdg</button>
+    <button style="width: 7em;" data-bind="button: { icons: locMode.icon }, click: locMode.set">Loc/Norm</button>
+    <button style="width: 7em;" data-bind="button: { icons: locrevMode.icon }, click: locrevMode.set">Loc/Rev</button>
+    </div>
+
+    <div class="ui-helper-clearfix"></div>
+
+    <div style="padding-top: 1ex">
+        <div class=""
+            data-bind="slider: {
+                value: targetRoll.value,
+                realtime: true,
+                max: targetRoll.max,
+                min: targetRoll.min,
+                step: targetRoll.step,
+                slide: targetRoll.set
+            }, 
+            attr: { title: targetRoll.value }">
+        </div>
+    </div>
+</fieldset>
