@@ -47,7 +47,7 @@
 }
 
 .engine-lever {
-  height: 300px;;
+  height: 250px;;
 }
 
 .throttle-control .ui-slider-handle {
@@ -71,7 +71,7 @@
 .engine-control-buttons button {
   font-size: 80%;
   display: block; 
-  width: 5em;
+  width: 6em;
 }
 
 </style>
@@ -80,7 +80,7 @@
 
     <fieldset style=" float: left; display: inline;">
         <legend data-bind="text: label"></legend>
-        <div style="float: left; padding-right: 1.5ex;">
+        <div style="float: left; padding-right: 1.5ex; padding-top: 15px">
             <div class="engine-lever throttle-control"
                 data-bind="slider: {
             orientation: 'vertical', value: throttle, realtime: true, max: 1, min: 0, step: 0.01, slide: setThrottle
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <div style="float: left; padding-right: 1.5ex;">
+        <div style="float: left; padding-right: 1.5em; padding-top: 15px">
             <div class="engine-lever propeller-control"
                 data-bind="slider: {
             orientation: 'vertical', value: pitch, realtime: true, max: 1, min: 0, step: 0.01, slide: setPitch
@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <div style="float: left; padding-right: 1.5ex;">
+        <div style="float: left; padding-right: 1.5ex; padding-top: 15px">
             <div class="engine-lever mixture-control"
                 data-bind="slider: {
             orientation: 'vertical', value: mixture, realtime: true, max: 1, min: 0, step: 0.01, slide: setMixture
@@ -105,22 +105,21 @@
         </div>
 
         <div style="float: left;" class="engine-control-buttons">
-            <button data-bind="button: {}">Primer</button>
-            <button data-bind="button: {}">Left</button>
-            <button data-bind="button: {}">Right</button>
-            <button data-bind="button: {}">Start</button>
-            <button data-bind="button: {}">FP L</button>
-            <button data-bind="button: {}">FP H</button>
-            <button data-bind="button: {}">On</button>
-            <button data-bind="button: {}">X</button>
-            <button data-bind="button: {}">Off</button>
-            <button data-bind="button: {}">Cowl</button>
-            <button data-bind="button: {}">AltAir</button>
+            <button data-bind="button: { icons: primerIcon }, click: togglePrimer">Primer</button>
+            <button data-bind="button: { icons: magnetoLIcon }, click: toggleLMagneto">MagL</button>
+            <button data-bind="button: { icons: magnetoRIcon }, click: toggleRMagneto">MagR</button>
+            <button data-bind="button: { icons: starterIcon }, click: toggleStarter">Starter</button>
+            <button data-bind="button: { icons: fuelPumpIcon }, click: toggleFuelPump">FP</button>
+            <button data-bind="button: { icons: fuelTankOnIcon }, click: fuelTankOn">On</button>
+            <button data-bind="button: { icons: fuelTankOffIcon }, click: fuelTankOff">Off</button>
+            <button data-bind="button: { icons: fuelTankXIcon }, click: fuelTankX">X</button>
+            <button data-bind="button: { icons: cowlFlapsIcon }, click: toggleCowlFlaps">Cowl</button>
+            <button data-bind="button: { icons: altAirIcon }, click: toggleAltAir">AltAir</button>
         </div>
 
     </fieldset>
 </div>
-<fieldset>
+<fieldset style="min-width: 512px">
     <legend>Instruments</legend>
     <div class="engine-instrument two-instruments">
         <dualarcgauge
