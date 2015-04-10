@@ -370,19 +370,20 @@
     </aircraft-data>
     <help>
       <title>PA34-200T Seneca II</title>
-      <line>Quick startup:</line>
-      <line> - set magnetos to on by hitting '}' trice</line>
-      <line> - open throttles approx. 25 percent</line>
-      <line> - hit 's' for 5 seconds to start the engines</line>
-      <line> - hit 'B' to release brakes</line>
-      <line> - open throttles to 40 inches of manifold pressure</line>
-      <line> - rotate at 70 knots, climb at 100 knots</line>
-      <line/>
-      <line>You can also use the tutorials under Help-&gt;Start Tutorial</line>
-      <line/>
-      <line>For the online documentation go to</line>
-      <line>http://wiki.flightgear.org/Seneca</line>
-      <line/>
+      <text>
+Quick startup:
+-------------
+- set magnetos to on by hitting '}' trice
+- open throttles approx. 25 percent
+- hit 's' for 5 seconds to start the engines
+- hit 'B' to release brakes
+- open throttles to 40 inches of manifold pressure
+- rotate at 70 knots, climb at 100 knots
+
+You can also use the tutorials under Help-&gt;Start Tutorial
+
+For the online documentation go to [the wiki page](http://wiki.flightgear.org/Seneca)
+      </text>
     </help>
 
     <flight-recorder include="Systems/flight-recorder.xml"/>
