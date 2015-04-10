@@ -1,0 +1,34 @@
+{
+  "engines": [
+    { 
+      "type": "piston",
+      "throttle": true,
+      "mixture": true,
+      "rpm": true
+    },
+    { 
+      "type": "piston",
+      "throttle": true,
+      "mixture": true,
+      "rpm": true
+    }
+  ],
+
+  "plugins": {
+    "Aircraft": {
+      "Engines": {
+        "component": {
+          "key": "Aircraft/Engines",
+          "lib": "aircraft/Phi/Engines"
+        }
+      },
+      "Autopilot": {
+        "component": {
+          "key": "Aircraft/Autopilot",
+          "lib": "aircraft/Phi/Autopilot"
+        }
+      }
+
+    }
+  }
+}
