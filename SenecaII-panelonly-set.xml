@@ -7,6 +7,7 @@
         <status>production</status>
         <flight-model>jsb</flight-model>
         <aero>SenecaII-jsbsim</aero>
+        <variant-of>SenecaII</variant-of>
         <model>
             <path>Aircraft/SenecaII/Models/nothing.ac</path>
         </model>
