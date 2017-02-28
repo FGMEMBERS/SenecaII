@@ -37,8 +37,11 @@
             <tag>piper</tag>
             <tag>piston</tag>
             <tag>twin-engine</tag>
+            <tag>turbocharged</tag>
             <tag>retractable-gear</tag>
             <tag>ifr</tag>
+            <tag>1970s</tag>
+            <tag>1980s</tag>
         </tags>
         <aircraft-version>1.0</aircraft-version>
         <status>production</status>
