@@ -18,10 +18,31 @@
 <PropertyList>
   <sim>
     <author>Torsten Dreyer</author>
+
+    <!--
     <startup>
       <splash-texture>Aircraft/SenecaII/splash.png</splash-texture>
       <splash-title>Piper PA34 200T Seneca II</splash-title>
     </startup>
+  -->
+
+
+  <foo>bar</foo>
+
+
+    <previews>
+      <preview>
+        <type>exterior</type>
+        <path>thumbnail2.png</path>
+        <splash type="bool">true</splash>
+      </preview>
+        <preview>
+          <type>panel</type>
+          <path>thumbnail3.png</path>
+          <splash type="bool">true</splash>
+        </preview>
+    </previews>
+
     <panel>
       <visibility>false</visibility>
     </panel>
@@ -169,7 +190,7 @@
             <binding>
               <command>nasal</command>
               <script><![CDATA[
-                var mal = gui.Dialog.new("/sim/gui/dialogs/SenecaII/menu/dialog", 
+                var mal = gui.Dialog.new("/sim/gui/dialogs/SenecaII/menu/dialog",
                                          "Aircraft/SenecaII/Dialogs/malfunctions-dialog.xml");
                 mal.open();
                 ]]></script>
@@ -179,7 +200,7 @@
             <label>A/C Registration</label>
             <binding>
               <command>nasal</command>
-              <script><![CDATA[ 
+              <script><![CDATA[
                 SenecaII.registrationDialog.toggle();
               ]]></script>
             </binding>
