@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">N301SE</name>
+        <texture n="0" type="string">Liveries/N301SE/d-gear.png</texture>
+        <texture n="1" type="string">Liveries/N301SE/velour.png</texture>
+        <texture n="2" type="string">Liveries/N301SE/WingProp.png</texture>
+      </livery>
+    </model>
+  </sim>
+</PropertyList>

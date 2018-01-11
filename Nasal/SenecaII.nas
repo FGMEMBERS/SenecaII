@@ -76,6 +76,7 @@ var seneca_init = func {
       setprop("/autopilot/CENTURYIII/controls/alt/button-state", 1 );
     }, 3 );
   }
+  aircraft.livery.init ("Models/Liveries");
 };
 
 setlistener("/sim/signals/fdm-initialized", seneca_init );

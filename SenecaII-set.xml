@@ -55,6 +55,9 @@
         <aero>SenecaII-jsbsim</aero>
         <model>
             <path>Aircraft/SenecaII/Models/SenecaII.xml</path>
+            <livery>
+              <file type="string">D-GEAR</file>
+            </livery>
         </model>
     </sim>
 </PropertyList>

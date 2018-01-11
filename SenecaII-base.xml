@@ -307,6 +307,13 @@
               </script>
             </binding>
           </item>
+          <item>
+            <label>Select Livery</label>
+            <binding>
+              <command>nasal</command>
+              <script>aircraft.livery.dialog.toggle ();</script>
+            </binding>
+          </item>
         </menu>
       </default>
     </menubar>

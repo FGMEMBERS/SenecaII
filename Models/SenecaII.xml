@@ -25,6 +25,44 @@
         <pitch-deg>0</pitch-deg>
     </offsets>
 
+    <animation>
+      <type>material</type>
+      <object-name>PaxDoorFrame</object-name>
+      <object-name>BaggageDoorFrame</object-name>
+      <object-name>Rudder</object-name>
+      <object-name>Fin</object-name>
+      <object-name>RightDoor</object-name>
+      <object-name>Fuselage</object-name>
+      <property-base>sim/model/livery</property-base>
+      <texture-prop>texture[0]</texture-prop>
+      <texture>d-gear.png</texture>
+    </animation>
+    <animation>
+      <type>material</type>
+      <object-name>Dashboard</object-name>
+      <object-name>Cabin</object-name>
+      <object-name>box</object-name>
+      <property-base>sim/model/livery</property-base>
+      <texture-prop>texture[1]</texture-prop>
+      <texture>velour.png</texture>
+    </animation>
+    <animation>
+      <type>material</type>
+      <object-name>AVGAS.L</object-name>
+      <object-name>AVGAS.R</object-name>
+      <object-name>LeftFlap</object-name>
+      <object-name>LeftPropeller.1</object-name>
+      <object-name>LeftPropeller.2</object-name>
+      <object-name>LeftWing</object-name>
+      <object-name>RightFlap</object-name>
+      <object-name>RightPropeller.1</object-name>
+      <object-name>RightPropeller.2</object-name>
+      <object-name>RightWing</object-name>
+      <property-base>sim/model/livery</property-base>
+      <texture-prop>texture[2]</texture-prop>
+      <texture>WingProp.png</texture>
+    </animation>
+
     <model>
         <path>Aircraft/SenecaII/Instruments-3d/SwitchPanel.xml</path>
         <name>SwitchPanel</name>
