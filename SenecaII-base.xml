@@ -55,20 +55,19 @@
     <aircraft-class type="string">ga</aircraft-class>
     <aircraft-operator></aircraft-operator>
     <model>
-      <instrument-lighting>
-        <emission>
+      <material>
+        <instruments>
           <red type="double">1.0</red>
           <green type="double">0.2</green>
           <blue type="double">0.0</blue>
-        </emission>
-      </instrument-lighting>
-      <material>
-        <cockpit>
-          <red type="double">0.5</red>
-          <green type="double">0.1</green>
-          <blue type="double">0.1</blue>
+          <factor type="double">0</factor> <!-- used by instruments common to several aircraft -->
+        </instruments>
+        <overhead-lighting>
+          <red type="double">0.06</red>
+          <green type="double">0.003</green>
+          <blue type="double">0</blue>
           <factor type="double">0</factor>
-        </cockpit>
+        </overhead-lighting>
       </material>
       <icing>
         <iceable>
@@ -171,6 +170,7 @@
         <z-offset-m type="double">-0.3</z-offset-m>
       </config>
     </view>
+    <allow-toggle-cockpit>true</allow-toggle-cockpit>
     <menubar>
       <default>
         <!--menu n="3">
@@ -274,6 +274,13 @@
               <property>sim/model/door-positions/baggage-door/position-norm</property>
               <property>sim/model/door-positions/baggage-door/state</property>
               <time>1.0</time>
+            </binding>
+          </item>
+          <item>
+            <label>Overhead light on/off</label>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/model/material/overhead-lighting/factor</property>
             </binding>
           </item>
           <!--item>
@@ -395,6 +402,16 @@
       <path>controls/electric/avionic-switch</path>
       <path>controls/fuel/tank[0]/fuel_selector-position</path>
       <path>controls/fuel/tank[1]/fuel_selector-position</path>
+      <path>consumables/fuel/tank[0]/level-lbs</path>
+      <path>consumables/fuel/tank[1]/level-lbs</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[3]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[4]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[5]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[6]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[7]</path>
     </aircraft-data>
     <help>
       <title>PA34-200T Seneca II</title>
@@ -636,6 +653,14 @@ For the online documentation go to [the wiki page](http://wiki.flightgear.org/Se
   </limits>
   <input>
         <keyboard>
+            <key n="12">
+              <name>Ctrl+L</name>
+              <desc>Toggle overhead cockpit lights</desc>
+              <binding>
+                <command>property-toggle</command>
+                <property>sim/model/material/overhead-lighting/factor</property>
+              </binding>
+            </key>
             <key n="267">
                 <name>F11</name>
                 <desc>Pop up autopilot dialog</desc>

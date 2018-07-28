@@ -28,10 +28,10 @@
         <type>material</type>
         <object-name>AutopilotMode.Face</object-name>
         <emission>
-          <red>0.45</red>
-          <green>0.09</green>
-          <blue>0.00001</blue>
-          <factor-prop>/sim/model/material/instruments/factor</factor-prop>
+            <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+            <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+            <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+            <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
         </emission>
     </animation>
     
@@ -39,10 +39,10 @@
         <type>material</type>
         <object-name>AutopilotMode.Knob</object-name>
         <emission>
-          <red>0.2</red>
-          <green>0.04</green>
-          <blue>0.00002</blue>
-          <factor-prop>/sim/model/material/instruments/factor</factor-prop>
+            <red-prop>sim/model/material/instruments/red</red-prop>
+            <green-prop>sim/model/material/instruments/green</green-prop>
+            <blue-prop>sim/model/material/instruments/blue</blue-prop>
+            <factor-prop>sim/model/material/instruments/factor</factor-prop>
         </emission>
     </animation>
 

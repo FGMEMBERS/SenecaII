@@ -821,6 +821,16 @@
       </action>
     </animation>
     <animation>
+      <type>material</type>
+      <object-name>CowlFlapsControl.L</object-name>
+      <emission>
+        <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+        <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+        <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+        <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
+      </emission>
+    </animation>
+    <animation>
         <type>rotate</type>
         <object-name>CowlFlapsControl.L</object-name>
         <property>controls/engines/engine[0]/cowl-flaps-norm</property>
@@ -834,6 +844,16 @@
             <y2-m>-1</y2-m>
             <z2-m>1.01161</z2-m>
         </axis>
+    </animation>
+    <animation>
+      <type>material</type>
+      <object-name>CowlFlapsControl.R</object-name>
+      <emission>
+        <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+        <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+        <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+        <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
+      </emission>
     </animation>
     <animation>
         <type>rotate</type>
@@ -863,45 +883,38 @@
         <object-name>PanelLightsDimmer</object-name>
         <object-name>RadioLightsDimmer</object-name>
         <object-name>Overhead.CockpitLightSwitch</object-name>
-
+        <object-name>InstrumentCover</object-name>
+        <object-name>Chart1</object-name>
+        <object-name>Chart2</object-name>
+        <object-name>ThrottleControl.L</object-name>
+        <object-name>ThrottleControl.R</object-name>
+        <object-name>PropellerControl.L</object-name>
+        <object-name>PropellerControl.R</object-name>
+        <object-name>MixtureControl.L</object-name>
+        <object-name>MixtureControl.R</object-name>
         <emission>
-            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+            <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+            <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+            <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+            <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
         </emission>
     </animation>
 
     <animation>
         <type>material</type>
         <object-name>Overhead.CockpitLight</object-name>
-
         <emission>
             <red>0.3</red>
             <green>0</green>
             <blue>0</blue>
-            <factor-prop>/controls/lighting/panel-norm</factor-prop>
+            <factor-prop>/sim/model/material/overhead-lighting/factor</factor-prop>
         </emission>
     </animation>
-    <!--    
-    <animation>
-        <type>material</type>
-        <object-name>InstrumentCover</object-name>
-        <object-name>Chart1</object-name>
-        <object-name>Chart2</object-name>
-        
-        <emission>
-            <red>0.1</red>
-            <green>0</green>
-            <blue>0</blue>
-            <factor-prop>/controls/lighting/panel-norm</factor-prop>
-        </emission>
-    </animation>
-    -->    
+
     <animation>
         <type>rotate</type>
         <object-name>PanelLightsDimmer</object-name>
-        <property>controls/lighting/instruments-norm</property>
+        <property>sim/model/material/instruments/factor</property>
         <factor>-112.5</factor>
         <axis>
             <x>0.0</x>
@@ -980,7 +993,7 @@
         <repeatable>false</repeatable>
         <binding>
           <command>property-toggle</command>
-          <property>controls/lighting/instruments-norm</property>
+          <property>sim/model/material/instruments/factor</property>
         </binding>
       </action>
       <action>
@@ -988,7 +1001,7 @@
         <repeatable>true</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>controls/lighting/instruments-norm</property>
+          <property>sim/model/material/instruments/factor</property>
           <step>-.01</step>
           <min>0</min>
           <max>1</max>
@@ -1000,7 +1013,7 @@
         <repeatable>true</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>controls/lighting/instruments-norm</property>
+          <property>sim/model/material/instruments/factor</property>
           <step>0.01</step>
           <min>0</min>
           <max>1</max>
@@ -1014,6 +1027,16 @@
     <animation>
         <type>noshadow</type>
         <object-name>FlapControl</object-name>
+    </animation>
+    <animation>
+      <type>material</type>
+      <object-name>FlapControl</object-name>
+      <emission>
+          <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+          <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+          <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+          <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
+      </emission>
     </animation>
     <animation>
         <type>rotate</type>
@@ -2175,10 +2198,10 @@
         <type>material</type>
         <object-name>Compass.Ring</object-name>
         <emission>
-            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+            <red-prop>/sim/model/material/instruments/red</red-prop>
+            <green-prop>/sim/model/material/instruments/green</green-prop>
+            <blue-prop>/sim/model/material/instruments/blue</blue-prop>
+            <factor-prop>/sim/model/material/instruments/factor</factor-prop>
         </emission>
     </animation>
 
@@ -2289,7 +2312,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Overhead.CockpitLightSwitch</object-name>
-        <property>controls/lighting/panel-norm</property>
+        <property>sim/model/material/overhead-lighting/factor</property>
         <factor>-40.0</factor>
         <axis>
             <x1-m>-1.20476</x1-m>
@@ -2299,6 +2322,19 @@
             <y2-m>-0.01</y2-m>
             <z2-m>1.94148</z2-m>
         </axis>
+    </animation>
+    <animation>
+      <type>pick</type>
+      <object-name>Overhead.CockpitLightSwitch</object-name>
+      <visible>true</visible>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/material/overhead-lighting/factor</property>
+        </binding>
+      </action>
     </animation>
 
     <animation>

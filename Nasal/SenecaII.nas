@@ -158,17 +158,15 @@ setlistener( "/controls/engines/engine[0]/magneto[1]", magnetoswitchlistener, 1,
 setlistener( "/controls/engines/engine[1]/magneto[0]", magnetoswitchlistener, 1, 0 );
 setlistener( "/controls/engines/engine[1]/magneto[1]", magnetoswitchlistener, 1, 0 );
 
-########################################
-# Sync the dimmer controls with the according properties
-########################################
-
-var instrumentsFactorNode = props.globals.initNode( "/sim/model/material/instruments/factor", 1.0 );
-var dimmerlistener = func(n) {
-  if( n != nil )
-    instrumentsFactorNode.setValue( n.getValue() );
+radio1DimmerNode = props.globals.initNode ("/instrumentation/comm[0]/dimming-norm", 0.0);
+radio2DimmerNode = props.globals.initNode ("/instrumentation/comm[1]/dimming-norm", 0.0);
+var radioDimmerListener = func (dimmer) {
+  if (dimmer != nil) {
+    radio1DimmerNode.setValue (dimmer.getValue ());
+    radio2DimmerNode.setValue (dimmer.getValue ());
+  }
 }
-
-setlistener( "/controls/lighting/instruments-norm", dimmerlistener, 1, 0 );
+setlistener ("/controls/lighting/radio-norm", radioDimmerListener, 1, 0);
 
 ####################################################################
 

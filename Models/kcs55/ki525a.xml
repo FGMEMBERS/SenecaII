@@ -46,14 +46,13 @@
 
   <animation>
     <type>material</type>
-    <property-base>sim/model/material/cockpit</property-base>
     <object-name>Chassis</object-name>
     <object-name>Screw</object-name>
     <emission>
-      <red-prop>red</red-prop>
-      <green-prop>green</green-prop>
-      <blue-prop>blue</blue-prop>
-      <factor-prop>factor</factor-prop>
+      <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+      <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+      <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+      <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
     </emission>
   </animation>
 
@@ -77,10 +76,10 @@
     <object-name>OBSSelector</object-name>
     <object-name>HDGSelector</object-name>
     <emission>
-      <red-prop>sim/model/instrument-lighting/emission/red</red-prop>
-      <green-prop>sim/model/instrument-lighting/emission/green</green-prop>
-      <blue-prop>sim/model/instrument-lighting/emission/blue</blue-prop>
-      <factor-prop>controls/lighting/instruments-norm</factor-prop>
+      <red-prop>sim/model/material/instruments/red</red-prop>
+      <green-prop>sim/model/material/instruments/green</green-prop>
+      <blue-prop>sim/model/material/instruments/blue</blue-prop>
+      <factor-prop>sim/model/material/instruments/factor</factor-prop>
     </emission>
   </animation>
 

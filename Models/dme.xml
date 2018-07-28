@@ -155,4 +155,30 @@
         </action>
     </animation>
 
+    <animation>
+      <type>material</type>
+      <object-name>SourceSelectorKnob</object-name>
+      <object-name>PowerSwitch.Lever</object-name> <!-- not the base -->
+      <object-name>n1</object-name>
+      <object-name>n2</object-name>
+      <object-name>hld</object-name>
+      <object-name>Label3</object-name> <!-- the DME label next to the power switch -->
+      <object-name>on</object-name>
+      <object-name>off</object-name>
+      <object-name>Frame</object-name> <!-- actually defined in ki266.ac, not dme.ac -->
+      <object-name>ModeSwitch</object-name> <!-- ditto -->
+      <emission>
+        <!-- We have a choice of two colors: either the same as all
+             other instruments, controlled by the instrument dimmer,
+             or the same color as all other radios, controlled by the
+             radio dimmer.  Since we are controlled by the radio
+             dimmer we choose the latter, which is unfortunately
+             hardcoded in files outside the SenecaII. -->
+        <red>1</red>
+        <green>1</green>
+        <blue>1</blue>
+        <factor-prop>/controls/lighting/radio-norm</factor-prop>
+      </emission>
+    </animation>
+
 </PropertyList>

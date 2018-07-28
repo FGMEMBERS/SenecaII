@@ -95,7 +95,7 @@
       <value>0</value>
     </set>
     <set>
-      <property>controls/lighting/panel-norm</property>
+      <property>sim/model/material/overhead-lighting/factor</property>
       <value>0</value>
     </set>
     <set>

@@ -47,10 +47,10 @@
         <object-name>Master</object-name>
         
         <emission>
-            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+            <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+            <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+            <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+            <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
         </emission>
     </animation>
     

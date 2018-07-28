@@ -95,7 +95,7 @@
       <value>0</value>
     </set>
     <set>
-      <property>controls/lighting/panel-norm</property>
+      <property>sim/model/material/overhead-lighting/factor</property>
       <value>0</value>
     </set>
     <set>
@@ -161,7 +161,7 @@
     <nasal>
       <script>
         if( props.globals.getNode( "/sim/time/sun-angle-rad" ).getValue() &gt; 1.57 ) {
-          props.globals.getNode( "/controls/lighting/instruments-norm" ).setValue( 1.0 );
+          props.globals.getNode( "/sim/model/material/instruments/factor" ).setValue( 1.0 );
         }
       </script>
     </nasal>
