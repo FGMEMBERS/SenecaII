@@ -50,6 +50,8 @@ var timedUpdate = func {
   settimer( timedUpdate, 0 );
 };
 
+var tanks = [];
+
 var seneca_init = func {
 
   props.globals.initNode( "autopilot/CENTURYIII/controls/mode", 2, "INT" );
@@ -58,6 +60,9 @@ var seneca_init = func {
 
   ki266.new(0);
 
+  foreach( var n; props.globals.getNode("/consumables/fuel").getChildren("tank") ) {
+    append(tanks, FuelTank.new (n));
+  }
   updateClients = [];
   foreach( var n; props.globals.getNode("/systems/fuel").getChildren( "fuel-pump" ) ) {
       append( updateClients, FuelPump.new( n ) );
@@ -187,14 +192,12 @@ var SetFuelSelector = func( side ) {
 
 var FuelTank = {};
 
-FuelTank.new = func(nr) {
+FuelTank.new = func(base) {
   var obj = {};
   obj.parents = [FuelTank];
-  obj.baseN = props.globals.getNode( "/consumables/fuel/tank[" ~ nr ~ "]", 1 );
-  obj.emptyN = obj.baseN.initNode("empty", 0, "BOOL" );
-  obj.capacityN = obj.baseN.initNode("capacity-gal_us", 0.0 );
-  obj.contentN = obj.baseN.initNode("level-gal_us", 0.0 );
-
+  obj.emptyN = base.initNode("empty", 0, "BOOL" );
+  obj.capacityN = base.initNode("capacity-gal_us", 0.0 );
+  obj.contentN = base.initNode("level-gal_us", 0.0 );
   return obj;
 };
 
@@ -227,11 +230,7 @@ FuelPump.new = func(base) {
   }
   obj.serviceableNode = base.initNode( "serviceable", 1, "BOOL" );
   obj.sourceTankNode = base.initNode( "source-tank", -1, "INT" );
-
-  obj.tanks = [];
-  append( obj.tanks, FuelTank.new( 0 ) );
-  append( obj.tanks, FuelTank.new( 1 ) );
-  obj.destinationTank = FuelTank.new( base.getNode("destination-tank").getValue() );
+  obj.destinationTankNode = base.initNode("destination-tank", -1, "INT");
   obj.fuel_flow_gphNode = base.getNode( "fuel-flow-gph", 1 );
   return obj;
 };
@@ -243,10 +242,14 @@ FuelPump.update = func(dt) {
   !me.serviceableNode.getValue() and return;
 
   var sourceTank = me.sourceTankNode.getValue();
-  if(sourceTank == nil or sourceTank < 0 or sourceTank >= size(me.tanks) ) return
+  if (sourceTank == nil or sourceTank < 0 or sourceTank >= size(tanks)) return;
 
-  #if  source is empty, go away
-  me.tanks[sourceTank].empty() and return;
+  var destinationTank = me.destinationTankNode.getValue();
+
+  if (destinationTank == nil or destinationTank < 0 or destinationTank >= size (tanks))
+    return;
+
+  if (tanks[sourceTank].empty()) return;
 
   # compute fuel flow
   var flow_gph = me.fuel_flow_gphNode.getValue();
@@ -256,19 +259,19 @@ FuelPump.update = func(dt) {
 
   var transfer_fuel = flow_gph * dt / 3600;
 
-  #consume fuel, up to the available source-level 
-  #and destination-space
-  var source_level = me.tanks[sourceTank].level();
+  # consume fuel, up to the available source-level and destination-space
+  var source_level = tanks[sourceTank].level();
   if( transfer_fuel > source_level )
     transfer_fuel = source_level;
 
-  var destination_space = me.destinationTank.capacity() - me.destinationTank.level();
+  var destination_space = tanks[destinationTank].capacity()
+                        - tanks[destinationTank].level();
 
   if( transfer_fuel > destination_space )
     transfer_fuel = destination_space;
 
-  me.tanks[sourceTank].level( source_level - transfer_fuel );
-  me.destinationTank.level( me.destinationTank.level() + transfer_fuel );
+  tanks[sourceTank].level( source_level - transfer_fuel );
+  tanks[destinationTank].level( tanks[destinationTank].level() + transfer_fuel );
 }
 
 ###############################################

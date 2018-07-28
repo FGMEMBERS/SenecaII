@@ -292,7 +292,7 @@
                 <pitch> 0.00 </pitch>
                 <yaw> 0.00 </yaw>
             </orient>
-            <feed>2</feed>
+            <feed>4</feed>
             <thruster file="bhc-c2yf-2">
                 <!-- turning clockwise viewed from cockpit -->
                 <location unit="IN">
@@ -320,7 +320,7 @@
                 <pitch> 0.00 </pitch>
                 <yaw> 0.00 </yaw>
             </orient>
-            <feed>3</feed>
+            <feed>5</feed>
             <thruster file="bhc-c2yf-2">
                 <!-- turning counterclockwise viewed from cockpit -->
                 <location unit="IN">
@@ -336,10 +336,11 @@
                 <sense>-1</sense>
             </thruster>
         </engine>
-        <!-- 
-            two tanks, one each wing
-            64gal/61.5 usable each side are longrange tanks
-        -->
+
+        <!-- two tanks, one each wing.  64gal/61.5 usable each side
+             are longrange tanks.  Because priority is zero, engines
+             do not draw directly from these tanks; they draw from the
+             carburettors instead, see below. -->
         <tank type="FUEL">
             <!-- Tank Number 0 (left wing) -->
             <location unit="IN">
@@ -366,19 +367,54 @@
             <type>AVGAS</type>
             <priority>0</priority>
         </tank>
+
+        <!-- Two auxiliary tanks at the rear of the engine nacelles.
+             These are aftermarket modifications installed in the
+             baggage holds. See
+             http://www.onaircraft.com/products-services/auxiliary-fuel-tanks/
+             -->
         <tank type="FUEL">
-            <!-- Pseudo Tank Number 2 (left wing) -->
+            <!-- Left nacelle -->
             <location unit="IN">
                 <x> 93.6 </x>
+                <y>-71.6</y>
+                <z>34.3</z>
+            </location>
+            <capacity unit="LBS">90</capacity>
+            <contents unit="LBS">0</contents>
+            <type>AVGAS</type>
+            <priority>0</priority>
+        </tank>
+        <tank type="FUEL">
+            <!-- Right nacelle -->
+            <location unit="IN">
+                <x> 93.6 </x>
+                <y>71.6</y>
+                <z>34.3</z>
+            </location>
+            <capacity unit="LBS">90</capacity>
+            <contents unit="LBS">0</contents>
+            <type>AVGAS</type>
+            <priority>0</priority>
+        </tank>
+
+        <!-- The engine fuel lines.  They are initially empty.  The
+             primer and fuel pumps feed them from the main tanks.  The
+             engines draw from them. -->
+        <tank type="FUEL">
+            <!-- Left engine fuel line -->
+            <location unit="IN">
+                <x> 93.6</x>
                 <y>-75.4</y>
                 <z>34.3</z>
             </location>
             <capacity unit="LBS">0.1</capacity>
             <contents unit="LBS">0.1</contents>
             <type>AVGAS</type>
+            <priority>1</priority>
         </tank>
         <tank type="FUEL">
-            <!-- Pseudo Tank Number 3 (right wing) -->
+            <!-- Right engine fuel line -->
             <location unit="IN">
                 <x> 93.6 </x>
                 <y>75.4</y>
@@ -387,6 +423,7 @@
             <capacity unit="LBS">0.1</capacity>
             <contents unit="LBS">0.1</contents>
             <type>AVGAS</type>
+            <priority>1</priority>
         </tank>
     </propulsion>
     <!-- **********************************************************************
