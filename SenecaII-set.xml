@@ -59,5 +59,8 @@
               <file type="string">D-GEAR</file>
             </livery>
         </model>
+        <multiplay>
+            <fallback-model-index type="int">54</fallback-model-index>
+        </multiplay>
     </sim>
 </PropertyList>
