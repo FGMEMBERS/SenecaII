@@ -393,7 +393,9 @@
       <path>sim/model/hide-yoke</path>
       <path>sim/model/hide-windshield-deice</path>
       <path>engines/engine[0]/egt-bug</path>
+      <path>engines/engine[0]/running-time-s</path>
       <path>engines/engine[1]/egt-bug</path>
+      <path>engines/engine[1]/running-time-s</path>
       <path>controls/engines/engine[0]/cowl-flaps-norm</path>
       <path>controls/engines/engine[1]/cowl-flaps-norm</path>
       <path>autopilot/CENTURYIII/controls/mode</path>

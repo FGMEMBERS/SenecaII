@@ -305,6 +305,15 @@
         </offsets>
     </model>
 
+    <model>
+      <path>Aircraft/c172p/Models/Interior/Panel/Instruments/hobbs/hobbs.xml</path>
+      <offsets>
+        <x-m>-1.552</x-m>
+        <y-m>0.11</y-m>
+        <z-m>1.41</z-m>
+      </offsets>
+    </model>
+
     <!-- Altimatic IIIc Autopilot -->
 
     <model>

@@ -67,6 +67,7 @@ var seneca_init = func {
   foreach( var n; props.globals.getNode("/systems/fuel").getChildren( "fuel-pump" ) ) {
       append( updateClients, FuelPump.new( n ) );
   }
+  append (updateClients, Hobbs_Meter.new());
 
   SetFuelSelector( 0 );
   SetFuelSelector( 1 );
@@ -351,3 +352,65 @@ var MouseHandler = {
 };
 
 var mouseHandler = MouseHandler.new();
+
+
+var Hobbs_Meter = {
+    new: func () {
+        var m = { parents: [ Hobbs_Meter ], 
+                  d0: props.globals.initNode ("instrumentation/hobbs-meter/digits0", 0, "INT"),
+                  d1: props.globals.initNode ("instrumentation/hobbs-meter/digits1", 0, "INT"),
+                  d2: props.globals.initNode ("instrumentation/hobbs-meter/digits2", 0, "INT"),
+                  d3: props.globals.initNode ("instrumentation/hobbs-meter/digits3", 0, "INT"),
+                  d4: props.globals.initNode ("instrumentation/hobbs-meter/digits4", 0, "INT"),
+                  e0: props.globals.initNode ("engines/engine[0]/running-time-s", 0.0, "DOUBLE"),
+                  e1: props.globals.initNode ("engines/engine[1]/running-time-s", 0.0, "DOUBLE")
+                };
+        m.t0 = aircraft.timer.new (m.e0);
+        m.t1 = aircraft.timer.new (m.e1);
+        m.l0 = setlistener ("engines/engine[0]/running",
+                                func (r) {
+                                  if (r.getBoolValue ()) { m.t0.start(); }
+                                  else { m.t0.stop(); }
+                                });
+        m.l1 = setlistener ("engines/engine[1]/running",
+                                func (r) {
+                                  if (r.getBoolValue ()) { m.t1.start(); }
+                                  else { m.t1.stop(); }
+                                });
+        return m;
+    },
+    update: func (dt) {
+        var left = me.e0.getValue () or 0.0;
+        var right = me.e1.getValue () or 0.0;
+        var h = (left > right ? left : right) / 360.0; # tenths of hour, initially
+        me.d0.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d1.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d2.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d3.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d4.setValue (math.mod (int (h), 10)); h = h / 10;
+    },
+};
+
+
+var fuel_totals = props.globals.getNode("/consumables/fuel/total-fuel-lbs");
+var endurance   = props.globals.initNode ("/consumables/fuel/endurance-remaining", "", "STRING");
+var range       = props.globals.initNode ("/consumables/fuel/range-remaining-nmi", 0.0, "DOUBLE");
+var range_total = props.globals.initNode ("/consumables/fuel/range-total-nmi", 0.0, "DOUBLE");
+
+var fuel_flow_timer = maketimer (1.0, func () {
+   var ff_pph = 0;
+   for (var engine=0; engine<2; engine+=1) {
+      ff_pph += getprop ("/engines/engine[" ~ engine ~ "]/fuel-flow_pph");
+   }
+   var endurance_h = 0;
+   if (ff_pph > 0) { endurance_h = fuel_totals.getValue () / ff_pph; }
+   endurance.setValue (sprintf ("%d:%02d:%02d",
+                                int (endurance_h),
+                                math.mod (endurance_h * 60, 60),
+                                math.mod (endurance_h * 3600, 60)));
+   range.setValue (endurance_h * getprop ("/fdm/jsbsim/velocities/vtrue-kts"));
+   range_total.setValue (range.getValue () + getprop ("/instrumentation/gps/odometer"));
+});
+setlistener ("/sim/signals/fdm-initialized", func () {
+   fuel_flow_timer.start ();
+});
