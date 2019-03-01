@@ -38,7 +38,7 @@
     <animation>
         <type>rotate</type>
         <object-name>kra10.needle</object-name>
-        <property>/position/altitude-agl-ft</property>
+        <property>position/altitude-agl-ft</property>
         <interpolation>
             <entry>
                 <ind> 0</ind>
@@ -113,7 +113,7 @@
     <animation>
         <type>rotate</type>
         <object-name>kra10.Bug</object-name>
-        <property>/instrumentation/radar-altimeter/decision-height</property>
+        <property>instrumentation/radar-altimeter/decision-height</property>
         <interpolation>
             <entry>
                 <ind> 0</ind>
@@ -183,8 +183,8 @@
         </emission>
         <condition>
           <less-than>
-            <property>/position/altitude-agl-ft</property>
-            <property>/instrumentation/radar-altimeter/decision-height</property>
+            <property>position/altitude-agl-ft</property>
+            <property>instrumentation/radar-altimeter/decision-height</property>
           </less-than>
         </condition>
     </animation>

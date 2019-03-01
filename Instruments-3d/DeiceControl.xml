@@ -52,13 +52,13 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-assign</command>
-            <property>/controls/deice/surface-deice</property>
+            <property>controls/deice/surface-deice</property>
             <value>1</value>
           </binding>
           <mod-up>
             <binding>
               <command>property-assign</command>
-              <property>/controls/deice/surface-deice</property>
+              <property>controls/deice/surface-deice</property>
               <value>0</value>
             </binding>
           </mod-up>
@@ -67,7 +67,7 @@
     <animation>
         <type>rotate</type>
         <object-name>DeiceControl.SurfaceSwitch</object-name>
-        <property>/controls/deice/surface-deice</property>
+        <property>controls/deice/surface-deice</property>
         <factor>-40</factor>
         <axis>
             <x>0</x>
@@ -90,14 +90,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/deice/prop-deice</property>
+            <property>controls/deice/prop-deice</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>DeiceControl.PropSwitch</object-name>
-        <property>/controls/deice/prop-deice</property>
+        <property>controls/deice/prop-deice</property>
         <factor>-40</factor>
         <axis>
             <x>0</x>
@@ -120,14 +120,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/deice/windshield-deice</property>
+            <property>controls/deice/windshield-deice</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>DeiceControl.WindshieldSwitch</object-name>
-        <property>/controls/deice/windshield-deice</property>
+        <property>controls/deice/windshield-deice</property>
         <factor>-40</factor>
         <axis>
             <x>0</x>
@@ -150,14 +150,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/deice/wingice-light</property>
+            <property>controls/deice/wingice-light</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>DeiceControl.WingLightSwitch.Lever</object-name>
-        <property>/controls/deice/wingice-light</property>
+        <property>controls/deice/wingice-light</property>
         <factor>-60</factor>
         <axis>
             <x>0</x>
@@ -173,7 +173,7 @@
     <animation>
         <type>rotate</type>
         <object-name>DeiceControl.Ampmeter.Needle</object-name>
-        <property>/systems/electrical/deice/prop-deice-amps</property>
+        <property>systems/electrical/deice/prop-deice-amps</property>
         <factor>-2</factor>
         <offset-deg>30</offset-deg>
         <axis>

@@ -49,7 +49,7 @@
     <animation>
         <type>rotate</type>
         <object-name>AutopilotMode.Knob</object-name>
-        <property>/autopilot/CENTURYIII/controls/mode</property>
+        <property>autopilot/CENTURYIII/controls/mode</property>
         <factor>-30</factor>
         <offset-deg>60</offset-deg>
         <axis>
@@ -73,7 +73,7 @@
         <repeatable>false</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>/autopilot/CENTURYIII/controls/mode</property>
+          <property>autopilot/CENTURYIII/controls/mode</property>
           <step type="int">-1</step>
           <min>0</min>
           <max>4</max>
@@ -90,7 +90,7 @@
         <repeatable>false</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>/autopilot/CENTURYIII/controls/mode</property>
+          <property>autopilot/CENTURYIII/controls/mode</property>
           <step type="int">1</step>
           <min>0</min>
           <max>4</max>

@@ -43,7 +43,7 @@
             <tag>1970s</tag>
             <tag>1980s</tag>
         </tags>
-        <aircraft-version>1.7</aircraft-version>
+        <aircraft-version>1.7.1</aircraft-version>
         <status>production</status>
         <rating>
           <FDM type="int">5</FDM>

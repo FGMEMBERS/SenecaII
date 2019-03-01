@@ -32,7 +32,7 @@
         <value>0.9</value>
       </greater-than>
       <greater-than>
-        <property>/systems/electrical/battery-bus/u-volts</property>
+        <property>systems/electrical/battery-bus/u-volts</property>
         <value type="double">8.0</value>
       </greater-than>
       <not>
@@ -55,7 +55,7 @@
         <value>0.9</value>
       </greater-than>
       <greater-than>
-        <property>/systems/electrical/battery-bus/u-volts</property>
+        <property>systems/electrical/battery-bus/u-volts</property>
         <value type="double">8.0</value>
       </greater-than>
       <not>
@@ -78,7 +78,7 @@
         <value>0.9</value>
       </greater-than>
       <greater-than>
-        <property>/systems/electrical/battery-bus/u-volts</property>
+        <property>systems/electrical/battery-bus/u-volts</property>
         <value type="double">8.0</value>
       </greater-than>
       <not>
