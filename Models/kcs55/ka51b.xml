@@ -30,15 +30,14 @@
     
     <animation>
       <type>material</type>
-      <property-base>sim/model/material/cockpit</property-base>
       <object-name>face</object-name>
       <object-name>auto</object-name>
       <object-name>direction</object-name>
       <emission>
-        <red-prop>red</red-prop>
-        <green-prop>green</green-prop>
-        <blue-prop>blue</blue-prop>
-        <factor-prop>factor</factor-prop>
+        <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+        <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+        <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+        <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
       </emission>
     </animation>
 

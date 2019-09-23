@@ -47,10 +47,10 @@
         <object-name>Master</object-name>
         
         <emission>
-            <red-prop>/sim/model/instrument-lighting/emission/red</red-prop>
-            <green-prop>/sim/model/instrument-lighting/emission/green</green-prop>
-            <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop>
-            <factor-prop>/controls/lighting/instruments-norm</factor-prop>
+            <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+            <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+            <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+            <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
         </emission>
     </animation>
     
@@ -58,7 +58,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Magneto.L.L</object-name>
-        <property>/controls/engines/engine[0]/magneto[0]</property>
+        <property>controls/engines/engine[0]/magneto[0]</property>
         <factor>40</factor>
         <min-deg>0</min-deg>
         <max-deg>40</max-deg>
@@ -80,14 +80,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/engines/engine[0]/magneto[0]</property>
+            <property>controls/engines/engine[0]/magneto[0]</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>Magneto.L.R</object-name>
-        <property>/controls/engines/engine[0]/magneto[1]</property>
+        <property>controls/engines/engine[0]/magneto[1]</property>
         <factor>40</factor>
         <min-deg>0</min-deg>
         <max-deg>40</max-deg>
@@ -109,14 +109,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/engines/engine[0]/magneto[1]</property>
+            <property>controls/engines/engine[0]/magneto[1]</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>Magneto.R.L</object-name>
-        <property>/controls/engines/engine[1]/magneto[0]</property>
+        <property>controls/engines/engine[1]/magneto[0]</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -136,14 +136,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/engines/engine[1]/magneto[0]</property>
+            <property>controls/engines/engine[1]/magneto[0]</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>Magneto.R.R</object-name>
-        <property>/controls/engines/engine[1]/magneto[1]</property>
+        <property>controls/engines/engine[1]/magneto[1]</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -163,14 +163,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/engines/engine[1]/magneto[1]</property>
+            <property>controls/engines/engine[1]/magneto[1]</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>Starter</object-name>
-        <property>/controls/engines/engine[0]/starter-switch</property>
+        <property>controls/engines/engine[0]/starter-switch</property>
         <factor>-20</factor>
         <axis>
             <x1-m>0</x1-m>
@@ -190,13 +190,13 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-assign</command>
-            <property>/controls/engines/engine[0]/starter-switch</property>
+            <property>controls/engines/engine[0]/starter-switch</property>
             <value type="bool">1</value>
           </binding>
           <mod-up>
             <binding>
               <command>property-assign</command>
-              <property>/controls/engines/engine[0]/starter-switch</property>
+              <property>controls/engines/engine[0]/starter-switch</property>
               <value type="bool">0</value>
             </binding>
           </mod-up>
@@ -211,13 +211,13 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-assign</command>
-            <property>/controls/engines/engine[1]/starter-switch</property>
+            <property>controls/engines/engine[1]/starter-switch</property>
             <value type="bool">true</value>
           </binding>
           <mod-up>
             <binding>
               <command>property-assign</command>
-              <property>/controls/engines/engine[1]/starter-switch</property>
+              <property>controls/engines/engine[1]/starter-switch</property>
               <value type="bool">false</value>
             </binding>
           </mod-up>
@@ -226,7 +226,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Starter</object-name>
-        <property>/controls/engines/engine[1]/starter-switch</property>
+        <property>controls/engines/engine[1]/starter-switch</property>
         <factor>20</factor>
         <axis>
             <x1-m>0</x1-m>
@@ -246,13 +246,13 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-assign</command>
-            <property>/controls/engines/engine[0]/primer</property>
+            <property>controls/engines/engine[0]/primer</property>
             <value type="bool">true</value>
           </binding>
           <mod-up>
             <binding>
               <command>property-assign</command>
-              <property>/controls/engines/engine[0]/primer</property>
+              <property>controls/engines/engine[0]/primer</property>
               <value type="bool">false</value>
             </binding>
           </mod-up>
@@ -261,7 +261,7 @@
     <animation>
         <type>translate</type>
         <object-name>Primer.L</object-name>
-        <property>/controls/engines/engine[0]/primer</property>
+        <property>controls/engines/engine[0]/primer</property>
         <factor>.01</factor>
         <axis>
             <x>0</x>
@@ -278,13 +278,13 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-assign</command>
-            <property>/controls/engines/engine[1]/primer</property>
+            <property>controls/engines/engine[1]/primer</property>
             <value type="bool">true</value>
           </binding>
           <mod-up>
             <binding>
               <command>property-assign</command>
-              <property>/controls/engines/engine[1]/primer</property>
+              <property>controls/engines/engine[1]/primer</property>
               <value type="bool">false</value>
             </binding>
           </mod-up>
@@ -293,7 +293,7 @@
     <animation>
         <type>translate</type>
         <object-name>Primer.R</object-name>
-        <property>/controls/engines/engine[1]/primer</property>
+        <property>controls/engines/engine[1]/primer</property>
         <factor>.01</factor>
         <axis>
             <x>0</x>
@@ -311,14 +311,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/lighting/landing-lights</property>
+            <property>controls/lighting/landing-lights</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>LandingLight</object-name>
-        <property>/controls/lighting/landing-lights</property>
+        <property>controls/lighting/landing-lights</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -338,14 +338,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/lighting/taxi-light</property>
+            <property>controls/lighting/taxi-light</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>TaxiLight</object-name>
-        <property>/controls/lighting/taxi-light</property>
+        <property>controls/lighting/taxi-light</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -365,14 +365,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/lighting/nav-lights</property>
+            <property>controls/lighting/nav-lights</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>NavLight</object-name>
-        <property>/controls/lighting/nav-lights</property>
+        <property>controls/lighting/nav-lights</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -392,14 +392,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/lighting/beacon</property>
+            <property>controls/lighting/beacon</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>AntiCollLight.Fin</object-name>
-        <property>/controls/lighting/beacon</property>
+        <property>controls/lighting/beacon</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -419,14 +419,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/lighting/strobe</property>
+            <property>controls/lighting/strobe</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>AntiCollLight.Wing</object-name>
-        <property>/controls/lighting/strobe</property>
+        <property>controls/lighting/strobe</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -446,14 +446,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/anti-ice/pitot-heat</property>
+            <property>controls/anti-ice/pitot-heat</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>PitotHeat</object-name>
-        <property>/controls/anti-ice/pitot-heat</property>
+        <property>controls/anti-ice/pitot-heat</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -473,14 +473,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/engines/engine[0]/fuel-pump</property>
+            <property>controls/engines/engine[0]/fuel-pump</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>FuelPump.L</object-name>
-        <property>/controls/engines/engine[0]/fuel-pump</property>
+        <property>controls/engines/engine[0]/fuel-pump</property>
         <factor>-20.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -500,14 +500,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/engines/engine[1]/fuel-pump</property>
+            <property>controls/engines/engine[1]/fuel-pump</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>FuelPump.R</object-name>
-        <property>/controls/engines/engine[1]/fuel-pump</property>
+        <property>controls/engines/engine[1]/fuel-pump</property>
         <factor>-20.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -528,14 +528,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/electric/battery-switch</property>
+            <property>controls/electric/battery-switch</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>Master</object-name>
-        <property>/controls/electric/battery-switch</property>
+        <property>controls/electric/battery-switch</property>
         <factor>40.0</factor>
         <axis>
             <x1-m>-1</x1-m>
@@ -555,14 +555,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/electric/engine[0]/generator</property>
+            <property>controls/electric/engine[0]/generator</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>Alternator.L</object-name>
-        <property>/controls/electric/engine[0]/generator</property>
+        <property>controls/electric/engine[0]/generator</property>
         <factor>60.0</factor>
         <axis>
             <x1-m>0.0565281</x1-m>
@@ -582,14 +582,14 @@
           <repeatable>false</repeatable>
           <binding>
             <command>property-toggle</command>
-            <property>/controls/electric/engine[1]/generator</property>
+            <property>controls/electric/engine[1]/generator</property>
           </binding>
         </action>
     </animation>
     <animation>
         <type>rotate</type>
         <object-name>Alternator.R</object-name>
-        <property>/controls/electric/engine[1]/generator</property>
+        <property>controls/electric/engine[1]/generator</property>
         <factor>60.0</factor>
         <axis>
             <x1-m>0.0314281</x1-m>

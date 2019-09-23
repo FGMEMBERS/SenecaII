@@ -118,8 +118,8 @@
             <signal><type>bool</type><property type="string">/controls/gear/gear-emergency-extend</property></signal>
             <signal><type>bool</type><property type="string">/controls/gear/gear-emergency-extend-unlock</property></signal>
 
-            <signal><type>float</type><property type="string">/controls/lighting/instruments-norm</property></signal>
-            <signal><type>float</type><property type="string">/controls/lighting/panel-norm</property></signal>
+            <signal><type>float</type><property type="string">/sim/model/material/instruments/factor</property></signal>
+            <signal><type>float</type><property type="string">/sim/model/material/overhead-lighting/factor</property></signal>
             <signal><type>float</type><property type="string">/controls/lighting/radio-norm</property></signal>
 
         </signals>

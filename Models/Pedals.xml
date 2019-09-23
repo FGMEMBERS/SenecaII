@@ -35,7 +35,7 @@
         <repeatable>true</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>/controls/flight/rudder</property>
+          <property>controls/flight/rudder</property>
           <step>-0.05</step>
         </binding>
       </action>
@@ -50,7 +50,7 @@
         <repeatable>true</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>/controls/flight/rudder</property>
+          <property>controls/flight/rudder</property>
           <step>0.05</step>
         </binding>
       </action>

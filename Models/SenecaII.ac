@@ -20051,7 +20051,7 @@ kids 3
 OBJECT poly
 name "Dashboard"
 loc -0.0479643 -0.0745134 -6.36394e-09
-texture "velour.png"
+texture "Liveries/D-GEAR/velour.png"
 crease 45.000000
 numvert 109
 0.128113 0.144435 0.616398
@@ -33738,7 +33738,7 @@ kids 2
 OBJECT poly
 name "AVGAS.R"
 loc -0.043265 0.000934958 -0.000415325
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 4
 -0.0277609 0.00766373 -0.0729156
@@ -34288,7 +34288,7 @@ kids 0
 OBJECT poly
 name "Cabin"
 loc -0.592799 1.31413 1.19209e-07
-texture "velour.png"
+texture "Liveries/D-GEAR/velour.png"
 crease 45.000000
 numvert 866
 1.17926 -0.581192 0.565796
@@ -56845,7 +56845,7 @@ kids 0
 OBJECT poly
 name "box"
 loc -0.506558 0.789082 -2.24554e-09
-texture "velour.png"
+texture "Liveries/D-GEAR/velour.png"
 crease 45.000000
 numvert 8
 -1.74893 0.0307516 -0.0547428
@@ -57494,7 +57494,7 @@ kids 0
 OBJECT poly
 name "PaxDoorFrame"
 loc 0.622486 -0.863624 -1.56368
-texture "d-gear.png"
+texture "Liveries/D-GEAR/d-gear.png"
 crease 45.000000
 numvert 48
 -0.610523 2.22785 0.531979
@@ -57876,7 +57876,7 @@ refs 4
 kids 0
 OBJECT poly
 name "BaggageDoorFrame"
-texture "d-gear.png"
+texture "Liveries/D-GEAR/d-gear.png"
 crease 45.000000
 numvert 36
 1.10418 1.33682 -0.159437
@@ -58246,7 +58246,7 @@ kids 0
 OBJECT poly
 name "LeftFlap"
 loc 0.668995 -0.231263 -3.07187
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 24
 0.030948 0.19165 3.612
@@ -58542,7 +58542,7 @@ kids 0
 OBJECT poly
 name "LeftWing"
 loc 0.165182 0.0760175 0.094223
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 316
 0.534759 -0.115631 0.426003
@@ -62158,7 +62158,7 @@ kids 4
 OBJECT poly
 name "RightFlap"
 loc 0.656316 -0.195588 -3.0785
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 24
 0.0309488 0.19165 -3.63189
@@ -62580,7 +62580,7 @@ kids 0
 OBJECT poly
 name "RightWing"
 loc -0.174002 -0.0310175 0.114151
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 313
 0.313922 -0.29984 -4.40666
@@ -66110,7 +66110,7 @@ kids 0
 OBJECT poly
 name "Rudder"
 loc 2.98023e-07 0.408355 3.87845
-texture "d-gear.png"
+texture "Liveries/D-GEAR/d-gear.png"
 crease 45.000000
 numvert 17
 3.55289 1.08548 -3.94091
@@ -66214,7 +66214,7 @@ kids 0
 OBJECT poly
 name "Fin"
 loc -0.049995 -0.183865 2.7
-texture "d-gear.png"
+texture "Liveries/D-GEAR/d-gear.png"
 crease 45.000000
 numvert 27
 3.84483 3.19513 -2.70003
@@ -67236,7 +67236,7 @@ kids 0
 OBJECT poly
 name "RightDoor"
 loc 1.07288e-06 -0.50662 -0.206606
-texture "d-gear.png"
+texture "Liveries/D-GEAR/d-gear.png"
 crease 45.000000
 numvert 82
 -1.29848 2.36055 -0.346485
@@ -69749,7 +69749,7 @@ loc -2.13209 1.26346 0.200214
 kids 2
 OBJECT poly
 name "RightPropeller.1"
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 11
 0.0271852 0.0384448 0.933613
@@ -69875,7 +69875,7 @@ refs 3
 kids 0
 OBJECT poly
 name "RightPropeller.2"
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 11
 5.00679e-06 0.035785 0.000463367
@@ -71386,7 +71386,7 @@ kids 0
 OBJECT poly
 name "AVGAS.L"
 loc -0.043265 0.00102508 0.000380039
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 4
 -0.0277609 0.00766373 0.0729156
@@ -77270,7 +77270,7 @@ kids 0
 OBJECT poly
 name "Fuselage"
 loc -0.109639 1.3121 1.19209e-07
-texture "d-gear.png"
+texture "Liveries/D-GEAR/d-gear.png"
 crease 61.000000
 numvert 1095
 -1.18884 0.54183 -0.553091
@@ -91656,7 +91656,7 @@ loc -2.13209 1.26346 2.65368
 kids 2
 OBJECT poly
 name "LeftPropeller.1"
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 11
 0.0271852 0.0384449 -0.933615
@@ -91782,7 +91782,7 @@ refs 3
 kids 0
 OBJECT poly
 name "LeftPropeller.2"
-texture "WingProp.png"
+texture "Liveries/D-GEAR/WingProp.png"
 crease 45.000000
 numvert 11
 -0.00472522 0.00723493 0.933535

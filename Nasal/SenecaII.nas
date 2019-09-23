@@ -50,6 +50,8 @@ var timedUpdate = func {
   settimer( timedUpdate, 0 );
 };
 
+var tanks = [];
+
 var seneca_init = func {
 
   props.globals.initNode( "autopilot/CENTURYIII/controls/mode", 2, "INT" );
@@ -58,10 +60,14 @@ var seneca_init = func {
 
   ki266.new(0);
 
+  foreach( var n; props.globals.getNode("/consumables/fuel").getChildren("tank") ) {
+    append(tanks, FuelTank.new (n));
+  }
   updateClients = [];
   foreach( var n; props.globals.getNode("/systems/fuel").getChildren( "fuel-pump" ) ) {
       append( updateClients, FuelPump.new( n ) );
   }
+  append (updateClients, Hobbs_Meter.new());
 
   SetFuelSelector( 0 );
   SetFuelSelector( 1 );
@@ -76,6 +82,7 @@ var seneca_init = func {
       setprop("/autopilot/CENTURYIII/controls/alt/button-state", 1 );
     }, 3 );
   }
+  aircraft.livery.init ("Models/Liveries");
 };
 
 setlistener("/sim/signals/fdm-initialized", seneca_init );
@@ -157,17 +164,15 @@ setlistener( "/controls/engines/engine[0]/magneto[1]", magnetoswitchlistener, 1,
 setlistener( "/controls/engines/engine[1]/magneto[0]", magnetoswitchlistener, 1, 0 );
 setlistener( "/controls/engines/engine[1]/magneto[1]", magnetoswitchlistener, 1, 0 );
 
-########################################
-# Sync the dimmer controls with the according properties
-########################################
-
-var instrumentsFactorNode = props.globals.initNode( "/sim/model/material/instruments/factor", 1.0 );
-var dimmerlistener = func(n) {
-  if( n != nil )
-    instrumentsFactorNode.setValue( n.getValue() );
+radio1DimmerNode = props.globals.initNode ("/instrumentation/comm[0]/dimming-norm", 0.0);
+radio2DimmerNode = props.globals.initNode ("/instrumentation/comm[1]/dimming-norm", 0.0);
+var radioDimmerListener = func (dimmer) {
+  if (dimmer != nil) {
+    radio1DimmerNode.setValue (dimmer.getValue ());
+    radio2DimmerNode.setValue (dimmer.getValue ());
+  }
 }
-
-setlistener( "/controls/lighting/instruments-norm", dimmerlistener, 1, 0 );
+setlistener ("/controls/lighting/radio-norm", radioDimmerListener, 1, 0);
 
 ####################################################################
 
@@ -188,14 +193,12 @@ var SetFuelSelector = func( side ) {
 
 var FuelTank = {};
 
-FuelTank.new = func(nr) {
+FuelTank.new = func(base) {
   var obj = {};
   obj.parents = [FuelTank];
-  obj.baseN = props.globals.getNode( "/consumables/fuel/tank[" ~ nr ~ "]", 1 );
-  obj.emptyN = obj.baseN.initNode("empty", 0, "BOOL" );
-  obj.capacityN = obj.baseN.initNode("capacity-gal_us", 0.0 );
-  obj.contentN = obj.baseN.initNode("level-gal_us", 0.0 );
-
+  obj.emptyN = base.initNode("empty", 0, "BOOL" );
+  obj.capacityN = base.initNode("capacity-gal_us", 0.0 );
+  obj.contentN = base.initNode("level-gal_us", 0.0 );
   return obj;
 };
 
@@ -228,11 +231,7 @@ FuelPump.new = func(base) {
   }
   obj.serviceableNode = base.initNode( "serviceable", 1, "BOOL" );
   obj.sourceTankNode = base.initNode( "source-tank", -1, "INT" );
-
-  obj.tanks = [];
-  append( obj.tanks, FuelTank.new( 0 ) );
-  append( obj.tanks, FuelTank.new( 1 ) );
-  obj.destinationTank = FuelTank.new( base.getNode("destination-tank").getValue() );
+  obj.destinationTankNode = base.initNode("destination-tank", -1, "INT");
   obj.fuel_flow_gphNode = base.getNode( "fuel-flow-gph", 1 );
   return obj;
 };
@@ -244,10 +243,14 @@ FuelPump.update = func(dt) {
   !me.serviceableNode.getValue() and return;
 
   var sourceTank = me.sourceTankNode.getValue();
-  if(sourceTank == nil or sourceTank < 0 or sourceTank >= size(me.tanks) ) return
+  if (sourceTank == nil or sourceTank < 0 or sourceTank >= size(tanks)) return;
 
-  #if  source is empty, go away
-  me.tanks[sourceTank].empty() and return;
+  var destinationTank = me.destinationTankNode.getValue();
+
+  if (destinationTank == nil or destinationTank < 0 or destinationTank >= size (tanks))
+    return;
+
+  if (tanks[sourceTank].empty()) return;
 
   # compute fuel flow
   var flow_gph = me.fuel_flow_gphNode.getValue();
@@ -257,19 +260,19 @@ FuelPump.update = func(dt) {
 
   var transfer_fuel = flow_gph * dt / 3600;
 
-  #consume fuel, up to the available source-level 
-  #and destination-space
-  var source_level = me.tanks[sourceTank].level();
+  # consume fuel, up to the available source-level and destination-space
+  var source_level = tanks[sourceTank].level();
   if( transfer_fuel > source_level )
     transfer_fuel = source_level;
 
-  var destination_space = me.destinationTank.capacity() - me.destinationTank.level();
+  var destination_space = tanks[destinationTank].capacity()
+                        - tanks[destinationTank].level();
 
   if( transfer_fuel > destination_space )
     transfer_fuel = destination_space;
 
-  me.tanks[sourceTank].level( source_level - transfer_fuel );
-  me.destinationTank.level( me.destinationTank.level() + transfer_fuel );
+  tanks[sourceTank].level( source_level - transfer_fuel );
+  tanks[destinationTank].level( tanks[destinationTank].level() + transfer_fuel );
 }
 
 ###############################################
@@ -349,3 +352,65 @@ var MouseHandler = {
 };
 
 var mouseHandler = MouseHandler.new();
+
+
+var Hobbs_Meter = {
+    new: func () {
+        var m = { parents: [ Hobbs_Meter ], 
+                  d0: props.globals.initNode ("instrumentation/hobbs-meter/digits0", 0, "INT"),
+                  d1: props.globals.initNode ("instrumentation/hobbs-meter/digits1", 0, "INT"),
+                  d2: props.globals.initNode ("instrumentation/hobbs-meter/digits2", 0, "INT"),
+                  d3: props.globals.initNode ("instrumentation/hobbs-meter/digits3", 0, "INT"),
+                  d4: props.globals.initNode ("instrumentation/hobbs-meter/digits4", 0, "INT"),
+                  e0: props.globals.initNode ("engines/engine[0]/running-time-s", 0.0, "DOUBLE"),
+                  e1: props.globals.initNode ("engines/engine[1]/running-time-s", 0.0, "DOUBLE")
+                };
+        m.t0 = aircraft.timer.new (m.e0);
+        m.t1 = aircraft.timer.new (m.e1);
+        m.l0 = setlistener ("engines/engine[0]/running",
+                                func (r) {
+                                  if (r.getBoolValue ()) { m.t0.start(); }
+                                  else { m.t0.stop(); }
+                                });
+        m.l1 = setlistener ("engines/engine[1]/running",
+                                func (r) {
+                                  if (r.getBoolValue ()) { m.t1.start(); }
+                                  else { m.t1.stop(); }
+                                });
+        return m;
+    },
+    update: func (dt) {
+        var left = me.e0.getValue () or 0.0;
+        var right = me.e1.getValue () or 0.0;
+        var h = (left > right ? left : right) / 360.0; # tenths of hour, initially
+        me.d0.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d1.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d2.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d3.setValue (math.mod (int (h), 10)); h = h / 10;
+        me.d4.setValue (math.mod (int (h), 10)); h = h / 10;
+    },
+};
+
+
+var fuel_totals = props.globals.getNode("/consumables/fuel/total-fuel-lbs");
+var endurance   = props.globals.initNode ("/consumables/fuel/endurance-remaining", "", "STRING");
+var range       = props.globals.initNode ("/consumables/fuel/range-remaining-nmi", 0.0, "DOUBLE");
+var range_total = props.globals.initNode ("/consumables/fuel/range-total-nmi", 0.0, "DOUBLE");
+
+var fuel_flow_timer = maketimer (1.0, func () {
+   var ff_pph = 0;
+   for (var engine=0; engine<2; engine+=1) {
+      ff_pph += getprop ("/engines/engine[" ~ engine ~ "]/fuel-flow_pph");
+   }
+   var endurance_h = 0;
+   if (ff_pph > 0) { endurance_h = fuel_totals.getValue () / ff_pph; }
+   endurance.setValue (sprintf ("%d:%02d:%02d",
+                                int (endurance_h),
+                                math.mod (endurance_h * 60, 60),
+                                math.mod (endurance_h * 3600, 60)));
+   range.setValue (endurance_h * getprop ("/fdm/jsbsim/velocities/vtrue-kts"));
+   range_total.setValue (range.getValue () + getprop ("/instrumentation/gps/odometer"));
+});
+setlistener ("/sim/signals/fdm-initialized", func () {
+   fuel_flow_timer.start ();
+});

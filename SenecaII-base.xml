@@ -55,20 +55,19 @@
     <aircraft-class type="string">ga</aircraft-class>
     <aircraft-operator></aircraft-operator>
     <model>
-      <instrument-lighting>
-        <emission>
+      <material>
+        <instruments>
           <red type="double">1.0</red>
           <green type="double">0.2</green>
           <blue type="double">0.0</blue>
-        </emission>
-      </instrument-lighting>
-      <material>
-        <cockpit>
-          <red type="double">0.5</red>
-          <green type="double">0.1</green>
-          <blue type="double">0.1</blue>
+          <factor type="double">0</factor> <!-- used by instruments common to several aircraft -->
+        </instruments>
+        <overhead-lighting>
+          <red type="double">0.06</red>
+          <green type="double">0.003</green>
+          <blue type="double">0</blue>
           <factor type="double">0</factor>
-        </cockpit>
+        </overhead-lighting>
       </material>
       <icing>
         <iceable>
@@ -171,6 +170,7 @@
         <z-offset-m type="double">-0.3</z-offset-m>
       </config>
     </view>
+    <allow-toggle-cockpit>true</allow-toggle-cockpit>
     <menubar>
       <default>
         <!--menu n="3">
@@ -276,6 +276,13 @@
               <time>1.0</time>
             </binding>
           </item>
+          <item>
+            <label>Overhead light on/off</label>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/model/material/overhead-lighting/factor</property>
+            </binding>
+          </item>
           <!--item>
                         <label>Yaw Damper (on/off) default off</label>
                         <binding>
@@ -305,6 +312,13 @@
                   fgcommand("open-browser", props.Node.new({ "url": _url }));
                 }
               </script>
+            </binding>
+          </item>
+          <item>
+            <label>Select Livery</label>
+            <binding>
+              <command>nasal</command>
+              <script>aircraft.livery.dialog.toggle ();</script>
             </binding>
           </item>
         </menu>
@@ -379,7 +393,9 @@
       <path>sim/model/hide-yoke</path>
       <path>sim/model/hide-windshield-deice</path>
       <path>engines/engine[0]/egt-bug</path>
+      <path>engines/engine[0]/running-time-s</path>
       <path>engines/engine[1]/egt-bug</path>
+      <path>engines/engine[1]/running-time-s</path>
       <path>controls/engines/engine[0]/cowl-flaps-norm</path>
       <path>controls/engines/engine[1]/cowl-flaps-norm</path>
       <path>autopilot/CENTURYIII/controls/mode</path>
@@ -388,6 +404,18 @@
       <path>controls/electric/avionic-switch</path>
       <path>controls/fuel/tank[0]/fuel_selector-position</path>
       <path>controls/fuel/tank[1]/fuel_selector-position</path>
+      <path>consumables/fuel/tank[0]/level-lbs</path>
+      <path>consumables/fuel/tank[1]/level-lbs</path>
+      <path>consumables/fuel/tank[2]/level-lbs</path>
+      <path>consumables/fuel/tank[3]/level-lbs</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[3]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[4]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[5]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[6]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[7]</path>
     </aircraft-data>
     <help>
       <title>PA34-200T Seneca II</title>
@@ -570,11 +598,39 @@ For the online documentation go to [the wiki page](http://wiki.flightgear.org/Se
         <unusable-gal_us type="double">2.5</unusable-gal_us>
         <level-gal_us type="double">30</level-gal_us>
       </tank>
+      <!--
+https://answers.yahoo.com/question/index?qid=20060818093900AABI7C4
+
+The Seneca can be modified to carry more fuel, however the Seneca
+already has a terrible useful load capability. The engine-nacelle fuel
+tanks offered by Tom's Aircraft (STC SA2205SW, originally by Nayak
+Aviation) are auxiliary tanks and fuel must be transferred into the
+mains to be used, a process which takes just over an hour for their
+entire 30-gallon capacity. However, there are no gauges or indicators
+whatsoever of fuel level or fuel transfer. So the only possible way to
+"know" whether the fuel transferred or not is to watch the aircraft's
+factory fuel gauges and determine, after an hour of flight where
+you've added 30 gallons and burned 22-24, whether it looks like the
+gauges indicate roughly 3-4 gallons more per side than they indicated
+an hour before.
+      -->
       <tank n="2">
-        <hidden type="bool">true</hidden>
+        <name type="string">Left Engine Nacelle</name>
+        <capacity-gal_us type="double">15.0</capacity-gal_us>
+        <unusable-gal_us type="double">0</unusable-gal_us>
+        <level-gal_us type="double">0</level-gal_us>
       </tank>
       <tank n="3">
-        <hidden type="bool">true</hidden>
+        <name type="string">Right Engine Nacelle</name>
+        <capacity-gal_us type="double">15.0</capacity-gal_us>
+        <unusable-gal_us type="double">0</unusable-gal_us>
+        <level-gal_us type="double">0</level-gal_us>
+      </tank>
+      <tank n="4">
+        <name type="string">Left engine fuel line</name>
+      </tank>
+      <tank n="5">
+        <name type="string">Right engine fuel line</name>
       </tank>
     </fuel>
   </consumables>
@@ -629,6 +685,14 @@ For the online documentation go to [the wiki page](http://wiki.flightgear.org/Se
   </limits>
   <input>
         <keyboard>
+            <key n="12">
+              <name>Ctrl+L</name>
+              <desc>Toggle overhead cockpit lights</desc>
+              <binding>
+                <command>property-toggle</command>
+                <property>sim/model/material/overhead-lighting/factor</property>
+              </binding>
+            </key>
             <key n="267">
                 <name>F11</name>
                 <desc>Pop up autopilot dialog</desc>
@@ -758,14 +822,32 @@ For the online documentation go to [the wiki page](http://wiki.flightgear.org/Se
     </electrical>
     <fuel>
       <fuel-pump n="0">
-        <name>L/H fuel pump</name>
-        <destination-tank type="int">2</destination-tank>
+        <name type="string">Left engine fuel pump</name>
+        <!-- the source tank is determined by the fuel selector -->
+        <destination-tank type="int">4</destination-tank>
         <fuel-flow-gph type="double">100</fuel-flow-gph>
       </fuel-pump>
       <fuel-pump n="1">
-        <name>R/H fuel pump</name>
-        <destination-tank type="int">3</destination-tank>
+        <name type="string">Right engine fuel pump</name>
+        <!-- the source tank is determined by the fuel selector -->
+        <destination-tank type="int">5</destination-tank>
         <fuel-flow-gph type="double">100</fuel-flow-gph>
+      </fuel-pump>
+      <fuel-pump n="2">
+        <name type="string">Left auxiliary fuel pump</name>
+        <!-- always on and feeds the left wing tank. -->
+        <enabled type="bool">1</enabled>
+        <source-tank type="int">2</source-tank>
+        <destination-tank type="int">0</destination-tank>
+        <fuel-flow-gph type="double">14</fuel-flow-gph>
+      </fuel-pump>
+      <fuel-pump n="3">
+        <name type="string">Right auxiliary fuel pump</name>
+        <!-- always on and feeds the right wing tank. -->
+        <enabled type="bool">1</enabled>
+        <source-tank type="int">3</source-tank>
+        <destination-tank type="int">1</destination-tank>
+        <fuel-flow-gph type="double">14</fuel-flow-gph>
       </fuel-pump>
     </fuel>
   </systems>
@@ -884,14 +966,14 @@ For the online documentation go to [the wiki page](http://wiki.flightgear.org/Se
       <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
       <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[6]"/>
       <min-lb type="double">0.0</min-lb>
-      <max-lb type="double">200.0</max-lb>
+      <max-lb type="double">100.0</max-lb>
     </weight>
     <weight>
       <name type="string">Aft Baggage</name>
       <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[7]"/>
       <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[7]"/>
       <min-lb type="double">0.0</min-lb>
-      <max-lb type="double">200.0</max-lb>
+      <max-lb type="double">100.0</max-lb>
     </weight>
   </payload>
 </PropertyList>

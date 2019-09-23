@@ -28,10 +28,10 @@
         <type>material</type>
         <object-name>AutopilotMode.Face</object-name>
         <emission>
-          <red>0.45</red>
-          <green>0.09</green>
-          <blue>0.00001</blue>
-          <factor-prop>/sim/model/material/instruments/factor</factor-prop>
+            <red-prop>sim/model/material/overhead-lighting/red</red-prop>
+            <green-prop>sim/model/material/overhead-lighting/green</green-prop>
+            <blue-prop>sim/model/material/overhead-lighting/blue</blue-prop>
+            <factor-prop>sim/model/material/overhead-lighting/factor</factor-prop>
         </emission>
     </animation>
     
@@ -39,17 +39,17 @@
         <type>material</type>
         <object-name>AutopilotMode.Knob</object-name>
         <emission>
-          <red>0.2</red>
-          <green>0.04</green>
-          <blue>0.00002</blue>
-          <factor-prop>/sim/model/material/instruments/factor</factor-prop>
+            <red-prop>sim/model/material/instruments/red</red-prop>
+            <green-prop>sim/model/material/instruments/green</green-prop>
+            <blue-prop>sim/model/material/instruments/blue</blue-prop>
+            <factor-prop>sim/model/material/instruments/factor</factor-prop>
         </emission>
     </animation>
 
     <animation>
         <type>rotate</type>
         <object-name>AutopilotMode.Knob</object-name>
-        <property>/autopilot/CENTURYIII/controls/mode</property>
+        <property>autopilot/CENTURYIII/controls/mode</property>
         <factor>-30</factor>
         <offset-deg>60</offset-deg>
         <axis>
@@ -73,7 +73,7 @@
         <repeatable>false</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>/autopilot/CENTURYIII/controls/mode</property>
+          <property>autopilot/CENTURYIII/controls/mode</property>
           <step type="int">-1</step>
           <min>0</min>
           <max>4</max>
@@ -90,7 +90,7 @@
         <repeatable>false</repeatable>
         <binding>
           <command>property-adjust</command>
-          <property>/autopilot/CENTURYIII/controls/mode</property>
+          <property>autopilot/CENTURYIII/controls/mode</property>
           <step type="int">1</step>
           <min>0</min>
           <max>4</max>
